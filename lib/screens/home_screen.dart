@@ -317,7 +317,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         mainAxisSpacing: 1,
                                                         crossAxisSpacing: 1,
                                                         crossAxisCount: 2,
-                                                        mainAxisExtent: 290),
+                                                        mainAxisExtent: 300),
                                                 itemBuilder: (context, index) {
                                                   final product = snapshot
                                                       .data!.docs[index];
@@ -334,62 +334,61 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           clipBehavior:
                                                               Clip.none,
                                                           children: [
-                                                            GestureDetector(
-                                                              onTap: () {
-                                                                Get.to(
-                                                                  DetilsScreen(
-                                                                    sid: product[
-                                                                        'seller_id'],
-                                                                    pid: product[
-                                                                        'product_id'],
-                                                                    buynow: snap
-                                                                            .data![
-                                                                        'buyNow'],
-                                                                    image: product[
-                                                                        'image'],
-                                                                    category:
-                                                                        product[
-                                                                            "product_catagory"],
-                                                                    details:
-                                                                        product[
-                                                                            "product_details"],
-                                                                    name: product[
-                                                                        "product_name"],
-                                                                    price: product[
-                                                                        "product_price"],
-                                                                    stock: product[
-                                                                        'product_stock'],
-                                                                  ),
-                                                                );
-                                                              },
-                                                              child: Container(
+                                                            Card(
+                                                              shape:
+                                                                  RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20),
+                                                              ),
+                                                              elevation: 10,
+                                                              color: grey,
+                                                              child:
+                                                                  Comman_Container(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5),
+                                                                ontap: () {
+                                                                  Get.to(
+                                                                    DetilsScreen(
+                                                                      sid: product[
+                                                                          'seller_id'],
+                                                                      pid: product[
+                                                                          'product_id'],
+                                                                      buynow: snap
+                                                                              .data![
+                                                                          'buyNow'],
+                                                                      image: product[
+                                                                          'image'],
+                                                                      category:
+                                                                          product[
+                                                                              "product_catagory"],
+                                                                      details:
+                                                                          product[
+                                                                              "product_details"],
+                                                                      name: product[
+                                                                          "product_name"],
+                                                                      price: product[
+                                                                          "product_price"],
+                                                                      stock: product[
+                                                                          'product_stock'],
+                                                                    ),
+                                                                  );
+                                                                },
                                                                 height: 155.sp,
                                                                 width: double
                                                                     .infinity,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: white,
-                                                                  boxShadow: [
-                                                                    BoxShadow(
-                                                                        color: Colors
-                                                                            .grey,
-                                                                        blurRadius:
-                                                                            3,
-                                                                        spreadRadius:
-                                                                            1),
-                                                                  ],
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              15),
-                                                                  image:
-                                                                      DecorationImage(
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                    image: NetworkImage(
-                                                                        product!['image']
-                                                                            .toString()),
-                                                                  ),
+                                                                color: white,
+                                                                image:
+                                                                    DecorationImage(
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                  image: NetworkImage(
+                                                                      product![
+                                                                              'image']
+                                                                          .toString()),
                                                                 ),
                                                               ),
                                                             ),

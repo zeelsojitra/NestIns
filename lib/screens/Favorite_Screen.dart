@@ -44,10 +44,13 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                         onTap: () {
                           Get.back();
                         },
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: white,
-                          size: 30,
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: white,
+                            size: 30,
+                          ),
                         )),
                     Spacer(),
                     Comman_Text(

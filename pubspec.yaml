@@ -83,6 +83,7 @@ flutter:
   assets:
     - asserts/image/
     - asserts/pageview/
+    - asserts/onbording/
     - asserts/catlogue/
     - asserts/Categories/
     - asserts/lottie/
