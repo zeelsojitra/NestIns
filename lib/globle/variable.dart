@@ -84,9 +84,9 @@ const men_shopping = "asserts/image/men_shopping1.png";
 const wommen_shopping = "asserts/Categories/wommen.png";
 
 //pageview image
-const page_view1 = "asserts/image/onbording1.png";
-const page_view2 = "asserts/image/onbording2.png";
-const page_view3 = "asserts/image/onbording3.png";
+const page_view1 = "asserts/pageview/pageview1.jpg";
+const page_view2 = "asserts/pageview/pageview2.jpg";
+const page_view3 = "asserts/pageview/pageview3.jpg";
 
 //onbording image
 const onbording1 = "asserts/onbording/onbording1.png";
