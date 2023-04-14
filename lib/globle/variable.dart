@@ -88,6 +88,11 @@ const page_view1 = "asserts/image/onbording1.png";
 const page_view2 = "asserts/image/onbording2.png";
 const page_view3 = "asserts/image/onbording3.png";
 
+//onbording image
+const onbording1 = "asserts/onbording/onbording1.png";
+const onbording2 = "asserts/onbording/onbording2.png";
+const onbording3 = "asserts/onbording/onbording3.png";
+
 //lottie image
 const apple_lottie = "asserts/lottie/apple.json";
 const calling_lottie = "asserts/lottie/calling.json";
@@ -296,6 +301,7 @@ String searchText = "";
 const String Fashionsale = "Fashion sale";
 const String subtitile = "See More >";
 Profileimg pi = Get.put(Profileimg());
+//home screen
 List Pageview = [
   {'image': page_view1, 'title': Fashionsale, "subtitile": subtitile},
   {'image': page_view2, 'title': Fashionsale, "subtitile": subtitile},
@@ -365,19 +371,19 @@ const String subtitle = "You just need to take a photo or upload and";
 const String subtitle2 = "we will find similar products for you.";
 List onbording = [
   {
-    'img': page_view1,
+    'img': onbording1,
     'name': "Online Order",
     'subtitle': "You can see the product with all angles,",
     "subtitle2": "true and convenient",
   },
   {
-    'img': page_view2,
+    'img': onbording2,
     'name': "Easy Payment",
     'subtitle': subtitle,
     "subtitle2": subtitle2,
   },
   {
-    'img': page_view2,
+    'img': onbording3,
     'name': "Fast Delivery",
     'subtitle': subtitle,
     "subtitle2": subtitle2,
