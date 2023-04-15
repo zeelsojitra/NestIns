@@ -84,6 +84,7 @@ flutter:
     - asserts/image/
     - asserts/pageview/
     - asserts/onbording/
+    - asserts/categoriesdemo/
     - asserts/catlogue/
     - asserts/Categories/
     - asserts/lottie/

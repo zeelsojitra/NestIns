@@ -64,6 +64,7 @@ const men_categories = "asserts/Categories/men.png";
 const men_shopping_categories = "asserts/Categories/men_shopping.png";
 const wommen_categories = "asserts/Categories/wommen.png";
 
+//categoriesdemo
 //catlogue image
 const computer_catlogue = "asserts/catlogue/computer.png";
 const laptop_catlogue = "asserts/catlogue/laptop.png";
@@ -420,3 +421,19 @@ RegExp email = RegExp(
     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 RegExp password =
     RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+
+//categoreydemo screen
+List categoriesDemo = [
+  {
+    "name": "chhattisgarh",
+  },
+  {
+    "name": "goa",
+  },
+  {
+    "name": "Gujrat",
+  },
+  {
+    "name": "Haryana",
+  },
+];

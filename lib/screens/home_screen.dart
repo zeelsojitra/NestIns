@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../common_screen/Comman_Container.dart';
 import '../common_screen/Comman_text.dart';
 import '../globle/variable.dart';
 import 'Details_screen.dart';
+import 'categoriesDemo.dart';
 import 'categories_screen.dart';
 import 'drawerScreen.dart';
 
@@ -82,6 +82,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(
                           width: 40.sp,
                         ),
+                        InkWell(
+                            onTap: () {
+                              Get.to(CategoriesDemo());
+                            },
+                            child: Icon(
+                              Icons.menu_open,
+                              color: white,
+                              size: 30,
+                            )),
                       ],
                     ),
                   ),
