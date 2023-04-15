@@ -113,10 +113,21 @@ class _CategoriesDemoState extends State<CategoriesDemo> {
                   crossAxisCount: 2,
                   mainAxisExtent: 150),
               itemBuilder: (context, index) {
-                return Card(
-                  elevation: 10,
-                  child: Comman_Container(
-                    color: black,
+                return Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.sp, vertical: 10.sp),
+                  child: Card(
+                    elevation: 10,
+                    child: Comman_Container(
+                      ontap: () {
+                        if (index == 0) {}
+                      },
+                      child: Center(
+                        child: Comman_Text(
+                          text: categoriesDemo[index]['name'],
+                        ),
+                      ),
+                    ),
                   ),
                 );
               },
