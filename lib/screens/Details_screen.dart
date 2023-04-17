@@ -3,11 +3,9 @@ import 'package:e_com/common_screen/Comman_Container.dart';
 import 'package:e_com/globle/media_query.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:velocity_x/velocity_x.dart';
+
 import '../common_screen/Comman_text.dart';
 import '../globle/variable.dart';
 import 'addressscreen.dart';
@@ -15,6 +13,7 @@ import 'addressscreen.dart';
 class DetilsScreen extends StatefulWidget {
   final String image, name, price, category, details, stock, pid, sid;
   final List buynow;
+
   const DetilsScreen({
     Key? key,
     required this.image,
@@ -91,9 +90,10 @@ class DetilsScreenState extends State<DetilsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         leading: InkWell(
           onTap: () {
-            Get.back();
+            Navigator.pop(context);
           },
           child: Icon(
             Icons.arrow_back,
@@ -101,9 +101,11 @@ class DetilsScreenState extends State<DetilsScreen> {
           ),
         ),
         title: Comman_Text(
-          text: "Detil's Screen",
-          fontSize: 19,
+          text: "Product Detils",
+          fontSize: 15.sp,
           fontWeight: FontWeight.bold,
+          color: white,
+          fontFamily: "JB1",
         ),
         actions: [
           SizedBox(
@@ -168,7 +170,8 @@ class DetilsScreenState extends State<DetilsScreen> {
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.only(
+                                left: 10, right: 10, top: 10, bottom: 5),
                             child: SingleChildScrollView(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -177,17 +180,28 @@ class DetilsScreenState extends State<DetilsScreen> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Expanded(
-                                        child: Image.network(
-                                          widget.image,
-                                          // height: height(context) / 3,
-                                          // width: width(context) / 2,
-                                          fit: BoxFit.cover,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Container(
+                                            height: 400.sp,
+                                            width: 250.sp,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            child: Image.network(
+                                              widget.image,
+                                              // height: height(context) / 3,
+                                              // width: width(context) / 2,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ],
                                   ),
                                   SizedBox(
-                                    height: height(context) * 0.02,
+                                    height: height(context) * 0.01,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -196,53 +210,243 @@ class DetilsScreenState extends State<DetilsScreen> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Comman_Text(
-                                          text: "${widget.name}",
-                                          color: black,
-                                          fontSize: height(context) / 35,
-                                          fontWeight: FontWeight.w400,
+                                        Row(
+                                          children: [
+                                            Comman_Text(
+                                              text: "Product Name :",
+                                              color: black,
+                                              fontSize: height(context) / 35,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'JM1',
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Flexible(
+                                              child: Comman_Text(
+                                                text: "${widget.name}",
+                                                color: grey,
+                                                fontSize: height(context) / 35,
+                                                fontFamily: 'JM1',
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: height(context) * 0.01,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Comman_Text(
+                                              text: "Rs :",
+                                              color: black,
+                                              fontSize: height(context) / 35,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'JM1',
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Comman_Text(
+                                              text: "${widget.price}₹",
+                                              color: red,
+                                              fontSize: height(context) / 35,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'JM1',
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: height(context) * 0.01,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Comman_Text(
+                                              text: "Category:",
+                                              color: black,
+                                              fontSize: height(context) / 35,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'JM1',
+                                            ),
+                                            SizedBox(
+                                              width: 5.sp,
+                                            ),
+                                            Comman_Text(
+                                              text: "${widget.category}",
+                                              color: grey,
+                                              fontSize: height(context) / 35,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'JM1',
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: height(context) * 0.01,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Comman_Text(
+                                              text: "Product Descripation :",
+                                              color: black,
+                                              fontSize: height(context) / 35,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'JM1',
+                                            ),
+                                            SizedBox(
+                                              width: 5.sp,
+                                            ),
+                                            Comman_Text(
+                                              text: "${widget.details}",
+                                              color: grey,
+                                              fontSize: height(context) / 35,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: "JM1",
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: height(context) * 0.01,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Comman_Text(
+                                              text: "Product Rating:",
+                                              color: black,
+                                              fontSize: height(context) / 35,
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'JM1',
+                                            ),
+                                            SizedBox(
+                                              width: 5.sp,
+                                            ),
+                                            VxRating(
+                                              value: 0,
+                                              onRatingUpdate: (value) {},
+                                              normalColor: green,
+                                              selectionColor: yellow,
+                                              size: height(context) * 0.03,
+                                              count: 5,
+                                            ),
+                                          ],
                                         ),
                                         SizedBox(
                                           height: height(context) * 0.02,
                                         ),
-                                        Comman_Text(
-                                          text: "₨ :- ${widget.price}",
-                                          color: grey,
-                                          fontSize: height(context) / 35,
-                                          fontWeight: FontWeight.w400,
-                                        ),
                                         SizedBox(
-                                          height: height(context) * 0.02,
-                                        ),
-                                        Comman_Text(
-                                          text: "${widget.category}",
-                                          color: grey,
-                                          fontSize: height(context) / 35,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                        SizedBox(
-                                          height: height(context) * 0.02,
-                                        ),
-                                        Comman_Text(
-                                          text: "${widget.details}",
-                                          color: grey,
-                                          fontSize: height(context) / 35,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                        SizedBox(
-                                          height: height(context) * 0.02,
-                                        ),
-                                        VxRating(
-                                          value: 0,
-                                          onRatingUpdate: (value) {},
-                                          normalColor: green,
-                                          selectionColor: yellow,
-                                          size: height(context) * 0.03,
-                                          count: 5,
-                                        ),
-                                        SizedBox(
-                                          height: height(context) * 0.02,
-                                        ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Comman_Container(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.sp),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: grey,
+                                                    blurRadius: 5,
+                                                    offset: Offset(2, 2),
+                                                    spreadRadius: 1,
+                                                  ),
+                                                ],
+                                                height: 40.sp,
+                                                width: double.infinity,
+                                                child: Center(
+                                                  child: Comman_Text(
+                                                    color: white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize:
+                                                        height(context) / 45,
+                                                    text: "Add to card",
+                                                    fontFamily: "JB1",
+                                                  ),
+                                                ),
+                                                color: red,
+                                                ontap: () {
+                                                  // List a = widget.AddToCart;
+                                                  // if ((a).contains(widget.pid)) {
+                                                  // } else {
+                                                  //   a.add(widget.pid);
+                                                  //   FirebaseFirestore.instance
+                                                  //       .collection('Add_To_cart')
+                                                  //       .doc(FirebaseAuth
+                                                  //           .instance.currentUser!.uid)
+                                                  //       .update({'AddToCart': a});
+                                                  // }
+
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content:
+                                                          Text("Add To Cart"),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                              SizedBox(
+                                                height: 10.sp,
+                                              ),
+                                              Comman_Container(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.sp),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: grey,
+                                                    blurRadius: 5,
+                                                    offset: Offset(2, 2),
+                                                    spreadRadius: 1,
+                                                  )
+                                                ],
+                                                height: 40.sp,
+                                                width: double.maxFinite,
+                                                child: Center(
+                                                  child: Comman_Text(
+                                                    color: black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize:
+                                                        height(context) / 45,
+                                                    text: "Buy Now",
+                                                    fontFamily: "JB1",
+                                                  ),
+                                                ),
+                                                color: amber,
+                                                ontap: () {
+                                                  print("Address Screen");
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          AddressDemo(
+                                                        sid: widget.sid,
+                                                        pid: widget.pid,
+                                                        pprice: widget.price,
+                                                        image: widget.image,
+                                                        category:
+                                                            widget.category,
+                                                        details: widget.details,
+                                                        name: widget.name,
+                                                        price: widget.price,
+                                                      ),
+                                                    ),
+                                                  );
+                                                  //openCheckOut();
+                                                  // List x = widget.buynow;
+                                                  // if ((x).contains(widget.pid)) {
+                                                  // } else {
+                                                  //   x.add(widget.pid);
+                                                  //   FirebaseFirestore.instance
+
+//       .collection('user')
+                                                  //       .doc(FirebaseAuth
+                                                  //           .instance.currentUser!.uid)
+                                                  //       .update({'buyNow': x});
+                                                  // }
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        )
                                       ],
                                     ),
                                   ),
@@ -251,103 +455,6 @@ class DetilsScreenState extends State<DetilsScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                bottom: 20, left: 20, right: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Comman_Container(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: grey,
-                                      blurRadius: 5,
-                                      offset: Offset(2, 2),
-                                      spreadRadius: 1,
-                                    )
-                                  ],
-                                  height: 60,
-                                  width: 120,
-                                  child: Center(
-                                    child: Comman_Text(
-                                      color: white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: height(context) / 55,
-                                      text: "Add to card",
-                                    ),
-                                  ),
-                                  color: red,
-                                  ontap: () {
-                                    // List a = widget.AddToCart;
-                                    // if ((a).contains(widget.pid)) {
-                                    // } else {
-                                    //   a.add(widget.pid);
-                                    //   FirebaseFirestore.instance
-                                    //       .collection('Add_To_cart')
-                                    //       .doc(FirebaseAuth
-                                    //           .instance.currentUser!.uid)
-                                    //       .update({'AddToCart': a});
-                                    // }
-
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text("Add To Cart"),
-                                      ),
-                                    );
-                                  },
-                                ),
-                                Comman_Container(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: grey,
-                                      blurRadius: 5,
-                                      offset: Offset(2, 2),
-                                      spreadRadius: 1,
-                                    )
-                                  ],
-                                  height: 60,
-                                  width: 120,
-                                  child: Center(
-                                    child: Comman_Text(
-                                      color: black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: height(context) / 55,
-                                      text: "Buy Now",
-                                    ),
-                                  ),
-                                  color: amber,
-                                  ontap: () {
-                                    print("Address Screen");
-                                    Get.to(
-                                      AddressDemo(
-                                        sid: widget.sid,
-                                        pid: widget.pid,
-                                        pprice: widget.price,
-                                        image: widget.image,
-                                        category: widget.category,
-                                        details: widget.details,
-                                        name: widget.name,
-                                        price: widget.price,
-                                      ),
-                                    );
-                                    //openCheckOut();
-                                    // List x = widget.buynow;
-                                    // if ((x).contains(widget.pid)) {
-                                    // } else {
-                                    //   x.add(widget.pid);
-                                    //   FirebaseFirestore.instance
-                                    //       .collection('user')
-                                    //       .doc(FirebaseAuth
-                                    //           .instance.currentUser!.uid)
-                                    //       .update({'buyNow': x});
-                                    // }
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
                       ],
                     );
                   } else {
