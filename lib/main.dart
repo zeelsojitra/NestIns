@@ -8,6 +8,7 @@ import 'package:sizer/sizer.dart';
 import 'globle/shardpefrence.dart';
 
 void main() async {
+  ///milan
   // main ma koy pen change kerva mate aa line lakhvi j pade.
   WidgetsFlutterBinding.ensureInitialized();
   sharedPreferences = await SharedPreferences.getInstance();
