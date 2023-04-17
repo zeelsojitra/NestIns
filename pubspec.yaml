@@ -106,27 +106,27 @@ flutter:
   fonts:
     - family: C1
       fonts:
-        - asset: assets/Font/Cardo-Regular.ttf
+        - asset: asserts/Font/Cardo-Regular.ttf
     - family: GR1
       fonts:
-        - asset: assets/Font/Gayathri-Regular.ttf
+        - asset: asserts/Font/Gayathri-Regular.ttf
     - family: GB1
       fonts:
-        - asset: assets/Font/Gayathri-Bold.ttf
+        - asset: asserts/Font/Gayathri-Bold.ttf
     - family: P1
       fonts:
-        - asset: assets/Font/Poppins-Bold.ttf
+        - asset: asserts/Font/Poppins-Bold.ttf
     - family: JB1
       fonts:
-        - asset: assets/Font/Jost-Bold.ttf
+        - asset: asserts/Font/Jost-Bold.ttf
     - family: JM1
       fonts:
-        - asset: assets/Font/Jost-Medium.ttf
+        - asset: asserts/Font/Jost-Medium.ttf
     - family: JS1
       fonts:
-        - asset: assets/Font/Jost-SemiBold.ttf
+        - asset: asserts/Font/Jost-SemiBold.ttf
     - family: JV1
       fonts:
-        - asset: assets/Font/Jost-VariableFont_wght.ttf
+        - asset: asserts/Font/Jost-VariableFont_wght.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
