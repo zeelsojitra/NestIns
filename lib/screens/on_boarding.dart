@@ -110,7 +110,7 @@ class _On_BoardingState extends State<On_Boarding> {
                                 backgroundColor:
                                     controller.On_Bording_onchange.value ==
                                             index
-                                        ? LightGreen1
+                                        ? LightGreen
                                         : black,
                               ),
                             )),
@@ -129,7 +129,7 @@ class _On_BoardingState extends State<On_Boarding> {
                                 child: InkWell(
                                   onTap: () {
                                     pageController.previousPage(
-                                        duration: Duration(milliseconds: 600),
+                                        duration: Duration(milliseconds: 300),
                                         curve: Curves.easeIn);
                                   },
                                   child: Icon(Icons.arrow_back,
@@ -138,7 +138,7 @@ class _On_BoardingState extends State<On_Boarding> {
                                 height: 45.sp,
                                 width: 45.sp,
                                 decoration: BoxDecoration(
-                                  color: black,
+                                  color: LightGreen,
                                   shape: BoxShape.circle,
                                 ),
                               )

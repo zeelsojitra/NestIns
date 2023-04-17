@@ -13,8 +13,8 @@ final Controller contoller = Get.put(Controller());
 
 //color
 const Color DarkGreen = Color(0xff40916C);
-const Color LightGreen = Color(0xff95d5d2);
-const Color LightGreen1 = Color(0xff52B788);
+const Color LightGreen1 = Color(0xff95d5d2);
+const Color LightGreen = Color(0xff52B788);
 const Color DarkGreen2 = Color(0xff2D6A4F);
 const Color lightGreen = Color(0xffB7E4C7);
 const Color iconColor = Color(0xff74c69d);
