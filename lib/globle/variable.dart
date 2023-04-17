@@ -18,6 +18,7 @@ const Color LightGreen1 = Color(0xff52B788);
 const Color DarkGreen2 = Color(0xff2D6A4F);
 const Color lightGreen = Color(0xffB7E4C7);
 const Color iconColor = Color(0xff74c69d);
+const Color orange_logo = Color(0xffF58634);
 const Color green = Colors.green;
 const Color yellow = Colors.yellow;
 const Color amber = Colors.amber;
@@ -29,6 +30,8 @@ const Color black = Colors.black;
 const Color black54 = Colors.black54;
 const Color black87 = Colors.black87;
 const Color transparent = Colors.transparent;
+// Color(0xff2D6A4F),//dark
+// Color(0xff95D5B2),//light LightGreen1
 
 //controller
 final Phone = TextEditingController();
@@ -54,6 +57,8 @@ const shopping_cart_outlined =
 const AppLogo = "asserts/logo/applogo.png";
 const SplashAppLogo = "asserts/logo/nestinSplash.png";
 const SplashAppLogowhite = "asserts/logo/app_white.png";
+const logo_orange = "asserts/logo/logo_orange.png";
+const logo_green = "asserts/logo/logo_green.png";
 
 //categories image
 const beauty_categories = "asserts/Categories/beauty.png";

@@ -51,43 +51,42 @@ class Splash_ScreenState extends State<Splash_Screen> {
           Comman_Container(
             height: Get.height,
             width: Get.width,
-            gradient: LinearGradient(colors: [
-              DarkGreen2,
-              LightGreen,
-            ]),
+            color: black,
+            // gradient: LinearGradient(colors: [
+            //   LightGreen,
+            //   DarkGreen2,
+            // ]),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
-                  child: Image(
-                    height: 100.sp,
-                    width: 100.sp,
-                    image: AssetImage(SplashAppLogowhite),
-                  ),
+                Image(
+                  height: Get.height * 0.55,
+                  width: Get.width * 0.55,
+                  image: AssetImage(logo_green),
                 ),
-                SizedBox(
-                  height: 7.sp,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Comman_Text(
-                      text: "Nest",
-                      color: black,
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    // SizedBox(
-                    //   width: 5.sp,
-                    // ),
-                    Comman_Text(
-                      text: "In",
-                      color: black,
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ],
-                ),
+                // SizedBox(
+                //   height: 7.sp,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     Comman_Text(
+                //       text: "Nest",
+                //       color: white,
+                //       fontSize: 30.sp,
+                //       fontWeight: FontWeight.bold,
+                //     ),
+                //     // SizedBox(
+                //     //   width: 5.sp,
+                //     // ),
+                //     Comman_Text(
+                //       text: "In",
+                //       color: white,
+                //       fontSize: 30.sp,
+                //       fontWeight: FontWeight.bold,
+                //     ),
+                //   ],
+                // ),
               ],
             ),
           ),

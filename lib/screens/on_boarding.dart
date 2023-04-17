@@ -42,9 +42,9 @@ class _On_BoardingState extends State<On_Boarding> {
                             child: Comman_Text(
                               text: "Skip",
                               fontWeight: FontWeight.bold,
-                              color: Color(0xff40916C),
+                              color: black,
                               fontSize: 17.sp,
-                            ))
+                            )),
                       ],
                     ),
                   ),
@@ -110,8 +110,8 @@ class _On_BoardingState extends State<On_Boarding> {
                                 backgroundColor:
                                     controller.On_Bording_onchange.value ==
                                             index
-                                        ? DarkGreen
-                                        : LightGreen,
+                                        ? LightGreen1
+                                        : black,
                               ),
                             )),
                   ),
@@ -133,12 +133,12 @@ class _On_BoardingState extends State<On_Boarding> {
                                         curve: Curves.easeIn);
                                   },
                                   child: Icon(Icons.arrow_back,
-                                      color: white70, size: 27),
+                                      color: white, size: 27),
                                 ),
                                 height: 45.sp,
                                 width: 45.sp,
                                 decoration: BoxDecoration(
-                                  color: LightGreen,
+                                  color: black,
                                   shape: BoxShape.circle,
                                 ),
                               )
@@ -155,7 +155,7 @@ class _On_BoardingState extends State<On_Boarding> {
                               }
                             },
                             child: Icon(Icons.arrow_forward,
-                                color: Colors.white70, size: 27),
+                                color: white, size: 27),
                           ),
                           height: 45.sp,
                           width: 45.sp,
