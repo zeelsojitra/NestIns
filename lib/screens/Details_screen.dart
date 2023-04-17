@@ -382,7 +382,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                                                           Text("Add To Cart"),
                                                     ),
                                                   );
-                                                },
+                                                }, //enfjenf
                                               ),
                                               SizedBox(
                                                 height: 10.sp,
