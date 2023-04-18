@@ -13,6 +13,7 @@ import 'Details_screen.dart';
 import 'categoriesDemo.dart';
 import 'categories_screen.dart';
 import 'drawerScreen.dart';
+import 'fancy_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -557,7 +558,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      drawer: DrawerScreen(),
+      drawer: IFancyDrawer(),
     );
   }
 }

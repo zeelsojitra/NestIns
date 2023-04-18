@@ -1,8 +1,5 @@
-import 'package:e_com/registration/otp_screen.dart';
-import 'package:e_com/registration/regisration_screen.dart';
 import 'package:e_com/screens/fancy_drawer.dart';
-import 'package:e_com/screens/on_boarding.dart';
-import 'package:e_com/screens/phone_verification.dart';
+import 'package:e_com/screens/home_screen.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

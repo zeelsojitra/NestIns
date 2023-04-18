@@ -1,9 +1,15 @@
+import 'package:e_com/screens/splash_screen.dart';
+import 'package:e_com/screens/tab_bar.dart';
 import 'package:fancy_drawer/fancy_drawer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 
+import '../authantication/email authantication/EmailAuthService.dart';
+import '../authantication/google auth service/google_auth_service.dart';
 import '../common_screen/Comman_text.dart';
 import '../globle/shardpefrence.dart';
 import '../globle/variable.dart';
@@ -114,20 +120,20 @@ class _IFancyDrawerState extends State<IFancyDrawer>
                         if (index == 2) {
                           //Get.to(OderScreen());
                         }
-                        if (index == 6) {
-                          // FirebaseAuth.instance.signOut();
-                          // EmailAuthService.LogoutUser().then((value) async {
-                          //   SharedPreferences sh =
-                          //       await SharedPreferences.getInstance();
-                          //   sh.setBool(Splash_ScreenState.KeyValue, false);
-                          //   GoogleAuthService.googleSignOut();
-                          //   sh
-                          //       .remove("email")
-                          //       .then((value) => Get.off(Tab_Bar()));
-                          // });
-                          // sharedPreferences!.remove("profile_email");
-                          // sharedPreferences!.remove("profile_image");
-                          // sharedPreferences!.remove("profile_name");
+                        if (index == 5) {
+                          FirebaseAuth.instance.signOut();
+                          EmailAuthService.LogoutUser().then((value) async {
+                            SharedPreferences sh =
+                                await SharedPreferences.getInstance();
+                            sh.setBool(Splash_ScreenState.KeyValue, false);
+                            GoogleAuthService.googleSignOut();
+                            sh
+                                .remove("email")
+                                .then((value) => Get.off(Tab_Bar()));
+                          });
+                          sharedPreferences!.remove("profile_email");
+                          sharedPreferences!.remove("profile_image");
+                          sharedPreferences!.remove("profile_name");
                         }
                       },
                       child: Padding(
@@ -196,8 +202,12 @@ class _IFancyDrawerState extends State<IFancyDrawer>
               },
             ),
           ),
-          body: const Center(
-            child: Text("Body"),
+          body: Center(
+            child: Column(
+              children: [
+                Text("Body"),
+              ],
+            ),
           ),
         ),
       ),
