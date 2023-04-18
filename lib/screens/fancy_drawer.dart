@@ -39,7 +39,7 @@ class _IFancyDrawerState extends State<IFancyDrawer>
   Widget build(BuildContext context) {
     return Material(
       child: FancyDrawerWrapper(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         controller: _controller,
         drawerItems: <Widget>[
           Column(
@@ -53,8 +53,7 @@ class _IFancyDrawerState extends State<IFancyDrawer>
                     decoration: BoxDecoration(
                         gradient:
                             LinearGradient(colors: [DarkGreen2, LightGreen]),
-                        borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(140))),
+                        borderRadius: BorderRadius.circular(15.sp)),
                     accountName: Comman_Text(
                       // text: sharedPreferences!.getString("profile_name")!,
                       text: "profile email",
@@ -67,6 +66,8 @@ class _IFancyDrawerState extends State<IFancyDrawer>
                       color: white,
                       fontSize: 12.sp,
                     ),
+                    currentAccountPicture:
+                        CircleAvatar(backgroundColor: Colors.white),
                     // currentAccountPicture: InkWell(
                     //   child: Container(
                     //     height: 80.sp,
@@ -130,13 +131,14 @@ class _IFancyDrawerState extends State<IFancyDrawer>
                         }
                       },
                       child: Padding(
-                        padding: EdgeInsets.only(
-                            left: 10.sp, right: 10.sp, top: 15.sp),
+                        padding: EdgeInsets.only(top: 15.sp),
                         child: Container(
                           height: 45.sp,
-                          width: 190.sp,
+                          width: 206.sp,
                           decoration: BoxDecoration(
-                              color: white,
+                              // color: white,
+                              gradient: LinearGradient(
+                                  colors: [DarkGreen2, LightGreen]),
                               boxShadow: [
                                 BoxShadow(
                                     color: grey,
@@ -156,7 +158,7 @@ class _IFancyDrawerState extends State<IFancyDrawer>
                               Comman_Text(
                                 text: drawer[index]['name'],
                                 fontSize: 16.sp,
-                                color: DarkGreen2,
+                                color: Colors.white,
                               )
                             ],
                           ),
@@ -164,14 +166,16 @@ class _IFancyDrawerState extends State<IFancyDrawer>
                       ),
                     )),
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(
-                "asserts/logo/text_logo.png",
-                width: 150.sp,
-              ),
-            ],
+          Padding(
+            padding: EdgeInsets.only(left: 23.sp),
+            child: Row(
+              children: [
+                Image.asset(
+                  "asserts/logo/text_logo.png",
+                  width: 150.sp,
+                ),
+              ],
+            ),
           ),
         ],
         child: Scaffold(
