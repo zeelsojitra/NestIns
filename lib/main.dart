@@ -1,3 +1,4 @@
+import 'package:e_com/screens/RoadMap/RoadMap_Screen.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,6 @@ import 'package:sizer/sizer.dart';
 import 'globle/shardpefrence.dart';
 
 void main() async {
-  ///milan
   // main ma koy pen change kerva mate aa line lakhvi j pade.
   WidgetsFlutterBinding.ensureInitialized();
   sharedPreferences = await SharedPreferences.getInstance();
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         // theme: MyThemes.lightTheme,
         // darkTheme: MyThemes.darkTheme,
         themeMode: ThemeMode.system,
-        home: Splash_Screen(),
+        home: RoadMapScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );

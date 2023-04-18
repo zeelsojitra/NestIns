@@ -18,6 +18,7 @@ class Comman_TexxtFiled extends StatelessWidget {
     this.sufficicon,
     this.filled,
     this.validator,
+    this.labelStyle,
   }) : super(key: key);
   final void Function()? ontap;
   final void Function(String)? onChanged;
@@ -33,6 +34,7 @@ class Comman_TexxtFiled extends StatelessWidget {
   final fillcolor;
   final prefixicon;
   final sufficicon;
+  final labelStyle;
   final bool? filled;
 
   @override
@@ -64,6 +66,7 @@ class Comman_TexxtFiled extends StatelessWidget {
         border: border,
         hintText: hinttext,
         labelText: labletext,
+        labelStyle: labelStyle,
         counter: counter,
         filled: filled,
         suffixIcon: sufficicon,
