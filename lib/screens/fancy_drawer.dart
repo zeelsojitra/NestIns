@@ -72,8 +72,10 @@ class _IFancyDrawerState extends State<IFancyDrawer>
                       color: white,
                       fontSize: 12.sp,
                     ),
-                    currentAccountPicture:
-                        CircleAvatar(backgroundColor: Colors.white),
+                    currentAccountPicture: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: Text("web".split("").first),
+                    ),
                     // currentAccountPicture: InkWell(
                     //   child: Container(
                     //     height: 80.sp,
