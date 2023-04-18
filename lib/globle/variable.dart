@@ -12,20 +12,25 @@ import '../getx/controller.dart';
 final Controller contoller = Get.put(Controller());
 
 //color
-const Color DarkGreen = Color(0xff40916C);
-const Color LightGreen1 = Color(0xff95d5d2);
-const Color LightGreen = Color(0xff52B788);
 const Color DarkGreen2 = Color(0xff2D6A4F);
+const Color LightGreen1 = Color(0xff95d5d2);
+const Color DarkGreen = Color(0xff40916C);
+const Color LightGreen = Color(0xff52B788);
 const Color lightGreen = Color(0xffB7E4C7);
-const Color iconColor = Color(0xff74c69d);
+const Color iconColor = Color(0xffFFFFFF);
 const Color orange_logo = Color(0xffF58634);
 const Color green = Colors.green;
+const Color purple = Colors.purple;
+const Color pink = Colors.pink;
+const Color deepOrange = Colors.deepOrange;
+const Color teal = Colors.teal;
 const Color yellow = Colors.yellow;
 const Color amber = Colors.amber;
 const Color grey = Colors.grey;
 const Color red = Colors.red;
 const Color white = Colors.white;
 const Color white70 = Colors.white70;
+const Color white60 = Colors.white60;
 const Color black = Colors.black;
 const Color black54 = Colors.black54;
 const Color black87 = Colors.black87;
@@ -132,10 +137,10 @@ List drawer = [
     "icon": share,
     "name": "Share",
   },
-  {
-    "icon": privacy_tip_outlined,
-    "name": "Privacy Policy",
-  },
+  // {
+  //   "icon": privacy_tip_outlined,
+  //   "name": "Privacy Policy",
+  // },
   {
     "icon": logout,
     "name": "Logout",
