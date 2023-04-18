@@ -446,3 +446,13 @@ List categoriesDemo = [
     "name": "Haryana",
   },
 ];
+
+//comman app bar
+
+AppBar coomanAppBar({String? name, List<Widget>? action}) {
+  return AppBar(
+    title: Text("${name}"),
+    centerTitle: true,
+    actions: action,
+  );
+}
