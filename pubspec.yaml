@@ -42,6 +42,7 @@ dependencies:
   sizer: ^2.0.15
   lottie: ^2.2.0
   image_picker: ^0.8.6+1
+  pinput: ^2.2.31
   firebase_auth: ^4.2.5
   dio: ^4.0.6
   velocity_x: ^3.6.0

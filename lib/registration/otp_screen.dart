@@ -1,15 +1,18 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_com/globle/variable.dart';
+import 'package:e_com/registration/regisration_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:kudrati_kahumbo/model/user_model.dart';
-import 'package:kudrati_kahumbo/screen/auth/regisration_screen.dart';
-import 'package:kudrati_kahumbo/utils/dimensions.dart';
 import 'package:pinput/pinput.dart';
-import '../../helper/helper_function.dart';
-import '../../utils/app_colors.dart';
+// import 'package:kudrati_kahumbo/model/user_model.dart';
+// import 'package:kudrati_kahumbo/screen/auth/regisration_screen.dart';
+// import 'package:kudrati_kahumbo/utils/dimensions.dart';
+// import 'package:pinput/pinput.dart';
+// import '../../helper/helper_function.dart';
+// import '../../utils/app_colors.dart';
 
 class OTPScreen extends StatefulWidget {
   const OTPScreen({super.key});
@@ -37,13 +40,13 @@ class _OTPScreenState extends State<OTPScreen> {
     );
 
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: AppColors.mainPurple),
+      border: Border.all(color: purple),
       borderRadius: BorderRadius.circular(8),
     );
 
     final submittedPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration?.copyWith(
-        color: AppColors.mainPurple,
+        color: purple,
       ),
     );
 
@@ -65,38 +68,33 @@ class _OTPScreenState extends State<OTPScreen> {
       body: Form(
         key: _formKey,
         child: Container(
-          margin: EdgeInsets.only(
-              left: Dimensions.w25,
-              right: Dimensions.w25,
-              bottom: Dimensions.h25),
+          margin: EdgeInsets.only(left: 25, right: 25, bottom: 25),
           alignment: Alignment.center,
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  "assets/images/otp.png",
+                  "asserts/logo/text_logo.png",
                 ),
-                SizedBox(height: Dimensions.h15),
+                SizedBox(height: 15),
                 Text(
                   "Phone Verification",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: Dimensions.h24),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 ),
-                SizedBox(height: Dimensions.h10),
+                SizedBox(height: 10),
                 Text(
                   "We need to register your phone before getting started !",
-                  style: TextStyle(fontSize: Dimensions.h15),
+                  style: TextStyle(fontSize: 15),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: Dimensions.h10),
-                Text(
-                  "Your No is ${RegistrationScreen.mobile.substring(0, 3)}*****${RegistrationScreen.mobile.substring(8)} ?",
-                  style: TextStyle(
-                      fontSize: Dimensions.h18, color: AppColors.mainPurple),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: Dimensions.h15),
+                SizedBox(height: 10),
+                // Text(
+                //   "Your No is ${RegistrationScreen.mobile.substring(0, 3)}*****${RegistrationScreen.mobile.substring(8)} ?",
+                //   style: TextStyle(fontSize: 18, color: purple),
+                //   textAlign: TextAlign.center,
+                // ),
+                SizedBox(height: 15),
                 Pinput(
                   length: 6,
                   defaultPinTheme: defaultPinTheme,
@@ -116,44 +114,44 @@ class _OTPScreenState extends State<OTPScreen> {
                   pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
                   showCursor: true,
                 ),
-                SizedBox(height: Dimensions.h15),
+                SizedBox(height: 15),
                 SizedBox(
-                  height: Dimensions.h45,
+                  height: 45,
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        try {
-                          PhoneAuthCredential credential =
-                              PhoneAuthProvider.credential(
-                                  verificationId: RegistrationScreen.verify,
-                                  smsCode: pinCode);
-                          await auth
-                              .signInWithCredential(credential)
-                              .then((value) async {
-                            postDetailsToFirestore();
-                            await HelperFunction.saveLogingData(true);
-                            Navigator.pushNamedAndRemoveUntil(
-                                context, "home", (route) => false);
-                          });
-                        } on FirebaseAuthException {
-                          Fluttertoast.showToast(
-                              msg: "Otp Wrong !", textColor: Colors.red);
-                        }
-                      }
+                      // if (_formKey.currentState!.validate()) {
+                      //   try {
+                      //     PhoneAuthCredential credential =
+                      //         PhoneAuthProvider.credential(
+                      //             verificationId: RegistrationScreen.verify,
+                      //             smsCode: pinCode);
+                      //     await auth
+                      //         .signInWithCredential(credential)
+                      //         .then((value) async {
+                      //       postDetailsToFirestore();
+                      //       await HelperFunction.saveLogingData(true);
+                      //       Navigator.pushNamedAndRemoveUntil(
+                      //           context, "home", (route) => false);
+                      //     });
+                      //   } on FirebaseAuthException {
+                      //     Fluttertoast.showToast(
+                      //         msg: "Otp Wrong !", textColor: Colors.red);
+                      //   }
+                      // }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.mainPurple,
+                      backgroundColor: DarkGreen2,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(Dimensions.h10)),
+                          borderRadius: BorderRadius.circular(10)),
                     ),
                     child: Text(
                       "Verify Phone Number",
-                      style: TextStyle(fontSize: Dimensions.h15),
+                      style: TextStyle(fontSize: 15),
                     ),
                   ),
                 ),
-                SizedBox(height: Dimensions.h5),
+                SizedBox(height: 5),
                 Container(
                   alignment: Alignment.topLeft,
                   child: TextButton(
@@ -163,7 +161,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     },
                     child: const Text(
                       "Edit Phone Number ?",
-                      style: TextStyle(color: AppColors.mainPurple),
+                      style: TextStyle(color: DarkGreen2),
                     ),
                   ),
                 ),
@@ -175,16 +173,16 @@ class _OTPScreenState extends State<OTPScreen> {
     );
   }
 
-  postDetailsToFirestore() async {
-    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    User? user = auth.currentUser;
-    UserModel userModel = UserModel();
-    userModel.mobile = user?.phoneNumber;
-    userModel.uid = user?.uid;
-    userModel.c_name = RegistrationScreen.username;
-    await firebaseFirestore
-        .collection("customer")
-        .doc(user!.uid)
-        .set(userModel.toMap());
-  }
+//   postDetailsToFirestore() async {
+//     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+//     User? user = auth.currentUser;
+//     UserModel userModel = UserModel();
+//     userModel.mobile = user?.phoneNumber;
+//     userModel.uid = user?.uid;
+//     userModel.c_name = RegistrationScreen.username;
+//     await firebaseFirestore
+//         .collection("customer")
+//         .doc(user!.uid)
+//         .set(userModel.toMap());
+//   }
 }

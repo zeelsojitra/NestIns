@@ -1,3 +1,4 @@
+import 'package:e_com/registration/otp_screen.dart';
 import 'package:e_com/registration/regisration_screen.dart';
 import 'package:e_com/screens/on_boarding.dart';
 import 'package:e_com/screens/phone_verification.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         // theme: MyThemes.lightTheme,
         // darkTheme: MyThemes.darkTheme,
         themeMode: ThemeMode.system,
-        home: RegistrationScreen(),
+        home: OTPScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );
