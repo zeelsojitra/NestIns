@@ -66,7 +66,7 @@ class _AddressDemoState extends State<AddressDemo> {
         content: Text("Payment Done..!${response.signature}"),
       ),
     );
-
+    print("date check${date}");
     // FirebaseFirestore.instance
     //     .collection("user")
     //     .doc(FirebaseAuth.instance.currentUser!.uid)
@@ -114,6 +114,7 @@ class _AddressDemoState extends State<AddressDemo> {
       "house": House.text.toString(),
       "road": Road.text.toString(),
       "types add": contoller.add_selected.toString(),
+      "createdDate": date,
     }).then((value) {
       Navigator.push(
         context,

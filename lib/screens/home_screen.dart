@@ -36,88 +36,93 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: coomanAppBar(
+        action: [],
+        name: "Home Screen",
+      ),
       key: globalKey,
       backgroundColor: white,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Container(
-                  height: 70.sp,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(30),
-                          bottomLeft: Radius.circular(30)),
-                      gradient: LinearGradient(colors: [
-                        DarkGreen2,
-                        LightGreen,
-                      ])),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: 15.sp, horizontal: 15.sp),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              globalKey.currentState!.openDrawer();
-                            },
-                            child: Icon(
-                              Icons.menu_open,
-                              color: white,
-                              size: 30,
-                            )),
-                        Spacer(),
-                        Comman_Text(
-                          text: "Nest In",
-                          color: white,
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        Spacer(),
-                        SizedBox(
-                          width: 40.sp,
-                        ),
-                        InkWell(
-                            onTap: () {
-                              Get.to(CategoriesDemo());
-                            },
-                            child: Icon(
-                              Icons.menu_open,
-                              color: white,
-                              size: 30,
-                            )),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: -20,
-                  left: 30,
-                  right: 30,
-                  child: Container(
-                    height: 37.sp,
-                    width: 263.sp,
-                    child: Center(
-                      child: Comman_TexxtFiled(
-                        filled: true,
-                        fillcolor: Colors.grey.shade200,
-                        hinttext: "What are you looking for?",
-                        prefixicon: Icon(
-                          Icons.search_rounded,
-                          size: 20,
-                          color: grey,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            // Stack(
+            //   clipBehavior: Clip.none,
+            //   children: [
+            //     Container(
+            //       height: 70.sp,
+            //       width: double.infinity,
+            //       decoration: BoxDecoration(
+            //           borderRadius: BorderRadius.only(
+            //               bottomRight: Radius.circular(30),
+            //               bottomLeft: Radius.circular(30)),
+            //           gradient: LinearGradient(colors: [
+            //             DarkGreen2,
+            //             LightGreen,
+            //           ])),
+            //       child: Padding(
+            //         padding: EdgeInsets.symmetric(
+            //             vertical: 15.sp, horizontal: 15.sp),
+            //         child: Row(
+            //           crossAxisAlignment: CrossAxisAlignment.start,
+            //           children: [
+            //             InkWell(
+            //                 onTap: () {
+            //                   globalKey.currentState!.openDrawer();
+            //                 },
+            //                 child: Icon(
+            //                   Icons.menu_open,
+            //                   color: white,
+            //                   size: 30,
+            //                 )),
+            //             Spacer(),
+            //             Comman_Text(
+            //               text: "Nest In",
+            //               color: white,
+            //               fontSize: 18.sp,
+            //               fontWeight: FontWeight.bold,
+            //             ),
+            //             Spacer(),
+            //             SizedBox(
+            //               width: 40.sp,
+            //             ),
+            //             InkWell(
+            //                 onTap: () {
+            //                   Get.to(CategoriesDemo());
+            //                 },
+            //                 child: Icon(
+            //                   Icons.menu_open,
+            //                   color: white,
+            //                   size: 30,
+            //                 )),
+            //           ],
+            //         ),
+            //       ),
+            //     ),
+            //     Positioned(
+            //       bottom: -20,
+            //       left: 30,
+            //       right: 30,
+            //       child: Container(
+            //         height: 37.sp,
+            //         width: 263.sp,
+            //         child: Center(
+            //           child: Comman_TexxtFiled(
+            //             filled: true,
+            //             fillcolor: Colors.grey.shade200,
+            //             hinttext: "What are you looking for?",
+            //             prefixicon: Icon(
+            //               Icons.search_rounded,
+            //               size: 20,
+            //               color: grey,
+            //             ),
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            // ),
+
             SizedBox(
               height: 20.sp,
             ),
