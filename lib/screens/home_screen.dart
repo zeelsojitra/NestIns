@@ -10,7 +10,6 @@ import '../common_screen/Comman_Container.dart';
 import '../common_screen/Comman_text.dart';
 import '../globle/variable.dart';
 import 'Details_screen.dart';
-import 'categoriesDemo.dart';
 import 'categories_screen.dart';
 import 'drawerScreen.dart';
 import 'fancy_drawer.dart';
@@ -37,11 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: globalKey,
       appBar: coomanAppBar(
         action: [],
-        name: "Home Screen",
+        name: "Home",
+        onTap: () {
+          print("hiii");
+        },
       ),
-      key: globalKey,
       backgroundColor: white,
       body: SafeArea(
         child: Column(

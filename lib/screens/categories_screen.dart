@@ -1,4 +1,5 @@
 import 'package:e_com/common_screen/Comman_TeextFiled.dart';
+import 'package:e_com/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -18,53 +19,58 @@ class _CategoryScreen_2State extends State<CategoryScreen_2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: coomanAppBar(
+        action: [],
+        name: "Categories",
+      ),
       backgroundColor: white,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Comman_Container(
-              height: 60.sp,
-              width: double.infinity,
-              borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(30),
-                  bottomLeft: Radius.circular(30)),
-              gradient: LinearGradient(
-                colors: [
-                  DarkGreen2,
-                  LightGreen,
-                ],
-              ),
-              child: Padding(
-                padding:
-                    EdgeInsets.symmetric(vertical: 15.sp, horizontal: 15.sp),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    InkWell(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: white,
-                          size: 30,
-                        )),
-                    Spacer(),
-                    Comman_Text(
-                      text: "Categories",
-                      color: white,
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    Spacer(),
-                    SizedBox(
-                      width: 30.sp,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // Comman_Container(
+            //   height: 60.sp,
+            //   width: double.infinity,
+            //   borderRadius: BorderRadius.only(
+            //       bottomRight: Radius.circular(30),
+            //       bottomLeft: Radius.circular(30)),
+            //   gradient: LinearGradient(
+            //     colors: [
+            //       DarkGreen2,
+            //       LightGreen,
+            //     ],
+            //   ),
+            //   child: Padding(
+            //     padding:
+            //         EdgeInsets.symmetric(vertical: 15.sp, horizontal: 15.sp),
+            //     child: Row(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         InkWell(
+            //             onTap: () {
+            //               Get.back();
+            //             },
+            //             child: Icon(
+            //               Icons.arrow_back,
+            //               color: white,
+            //               size: 30,
+            //             )),
+            //         Spacer(),
+            //         Comman_Text(
+            //           text: "Categories",
+            //           color: white,
+            //           fontSize: 20.sp,
+            //           fontWeight: FontWeight.bold,
+            //         ),
+            //         Spacer(),
+            //         SizedBox(
+            //           width: 30.sp,
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+
             SizedBox(
               height: 10.sp,
             ),
