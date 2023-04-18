@@ -12,14 +12,18 @@ import '../getx/controller.dart';
 final Controller contoller = Get.put(Controller());
 
 //color
-const Color DarkGreen = Color(0xff40916C);
-const Color LightGreen1 = Color(0xff95d5d2);
-const Color LightGreen = Color(0xff52B788);
 const Color DarkGreen2 = Color(0xff2D6A4F);
+const Color LightGreen1 = Color(0xff95d5d2);
+const Color DarkGreen = Color(0xff40916C);
+const Color LightGreen = Color(0xff52B788);
 const Color lightGreen = Color(0xffB7E4C7);
 const Color iconColor = Color(0xff74c69d);
 const Color orange_logo = Color(0xffF58634);
 const Color green = Colors.green;
+const Color purple = Colors.purple;
+const Color pink = Colors.pink;
+const Color deepOrange = Colors.deepOrange;
+const Color teal = Colors.teal;
 const Color yellow = Colors.yellow;
 const Color amber = Colors.amber;
 const Color grey = Colors.grey;

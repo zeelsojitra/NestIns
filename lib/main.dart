@@ -1,3 +1,6 @@
+import 'package:e_com/registration/regisration_screen.dart';
+import 'package:e_com/screens/on_boarding.dart';
+import 'package:e_com/screens/phone_verification.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +39,7 @@ class MyApp extends StatelessWidget {
         // theme: MyThemes.lightTheme,
         // darkTheme: MyThemes.darkTheme,
         themeMode: ThemeMode.system,
-        home: Splash_Screen(),
+        home: RegistrationScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );
