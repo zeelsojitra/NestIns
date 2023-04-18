@@ -10,7 +10,8 @@ class Comman_Text extends StatelessWidget {
       this.decoration,
       this.maxLines,
       this.textScaleFactor,
-      this.fontFamily})
+      this.fontFamily,
+      this.textAlign})
       : super(key: key);
 
   final text;
@@ -19,6 +20,7 @@ class Comman_Text extends StatelessWidget {
   final int? maxLines;
   final Color? color;
   final decoration;
+  final TextAlign? textAlign;
   final double? fontSize;
   final FontWeight? fontWeight;
 
@@ -28,6 +30,7 @@ class Comman_Text extends StatelessWidget {
       text,
       maxLines: maxLines,
       textScaleFactor: textScaleFactor,
+      textAlign: textAlign,
       style: TextStyle(
         fontFamily: fontFamily,
         decoration: decoration,

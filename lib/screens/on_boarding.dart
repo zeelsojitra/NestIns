@@ -138,7 +138,7 @@ class _On_BoardingState extends State<On_Boarding> {
                                 height: 45.sp,
                                 width: 45.sp,
                                 decoration: BoxDecoration(
-                                  color: LightGreen,
+                                  color: DarkGreen2,
                                   shape: BoxShape.circle,
                                 ),
                               )
@@ -160,7 +160,7 @@ class _On_BoardingState extends State<On_Boarding> {
                           height: 45.sp,
                           width: 45.sp,
                           decoration: BoxDecoration(
-                            color: LightGreen,
+                            color: DarkGreen2,
                             shape: BoxShape.circle,
                           ),
                         ),

@@ -70,9 +70,7 @@ class _OderScreenState extends State<OderScreen> {
             ),
             StreamBuilder(
               stream: FirebaseFirestore.instance
-                  .collection("user")
-                  .doc(FirebaseAuth.instance.currentUser!.uid)
-                  .collection('Order')
+                  .collection("Order")
                   .orderBy("createdDate", descending: true)
                   .snapshots(),
               builder: (BuildContext context,
