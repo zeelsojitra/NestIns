@@ -1,5 +1,6 @@
 import 'package:e_com/registration/otp_screen.dart';
 import 'package:e_com/registration/regisration_screen.dart';
+import 'package:e_com/screens/fancy_drawer.dart';
 import 'package:e_com/screens/on_boarding.dart';
 import 'package:e_com/screens/phone_verification.dart';
 import 'package:e_com/screens/splash_screen.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         // theme: MyThemes.lightTheme,
         // darkTheme: MyThemes.darkTheme,
         themeMode: ThemeMode.system,
-        home: OTPScreen(),
+        home: IFancyDrawer(),
         debugShowCheckedModeBanner: false,
       ),
     );

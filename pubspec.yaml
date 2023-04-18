@@ -44,6 +44,7 @@ dependencies:
   image_picker: ^0.8.6+1
   pinput: ^2.2.31
   firebase_auth: ^4.2.5
+  fancy_drawer: ^2.0.0
   dio: ^4.0.6
   velocity_x: ^3.6.0
   get: ^4.6.5

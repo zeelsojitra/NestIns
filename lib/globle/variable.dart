@@ -136,10 +136,10 @@ List drawer = [
     "icon": share,
     "name": "Share",
   },
-  {
-    "icon": privacy_tip_outlined,
-    "name": "Privacy Policy",
-  },
+  // {
+  //   "icon": privacy_tip_outlined,
+  //   "name": "Privacy Policy",
+  // },
   {
     "icon": logout,
     "name": "Logout",
