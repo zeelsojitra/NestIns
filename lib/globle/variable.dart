@@ -312,6 +312,7 @@ String searchText = "";
 const String Fashionsale = "Fashion sale";
 const String subtitile = "See More >";
 Profileimg pi = Get.put(Profileimg());
+//home screen
 List Pageview = [
   {'image': page_view1, 'title': Fashionsale, "subtitile": subtitile},
   {'image': page_view2, 'title': Fashionsale, "subtitile": subtitile},
