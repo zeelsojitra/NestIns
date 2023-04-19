@@ -2,6 +2,7 @@ import 'package:e_com/globle/variable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
 import '../getx/controller.dart';
 import '../screens/Favorite_Screen.dart';
 import '../screens/categories_screen.dart';
@@ -16,6 +17,14 @@ class Bottom_navigation extends StatefulWidget {
 class Bottom_navigationState extends State<Bottom_navigation> {
   var currentIndex = 0;
   final Controller controller = Get.put(Controller());
+  List Screens = [
+    HomeScreen1(),
+    CategoryScreen_2(),
+    Favorite_Screen(),
+    ProfileScreen(),
+    //zeel
+    //harsh
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +32,10 @@ class Bottom_navigationState extends State<Bottom_navigation> {
     return Scaffold(
       body: Screens[currentIndex],
       bottomNavigationBar: Container(
-        margin: EdgeInsets.all(displayWidth * .02),
+        margin: EdgeInsets.all(displayWidth * .05),
         height: displayWidth * .155,
         decoration: BoxDecoration(
-          color: white,
+          color: Colors.white,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(.1),
@@ -116,7 +125,9 @@ class Bottom_navigationState extends State<Bottom_navigation> {
                           Icon(
                             listOfIcons[index],
                             size: displayWidth * .076,
-                            color: index == currentIndex ? DarkGreen2 : black26,
+                            color: index == currentIndex
+                                ? DarkGreen2
+                                : Colors.black26,
                           ),
                         ],
                       ),
@@ -130,4 +141,18 @@ class Bottom_navigationState extends State<Bottom_navigation> {
       ),
     );
   }
+
+  List<IconData> listOfIcons = [
+    Icons.home_rounded,
+    Icons.grid_view_sharp,
+    Icons.favorite_rounded,
+    Icons.person_rounded,
+  ];
+
+  List<String> listOfStrings = [
+    'Home',
+    'Category',
+    'Favorite',
+    'Profile',
+  ];
 }
