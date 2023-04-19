@@ -365,7 +365,7 @@ List Catalogue = [
 //     "money": "\$69.99",
 //     "money2": "",
 //   },
-// ];
+// ];;;;;;;;
 
 int dot_selected = 0;
 //bool selected = true;
