@@ -5,7 +5,9 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
+import '../../bottom_Navigation/bottom_NAV.dart';
 
+import '../../bottom_Navigation/bottom_navi_demo.dart';
 import '../../common_screen/Comman_Container.dart';
 import '../../common_screen/Comman_text.dart';
 import '../../getx/controller.dart';

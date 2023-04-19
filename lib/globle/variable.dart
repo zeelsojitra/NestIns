@@ -7,6 +7,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../getx/controller.dart';
+import '../screens/Favorite_Screen.dart';
+import '../screens/categories_screen.dart';
+import '../screens/fancy_drawer.dart';
+import '../screens/profile_screen.dart';
 
 // getx object
 final Controller contoller = Get.put(Controller());
@@ -17,7 +21,8 @@ const Color LightGreen1 = Color(0xff95d5d2);
 const Color DarkGreen = Color(0xff40916C);
 const Color LightGreen = Color(0xff52B788);
 const Color lightGreen = Color(0xffB7E4C7);
-const Color iconColor = Color(0xffFFFFFF);
+const Color iconColor_Drawer = Color(0xffFFFFFF);
+const Color iconColor = Color(0xff74C69D);
 const Color orange_logo = Color(0xffF58634);
 const Color green = Colors.green;
 const Color purple = Colors.purple;
@@ -34,6 +39,7 @@ const Color white60 = Colors.white60;
 const Color black = Colors.black;
 const Color black54 = Colors.black54;
 const Color black87 = Colors.black87;
+const Color black26 = Colors.black26;
 const Color transparent = Colors.transparent;
 // Color(0xff2D6A4F),//dark
 // Color(0xff95D5B2),//light LightGreen1
@@ -47,16 +53,24 @@ final House = TextEditingController();
 final Road = TextEditingController();
 
 //icon
-const home_outlined = Icon(Icons.home_outlined, color: iconColor);
-const maps_home_work_sharp = Icon(Icons.maps_home_work_sharp, color: iconColor);
-const home = Icon(Icons.home, color: iconColor);
-const gridview = Icon(Icons.grid_view, color: iconColor);
-const logout = Icon(Icons.logout, color: iconColor);
-const privacy_tip_outlined = Icon(Icons.privacy_tip_outlined, color: iconColor);
-const share = Icon(Icons.share, color: iconColor);
-const favorite_outline = Icon(Icons.favorite_outline, color: iconColor);
+const home_outlined = Icon(Icons.home_outlined, color: iconColor_Drawer);
+const maps_home_work_sharp =
+    Icon(Icons.maps_home_work_sharp, color: iconColor_Drawer);
+const maps_home_work_sharp_Add =
+    Icon(Icons.maps_home_work_sharp, color: LightGreen1);
+const home = Icon(Icons.home, color: iconColor_Drawer);
+const HomeAdd = Icon(
+  Icons.home,
+  color: LightGreen1,
+);
+const gridview = Icon(Icons.grid_view, color: iconColor_Drawer);
+const logout = Icon(Icons.logout, color: iconColor_Drawer);
+const privacy_tip_outlined =
+    Icon(Icons.privacy_tip_outlined, color: iconColor_Drawer);
+const share = Icon(Icons.share, color: iconColor_Drawer);
+const favorite_outline = Icon(Icons.favorite_outline, color: iconColor_Drawer);
 const shopping_cart_outlined =
-    Icon(Icons.shopping_cart_outlined, color: iconColor);
+    Icon(Icons.shopping_cart_outlined, color: iconColor_Drawer);
 
 // image app logo
 const AppLogo = "asserts/logo/applogo.png";
@@ -98,6 +112,11 @@ const wommen_shopping = "asserts/Categories/wommen.png";
 const page_view1 = "asserts/pageview/pageview1.jpg";
 const page_view2 = "asserts/pageview/pageview2.jpg";
 const page_view3 = "asserts/pageview/pageview3.jpg";
+const page_view4 = "asserts/pageview/pageview4.jpg";
+const page_view5 = "asserts/pageview/pageview5.jpg";
+const page_view6 = "asserts/pageview/pageview6.jpg";
+const page_view7 = "asserts/pageview/pageview7.jpg";
+const page_view8 = "asserts/pageview/pageview8.jpg";
 
 //onbording image
 const onbording1 = "asserts/onbording/onbording1.png";
@@ -153,11 +172,11 @@ final formKey = GlobalKey<FormState>();
 //List
 List addinfo_add = [
   {
-    "Icon": home,
+    "Icon": HomeAdd,
     "Name": "Home",
   },
   {
-    "Icon": maps_home_work_sharp,
+    "Icon": maps_home_work_sharp_Add,
     "Name": "Work",
   },
 ];
@@ -312,10 +331,16 @@ String searchText = "";
 const String Fashionsale = "Fashion sale";
 const String subtitile = "See More >";
 Profileimg pi = Get.put(Profileimg());
+//home screen
 List Pageview = [
-  {'image': page_view1, 'title': Fashionsale, "subtitile": subtitile},
-  {'image': page_view2, 'title': Fashionsale, "subtitile": subtitile},
-  {'image': page_view3, 'title': Fashionsale, "subtitile": subtitile},
+  page_view1,
+  page_view2,
+  page_view3,
+  page_view4,
+  page_view5,
+  page_view6,
+  page_view8,
+  page_view7,
 ];
 List Catalogue = [
   {
@@ -403,6 +428,50 @@ PageController pageController = PageController(initialPage: 0);
 bool Selected = false;
 
 //profile screen
+// List profile = [
+//   {
+//     "name": "Shipping Addresses",
+//     "Icon": Icon(
+//       Icons.location_on_outlined,
+//       //color: iconColor,
+//     )
+//   },
+//   {
+//     "name": "Payments Methods",
+//     "Icon": Icon(
+//       Icons.payments_sharp,
+//       //color: iconColor,
+//     )
+//   },
+//   {
+//     "name": "Orders",
+//     "Icon": Icon(
+//       Icons.event_note_outlined,
+//       //color: iconColor,
+//     )
+//   },
+//   {
+//     "name": "Favorite",
+//     "Icon": Icon(
+//       Icons.favorite_outline,
+//       //color: iconColor,
+//     ),
+//   },
+//   {
+//     "name": "Settings",
+//     "Icon": Icon(
+//       Icons.settings,
+//       // color: iconColor,
+//     )
+//   },
+//   {
+//     "name": "Log Out",
+//     "Icon": Icon(
+//       Icons.logout,
+//       //color: iconColor,
+//     )
+//   },
+// ];
 List profile = [
   {
     "name": "Shipping Addresses",
@@ -459,3 +528,24 @@ AppBar coomanAppBar({String? name, List<Widget>? action, bool? centerTitle}) {
     backgroundColor: DarkGreen2,
   );
 }
+
+// bottom navigation barr
+List<IconData> listOfIcons = [
+  Icons.home_rounded,
+  Icons.grid_view_sharp,
+  Icons.favorite_rounded,
+  Icons.person_rounded,
+];
+
+List<String> listOfStrings = [
+  'Home',
+  'Category',
+  'Favorite',
+  'Profile',
+];
+List Screens = [
+  HomeScreen1(),
+  CategoryScreen_2(),
+  Favorite_Screen(),
+  ProfileScreen(),
+];

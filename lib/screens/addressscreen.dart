@@ -7,6 +7,8 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:http/http.dart' as http;
+import '../bottom_Navigation/bottom_NAV.dart';
+import '../bottom_Navigation/bottom_navi_demo.dart';
 import '../common_screen/Comman_Container.dart';
 import '../common_screen/Comman_TeextFiled.dart';
 import '../common_screen/Comman_text.dart';
@@ -182,11 +184,9 @@ class _AddressDemoState extends State<AddressDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Adress Info",
-        ),
-        actions: [
+      appBar: coomanAppBar(
+        name: "Product Detils",
+        action: [
           TextButton(
             onPressed: () {
               Phone.clear();
@@ -206,7 +206,6 @@ class _AddressDemoState extends State<AddressDemo> {
             width: 15.sp,
           ),
         ],
-        backgroundColor: DarkGreen,
       ),
       body: GetBuilder<Controller>(
         builder: (controller) {
@@ -356,7 +355,7 @@ class _AddressDemoState extends State<AddressDemo> {
                             }
                           },
                           color: controller.Addinfo_Selected == index
-                              ? LightGreen1
+                              ? DarkGreen
                               : transparent,
                           margin: EdgeInsets.only(left: 10.sp),
                           height: 35.sp,

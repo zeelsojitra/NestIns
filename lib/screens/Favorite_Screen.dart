@@ -20,7 +20,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: coomanAppBar(
-        centerTitle: true,
+        //centerTitle: true,
         action: [],
         name: "Favourite",
       ),

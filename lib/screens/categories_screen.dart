@@ -21,7 +21,7 @@ class _CategoryScreen_2State extends State<CategoryScreen_2> {
     return Scaffold(
       appBar: coomanAppBar(
         action: [],
-        centerTitle: true,
+        //centerTitle: true,
         name: "Categories",
       ),
       backgroundColor: white,

@@ -24,50 +24,53 @@ class _OderScreenState extends State<OderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: coomanAppBar(
+        name: "Your Oder",
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              height: height(context) * 0.11,
-              width: width(context),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(30),
-                      bottomLeft: Radius.circular(30)),
-                  gradient: LinearGradient(colors: [
-                    Color(0xff2D6A4F),
-                    Color(0xff95D5B2),
-                  ])),
-              child: Padding(
-                padding: EdgeInsets.only(top: 17.sp),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: white,
-                          size: 30,
-                        )),
-                    Spacer(),
-                    Text(
-                      "Oder Screen",
-                      style: TextStyle(
-                          color: white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Spacer(),
-                    SizedBox(
-                      width: 40,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // Container(
+            //   height: height(context) * 0.11,
+            //   width: width(context),
+            //   decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.only(
+            //           bottomRight: Radius.circular(30),
+            //           bottomLeft: Radius.circular(30)),
+            //       gradient: LinearGradient(colors: [
+            //         Color(0xff2D6A4F),
+            //         Color(0xff95D5B2),
+            //       ])),
+            //   child: Padding(
+            //     padding: EdgeInsets.only(top: 17.sp),
+            //     child: Row(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         IconButton(
+            //             onPressed: () {
+            //               Get.back();
+            //             },
+            //             icon: Icon(
+            //               Icons.arrow_back,
+            //               color: white,
+            //               size: 30,
+            //             )),
+            //         Spacer(),
+            //         Text(
+            //           "Oder Screen",
+            //           style: TextStyle(
+            //               color: white,
+            //               fontSize: 25,
+            //               fontWeight: FontWeight.bold),
+            //         ),
+            //         Spacer(),
+            //         SizedBox(
+            //           width: 40,
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection("Order")

@@ -94,6 +94,8 @@ flutter:
     - asserts/Categories/
     - asserts/lottie/
     - asserts/logo/
+    - asserts/onbording/
+
 
   #   - images/a_dot_ham.jpeg
 
