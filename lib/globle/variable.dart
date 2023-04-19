@@ -7,6 +7,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../getx/controller.dart';
+import '../screens/Favorite_Screen.dart';
+import '../screens/categories_screen.dart';
+import '../screens/fancy_drawer.dart';
+import '../screens/profile_screen.dart';
 
 // getx object
 final Controller contoller = Get.put(Controller());
@@ -35,6 +39,7 @@ const Color white60 = Colors.white60;
 const Color black = Colors.black;
 const Color black54 = Colors.black54;
 const Color black87 = Colors.black87;
+const Color black26 = Colors.black26;
 const Color transparent = Colors.transparent;
 // Color(0xff2D6A4F),//dark
 // Color(0xff95D5B2),//light LightGreen1
@@ -107,6 +112,11 @@ const wommen_shopping = "asserts/Categories/wommen.png";
 const page_view1 = "asserts/pageview/pageview1.jpg";
 const page_view2 = "asserts/pageview/pageview2.jpg";
 const page_view3 = "asserts/pageview/pageview3.jpg";
+const page_view4 = "asserts/pageview/pageview4.jpg";
+const page_view5 = "asserts/pageview/pageview5.jpg";
+const page_view6 = "asserts/pageview/pageview6.jpg";
+const page_view7 = "asserts/pageview/pageview7.jpg";
+const page_view8 = "asserts/pageview/pageview8.jpg";
 
 //onbording image
 const onbording1 = "asserts/onbording/onbording1.png";
@@ -323,9 +333,14 @@ const String subtitile = "See More >";
 Profileimg pi = Get.put(Profileimg());
 //home screen
 List Pageview = [
-  page_view2,
   page_view1,
+  page_view2,
   page_view3,
+  page_view4,
+  page_view5,
+  page_view6,
+  page_view8,
+  page_view7,
 ];
 List Catalogue = [
   {
@@ -512,3 +527,24 @@ AppBar coomanAppBar({String? name, List<Widget>? action, bool? centerTitle}) {
     backgroundColor: DarkGreen2,
   );
 }
+
+// bottom navigation barr
+List<IconData> listOfIcons = [
+  Icons.home_rounded,
+  Icons.grid_view_sharp,
+  Icons.favorite_rounded,
+  Icons.person_rounded,
+];
+
+List<String> listOfStrings = [
+  'Home',
+  'Category',
+  'Favorite',
+  'Profile',
+];
+List Screens = [
+  HomeScreen1(),
+  CategoryScreen_2(),
+  Favorite_Screen(),
+  ProfileScreen(),
+];
