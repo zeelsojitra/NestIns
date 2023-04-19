@@ -1,3 +1,4 @@
+import 'package:e_com/screens/RoadMap/RoadMap_Screen.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         // theme: MyThemes.lightTheme,
         // darkTheme: MyThemes.darkTheme,
         themeMode: ThemeMode.system,
-        home: Bottom_navigation(),
+        home: RoadMapScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );
