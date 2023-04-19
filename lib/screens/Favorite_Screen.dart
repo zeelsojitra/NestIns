@@ -19,83 +19,88 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: coomanAppBar(
+        centerTitle: true,
+        action: [],
+        name: "Favourite",
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            Comman_Container(
-              height: 60.sp,
-              width: double.infinity,
-              borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(30),
-                  bottomLeft: Radius.circular(30)),
-              gradient: LinearGradient(
-                colors: [
-                  DarkGreen2,
-                  LightGreen,
-                ],
-              ),
-              child: Padding(
-                padding:
-                    EdgeInsets.symmetric(vertical: 15.sp, horizontal: 15.sp),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    InkWell(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: white,
-                            size: 30,
-                          ),
-                        )),
-                    Spacer(),
-                    Comman_Text(
-                      text: "Favourite",
-                      color: white,
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    Spacer(),
-                    SizedBox(
-                      width: 30.sp,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.sp, vertical: 15.sp),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Comman_Text(
-                        text: "5 Items",
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      Spacer(),
-                      Comman_Text(
-                        text: "Sort By : ",
-                      ),
-                      Comman_Text(
-                        text: "Price : ",
-                        fontWeight: FontWeight.w500,
-                      ),
-                      Comman_Text(
-                        text: "Lowest to high ",
-                        fontWeight: FontWeight.w500,
-                      ),
-                      Icon(Icons.keyboard_arrow_down),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            // Comman_Container(
+            //   height: 60.sp,
+            //   width: double.infinity,
+            //   borderRadius: BorderRadius.only(
+            //       bottomRight: Radius.circular(30),
+            //       bottomLeft: Radius.circular(30)),
+            //   gradient: LinearGradient(
+            //     colors: [
+            //       DarkGreen2,
+            //       LightGreen,
+            //     ],
+            //   ),
+            //   child: Padding(
+            //     padding:
+            //         EdgeInsets.symmetric(vertical: 15.sp, horizontal: 15.sp),
+            //     child: Row(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         InkWell(
+            //             onTap: () {
+            //               Get.back();
+            //             },
+            //             child: IconButton(
+            //               onPressed: () {},
+            //               icon: Icon(
+            //                 Icons.arrow_back,
+            //                 color: white,
+            //                 size: 30,
+            //               ),
+            //             )),
+            //         Spacer(),
+            //         Comman_Text(
+            //           text: "Favourite",
+            //           color: white,
+            //           fontSize: 20.sp,
+            //           fontWeight: FontWeight.bold,
+            //         ),
+            //         Spacer(),
+            //         SizedBox(
+            //           width: 30.sp,
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 15.sp, vertical: 15.sp),
+            //   child: Column(
+            //     children: [
+            //       Row(
+            //         children: [
+            //           Comman_Text(
+            //             text: "5 Items",
+            //             fontSize: 16.sp,
+            //             fontWeight: FontWeight.w500,
+            //           ),
+            //           Spacer(),
+            //           Comman_Text(
+            //             text: "Sort By : ",
+            //           ),
+            //           Comman_Text(
+            //             text: "Price : ",
+            //             fontWeight: FontWeight.w500,
+            //           ),
+            //           Comman_Text(
+            //             text: "Lowest to high ",
+            //             fontWeight: FontWeight.w500,
+            //           ),
+            //           Icon(Icons.keyboard_arrow_down),
+            //         ],
+            //       ),
+            //     ],
+            //   ),
+            // ),
             StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection('user')

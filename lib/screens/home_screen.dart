@@ -36,18 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: coomanAppBar(
-        action: [],
-        name: "Home Screen",
-      ),
       key: globalKey,
-      appBar: coomanAppBar(
-        action: [],
-        name: "Home",
-        onTap: () {
-          print("hiii");
-        },
-      ),
       backgroundColor: white,
       body: SafeArea(
         child: Column(
