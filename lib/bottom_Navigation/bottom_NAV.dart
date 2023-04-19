@@ -1,6 +1,12 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
+import 'package:e_com/screens/Favorite_Screen.dart';
+import 'package:e_com/screens/categories_screen.dart';
+import 'package:e_com/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
+
+import '../globle/variable.dart';
 
 class bottom_navigation_animated extends StatefulWidget {
   const bottom_navigation_animated({Key? key}) : super(key: key);
@@ -13,17 +19,16 @@ class bottom_navigation_animated extends StatefulWidget {
 class _bottom_navigation_animatedState
     extends State<bottom_navigation_animated> {
   /// Controller to handle PageView and also handles initial page
-  final _pageController = PageController(initialPage: 2);
+  final _pageController = PageController(initialPage: 0);
 
   int maxCount = 5;
 
   /// widget list
   final List<Widget> bottomBarPages = [
     Center(child: Text("Home")),
-    Center(child: Text("star")),
-    Center(child: Text("search")),
-    Center(child: Text("setting")),
-    Center(child: Text("profile")),
+    CategoryScreen_2(),
+    Favorite_Screen(),
+    ProfileScreen(),
   ];
 
   @override
@@ -52,27 +57,27 @@ class _bottom_navigation_animatedState
               pageController: _pageController,
               color: Colors.white,
               showLabel: false,
-              notchColor: Color(0xff74c69d),
+              notchColor: Color(0xff52B788),
               bottomBarItems: [
-                const BottomBarItem(
+                BottomBarItem(
                   inActiveItem: Icon(
-                    Icons.home_filled,
-                    color: Colors.blueGrey,
+                    Icons.home_outlined,
+                    color: Color(0xff2D6A4F),
                   ),
                   activeItem: Icon(
-                    Icons.home_filled,
-                    color: Colors.blueAccent,
+                    Icons.home,
+                    color: Color(0xffffffff),
                   ),
                   itemLabel: 'HOME',
                 ),
-                const BottomBarItem(
+                BottomBarItem(
                   inActiveItem: Icon(
-                    Icons.star,
-                    color: Colors.blueGrey,
+                    Icons.grid_view,
+                    color: Color(0xff2D6A4F),
                   ),
                   activeItem: Icon(
-                    Icons.star,
-                    color: Colors.blueAccent,
+                    Icons.grid_view_sharp,
+                    color: Color(0xffffffff),
                   ),
                   itemLabel: 'category',
                 ),
@@ -80,34 +85,34 @@ class _bottom_navigation_animatedState
                 ///svg example
                 // BottomBarItem(
                 //   inActiveItem: SvgPicture.asset(
-                //     'assets/images/airdrop.svg',
+                //     'asserts/svg/home-1-svgrepo-com.svg',
                 //     color: Colors.blueGrey,
                 //   ),
                 //   activeItem: SvgPicture.asset(
-                //     'assets/images/airdrop.svg',
+                //     'asserts/svg/home-filled-svgrepo-com.svg',
                 //     color: Colors.white,
                 //   ),
                 //   itemLabel: 'Page 3',
                 // ),
-                const BottomBarItem(
+                BottomBarItem(
                   inActiveItem: Icon(
-                    Icons.settings,
-                    color: Colors.blueGrey,
+                    Icons.favorite_outline,
+                    color: Color(0xff2D6A4F),
                   ),
                   activeItem: Icon(
-                    Icons.settings,
-                    color: Colors.pink,
+                    Icons.favorite,
+                    color: Color(0xffffffff),
                   ),
                   itemLabel: 'Page 4',
                 ),
-                const BottomBarItem(
+                BottomBarItem(
                   inActiveItem: Icon(
-                    Icons.person,
-                    color: Colors.blueGrey,
+                    Icons.person_outline,
+                    color: Color(0xff2D6A4F),
                   ),
                   activeItem: Icon(
                     Icons.person,
-                    color: Colors.yellow,
+                    color: Color(0xffffffff),
                   ),
                   itemLabel: 'Page 5',
                 ),
