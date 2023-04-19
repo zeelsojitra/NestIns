@@ -9,16 +9,16 @@ import '../screens/categories_screen.dart';
 import '../screens/fancy_drawer.dart';
 import '../screens/profile_screen.dart';
 
-class HomePage12 extends StatefulWidget {
+class Bottom_navigation extends StatefulWidget {
   @override
-  HomePage12State createState() => HomePage12State();
+  Bottom_navigationState createState() => Bottom_navigationState();
 }
 
-class HomePage12State extends State<HomePage12> {
+class Bottom_navigationState extends State<Bottom_navigation> {
   var currentIndex = 0;
   final Controller controller = Get.put(Controller());
   List Screens = [
-    HomeScreen(),
+    HomeScreen1(),
     CategoryScreen_2(),
     Favorite_Screen(),
     ProfileScreen(),
