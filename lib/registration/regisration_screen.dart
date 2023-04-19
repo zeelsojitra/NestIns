@@ -7,7 +7,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../common_screen/Comman_text.dart';
 import '../globle/variable.dart';
+import 'otp_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -28,11 +30,33 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   TextEditingController userName = TextEditingController();
   TextEditingController mobile = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-
+  String? verificationCode;
   @override
   void initState() {
     countryCode.text = "+91";
     super.initState();
+  }
+
+  Future sendOtpService() async {
+    FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: "+91${phoneNo.text}",
+      verificationCompleted: (phoneAuthCredential) {},
+      verificationFailed: (error) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Comman_Text(
+              text: error.message.toString(),
+            ),
+          ),
+        );
+      },
+      codeSent: (verificationId, forceResendingToken) {
+        setState(() {
+          verificationCode = verificationId;
+        });
+      },
+      codeAutoRetrievalTimeout: (verificationId) {},
+    );
   }
 
   @override
@@ -51,7 +75,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  "asserts/logo/text_logo.png",
+                  main_logo,
+                  height: Get.height * 0.2,
                 ),
                 SizedBox(height: Get.height * 0.03),
                 Text(
@@ -193,27 +218,35 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        await FirebaseAuth.instance.verifyPhoneNumber(
-                          phoneNumber: "${countryCode.text + mobile.text}",
-                          verificationCompleted:
-                              (PhoneAuthCredential credential) {},
-                          verificationFailed: (FirebaseAuthException e) {
-                            Fluttertoast.showToast(msg: "Auth Failed!");
-                          },
-                          codeSent:
-                              (String verificationId, int? resendToken) async {
-                            Navigator.pushReplacementNamed(context, "otp");
-                            Fluttertoast.showToast(msg: "OTP Sent :)");
-                            RegistrationScreen.verify = verificationId;
-                            RegistrationScreen.username = userName.text;
-                            RegistrationScreen.mobile = mobile.text;
-                          },
-                          codeAutoRetrievalTimeout: (String verificationId) {
-                            Fluttertoast.showToast(msg: "Timeout!");
-                          },
-                        );
-                      }
+                      // if (_formKey.currentState!.validate()) {
+                      //   await FirebaseAuth.instance.verifyPhoneNumber(
+                      //     phoneNumber: "${countryCode.text + mobile.text}",
+                      //     verificationCompleted:
+                      //         (PhoneAuthCredential credential) {},
+                      //     verificationFailed: (FirebaseAuthException e) {
+                      //       Fluttertoast.showToast(msg: "Auth Failed!");
+                      //     },
+                      //     codeSent:
+                      //         (String verificationId, int? resendToken) async {
+                      //       Get.to(OTPScreen());
+                      //       Fluttertoast.showToast(msg: "OTP Sent :)");
+                      //       RegistrationScreen.verify = verificationId;
+                      //       RegistrationScreen.username = userName.text;
+                      //       RegistrationScreen.mobile = mobile.text;
+                      //     },
+                      //     codeAutoRetrievalTimeout: (String verificationId) {
+                      //       Fluttertoast.showToast(msg: "Timeout!");
+                      //     },
+                      //   );
+                      // }
+                      sendOtpService().then(
+                        (value) => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => OTPScreen(),
+                          ),
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: DarkGreen2,
@@ -221,11 +254,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           borderRadius: BorderRadius.circular(10)),
                     ),
                     child: Text(
-                      "Send The Code",
+                      "Send   The Code",
                       style: TextStyle(fontSize: Get.height * 0.02),
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: Get.height * 0.05,
+                )
               ],
             ),
           ),
