@@ -8,6 +8,7 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:http/http.dart' as http;
 import '../bottom_Navigation/bottom_NAV.dart';
+import '../bottom_Navigation/bottom_navi_demo.dart';
 import '../common_screen/Comman_Container.dart';
 import '../common_screen/Comman_TeextFiled.dart';
 import '../common_screen/Comman_text.dart';
