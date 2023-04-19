@@ -74,10 +74,12 @@ const shopping_cart_outlined =
 
 // image app logo
 const AppLogo = "asserts/logo/applogo.png";
-const SplashAppLogo = "asserts/logo/nestinSplash.png";
 const SplashAppLogowhite = "asserts/logo/app_white.png";
 const logo_orange = "asserts/logo/logo_orange.png";
-const logo_green = "asserts/logo/logo_green.png";
+const logo_green = "asserts/logo/splash_main.png";
+const main_logo = "asserts/logo/main_logo.png";
+const splash_mainLogo = "asserts/logo/splash_main.png";
+const text_logo = "asserts/logo/text_logo.png";
 
 //categories image
 const beauty_categories = "asserts/Categories/beauty.png";
@@ -329,7 +331,7 @@ String searchText = "";
 //home screen data
 
 const String Fashionsale = "Fashion sale";
-const String subtitile = "See More >";
+const String subtitile = "Seel More >";
 Profileimg pi = Get.put(Profileimg());
 //home screen
 List Pageview = [

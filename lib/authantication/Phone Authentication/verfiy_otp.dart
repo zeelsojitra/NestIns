@@ -1,4 +1,5 @@
 import 'package:e_com/authantication/Phone%20Authentication/enter_mobile.dart';
+import 'package:e_com/screens/fancy_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
@@ -24,23 +25,24 @@ class _VerifyOtpState extends State<VerifyOtp> {
   String? OTP;
   bool isLoding = false;
   final Controller controller = Get.put(Controller());
-  Future verifyotp() async {
+  Future verifyOtp() async {
     try {
       PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
           verificationId: verificationCode!, smsCode: OTP.toString());
 
       await FirebaseAuth.instance.signInWithCredential(phoneAuthCredential);
+
       Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Bottom_navigation(),
-        ),
-      );
-      //Get.toEnd(() => Bottom_navigation());
-    } on FirebaseException catch (e) {
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeScreen1(),
+          ));
+    } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("INVALID OTP"),
+          content: Text(
+            "Inavalid OTP",
+          ),
         ),
       );
     }
@@ -114,11 +116,12 @@ class _VerifyOtpState extends State<VerifyOtp> {
                     width: double.infinity,
                     color: Color(0xffB7E4C7),
                     ontap: () {
+                      print("hello");
                       setState(() {
                         isLoding = false;
                       });
 
-                      verifyotp();
+                      VerifyOtp();
                     },
                   ))
               : Center(child: CircularProgressIndicator()),
