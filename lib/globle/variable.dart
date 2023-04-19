@@ -450,18 +450,10 @@ List categoriesDemo = [
 
 //comman app bar
 
-AppBar coomanAppBar(
-    {String? name, List<Widget>? action, void Function()? onTap}) {
+AppBar coomanAppBar({String? name, List<Widget>? action, bool? centerTitle}) {
   return AppBar(
-    // leading: InkWell(
-    //   onTap: onTap,
-    //   child: IconButton(
-    //     onPressed: () {},
-    //     icon: Icon(Icons.menu_open),
-    //   ),
-    // ),
+    centerTitle: centerTitle,
     title: Text("${name}"),
-    centerTitle: true,
     actions: action,
     backgroundColor: DarkGreen2,
   );

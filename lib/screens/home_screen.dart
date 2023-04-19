@@ -40,9 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: coomanAppBar(
         action: [],
         name: "Home",
-        onTap: () {
-          print("hiii");
-        },
       ),
       backgroundColor: white,
       body: SafeArea(
