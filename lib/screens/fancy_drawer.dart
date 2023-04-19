@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_com/getx/controller.dart';
+import 'package:e_com/screens/Favorite_Screen.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:e_com/screens/tab_bar.dart';
 import 'package:fancy_drawer/fancy_drawer.dart';
@@ -19,6 +20,7 @@ import '../globle/shardpefrence.dart';
 import '../globle/variable.dart';
 import 'Details_screen.dart';
 import 'categories_screen.dart';
+import 'orderScreen.dart';
 
 class HomeScreen1 extends StatefulWidget {
   const HomeScreen1({Key? key}) : super(key: key);
@@ -61,6 +63,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                 width: Get.width * 0.6,
                 child: DrawerHeader(
                   padding: EdgeInsets.zero,
+                  margin: EdgeInsets.zero,
                   child: UserAccountsDrawerHeader(
                     decoration: BoxDecoration(
                         gradient:
@@ -122,63 +125,106 @@ class _HomeScreen1State extends State<HomeScreen1>
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: List.generate(
-                drawer.length,
-                (index) => InkWell(
-                      onTap: () {
-                        if (index == 2) {
-                          //Get.to(OderScreen());
-                        }
-                        if (index == 5) {
-                          FirebaseAuth.instance.signOut();
-                          EmailAuthService.LogoutUser().then((value) async {
-                            SharedPreferences sh =
-                                await SharedPreferences.getInstance();
-                            sh.setBool(Splash_ScreenState.KeyValue, false);
-                            GoogleAuthService.googleSignOut();
-                            sh
-                                .remove("email")
-                                .then((value) => Get.off(Tab_Bar()));
-                          });
-                          sharedPreferences!.remove("profile_email");
-                          sharedPreferences!.remove("profile_image");
-                          sharedPreferences!.remove("profile_name");
-                        }
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(top: 15.sp),
-                        child: Container(
-                          height: Get.height * 0.062,
-                          width: Get.width * 0.6,
-                          decoration: BoxDecoration(
-                              // color: white,
-                              gradient: LinearGradient(
-                                  colors: [DarkGreen2, LightGreen]),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: grey,
-                                    blurRadius: 4,
-                                    offset: Offset(2, 2))
-                              ],
-                              borderRadius: BorderRadius.circular(13)),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 12.sp,
+              drawer.length,
+              (index) => InkWell(
+                onTap: () {
+                  if (index == 0) {
+                    Get.to(HomeScreen1());
+                  }
+                  if (index == 1) {
+                    Get.to(CategoryScreen_2());
+                  }
+                  if (index == 2) {
+                    Get.to(OderScreen());
+                  }
+                  if (index == 3) {
+                    Get.to(Favorite_Screen());
+                  }
+                  if (index == 4) {
+                    //share
+                    // Get.to(Favorite_Screen());
+                  }
+                  if (index == 5) {
+                    showDialog(
+                        barrierDismissible: false,
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text("Logout"),
+                            content:
+                                const Text("Are you sure you want to logout?"),
+                            actions: [
+                              IconButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                icon: const Icon(
+                                  Icons.cancel,
+                                  color: Colors.red,
+                                ),
                               ),
-                              drawer[index]['icon'],
-                              SizedBox(
-                                width: 15.sp,
+                              IconButton(
+                                icon: const Icon(
+                                  Icons.done,
+                                  color: Colors.green,
+                                ),
+                                onPressed: () async {
+                                  FirebaseAuth.instance.signOut();
+                                  EmailAuthService.LogoutUser()
+                                      .then((value) async {
+                                    SharedPreferences sh =
+                                        await SharedPreferences.getInstance();
+                                    sh.setBool(
+                                        Splash_ScreenState.KeyValue, false);
+                                    GoogleAuthService.googleSignOut();
+                                    sh
+                                        .remove("email")
+                                        .then((value) => Get.off(Tab_Bar()));
+                                  });
+                                  sharedPreferences!.remove("profile_email");
+                                  sharedPreferences!.remove("profile_image");
+                                  sharedPreferences!.remove("profile_name");
+                                },
                               ),
-                              Comman_Text(
-                                text: drawer[index]['name'],
-                                fontSize: 16.sp,
-                                color: Colors.white,
-                              )
                             ],
-                          ),
+                          );
+                        });
+                  }
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(top: 15.sp),
+                  child: Container(
+                    height: Get.height * 0.062,
+                    width: Get.width * 0.6,
+                    decoration: BoxDecoration(
+                        // color: white,
+                        gradient:
+                            LinearGradient(colors: [DarkGreen2, LightGreen]),
+                        boxShadow: [
+                          BoxShadow(
+                              color: grey, blurRadius: 4, offset: Offset(2, 2))
+                        ],
+                        borderRadius: BorderRadius.circular(13)),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 12.sp,
                         ),
-                      ),
-                    )),
+                        drawer[index]['icon'],
+                        SizedBox(
+                          width: 15.sp,
+                        ),
+                        Comman_Text(
+                          text: drawer[index]['name'],
+                          fontSize: 16.sp,
+                          color: Colors.white,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ),
           Padding(
             padding: EdgeInsets.only(left: 23.sp),
@@ -279,28 +325,28 @@ class _HomeScreen1State extends State<HomeScreen1>
                                         );
                                       },
                                     ),
-                                    Positioned(
-                                      bottom: 15,
-                                      right: 0,
-                                      left: 0,
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: List.generate(
-                                            3,
-                                            (index) => Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 1.sp),
-                                              child: CircleAvatar(
-                                                radius: 5,
-                                                backgroundColor:
-                                                    controller.onchange == index
-                                                        ? green
-                                                        : white,
-                                              ),
-                                            ),
-                                          )),
-                                    ),
+                                    // Positioned(
+                                    //   bottom: 15,
+                                    //   right: 0,
+                                    //   left: 0,
+                                    //   child: Row(
+                                    //       mainAxisAlignment:
+                                    //           MainAxisAlignment.center,
+                                    //       children: List.generate(
+                                    //         Pageview.length,
+                                    //         (index) => Padding(
+                                    //           padding: EdgeInsets.symmetric(
+                                    //               horizontal: 1.sp),
+                                    //           child: CircleAvatar(
+                                    //             radius: 5,
+                                    //             backgroundColor:
+                                    //                 controller.onchange == index
+                                    //                     ? green
+                                    //                     : white,
+                                    //           ),
+                                    //         ),
+                                    //       )),
+                                    // ),
                                   ],
                                 ),
                                 Padding(
