@@ -37,10 +37,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: globalKey,
-      appBar: coomanAppBar(
-        action: [],
-        name: "Home",
-      ),
       backgroundColor: white,
       body: SafeArea(
         child: Column(
