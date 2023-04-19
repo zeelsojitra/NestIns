@@ -29,8 +29,6 @@ class _bottom_navigation_animatedState
     CategoryScreen_2(),
     Favorite_Screen(),
     ProfileScreen(),
-    //Center(child: Text("setting")),
-    //Center(child: Text("profile")),
   ];
 
   @override
