@@ -59,6 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   //   getprofiledata.getString("profile_name");
   //   getprofiledata.getString("profile_email");
   // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -10,6 +10,7 @@ import '../common_screen/Comman_text.dart';
 import '../getx/controller.dart';
 import 'Favorite_Screen.dart';
 import 'categories_screen.dart';
+import 'fancy_drawer.dart';
 import 'home_screen.dart';
 
 class Bottom_navigation extends StatefulWidget {
@@ -44,7 +45,7 @@ class _Bottom_navigationState extends State<Bottom_navigation> {
     },
   ];
   List Screens = [
-    HomeScreen(),
+    IFancyDrawer(),
     CategoryScreen_2(),
     Favorite_Screen(),
     ProfileScreen(),
