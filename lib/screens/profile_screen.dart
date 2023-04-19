@@ -3,6 +3,7 @@ import 'package:e_com/globle/shardpefrence.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_com/authantication/google%20auth%20service/google_auth_service.dart';
 import 'package:e_com/common_screen/Comman_text.dart';
+import 'package:e_com/screens/RoadMap/RoadMap_Screen.dart';
 import 'package:e_com/screens/tab_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -169,7 +170,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               horizontal: 15.sp, vertical: 8.sp),
                           child: GestureDetector(
                             onTap: () {
-                              if (index == 3) {
+                              if (index == 0) {
+                                Get.to(RoadMapScreen());
+                              } else if (index == 3) {
                                 Get.to(Favorite_Screen());
                               } else if (index == 5) {
                                 EmailAuthService.LogoutUser()
