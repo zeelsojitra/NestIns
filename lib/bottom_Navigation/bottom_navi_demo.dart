@@ -29,20 +29,21 @@ class Bottom_navigationState extends State<Bottom_navigation> {
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Screens[currentIndex],
       bottomNavigationBar: Container(
-        margin: EdgeInsets.all(displayWidth * .05),
+        margin: EdgeInsets.all(displayWidth * .02),
         height: displayWidth * .155,
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(.1),
-              blurRadius: 30,
-              offset: Offset(0, 10),
-            ),
+            // BoxShadow(
+            //   color: Colors.black.withOpacity(.1),
+            //   blurRadius: 30,
+            //   offset: Offset(0, 10),
+            // ),
           ],
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(40),
         ),
         child: ListView.builder(
           itemCount: 4,
