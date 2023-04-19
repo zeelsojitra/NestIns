@@ -3,10 +3,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_com/globle/variable.dart';
 import 'package:e_com/registration/regisration_screen.dart';
+import 'package:e_com/screens/fancy_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
+
+import '../authantication/Phone Authentication/enter_mobile.dart';
+import '../bottom_Navigation/bottom_navi_demo.dart';
 // import 'package:kudrati_kahumbo/model/user_model.dart';
 // import 'package:kudrati_kahumbo/screen/auth/regisration_screen.dart';
 // import 'package:kudrati_kahumbo/utils/dimensions.dart';
@@ -24,6 +30,29 @@ class _OTPScreenState extends State<OTPScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
   var pinCode = "";
+  String? OTP;
+  Future verifyotp() async {
+    try {
+      PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
+          verificationId: verificationCode!, smsCode: OTP.toString());
+
+      await FirebaseAuth.instance.signInWithCredential(phoneAuthCredential);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Bottom_navigation(),
+        ),
+      );
+      //Get.toEnd(() => Bottom_navigation());
+    } on FirebaseException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("INVALID OTP"),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -95,24 +124,40 @@ class _OTPScreenState extends State<OTPScreen> {
                 //   textAlign: TextAlign.center,
                 // ),
                 SizedBox(height: 15),
-                Pinput(
-                  length: 6,
-                  defaultPinTheme: defaultPinTheme,
-                  focusedPinTheme: focusedPinTheme,
-                  submittedPinTheme: submittedPinTheme,
-                  androidSmsAutofillMethod:
-                      AndroidSmsAutofillMethod.smsRetrieverApi,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Please Enter OTP";
-                    }
-                    return null;
+                // Pinput(
+                //   length: 6,
+                //   defaultPinTheme: defaultPinTheme,
+                //   focusedPinTheme: focusedPinTheme,
+                //   submittedPinTheme: submittedPinTheme,
+                //   androidSmsAutofillMethod:
+                //       AndroidSmsAutofillMethod.smsRetrieverApi,
+                //   validator: (value) {
+                //     if (value!.isEmpty) {
+                //       return "Please Enter OTP";
+                //     }
+                //     return null;
+                //   },
+                //   onChanged: (value) {
+                //     pinCode = value;
+                //   },
+                //   pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+                //   showCursor: true,
+                // ),
+                OtpTextField(
+                  numberOfFields: 6,
+                  borderColor: Color(0xFF512DA8),
+                  //set to true to show as box or false to show as dash
+                  showFieldAsBox: true,
+                  //runs when a code is typed in
+                  onCodeChanged: (String code) {
+                    //handle validation or checks here
                   },
-                  onChanged: (value) {
-                    pinCode = value;
-                  },
-                  pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                  showCursor: true,
+                  //runs when every textfield is filled
+                  onSubmit: (String verificationCode) {
+                    setState(() {
+                      OTP = verificationCode;
+                    });
+                  }, // end onSubmit
                 ),
                 SizedBox(height: 15),
                 SizedBox(
@@ -120,6 +165,14 @@ class _OTPScreenState extends State<OTPScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () async {
+                      verifyotp().then(
+                        (value) => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen1(),
+                          ),
+                        ),
+                      );
                       // if (_formKey.currentState!.validate()) {
                       //   try {
                       //     PhoneAuthCredential credential =

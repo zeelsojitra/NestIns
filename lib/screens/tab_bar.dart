@@ -4,7 +4,6 @@ import 'package:e_com/screens/sign_up.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../bottom_Navigation/bottom_navi_demo.dart';
-import '../bottom_Navigation/bottom_navi_demo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -16,7 +15,6 @@ import '../common_screen/Comman_Container.dart';
 import '../common_screen/Comman_text.dart';
 import '../common_screen/loding.dart';
 import '../globle/variable.dart';
-import 'bottom_navigation_screen.dart';
 
 class Tab_Bar extends StatefulWidget {
   const Tab_Bar({Key? key}) : super(key: key);

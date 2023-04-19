@@ -9,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -142,8 +143,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                     Get.to(Favorite_Screen());
                   }
                   if (index == 4) {
-                    //share
-                    // Get.to(Favorite_Screen());
+                    Share.share("NestIn");
                   }
                   if (index == 5) {
                     showDialog(
