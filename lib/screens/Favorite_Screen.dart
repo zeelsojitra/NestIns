@@ -117,44 +117,112 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                         AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
                             snapshot) {
                       if (snapshot.hasData) {
-                        return Expanded(
-                          child: ListView.builder(
-                            physics: BouncingScrollPhysics(),
-                            padding: EdgeInsets.symmetric(
-                                vertical: 15.sp, horizontal: 10.sp),
-                            itemCount: snapshot.data!.docs.length,
-                            itemBuilder: (context, index) {
-                              var data = snapshot.data!.docs;
-                              if ((snap.data!['favourite'] as List)
-                                  .contains(data[index].id)) {
-                                return Column(
-                                  children: [
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Stack(
-                                          clipBehavior: Clip.none,
-                                          children: [
-                                            Comman_Container(
-                                              height: 200.sp,
-                                              width: 150.sp,
-                                              image: DecorationImage(
-                                                image: NetworkImage(
-                                                  '${data[index]['image']}',
+                        return snapshot.data!.docs.isNotEmpty
+                            ? Expanded(
+                                child: ListView.builder(
+                                  physics: BouncingScrollPhysics(),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 15.sp, horizontal: 10.sp),
+                                  itemCount: snapshot.data!.docs.length,
+                                  itemBuilder: (context, index) {
+                                    var data = snapshot.data!.docs;
+                                    if ((snap.data!['favourite'] as List)
+                                        .contains(data[index].id)) {
+                                      return Column(
+                                        children: [
+                                          SizedBox(
+                                            height: 10.sp,
+                                          ),
+                                          Stack(
+                                            children: [
+                                              Card(
+                                                elevation: 5,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10)),
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      child: Comman_Container(
+                                                        height:
+                                                            Get.height * 0.18,
+                                                        width: Get.width * 0.40,
+                                                        image: DecorationImage(
+                                                            image: NetworkImage(
+                                                              '${data[index]['image']}',
+                                                            ),
+                                                            fit: BoxFit.cover),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 10.sp,
+                                                    ),
+                                                    Flexible(
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Comman_Text(
+                                                            text:
+                                                                '${data[index]['product_name']}',
+                                                            fontSize: 15.sp,
+                                                            fontFamily: "JB1",
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
+                                                          SizedBox(
+                                                            height: 2.sp,
+                                                          ),
+                                                          Comman_Text(
+                                                            text:
+                                                                '${data[index]['product_details']}',
+                                                            fontSize: 11.sp,
+                                                            color: grey,
+                                                          ),
+                                                          SizedBox(
+                                                            height: 2.sp,
+                                                          ),
+                                                          Comman_Text(
+                                                            text:
+                                                                '${data[index]['product_catagory']}',
+                                                            fontSize: 15.sp,
+                                                            color: grey,
+                                                          ),
+                                                          SizedBox(
+                                                            height: 2.sp,
+                                                          ),
+                                                          Comman_Text(
+                                                            text:
+                                                                '₹ ${data[index]['product_price']}',
+                                                            fontSize: 15.sp,
+                                                            color: red,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
                                                 ),
                                               ),
-                                            ),
-                                            Positioned(
-                                              bottom: -10,
-                                              right: -17,
-                                              child: Container(
-                                                height: 27.sp,
-                                                width: 27.sp,
-                                                decoration: BoxDecoration(
-                                                  color: white,
-                                                  shape: BoxShape.circle,
-                                                ),
+                                              Positioned(
+                                                top: 10,
+                                                right: 5,
+                                                // child: Container(
+                                                //   height: 27.sp,
+                                                //   width: 27.sp,
+                                                //   decoration: BoxDecoration(
+                                                //     color: white,
+                                                //     shape: BoxShape.circle,
+                                                //   ),
                                                 child: IconButton(
                                                   splashRadius: 20,
                                                   onPressed: () {
@@ -214,66 +282,20 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                                               : grey,
                                                         ),
                                                 ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          width: 10.sp,
-                                        ),
-                                        Flexible(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Comman_Text(
-                                                text:
-                                                    '${data[index]['product_name']}',
-                                                fontSize: 15.sp,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                              SizedBox(
-                                                height: 2.sp,
-                                              ),
-                                              Comman_Text(
-                                                text:
-                                                    '${data[index]['product_details']}',
-                                                fontSize: 11.sp,
-                                                color: grey,
-                                              ),
-                                              SizedBox(
-                                                height: 2.sp,
-                                              ),
-                                              Comman_Text(
-                                                text:
-                                                    '${data[index]['product_catagory']}',
-                                                fontSize: 15.sp,
-                                                color: grey,
-                                              ),
-                                              SizedBox(
-                                                height: 2.sp,
-                                              ),
-                                              Comman_Text(
-                                                text:
-                                                    '₹ ${data[index]['product_price']}',
-                                                fontSize: 15.sp,
-                                                color: red,
-                                              ),
+                                              )
                                             ],
                                           ),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                );
-                              } else {
-                                return Container();
-                              }
-                            },
-                          ),
-                        );
+                                        ],
+                                      );
+                                    } else {
+                                      return Container();
+                                    }
+                                  },
+                                ),
+                              )
+                            : Image(
+                                image:
+                                    AssetImage("asserts/image/wishlist.png"));
                       } else {
                         return Center(
                           child: CircularProgressIndicator(),

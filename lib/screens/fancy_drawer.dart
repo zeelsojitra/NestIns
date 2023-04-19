@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_com/bottom_Navigation/bottom_navi_demo.dart';
 import 'package:e_com/getx/controller.dart';
 import 'package:e_com/screens/Favorite_Screen.dart';
 import 'package:e_com/screens/splash_screen.dart';
@@ -129,7 +130,7 @@ class _HomeScreen1State extends State<HomeScreen1>
               (index) => InkWell(
                 onTap: () {
                   if (index == 0) {
-                    Get.to(HomeScreen1());
+                    Get.to(Bottom_navigation());
                   }
                   if (index == 1) {
                     Get.to(CategoryScreen_2());
@@ -244,6 +245,12 @@ class _HomeScreen1State extends State<HomeScreen1>
             title: const Text(
               "Home",
             ),
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.add_shopping_cart_outlined),
+              )
+            ],
             backgroundColor: DarkGreen2,
             leading: IconButton(
               icon: const Icon(
