@@ -525,6 +525,7 @@ AppBar coomanAppBar({String? name, List<Widget>? action, bool? centerTitle}) {
   return AppBar(
     title: Text("${name}"),
     centerTitle: centerTitle,
+    titleTextStyle: TextStyle(fontFamily: "JS1", fontSize: Get.height * 0.022),
     actions: action,
     backgroundColor: DarkGreen2,
   );

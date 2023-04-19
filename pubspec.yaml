@@ -58,6 +58,7 @@ dependencies:
   animate_do:
   iconsax: ^0.0.8
   http:
+  intl:
 
 
 
