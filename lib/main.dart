@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'bottom_Navigation/bottom_NAV.dart';
+import 'bottom_Navigation/bottom_navi_demo.dart';
 import 'globle/shardpefrence.dart';
 
 void main() async {
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         // theme: MyThemes.lightTheme,
         // darkTheme: MyThemes.darkTheme,
         themeMode: ThemeMode.system,
-        home: Splash_Screen(),
+        home: HomePage12(),
         debugShowCheckedModeBanner: false,
       ),
     );
