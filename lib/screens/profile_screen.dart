@@ -63,7 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: coomanAppBar(
-        centerTitle: true,
+        //centerTitle: true,
         action: [],
         name: "Profile",
       ),
@@ -202,10 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   SizedBox(
                                     width: 15.sp,
                                   ),
-                                  Icon(
-                                    profile[index]['Icon'],
-                                    color: iconColor,
-                                  ),
+                                  Icon(profile[index]['Icon']),
                                   SizedBox(
                                     width: 15.sp,
                                   ),

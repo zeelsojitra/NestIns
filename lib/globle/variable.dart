@@ -406,24 +406,45 @@ bool Selected = false;
 List profile = [
   {
     "name": "Shipping Addresses",
-    "Icon": Icons.location_on_outlined,
+    "Icon": Icon(
+      Icons.location_on_outlined,
+      color: iconColor,
+    )
   },
   {
     "name": "Payments Methods",
-    "Icon": Icons.payments_sharp,
+    "Icon": Icon(
+      Icons.payments_sharp,
+      color: iconColor,
+    )
   },
   {
     "name": "Orders",
-    "Icon": Icons.event_note_outlined,
+    "Icon": Icon(
+      Icons.event_note_outlined,
+      color: iconColor,
+    )
   },
   {
     "name": "Favorite",
-    "Icon": Icons.favorite_outline,
+    "Icon": Icon(
+      Icons.favorite_outline,
+      color: iconColor,
+    ),
   },
-  {"name": "Settings", "Icon": Icons.settings},
+  {
+    "name": "Settings",
+    "Icon": Icon(
+      Icons.settings,
+      color: iconColor,
+    )
+  },
   {
     "name": "Log Out",
-    "Icon": Icons.logout,
+    "Icon": Icon(
+      Icons.logout,
+      color: iconColor,
+    )
   },
 ];
 
