@@ -5,17 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:sizer/sizer.dart';
+import 'package:intl/intl.dart';
 
 class RoadMapScreen extends StatefulWidget {
   const RoadMapScreen({super.key});
-
   @override
   State<RoadMapScreen> createState() => _RoadMapScreenState();
 }
 
 class _RoadMapScreenState extends State<RoadMapScreen> {
+  var currentDate;
   DateTime date = DateTime.now();
   int currentStep = 0;
+
   continueStep() {
     if (currentStep < 3) {
       setState(() {
@@ -38,11 +40,27 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
     });
   }
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    currentDate = DateTime.now();
+    super.initState();
+  }
+
   Widget controlBuilders(context, details) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
+          OutlinedButton(
+            onPressed: details.onStepCancel,
+            child: Comman_Text(
+              text: 'Back',
+              fontFamily: "JB1",
+              color: black,
+            ),
+          ),
+          SizedBox(width: Get.width * 0.05),
           ElevatedButton(
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(DarkGreen),
@@ -53,15 +71,6 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
               fontFamily: "JB1",
             ),
           ),
-          SizedBox(width: Get.width * 0.05),
-          OutlinedButton(
-            onPressed: details.onStepCancel,
-            child: Comman_Text(
-              text: 'Back',
-              fontFamily: "JB1",
-              color: black,
-            ),
-          ),
         ],
       ),
     );
@@ -70,6 +79,9 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: coomanAppBar(
+        name: "Order Status & Tracking",
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 20.sp),
         child: SingleChildScrollView(
@@ -112,15 +124,25 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
                 currentStep: currentStep, //0, 1, 2
                 steps: [
                   Step(
-                      title: Comman_Text(text: 'Ordered', fontFamily: "JB1"),
+                      title: Comman_Text(
+                          text: 'Ordered And Approved', fontFamily: "JB1"),
+                      subtitle: Comman_Text(
+                        text:
+                            "${DateFormat("dd-MMM-yyyy").format(currentDate)}",
+                        fontFamily: "JM1",
+                      ),
                       content: Comman_Text(
                           text: 'This is the First step.', fontFamily: "JV1"),
                       isActive: currentStep >= 0,
                       state: currentStep >= 0
                           ? StepState.complete
-                          : StepState.disabled),
+                          : StepState.complete),
                   Step(
                     title: Comman_Text(text: 'Packed', fontFamily: "JB1"),
+                    subtitle: Comman_Text(
+                      text: "${DateFormat("dd-MMM-yyyy").format(currentDate)}",
+                      fontFamily: "JM1",
+                    ),
                     content: Comman_Text(
                         text: 'This is the Second step.', fontFamily: "JV1"),
                     isActive: currentStep >= 0,
@@ -130,10 +152,31 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
                   ),
                   Step(
                     title: Comman_Text(text: 'Shipped', fontFamily: "JB1"),
+                    subtitle: Comman_Text(
+                      text: "${DateFormat("dd-MMM-yyyy").format(currentDate)}",
+                      fontFamily: "JM1",
+                    ),
                     content: Comman_Text(
                         text: 'This is the Second step.', fontFamily: "JV1"),
                     isActive: currentStep >= 0,
                     state: currentStep >= 2
+                        ? StepState.complete
+                        : StepState.disabled,
+                  ),
+                  Step(
+                    title: Comman_Text(
+                      text: "Delivery",
+                      fontFamily: "JB1",
+                    ),
+                    subtitle: Comman_Text(
+                      text: "${DateFormat("dd-MMM-yyyy").format(currentDate)}",
+                      fontFamily: "JM1",
+                    ),
+                    content: Comman_Text(
+                      text: "${DateFormat("dd-MM-yyyy").format(currentDate)}",
+                    ),
+                    isActive: currentStep >= 0,
+                    state: currentStep >= 3
                         ? StepState.complete
                         : StepState.disabled,
                   ),
