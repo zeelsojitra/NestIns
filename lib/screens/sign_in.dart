@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import '../authantication/email authantication/EmailAuthService.dart';
+import '../bottom_Navigation/bottom_NAV.dart';
 import '../common_screen/loding.dart';
 import '../globle/variable.dart';
 import 'bottom_navigation_screen.dart';

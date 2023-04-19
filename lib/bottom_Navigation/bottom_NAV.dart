@@ -2,16 +2,14 @@ import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_not
 import 'package:flutter/material.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 
-class bottom_navigation_animated extends StatefulWidget {
-  const bottom_navigation_animated({Key? key}) : super(key: key);
+class Bottom_navigation extends StatefulWidget {
+  const Bottom_navigation({Key? key}) : super(key: key);
 
   @override
-  State<bottom_navigation_animated> createState() =>
-      _bottom_navigation_animatedState();
+  State<Bottom_navigation> createState() => _Bottom_navigationState();
 }
 
-class _bottom_navigation_animatedState
-    extends State<bottom_navigation_animated> {
+class _Bottom_navigationState extends State<Bottom_navigation> {
   /// Controller to handle PageView and also handles initial page
   final _pageController = PageController(initialPage: 2);
 

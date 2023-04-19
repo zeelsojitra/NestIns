@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../bottom_Navigation/bottom_NAV.dart';
 import '../../common_screen/Comman_Container.dart';
 import '../../common_screen/Comman_text.dart';
 import '../../getx/controller.dart';
