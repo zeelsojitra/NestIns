@@ -450,6 +450,16 @@ List categoriesDemo = [
 
 //comman app bar
 
+AppBar coomanAppBar({String? name, List<Widget>? action}) {
+  return AppBar(
+    title: Text("${name}"),
+    centerTitle: true,
+    actions: action,
+  );
+}
+
+//comman app bar
+
 AppBar coomanAppBar(
     {String? name, List<Widget>? action, void Function()? onTap}) {
   return AppBar(
