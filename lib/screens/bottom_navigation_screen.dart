@@ -45,7 +45,7 @@ class _Bottom_navigationState extends State<Bottom_navigation> {
     },
   ];
   List Screens = [
-    IFancyDrawer(),
+    HomeScreen(),
     CategoryScreen_2(),
     Favorite_Screen(),
     ProfileScreen(),
