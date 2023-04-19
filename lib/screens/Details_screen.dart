@@ -89,63 +89,8 @@ class DetilsScreenState extends State<DetilsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Icon(
-            Icons.arrow_back,
-            color: white,
-          ),
-        ),
-        title: Comman_Text(
-          text: "Product Detils",
-          fontSize: 15.sp,
-          fontWeight: FontWeight.bold,
-          color: white,
-          fontFamily: "JB1",
-        ),
-        actions: [
-          SizedBox(
-            width: 20.sp,
-          ),
-          // Obx(
-          //   () => InkWell(
-          //     onTap: () {},
-          //     child: contoller.like_btn_details_screen.value == true
-          //         ? IconButton(
-          //             onPressed: () {
-          //               if (contoller.like_btn_details_screen.value == true) {
-          //                 contoller.like_btn_details_screen.value = false;
-          //               } else {
-          //                 contoller.like_btn_details_screen.value = true;
-          //               }
-          //             },
-          //             icon: Icon(
-          //               Icons.favorite,
-          //               color: Colors.red,
-          //             ))
-          //         : IconButton(
-          //             onPressed: () {
-          //               if (contoller.like_btn_details_screen.value == true) {
-          //                 contoller.like_btn_details_screen.value = false;
-          //               } else {
-          //                 contoller.like_btn_details_screen.value = true;
-          //               }
-          //             },
-          //             icon: Icon(
-          //               Icons.favorite_outline,
-          //               color: Colors.white,
-          //             ),
-          //           ),
-          //   ),
-          // ),
-          SizedBox(
-            width: 20.sp,
-          ),
-        ],
+      appBar: coomanAppBar(
+        name: "Details",
       ),
       body: SafeArea(
         child: StreamBuilder(

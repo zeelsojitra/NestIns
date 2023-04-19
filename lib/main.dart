@@ -5,13 +5,17 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+import 'bottom_Navigation/bottom_NAV.dart';
 import 'globle/shardpefrence.dart';
 
 void main() async {
+  ///milan
   // main ma koy pen change kerva mate aa line lakhvi j pade.
   WidgetsFlutterBinding.ensureInitialized();
   sharedPreferences = await SharedPreferences.getInstance();
   await Firebase.initializeApp();
+  SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   //horizontal oriantaion lock kerva mate.
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
@@ -41,9 +45,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//Xyz
-//shch
-//cfxfd
 // class MyThemes {
 //   static final darkTheme = ThemeData(
 //     scaffoldBackgroundColor: Colors.grey.shade900,

@@ -183,11 +183,9 @@ class _AddressDemoState extends State<AddressDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Adress Info",
-        ),
-        actions: [
+      appBar: coomanAppBar(
+        name: "Product Detils",
+        action: [
           TextButton(
             onPressed: () {
               Phone.clear();
@@ -207,7 +205,6 @@ class _AddressDemoState extends State<AddressDemo> {
             width: 15.sp,
           ),
         ],
-        backgroundColor: DarkGreen,
       ),
       body: GetBuilder<Controller>(
         builder: (controller) {
@@ -357,7 +354,7 @@ class _AddressDemoState extends State<AddressDemo> {
                             }
                           },
                           color: controller.Addinfo_Selected == index
-                              ? LightGreen1
+                              ? DarkGreen
                               : transparent,
                           margin: EdgeInsets.only(left: 10.sp),
                           height: 35.sp,
