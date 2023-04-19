@@ -20,14 +20,14 @@ import '../globle/variable.dart';
 import 'Details_screen.dart';
 import 'categories_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen1 extends StatefulWidget {
+  const HomeScreen1({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeScreen1State createState() => _HomeScreen1State();
 }
 
-class _HomeScreenState extends State<HomeScreen>
+class _HomeScreen1State extends State<HomeScreen1>
     with SingleTickerProviderStateMixin {
   late FancyDrawerController _controller;
 
@@ -237,34 +237,34 @@ class _HomeScreenState extends State<HomeScreen>
                                         return Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Comman_Container(
-                                            child: Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical: 15.sp,
-                                                  horizontal: 15.sp),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Comman_Text(
-                                                    text: Pageview[index]
-                                                        ['title'],
-                                                    color: white,
-                                                    fontWeight: FontWeight.w400,
-                                                    fontSize: 20.sp,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5.sp,
-                                                  ),
-                                                  Comman_Text(
-                                                    text: Pageview[index]
-                                                        ['subtitile'],
-                                                    color: white,
-                                                    fontWeight: FontWeight.w400,
-                                                    fontSize: 18.sp,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
+                                            // child: Padding(
+                                            //   padding: EdgeInsets.symmetric(
+                                            //       vertical: 15.sp,
+                                            //       horizontal: 15.sp),
+                                            //   child: Column(
+                                            //     crossAxisAlignment:
+                                            //         CrossAxisAlignment.start,
+                                            //     children: [
+                                            //       Comman_Text(
+                                            //         text: Pageview[index]
+                                            //             ['title'],
+                                            //         color: white,
+                                            //         fontWeight: FontWeight.w400,
+                                            //         fontSize: 20.sp,
+                                            //       ),
+                                            //       SizedBox(
+                                            //         height: 5.sp,
+                                            //       ),
+                                            //       Comman_Text(
+                                            //         text: Pageview[index]
+                                            //             ['subtitile'],
+                                            //         color: white,
+                                            //         fontWeight: FontWeight.w400,
+                                            //         fontSize: 18.sp,
+                                            //       )
+                                            //     ],
+                                            //   ),
+                                            // ),
                                             width: double.infinity,
                                             color: red,
                                             borderRadius:
@@ -272,7 +272,7 @@ class _HomeScreenState extends State<HomeScreen>
                                             image: DecorationImage(
                                               fit: BoxFit.cover,
                                               image: AssetImage(
-                                                Pageview[index]['image'],
+                                                Pageview[index],
                                               ),
                                             ),
                                           ),

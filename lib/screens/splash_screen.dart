@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+import '../bottom_Navigation/bottom_navi_demo.dart';
+import '../bottom_Navigation/bottom_NAV.dart';
 import '../common_screen/Comman_Container.dart';
 import '../common_screen/Comman_text.dart';
 import '../globle/variable.dart';

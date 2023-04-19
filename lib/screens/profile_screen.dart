@@ -203,7 +203,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   SizedBox(
                                     width: 15.sp,
                                   ),
-                                  Icon(profile[index]['Icon']),
+                                  Icon(
+                                    profile[index]['Icon'],
+                                    color: iconColor,
+                                  ),
                                   SizedBox(
                                     width: 15.sp,
                                   ),

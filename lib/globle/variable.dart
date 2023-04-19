@@ -17,7 +17,8 @@ const Color LightGreen1 = Color(0xff95d5d2);
 const Color DarkGreen = Color(0xff40916C);
 const Color LightGreen = Color(0xff52B788);
 const Color lightGreen = Color(0xffB7E4C7);
-const Color iconColor = Color(0xffFFFFFF);
+const Color iconColor_Drawer = Color(0xffFFFFFF);
+const Color iconColor = Color(0xff74C69D);
 const Color orange_logo = Color(0xffF58634);
 const Color green = Colors.green;
 const Color purple = Colors.purple;
@@ -47,16 +48,24 @@ final House = TextEditingController();
 final Road = TextEditingController();
 
 //icon
-const home_outlined = Icon(Icons.home_outlined, color: iconColor);
-const maps_home_work_sharp = Icon(Icons.maps_home_work_sharp, color: iconColor);
-const home = Icon(Icons.home, color: iconColor);
-const gridview = Icon(Icons.grid_view, color: iconColor);
-const logout = Icon(Icons.logout, color: iconColor);
-const privacy_tip_outlined = Icon(Icons.privacy_tip_outlined, color: iconColor);
-const share = Icon(Icons.share, color: iconColor);
-const favorite_outline = Icon(Icons.favorite_outline, color: iconColor);
+const home_outlined = Icon(Icons.home_outlined, color: iconColor_Drawer);
+const maps_home_work_sharp =
+    Icon(Icons.maps_home_work_sharp, color: iconColor_Drawer);
+const maps_home_work_sharp_Add =
+    Icon(Icons.maps_home_work_sharp, color: LightGreen1);
+const home = Icon(Icons.home, color: iconColor_Drawer);
+const HomeAdd = Icon(
+  Icons.home,
+  color: LightGreen1,
+);
+const gridview = Icon(Icons.grid_view, color: iconColor_Drawer);
+const logout = Icon(Icons.logout, color: iconColor_Drawer);
+const privacy_tip_outlined =
+    Icon(Icons.privacy_tip_outlined, color: iconColor_Drawer);
+const share = Icon(Icons.share, color: iconColor_Drawer);
+const favorite_outline = Icon(Icons.favorite_outline, color: iconColor_Drawer);
 const shopping_cart_outlined =
-    Icon(Icons.shopping_cart_outlined, color: iconColor);
+    Icon(Icons.shopping_cart_outlined, color: iconColor_Drawer);
 
 // image app logo
 const AppLogo = "asserts/logo/applogo.png";
@@ -153,11 +162,11 @@ final formKey = GlobalKey<FormState>();
 //List
 List addinfo_add = [
   {
-    "Icon": home,
+    "Icon": HomeAdd,
     "Name": "Home",
   },
   {
-    "Icon": maps_home_work_sharp,
+    "Icon": maps_home_work_sharp_Add,
     "Name": "Work",
   },
 ];
@@ -312,10 +321,11 @@ String searchText = "";
 const String Fashionsale = "Fashion sale";
 const String subtitile = "See More >";
 Profileimg pi = Get.put(Profileimg());
+//home screen
 List Pageview = [
-  {'image': page_view1, 'title': Fashionsale, "subtitile": subtitile},
-  {'image': page_view2, 'title': Fashionsale, "subtitile": subtitile},
-  {'image': page_view3, 'title': Fashionsale, "subtitile": subtitile},
+  page_view2,
+  page_view1,
+  page_view3,
 ];
 List Catalogue = [
   {
@@ -403,48 +413,71 @@ PageController pageController = PageController(initialPage: 0);
 bool Selected = false;
 
 //profile screen
+// List profile = [
+//   {
+//     "name": "Shipping Addresses",
+//     "Icon": Icon(
+//       Icons.location_on_outlined,
+//       //color: iconColor,
+//     )
+//   },
+//   {
+//     "name": "Payments Methods",
+//     "Icon": Icon(
+//       Icons.payments_sharp,
+//       //color: iconColor,
+//     )
+//   },
+//   {
+//     "name": "Orders",
+//     "Icon": Icon(
+//       Icons.event_note_outlined,
+//       //color: iconColor,
+//     )
+//   },
+//   {
+//     "name": "Favorite",
+//     "Icon": Icon(
+//       Icons.favorite_outline,
+//       //color: iconColor,
+//     ),
+//   },
+//   {
+//     "name": "Settings",
+//     "Icon": Icon(
+//       Icons.settings,
+//       // color: iconColor,
+//     )
+//   },
+//   {
+//     "name": "Log Out",
+//     "Icon": Icon(
+//       Icons.logout,
+//       //color: iconColor,
+//     )
+//   },
+// ];
 List profile = [
   {
     "name": "Shipping Addresses",
-    "Icon": Icon(
-      Icons.location_on_outlined,
-      color: iconColor,
-    )
+    "Icon": Icons.location_on_outlined,
   },
   {
     "name": "Payments Methods",
-    "Icon": Icon(
-      Icons.payments_sharp,
-      color: iconColor,
-    )
+    "Icon": Icons.payments_sharp,
   },
   {
     "name": "Orders",
-    "Icon": Icon(
-      Icons.event_note_outlined,
-      color: iconColor,
-    )
+    "Icon": Icons.event_note_outlined,
   },
   {
     "name": "Favorite",
-    "Icon": Icon(
-      Icons.favorite_outline,
-      color: iconColor,
-    ),
+    "Icon": Icons.favorite_outline,
   },
-  {
-    "name": "Settings",
-    "Icon": Icon(
-      Icons.settings,
-      color: iconColor,
-    )
-  },
+  {"name": "Settings", "Icon": Icons.settings},
   {
     "name": "Log Out",
-    "Icon": Icon(
-      Icons.logout,
-      color: iconColor,
-    )
+    "Icon": Icons.logout,
   },
 ];
 
