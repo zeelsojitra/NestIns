@@ -22,8 +22,6 @@ class Bottom_navigationState extends State<Bottom_navigation> {
     CategoryScreen_2(),
     Favorite_Screen(),
     ProfileScreen(),
-    //zeel
-    //harsh
   ];
 
   @override
