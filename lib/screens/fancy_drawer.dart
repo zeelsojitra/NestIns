@@ -72,20 +72,28 @@ class _HomeScreen1State extends State<HomeScreen1>
                             LinearGradient(colors: [DarkGreen2, LightGreen]),
                         borderRadius: BorderRadius.circular(17)),
                     accountName: Comman_Text(
-                      // text: sharedPreferences!.getString("profile_name")!,
-                      text: "profile email",
+                      text: sharedPreferences!.getString("profile_name")!,
+                      //text: "profile email",
                       color: white,
                       fontSize: 16.sp,
                     ),
                     accountEmail: Comman_Text(
-                      //text: sharedPreferences!.getString("profile_email")!,
-                      text: "profile email",
+                      text: sharedPreferences!.getString("profile_email")!,
+                      //text: "profile email",
                       color: white,
                       fontSize: 12.sp,
                     ),
                     currentAccountPicture: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child: Text("web".split("").first),
+                      backgroundColor: white,
+                      child: Comman_Text(
+                          fontFamily: "JM1",
+                          fontSize: 30.sp,
+                          fontWeight: FontWeight.bold,
+                          color: DarkGreen2,
+                          text:
+                              "${sharedPreferences!.getString("profile_email")!}"
+                                  .split("")
+                                  .first),
                     ),
                     // currentAccountPicture: InkWell(
                     //   child: Container(
