@@ -55,7 +55,7 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(height: Get.height * 0.055),

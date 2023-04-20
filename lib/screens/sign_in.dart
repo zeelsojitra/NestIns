@@ -28,6 +28,7 @@ class _Sign_InState extends State<Sign_In> {
   final usernamecontroler = TextEditingController();
   final Email_controler = TextEditingController();
   final Password_controler = TextEditingController();
+  bool passwordcheck = true;
   int selected = 0;
   bool isLoding = false;
   List name = [
@@ -107,7 +108,17 @@ class _Sign_InState extends State<Sign_In> {
                 filled: true,
                 fillcolor: Colors.grey.shade200,
                 controller: Password_controler,
-                obscureText: true,
+                obscureText: passwordcheck,
+                sufficicon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      passwordcheck = !passwordcheck;
+                    });
+                  },
+                  icon: passwordcheck
+                      ? Icon(Icons.visibility_off)
+                      : Icon(Icons.visibility),
+                ),
                 hinttext: "Enter password",
                 validator: (value) {
                   final bool passwordValid = password.hasMatch(value!);

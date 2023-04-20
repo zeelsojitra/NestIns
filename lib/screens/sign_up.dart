@@ -20,6 +20,7 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
   final Email_controler = TextEditingController();
   final usernamecontroler = TextEditingController();
   final Password_controler = TextEditingController();
+  bool passwordcheck = true;
   int selected = 0;
   //bool signuploder = false;
   List name = [
@@ -118,7 +119,17 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                 filled: true,
                 fillcolor: Colors.grey.shade200,
                 controller: Password_controler,
-                obscureText: true,
+                obscureText: passwordcheck,
+                sufficicon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      passwordcheck = !passwordcheck;
+                    });
+                  },
+                  icon: passwordcheck
+                      ? Icon(Icons.visibility_off)
+                      : Icon(Icons.visibility),
+                ),
                 hinttext: "Enter password",
                 validator: (value) {
                   final bool passwordValid = password.hasMatch(value!);
