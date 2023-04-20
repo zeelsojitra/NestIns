@@ -38,7 +38,6 @@ class _Sign_InState extends State<Sign_In> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: NeverScrollableScrollPhysics(),
       child: Form(
         key: gloablekey,
         child: Padding(

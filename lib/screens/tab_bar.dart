@@ -181,7 +181,7 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
                 ],
               ),
               SizedBox(
-                height: 40.sp,
+                height: 20.sp,
               ),
               Center(
                 child: Comman_Text(
@@ -192,7 +192,7 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
                 ),
               ),
               SizedBox(
-                height: 30.sp,
+                height: 20.sp,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

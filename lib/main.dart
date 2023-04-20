@@ -1,4 +1,6 @@
+import 'package:e_com/registration/regisration_screen.dart';
 import 'package:e_com/screens/RoadMap/RoadMap_Screen.dart';
+import 'package:e_com/screens/login_screen_h.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
         // theme: MyThemes.lightTheme,
         // darkTheme: MyThemes.darkTheme,
         themeMode: ThemeMode.system,
-        home: Splash_Screen(),
+        home: LoginScreenH(),
         debugShowCheckedModeBanner: false,
       ),
     );
