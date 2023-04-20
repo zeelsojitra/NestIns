@@ -34,86 +34,95 @@ class _OderScreenState extends State<OderScreen> {
             .snapshots(),
         builder: (BuildContext context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-          if (!snapshot.hasData) {
+          if (snapshot.connectionState == ConnectionState.done ||
+              snapshot.hasData) {
             List<DocumentSnapshot> order = snapshot.data!.docs;
             print("${order.length}");
             print("${FirebaseAuth.instance.currentUser!.uid}");
-            return Center(child: CircularProgressIndicator());
-          }
-          List<DocumentSnapshot> order = snapshot.data!.docs;
-          return snapshot.data!.docs.isEmpty
-              ? Center(child: Image.asset(Empty_order))
-              : SizedBox(
-                  height: 565.sp,
-                  child: ListView.separated(
-                    itemCount: order.length,
-                    itemBuilder: (context, index) {
-                      return Row(
-                        children: [
-                          Comman_Container(
-                            ontap: () {
-                              Get.to(OderDetails(
-                                date: order[index].get("createdDate"),
-                                image: order[index].get("image"),
-                                name: order[index].get("product_name"),
-                                price: order[index].get("product_price"),
-                                details: order[index].get("product_details"),
-                                category: order[index].get("product_catagory"),
-                              ));
-                            },
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 8.sp),
-                              child: Comman_Container(
-                                margin: EdgeInsets.symmetric(vertical: 8.sp),
-                                height: 120.sp,
-                                width: 120.sp,
-                                color: grey,
-                                borderRadius: BorderRadius.circular(20),
-                                image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: NetworkImage(
-                                        order[index].get("image"))),
+            return snapshot.data!.docs.isEmpty
+                ? Center(
+                    child: Image.asset(
+                      Empty_order,
+                      height: Get.height * 0.35,
+                      width: Get.width,
+                    ),
+                  )
+                : SizedBox(
+                    height: 565.sp,
+                    child: ListView.separated(
+                      itemCount: order.length,
+                      itemBuilder: (context, index) {
+                        return Row(
+                          children: [
+                            Comman_Container(
+                              ontap: () {
+                                Get.to(OderDetails(
+                                  date: order[index].get("createdDate"),
+                                  image: order[index].get("image"),
+                                  name: order[index].get("product_name"),
+                                  price: order[index].get("product_price"),
+                                  details: order[index].get("product_details"),
+                                  category:
+                                      order[index].get("product_catagory"),
+                                ));
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8.sp),
+                                child: Comman_Container(
+                                  margin: EdgeInsets.symmetric(vertical: 8.sp),
+                                  height: 120.sp,
+                                  width: 120.sp,
+                                  color: grey,
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                          order[index].get("image"))),
+                                ),
                               ),
                             ),
-                          ),
-                          Flexible(
-                            flex: 20,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Comman_Text(
-                                    text:
-                                        "Product Name :- ${order[index].get("product_name")}",
-                                    fontSize: 15.sp),
-                                SizedBox(
-                                  height: 10.sp,
-                                ),
-                                Comman_Text(
-                                    text: order[index].get("product_catagory"),
-                                    fontSize: 15.sp),
-                                SizedBox(
-                                  height: 10.sp,
-                                ),
-                                Comman_Text(
-                                  text: "OrderId",
-                                  fontSize: 15.sp,
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return Divider(
-                        height: 2.sp,
-                        color: black,
-                        thickness: 1,
-                      );
-                    },
-                  ),
-                );
+                            Flexible(
+                              flex: 20,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Comman_Text(
+                                      text:
+                                          "Product Name :- ${order[index].get("product_name")}",
+                                      fontSize: 15.sp),
+                                  SizedBox(
+                                    height: 10.sp,
+                                  ),
+                                  Comman_Text(
+                                      text:
+                                          order[index].get("product_catagory"),
+                                      fontSize: 15.sp),
+                                  SizedBox(
+                                    height: 10.sp,
+                                  ),
+                                  Comman_Text(
+                                    text: "OrderId",
+                                    fontSize: 15.sp,
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) {
+                        return Divider(
+                          height: 2.sp,
+                          color: black,
+                          thickness: 1,
+                        );
+                      },
+                    ),
+                  );
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
         },
       ),
     );
