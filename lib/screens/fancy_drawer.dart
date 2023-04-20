@@ -248,6 +248,7 @@ class _HomeScreen1State extends State<HomeScreen1>
           ),
         ],
         child: Scaffold(
+          backgroundColor: white,
           appBar: AppBar(
             elevation: 4.0,
             title: const Text(
@@ -659,7 +660,8 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                       'product_price'],
                                                                   fontSize:
                                                                       17.sp,
-                                                                  color: red,
+                                                                  color:
+                                                                      DarkGreen,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -686,7 +688,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                             );
                                           }
                                         },
-                                      )
+                                      ),
                                     ],
                                   ),
                                 )
