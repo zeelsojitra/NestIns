@@ -19,6 +19,7 @@ import '../getx/controller.dart';
 import '../globle/profile_controller.dart';
 import '../globle/variable.dart';
 import 'Favorite_Screen.dart';
+import 'login_screen_h.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);

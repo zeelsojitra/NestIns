@@ -8,6 +8,7 @@ import '../common_screen/Comman_Container.dart';
 import '../common_screen/Comman_text.dart';
 import '../getx/controller.dart';
 import '../globle/variable.dart';
+import 'login_screen_h.dart';
 
 class On_Boarding extends StatefulWidget {
   const On_Boarding({Key? key}) : super(key: key);

@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         // theme: MyThemes.lightTheme,
         // darkTheme: MyThemes.darkTheme,
         themeMode: ThemeMode.system,
-        home: LoginScreenH(),
+        home: Tab_Bar(),
         debugShowCheckedModeBanner: false,
       ),
     );

@@ -17,15 +17,14 @@ import '../common_screen/Comman_text.dart';
 import '../common_screen/loding.dart';
 import '../globle/variable.dart';
 
-class LoginScreenH extends StatefulWidget {
-  const LoginScreenH({Key? key}) : super(key: key);
+class Tab_Bar extends StatefulWidget {
+  const Tab_Bar({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreenH> createState() => _LoginScreenHState();
+  State<Tab_Bar> createState() => _Tab_BarState();
 }
 
-class _LoginScreenHState extends State<LoginScreenH>
-    with SingleTickerProviderStateMixin {
+class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
   TabController? tabController;
   final gloablekey = GlobalKey<FormState>();
   final Email_controler = TextEditingController();
