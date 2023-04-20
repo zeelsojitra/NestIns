@@ -70,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         action: [],
         name: "Profile",
       ),
-      backgroundColor: Color(0xfff0f0f0),
+      backgroundColor: white,
       body: SafeArea(
         child: Builder(
           builder: (context) {

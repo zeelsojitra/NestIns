@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         // theme: MyThemes.lightTheme,
         // darkTheme: MyThemes.darkTheme,
         themeMode: ThemeMode.system,
-        home: Bottom_navigation(),
+        home: Splash_Screen(),
         debugShowCheckedModeBanner: false,
       ),
     );
