@@ -87,11 +87,11 @@ class _HomeScreen1State extends State<HomeScreen1>
                       backgroundColor: white,
                       child: Comman_Text(
                           fontFamily: "JM1",
-                          fontSize: 30.sp,
+                          fontSize: 25.sp,
                           fontWeight: FontWeight.bold,
                           color: DarkGreen2,
                           text:
-                              "${sharedPreferences!.getString("profile_email")!}"
+                              "${sharedPreferences!.getString("profile_name")!}"
                                   .split("")
                                   .first),
                     ),
