@@ -78,6 +78,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
               builder: (controller) {
                 return Column(
                   children: [
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      child: Comman_Container(
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(30),
+                        gradient: LinearGradient(
+                          colors: [
+                            DarkGreen2,
+                            LightGreen,
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 10),
+                              child: CircleAvatar(
+                                radius: 30,
+                                backgroundColor: black,
+                                child: Comman_Text(
+                                    fontFamily: "JM1",
+                                    fontSize: 25.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: DarkGreen2,
+                                    text:
+                                        "${sharedPreferences!.getString("profile_name")!}"
+                                            .split("")
+                                            .first),
+                              ),
+                            ),
+                          ],
+                        ),
+                        height: Get.height * 0.15,
+                        width: Get.width,
+                      ),
+                    ),
                     // Comman_Container(
                     //   height: 75.sp,
                     //   width: double.infinity,
