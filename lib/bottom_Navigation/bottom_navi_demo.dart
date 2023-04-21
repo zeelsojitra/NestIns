@@ -2,6 +2,7 @@ import 'package:e_com/globle/variable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import '../getx/controller.dart';
 import '../screens/Favorite_Screen.dart';
@@ -28,21 +29,22 @@ class Bottom_navigationState extends State<Bottom_navigation> {
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: white,
       body: Screens[currentIndex],
       bottomNavigationBar: Container(
-        margin: EdgeInsets.all(displayWidth * .02),
-        height: displayWidth * .155,
+        // margin: EdgeInsets.symmetric(
+        //     horizontal: displayWidth * .02, vertical: displayWidth * .015),
+        height: displayWidth * .150,
         decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            // BoxShadow(
-            //   color: Colors.black.withOpacity(.1),
-            //   blurRadius: 30,
-            //   offset: Offset(0, 10),
-            // ),
-          ],
-          borderRadius: BorderRadius.circular(40),
+          color: white,
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.black.withOpacity(.1),
+          //     blurRadius: 30,
+          //     offset: Offset(0, 10),
+          //   ),
+          // ],
+          //borderRadius: BorderRadius.circular(40),
         ),
         child: ListView.builder(
           itemCount: 4,

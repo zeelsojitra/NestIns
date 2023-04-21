@@ -80,6 +80,8 @@ const logo_green = "asserts/logo/splash_main.png";
 const main_logo = "asserts/logo/main_logo.png";
 const splash_mainLogo = "asserts/logo/splash_main.png";
 const text_logo = "asserts/logo/text_logo.png";
+const Empty_order = "asserts/image/emptyorder.png";
+const Empty_like = "asserts/image/emptylike.jpg";
 
 //categories image
 const beauty_categories = "asserts/Categories/beauty.png";
