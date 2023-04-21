@@ -95,7 +95,7 @@ class OderDetailsState extends State<OderDetails> {
               .snapshots(),
           builder: (BuildContext context,
               AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>> snapshot) {
-            if (snapshot.hasData) {
+            if (!snapshot.hasData) {
               return StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('Product')
@@ -103,12 +103,11 @@ class OderDetailsState extends State<OderDetails> {
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
                         snapshot) {
-                  if (snapshot.hasData) {
-                    var data = snapshot.data!.docs;
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
+                  if (!snapshot.hasData) {
+                    return Text("Hello");
+                  }
+                  return snapshot.data!.docs.isNotEmpty
+                      ? Expanded(
                           child: Padding(
                             padding: const EdgeInsets.all(8),
                             child: SingleChildScrollView(
@@ -187,16 +186,12 @@ class OderDetailsState extends State<OderDetails> {
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    );
-                  } else {
-                    return Center(child: CircularProgressIndicator());
-                  }
+                        )
+                      : Text("Hello");
                 },
               );
             } else {
-              return Center(child: CircularProgressIndicator());
+              return SizedBox();
             }
           },
         ),
