@@ -35,10 +35,24 @@ class HomeScreen1 extends StatefulWidget {
 class _HomeScreen1State extends State<HomeScreen1>
     with SingleTickerProviderStateMixin {
   late FancyDrawerController _controller;
+  String? useremail, username;
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  Future<void> getUserEmail() async {
+    final SharedPreferences prefs = await _prefs;
+
+    final email = prefs.getString("profile_image");
+    final name = prefs.getString("profile_name");
+
+    useremail = email;
+    username = name;
+    setState(() {});
+  }
 
   @override
   void initState() {
+    getUserEmail();
     super.initState();
+
     _controller = FancyDrawerController(
         vsync: this, duration: const Duration(milliseconds: 250))
       ..addListener(() {
@@ -73,14 +87,14 @@ class _HomeScreen1State extends State<HomeScreen1>
                             LinearGradient(colors: [DarkGreen2, LightGreen]),
                         borderRadius: BorderRadius.circular(17)),
                     accountName: Comman_Text(
-                      text: sharedPreferences!.getString("profile_name")!,
+                      text: "${username}",
                       color: white,
                       fontSize: 16.sp,
                     ),
                     accountEmail: Comman_Text(
-                      text: sharedPreferences!.getString("profile_email")!,
+                      text: "${useremail}",
                       color: white,
-                      fontSize: 12.sp,
+                      fontSize: 16.sp,
                     ),
                     currentAccountPicture: CircleAvatar(
                       backgroundColor: Colors.white,
@@ -89,21 +103,8 @@ class _HomeScreen1State extends State<HomeScreen1>
                           fontFamily: "JS1",
                           fontWeight: FontWeight.bold,
                           fontSize: Get.height * 0.03,
-                          text:
-                              "${sharedPreferences!.getString("profile_name")!}"
-                                  .split("")
-                                  .first),
+                          text: "${username}".split("").first),
                     ),
-                    // currentAccountPicture: InkWell(
-                    //   child: Container(
-                    //     height: 80.sp,
-                    //     width: 80.sp,
-                    //     child: CircleAvatar(
-                    //       backgroundImage: NetworkImage(
-                    //           sharedPreferences!.getString("profile_image")!),
-                    //     ),
-                    //   ),
-                    // ),
                   ),
                 ),
               ),
