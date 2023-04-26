@@ -293,9 +293,14 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                   },
                                 ),
                               )
-                            : Image(
-                                image:
-                                    AssetImage("asserts/image/wishlist.png"));
+                            : Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image(image: AssetImage(Empty_fav)),
+                                  ],
+                                ),
+                              );
                       } else {
                         return Center(
                           child: CircularProgressIndicator(),

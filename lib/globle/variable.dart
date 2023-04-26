@@ -77,7 +77,8 @@ const shopping_cart_outlined =
 const logo_green = "asserts/logo/splash_main.png";
 const main_logo = "asserts/logo/main_logo.png";
 const text_logo = "asserts/logo/text_logo.png";
-const Empty_order = "assets/image/emptyorder.png";
+const Empty_order = "asserts/image/emptyorder.png";
+const Empty_fav = "asserts/image/wishlist.png";
 
 //categories image
 const beauty_categories = "asserts/Categories/beauty.png";
