@@ -22,6 +22,7 @@ import '../globle/shardpefrence.dart';
 import '../globle/variable.dart';
 import 'Details_screen.dart';
 import 'categories_screen.dart';
+import 'login_screen_h.dart';
 import 'orderScreen.dart';
 
 class HomeScreen1 extends StatefulWidget {
@@ -72,20 +73,26 @@ class _HomeScreen1State extends State<HomeScreen1>
                             LinearGradient(colors: [DarkGreen2, LightGreen]),
                         borderRadius: BorderRadius.circular(17)),
                     accountName: Comman_Text(
-                      // text: sharedPreferences!.getString("profile_name")!,
-                      text: "profile email",
+                      text: sharedPreferences!.getString("profile_name")!,
                       color: white,
                       fontSize: 16.sp,
                     ),
                     accountEmail: Comman_Text(
-                      //text: sharedPreferences!.getString("profile_email")!,
-                      text: "profile email",
+                      text: sharedPreferences!.getString("profile_email")!,
                       color: white,
                       fontSize: 12.sp,
                     ),
                     currentAccountPicture: CircleAvatar(
                       backgroundColor: Colors.white,
-                      child: Text("web".split("").first),
+                      child: Comman_Text(
+                          color: DarkGreen2,
+                          fontFamily: "JS1",
+                          fontWeight: FontWeight.bold,
+                          fontSize: Get.height * 0.03,
+                          text:
+                              "${sharedPreferences!.getString("profile_name")!}"
+                                  .split("")
+                                  .first),
                     ),
                     // currentAccountPicture: InkWell(
                     //   child: Container(
