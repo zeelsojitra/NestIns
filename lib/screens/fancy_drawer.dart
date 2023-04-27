@@ -255,9 +255,15 @@ class _HomeScreen1State extends State<HomeScreen1>
             ),
             actions: [
               IconButton(
+                onPressed: () {
+
+                },
+                icon: Icon(Icons.search),
+              ),
+              IconButton(
                 onPressed: () {},
                 icon: Icon(Icons.add_shopping_cart_outlined),
-              )
+              ),
             ],
             backgroundColor: DarkGreen2,
             leading: IconButton(

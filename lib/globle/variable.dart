@@ -505,16 +505,46 @@ RegExp password =
 //categoreydemo screen
 List categoriesDemo = [
   {
-    "name": "chhattisgarh",
+    "name": "chhattisgarh_dhoti_kurta",
   },
   {
-    "name": "goa",
+    "name": "chhattisgarh_paghadi",
   },
   {
-    "name": "Gujrat",
+    "name": "chhattisgarh_saree",
   },
   {
-    "name": "Haryana",
+    "name": "Goa_dangar_topi",
+  },
+  {
+    "name": "Goa_kunbi_saree",
+  },
+  {
+    "name": "Goa_pano_bhaju",
+  },
+  {
+    "name": "Gujrat_bandhani",
+  },
+  {
+    "name": "Gujrat_chaniyacoli",
+  },
+  {
+    "name": "Gujrat_ghaghra",
+  },
+  {
+    "name": "Gujrat_kediyu",
+  },
+  {
+    "name": "Gujrat_patola",
+  },
+  {
+    "name": "haryana_dhoti",
+  },
+  {
+    "name": "haryana_ghaghra_choli",
+  },
+  {
+    "name": "haryana_kurta_payjama",
   },
 ];
 
@@ -550,3 +580,5 @@ List Screens = [
   Favorite_Screen(),
   ProfileScreen(),
 ];
+
+String? demo;
