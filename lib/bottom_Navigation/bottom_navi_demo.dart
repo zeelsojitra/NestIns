@@ -6,6 +6,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../getx/controller.dart';
 import '../screens/Favorite_Screen.dart';
+import '../screens/CategoriesScreen.dart';
 import '../screens/categories_screen.dart';
 import '../screens/fancy_drawer.dart';
 import '../screens/profile_screen.dart';
@@ -20,7 +21,7 @@ class Bottom_navigationState extends State<Bottom_navigation> {
   final Controller controller = Get.put(Controller());
   List Screens = [
     HomeScreen1(),
-    CategoryScreen_2(),
+    CategoriesScreen(),
     Favorite_Screen(),
     ProfileScreen(),
   ];

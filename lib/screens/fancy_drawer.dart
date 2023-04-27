@@ -35,10 +35,24 @@ class HomeScreen1 extends StatefulWidget {
 class _HomeScreen1State extends State<HomeScreen1>
     with SingleTickerProviderStateMixin {
   late FancyDrawerController _controller;
+  String? useremail, username;
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  Future<void> getUserEmail() async {
+    final SharedPreferences prefs = await _prefs;
+
+    final email = prefs.getString("profile_image");
+    final name = prefs.getString("profile_name");
+
+    useremail = email;
+    username = name;
+    setState(() {});
+  }
 
   @override
   void initState() {
+    getUserEmail();
     super.initState();
+
     _controller = FancyDrawerController(
         vsync: this, duration: const Duration(milliseconds: 250))
       ..addListener(() {
@@ -73,31 +87,24 @@ class _HomeScreen1State extends State<HomeScreen1>
                             LinearGradient(colors: [DarkGreen2, LightGreen]),
                         borderRadius: BorderRadius.circular(17)),
                     accountName: Comman_Text(
-                      // text: sharedPreferences!.getString("profile_name")!,
-                      text: "profile email",
+                      text: "${username}",
                       color: white,
                       fontSize: 16.sp,
                     ),
                     accountEmail: Comman_Text(
-                      //text: sharedPreferences!.getString("profile_email")!,
-                      text: "profile email",
+                      text: "${useremail}",
                       color: white,
-                      fontSize: 12.sp,
+                      fontSize: 16.sp,
                     ),
                     currentAccountPicture: CircleAvatar(
                       backgroundColor: Colors.white,
-                      child: Text("web".split("").first),
+                      child: Comman_Text(
+                          color: DarkGreen2,
+                          fontFamily: "JS1",
+                          fontWeight: FontWeight.bold,
+                          fontSize: Get.height * 0.03,
+                          text: "${username}".split("").first),
                     ),
-                    // currentAccountPicture: InkWell(
-                    //   child: Container(
-                    //     height: 80.sp,
-                    //     width: 80.sp,
-                    //     child: CircleAvatar(
-                    //       backgroundImage: NetworkImage(
-                    //           sharedPreferences!.getString("profile_image")!),
-                    //     ),
-                    //   ),
-                    // ),
                   ),
                 ),
               ),
@@ -248,9 +255,15 @@ class _HomeScreen1State extends State<HomeScreen1>
             ),
             actions: [
               IconButton(
+                onPressed: () {
+
+                },
+                icon: Icon(Icons.search),
+              ),
+              IconButton(
                 onPressed: () {},
                 icon: Icon(Icons.add_shopping_cart_outlined),
-              )
+              ),
             ],
             backgroundColor: DarkGreen2,
             leading: IconButton(
@@ -468,202 +481,211 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                               Map<String,
                                                                   dynamic>>>
                                                       snapshot) {
-                                                if (snapshot.hasData) {
+                                                if (snapshot.connectionState ==
+                                                        ConnectionState.done ||
+                                                    snapshot.hasData) {
+                                                  List<DocumentSnapshot> order =
+                                                      snapshot.data!.docs;
                                                   var data =
                                                       snapshot.data!.docs;
-                                                  return GridView.builder(
-                                                    shrinkWrap: true,
-                                                    itemCount: snapshot
-                                                        .data!.docs.length,
-                                                    physics:
-                                                        NeverScrollableScrollPhysics(),
-                                                    gridDelegate:
-                                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                                            mainAxisSpacing: 1,
-                                                            crossAxisSpacing: 1,
-                                                            crossAxisCount: 2,
-                                                            mainAxisExtent:
-                                                                300),
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      final product = snapshot
-                                                          .data!.docs[index];
-                                                      return Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                                horizontal:
-                                                                    10.sp),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Stack(
-                                                              clipBehavior:
-                                                                  Clip.none,
-                                                              children: [
-                                                                Card(
-                                                                  shape:
-                                                                      RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            20),
-                                                                  ),
-                                                                  elevation: 10,
-                                                                  color: grey,
-                                                                  child:
-                                                                      Comman_Container(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(5),
-                                                                    ontap: () {
-                                                                      Get.to(
-                                                                        DetilsScreen(
-                                                                          sid: product[
-                                                                              'seller_id'],
-                                                                          pid: product[
-                                                                              'product_id'],
-                                                                          buynow:
-                                                                              snap.data!['buyNow'],
-                                                                          image:
-                                                                              product['image'],
-                                                                          category:
-                                                                              product["product_catagory"],
-                                                                          details:
-                                                                              product["product_details"],
-                                                                          name:
-                                                                              product["product_name"],
-                                                                          price:
-                                                                              product["product_price"],
-                                                                          stock:
-                                                                              product['product_stock'],
+                                                  return snapshot
+                                                          .data!.docs.isNotEmpty
+                                                      ? GridView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: snapshot
+                                                              .data!
+                                                              .docs
+                                                              .length,
+                                                          physics:
+                                                              NeverScrollableScrollPhysics(),
+                                                          gridDelegate:
+                                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                                                  mainAxisSpacing:
+                                                                      1,
+                                                                  crossAxisSpacing:
+                                                                      1,
+                                                                  crossAxisCount:
+                                                                      2,
+                                                                  mainAxisExtent:
+                                                                      300),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            final product =
+                                                                snapshot.data!
+                                                                        .docs[
+                                                                    index];
+                                                            return Padding(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      horizontal:
+                                                                          10.sp),
+                                                              child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Stack(
+                                                                    clipBehavior:
+                                                                        Clip.none,
+                                                                    children: [
+                                                                      Card(
+                                                                        shape:
+                                                                            RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(20),
                                                                         ),
-                                                                      );
-                                                                    },
-                                                                    height:
-                                                                        155.sp,
-                                                                    width: double
-                                                                        .infinity,
-                                                                    color:
-                                                                        white,
-                                                                    image:
-                                                                        DecorationImage(
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                      image: NetworkImage(
-                                                                          product!['image']
-                                                                              .toString()),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                Positioned(
-                                                                  bottom: -18,
-                                                                  right: -15,
-                                                                  child:
-                                                                      Container(
-                                                                    height:
-                                                                        27.sp,
-                                                                    width:
-                                                                        27.sp,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      boxShadow: [
-                                                                        BoxShadow(
-                                                                            color: Colors
-                                                                                .grey.shade200,
-                                                                            spreadRadius:
-                                                                                2,
-                                                                            blurRadius:
-                                                                                1)
-                                                                      ],
-                                                                      color:
-                                                                          white,
-                                                                      shape: BoxShape
-                                                                          .circle,
-                                                                    ),
-                                                                    child:
-                                                                        Center(
-                                                                      child:
-                                                                          IconButton(
-                                                                        splashRadius:
-                                                                            20,
-                                                                        onPressed:
-                                                                            () {
-                                                                          List
-                                                                              x =
-                                                                              snap.data!['favourite'];
-                                                                          if ((snap.data!['favourite'] as List)
-                                                                              .contains(data[index].id)) {
-                                                                            x.remove(data[index].id);
-                                                                            FirebaseFirestore.instance.collection('user').doc(FirebaseAuth.instance.currentUser!.uid).update({
-                                                                              'favourite': x
-                                                                            });
-                                                                          } else {
-                                                                            x.add(data[index].id);
-                                                                            FirebaseFirestore.instance.collection('user').doc(FirebaseAuth.instance.currentUser!.uid).update(
-                                                                              {
-                                                                                'favourite': x
-                                                                              },
-                                                                            );
-                                                                          }
-                                                                        },
-                                                                        icon: (snap.data!['favourite'] as List).contains(data[index]
-                                                                                .id)
-                                                                            ? Icon(Icons.favorite,
-                                                                                color: red)
-                                                                            : Icon(
-                                                                                Icons.favorite_border,
-                                                                                color: grey,
+                                                                        elevation:
+                                                                            10,
+                                                                        color:
+                                                                            grey,
+                                                                        child:
+                                                                            Comman_Container(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(5),
+                                                                          ontap:
+                                                                              () {
+                                                                            Get.to(
+                                                                              DetilsScreen(
+                                                                                sid: product['seller_id'],
+                                                                                pid: product['product_id'],
+                                                                                buynow: snap.data!['buyNow'],
+                                                                                image: product['image'],
+                                                                                category: product["product_catagory"],
+                                                                                details: product["product_details"],
+                                                                                name: product["product_name"],
+                                                                                price: product["product_price"],
+                                                                                stock: product['product_stock'],
                                                                               ),
+                                                                            );
+                                                                          },
+                                                                          height:
+                                                                              155.sp,
+                                                                          width:
+                                                                              double.infinity,
+                                                                          color:
+                                                                              white,
+                                                                          image:
+                                                                              DecorationImage(
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                            image:
+                                                                                NetworkImage(product!['image'].toString()),
+                                                                          ),
+                                                                        ),
                                                                       ),
-                                                                    ),
+                                                                      Positioned(
+                                                                        bottom:
+                                                                            -18,
+                                                                        right:
+                                                                            -15,
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              27.sp,
+                                                                          width:
+                                                                              27.sp,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            boxShadow: [
+                                                                              BoxShadow(color: Colors.grey.shade200, spreadRadius: 2, blurRadius: 1)
+                                                                            ],
+                                                                            color:
+                                                                                white,
+                                                                            shape:
+                                                                                BoxShape.circle,
+                                                                          ),
+                                                                          child:
+                                                                              Center(
+                                                                            child:
+                                                                                IconButton(
+                                                                              splashRadius: 20,
+                                                                              onPressed: () {
+                                                                                List x = snap.data!['favourite'];
+                                                                                if ((snap.data!['favourite'] as List).contains(data[index].id)) {
+                                                                                  x.remove(data[index].id);
+                                                                                  FirebaseFirestore.instance.collection('user').doc(FirebaseAuth.instance.currentUser!.uid).update({
+                                                                                    'favourite': x
+                                                                                  });
+                                                                                } else {
+                                                                                  x.add(data[index].id);
+                                                                                  FirebaseFirestore.instance.collection('user').doc(FirebaseAuth.instance.currentUser!.uid).update(
+                                                                                    {
+                                                                                      'favourite': x
+                                                                                    },
+                                                                                  );
+                                                                                }
+                                                                              },
+                                                                              icon: (snap.data!['favourite'] as List).contains(data[index].id)
+                                                                                  ? Icon(Icons.favorite, color: red)
+                                                                                  : Icon(
+                                                                                      Icons.favorite_border,
+                                                                                      color: grey,
+                                                                                    ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            SizedBox(
-                                                              height: 8.sp,
-                                                            ),
-                                                            Comman_Text(
-                                                              text: product[
-                                                                  "product_name"],
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              fontSize: 15.sp,
-                                                            ),
-                                                            SizedBox(
-                                                              height: 6.sp,
-                                                            ),
-                                                            Row(
-                                                              children: [
-                                                                Comman_Text(
-                                                                  text: "₹",
-                                                                  fontSize:
-                                                                      14.sp,
-                                                                  color:
-                                                                      black54,
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 2.sp,
-                                                                ),
-                                                                Comman_Text(
-                                                                  text: product[
-                                                                      'product_price'],
-                                                                  fontSize:
-                                                                      17.sp,
-                                                                  color: red,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
-                                                              ],
+                                                                  SizedBox(
+                                                                    height:
+                                                                        8.sp,
+                                                                  ),
+                                                                  Comman_Text(
+                                                                    text: product[
+                                                                        "product_name"],
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    fontSize:
+                                                                        15.sp,
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height:
+                                                                        6.sp,
+                                                                  ),
+                                                                  Row(
+                                                                    children: [
+                                                                      Comman_Text(
+                                                                        text:
+                                                                            "₹",
+                                                                        fontSize:
+                                                                            14.sp,
+                                                                        color:
+                                                                            black54,
+                                                                      ),
+                                                                      SizedBox(
+                                                                        width: 2
+                                                                            .sp,
+                                                                      ),
+                                                                      Comman_Text(
+                                                                        text: product[
+                                                                            'product_price'],
+                                                                        fontSize:
+                                                                            17.sp,
+                                                                        color:
+                                                                            red,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            );
+                                                          },
+                                                        )
+                                                      : Column(
+                                                          children: [
+                                                            Image.asset(
+                                                              Empty_order,
+                                                              height:
+                                                                  Get.height *
+                                                                      0.35,
+                                                              width: Get.width,
                                                             ),
                                                           ],
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
+                                                        );
                                                 } else {
                                                   return Center(
                                                     child:

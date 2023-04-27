@@ -116,7 +116,7 @@ class _AddressDemoState extends State<AddressDemo> {
       "house": House.text.toString(),
       "road": Road.text.toString(),
       "types add": contoller.add_selected.toString(),
-      "createdDate": date,
+      "createdDate": "${date.day}-${date.month}-${date.year}",
     }).then((value) {
       Navigator.push(
         context,
