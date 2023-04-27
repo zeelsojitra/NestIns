@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_com/bottom_Navigation/bottom_navi_demo.dart';
 import 'package:e_com/getx/controller.dart';
 import 'package:e_com/screens/Favorite_Screen.dart';
+import 'package:e_com/screens/search.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:e_com/screens/tab_bar.dart';
 import 'package:fancy_drawer/fancy_drawer.dart';
@@ -20,6 +21,7 @@ import '../common_screen/Comman_Container.dart';
 import '../common_screen/Comman_text.dart';
 import '../globle/shardpefrence.dart';
 import '../globle/variable.dart';
+import '../searchdemo.dart';
 import 'Details_screen.dart';
 import 'categories_screen.dart';
 import 'login_screen_h.dart';
@@ -256,13 +258,9 @@ class _HomeScreen1State extends State<HomeScreen1>
             actions: [
               IconButton(
                 onPressed: () {
-
+                  Get.to(searchpage());
                 },
                 icon: Icon(Icons.search),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.add_shopping_cart_outlined),
               ),
             ],
             backgroundColor: DarkGreen2,
