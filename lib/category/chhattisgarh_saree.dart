@@ -17,7 +17,9 @@ class _chhattisgarh_sareeState extends State<chhattisgarh_saree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: coomanAppBar(
+        name: "Category",
+      ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('Product')

@@ -17,7 +17,9 @@ class _Gujrat_ghaghraState extends State<Gujrat_ghaghra> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: coomanAppBar(
+        name: "Category",
+      ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('Product')

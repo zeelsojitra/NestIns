@@ -17,7 +17,9 @@ class _Goa_pano_bhajuState extends State<Goa_pano_bhaju> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: coomanAppBar(
+        name: "Category",
+      ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('Product')

@@ -17,7 +17,9 @@ class _Gujrat_chaniyacoliState extends State<Gujrat_chaniyacoli> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: coomanAppBar(
+        name: "Category",
+      ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('Product')

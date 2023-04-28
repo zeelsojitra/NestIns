@@ -22,6 +22,7 @@ import '../common_screen/Comman_text.dart';
 import '../globle/shardpefrence.dart';
 import '../globle/variable.dart';
 import '../searchdemo.dart';
+import 'CategoriesScreen.dart';
 import 'Details_screen.dart';
 import 'categories_screen.dart';
 import 'login_screen_h.dart';
@@ -42,7 +43,7 @@ class _HomeScreen1State extends State<HomeScreen1>
   Future<void> getUserEmail() async {
     final SharedPreferences prefs = await _prefs;
 
-    final email = prefs.getString("profile_image");
+    final email = prefs.getString("profile_email");
     final name = prefs.getString("profile_name");
 
     useremail = email;
@@ -89,12 +90,12 @@ class _HomeScreen1State extends State<HomeScreen1>
                             LinearGradient(colors: [DarkGreen2, LightGreen]),
                         borderRadius: BorderRadius.circular(17)),
                     accountName: Comman_Text(
-                      text: "${username}",
+                      text: sharedPreferences!.getString("profile_name"),
                       color: white,
                       fontSize: 16.sp,
                     ),
                     accountEmail: Comman_Text(
-                      text: "${useremail}",
+                      text: sharedPreferences!.getString("profile_email"),
                       color: white,
                       fontSize: 16.sp,
                     ),
@@ -105,7 +106,10 @@ class _HomeScreen1State extends State<HomeScreen1>
                           fontFamily: "JS1",
                           fontWeight: FontWeight.bold,
                           fontSize: Get.height * 0.03,
-                          text: "${username}".split("").first),
+                          text:
+                              "${sharedPreferences!.getString("profile_name")}"
+                                  .split("")
+                                  .first),
                     ),
                   ),
                 ),
@@ -144,7 +148,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                     Get.to(Bottom_navigation());
                   }
                   if (index == 1) {
-                    Get.to(CategoryScreen_2());
+                    Get.to(CategoriesScreen());
                   }
                   if (index == 2) {
                     Get.to(OderScreen());

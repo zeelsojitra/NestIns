@@ -17,7 +17,9 @@ class _Goa_kunbi_sareeState extends State<Goa_kunbi_saree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: coomanAppBar(
+        name: "Category",
+      ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('Product')

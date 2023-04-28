@@ -148,6 +148,9 @@ class _Sign_InState extends State<Sign_In> {
                     print("hello");
                     setState(() {
                       if (gloablekey.currentState!.validate()) {
+                        String? name, email;
+                        name = usernamecontroler.text;
+                        email = Email_controler.text;
                         EmailAuthService.LoginUser(
                                 password: Password_controler.text,
                                 email: Email_controler.text)
@@ -162,6 +165,10 @@ class _Sign_InState extends State<Sign_In> {
                                 .whenComplete(
                                   () => Get.off(Bottom_navigation()),
                                 );
+                            await sharedPreferences!
+                                .setString("profile_email", email!);
+                            await sharedPreferences!
+                                .setString("profile_name", name!);
                           } else {
                             setState(() {
                               isLoding = false;

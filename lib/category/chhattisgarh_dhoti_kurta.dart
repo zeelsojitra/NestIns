@@ -17,7 +17,9 @@ class _chhattisgarh_dhoti_kurtaState extends State<chhattisgarh_dhoti_kurta> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: coomanAppBar(
+        name: "Category",
+      ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('Product')
