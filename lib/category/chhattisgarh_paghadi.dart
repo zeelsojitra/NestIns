@@ -17,7 +17,9 @@ class _chhattisgarh_paghadiState extends State<chhattisgarh_paghadi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: coomanAppBar(
+        name: "Category",
+      ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('Product')
