@@ -105,11 +105,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   CircleAvatar(
-                                    radius: 30,
+                                    radius: 23.sp,
                                     backgroundColor: white,
                                     child: Comman_Text(
                                         fontFamily: "JM1",
-                                        fontSize: 25.sp,
+                                        fontSize: 20.sp,
                                         fontWeight: FontWeight.bold,
                                         color: DarkGreen2,
                                         text:
@@ -122,6 +122,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ),
                                   Comman_Text(
                                     fontFamily: "JM1",
+
                                     text: sharedPreferences!
                                         .getString("profile_name")!,
                                     //text: "profile email",
@@ -137,7 +138,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         .getString("profile_email")!,
                                     //text: "profile email",
                                     color: white,
-                                    fontSize: 12.sp,
+                                    fontSize: 11.sp,
                                   ),
                                 ],
                               ),
@@ -255,9 +256,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       context: context,
                                       builder: (context) {
                                         return AlertDialog(
-                                          title: const Text("Logout"),
+                                          title: const Text("Logout",
+                                              style:
+                                                  TextStyle(fontFamily: "JM1")),
                                           content: const Text(
-                                              "Are you sure you want to logout?"),
+                                              "Are you sure you want to logout?",
+                                              style:
+                                                  TextStyle(fontFamily: "JV1")),
                                           actions: [
                                             IconButton(
                                               onPressed: () {
@@ -329,6 +334,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
                                     Comman_Text(
                                       text: profile[index]['name'],
+                                      fontFamily: "JV1",
+                                      fontWeight: FontWeight.w500,
                                       fontSize: 16.sp,
                                       color: DarkGreen2,
                                     ),

@@ -58,6 +58,8 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                 fillcolor: Colors.grey.shade200,
                 controller: usernamecontroler,
                 hinttext: "Enter Name",
+                HintfontFamily: "JM1",
+                fontFamily: "JV1",
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Enter Name";
@@ -84,10 +86,12 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                 height: 15.sp,
               ),
               Comman_TexxtFiled(
+                fontFamily: "JV1",
                 filled: true,
                 fillcolor: Colors.grey.shade200,
                 controller: Email_controler,
                 hinttext: "Enter Email",
+                HintfontFamily: "JM1",
                 validator: (value) {
                   final bool emailValid = email.hasMatch(value!);
 
@@ -131,6 +135,8 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                       : Icon(Icons.visibility),
                 ),
                 hinttext: "Enter password",
+                HintfontFamily: "JM1",
+                fontFamily: "JV1",
                 validator: (value) {
                   final bool passwordValid = password.hasMatch(value!);
 
@@ -208,6 +214,7 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                           child: Comman_Text(
                             text: "Sign Up",
                             color: white,
+                            fontFamily: "JM1",
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w400,
                           ),

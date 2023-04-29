@@ -258,6 +258,7 @@ class _HomeScreen1State extends State<HomeScreen1>
             elevation: 4.0,
             title: const Text(
               "Home",
+              style: TextStyle(fontFamily: "JS1"),
             ),
             actions: [
               IconButton(
@@ -387,7 +388,8 @@ class _HomeScreen1State extends State<HomeScreen1>
                                             Comman_Text(
                                               text: "Catalogue",
                                               fontSize: 17.sp,
-                                              fontWeight: FontWeight.bold,
+                                              fontFamily: "JM1",
+                                              fontWeight: FontWeight.w700,
                                             ),
                                             Spacer(),
                                             TextButton(
@@ -396,6 +398,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                               },
                                               child: Comman_Text(
                                                 text: "See All  >",
+                                                fontFamily: "JM1",
                                                 fontSize: 13.sp,
                                               ),
                                             ),
@@ -438,8 +441,9 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                   text: Catalogue[index]
                                                       ['name'],
                                                   color: white,
+                                                  fontFamily: "JV1",
                                                   fontSize: 13.sp,
-                                                  fontWeight: FontWeight.w500,
+                                                  fontWeight: FontWeight.w600,
                                                 ),
                                               ),
                                             );
@@ -455,7 +459,8 @@ class _HomeScreen1State extends State<HomeScreen1>
                                         child: Comman_Text(
                                           text: "Products",
                                           fontSize: 18.sp,
-                                          fontWeight: FontWeight.w600,
+                                          fontFamily: "JM1",
+                                          fontWeight: FontWeight.w700,
                                         ),
                                       ),
                                       SizedBox(
@@ -577,15 +582,15 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                       ),
                                                                       Positioned(
                                                                         bottom:
-                                                                            -18,
-                                                                        right:
                                                                             -15,
+                                                                        right:
+                                                                            -10,
                                                                         child:
                                                                             Container(
                                                                           height:
-                                                                              27.sp,
+                                                                              30.sp,
                                                                           width:
-                                                                              27.sp,
+                                                                              30.sp,
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             boxShadow: [
@@ -639,12 +644,14 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
+                                                                    fontFamily:
+                                                                        "JM1",
                                                                     fontSize:
                                                                         15.sp,
                                                                   ),
                                                                   SizedBox(
                                                                     height:
-                                                                        6.sp,
+                                                                        2.sp,
                                                                   ),
                                                                   Row(
                                                                     children: [
@@ -667,8 +674,10 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                             17.sp,
                                                                         color:
                                                                             red,
+                                                                        fontFamily:
+                                                                            "JV1",
                                                                         fontWeight:
-                                                                            FontWeight.w500,
+                                                                            FontWeight.w700,
                                                                       ),
                                                                     ],
                                                                   ),

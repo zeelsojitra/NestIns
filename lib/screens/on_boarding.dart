@@ -42,6 +42,7 @@ class _On_BoardingState extends State<On_Boarding> {
                             },
                             child: Comman_Text(
                               text: "Skip",
+                              fontFamily: "JB1",
                               fontWeight: FontWeight.bold,
                               color: black,
                               fontSize: 17.sp,
@@ -72,10 +73,11 @@ class _On_BoardingState extends State<On_Boarding> {
                               color: black,
                               text: onbording[index]['name'],
                               fontWeight: FontWeight.bold,
-                              fontSize: 15.sp,
+                              fontFamily: "JM1",
+                              fontSize: 17.sp,
                             ),
                             SizedBox(
-                              height: 25.sp,
+                              height: 20.sp,
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10),
@@ -83,7 +85,8 @@ class _On_BoardingState extends State<On_Boarding> {
                                 color: grey,
                                 text: onbording[index]['subtitle'],
                                 fontWeight: FontWeight.bold,
-                                fontSize: 14.sp,
+                                fontFamily: "JV1",
+                                fontSize: 15.sp,
                               ),
                             ),
                             Comman_Text(

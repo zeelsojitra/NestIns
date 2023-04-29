@@ -56,226 +56,237 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            SizedBox(height: Get.height * 0.055),
-            Image.asset(
-              main_logo,
-              height: Get.height * 0.15,
-            ),
-            Text(
-              "E-mail Verification",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: Get.height * 0.038),
-            ),
-            SizedBox(height: Get.height * 0.015),
-            Text(
-              "We need to register your E-mail before getting started!",
-              style: TextStyle(fontSize: Get.height * 0.022),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: Get.height * 0.02),
-            Comman_Container(
-              child: Column(
-                children: [
-                  Container(
-                    child: TabBar(
-                      labelPadding: EdgeInsets.symmetric(
-                          horizontal: 20.sp, vertical: 10.sp),
-                      controller: tabController,
-                      indicatorColor: Color(0xff2D6A4F),
-                      indicatorPadding: EdgeInsets.symmetric(horizontal: 25.sp),
-                      tabs: List.generate(
-                        2,
-                        (index) => Center(
-                          child: Comman_Text(
-                            text: name[index],
-                            fontSize: 16.sp,
-                            color: selected == index
-                                ? Color(0xff2D6A4F)
-                                : Colors.grey,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5.sp),
+          child: Column(
+            children: [
+              SizedBox(height: Get.height * 0.055),
+              Image.asset(
+                main_logo,
+                height: Get.height * 0.15,
+              ),
+              Text(
+                "E-mail Verification",
+                style: TextStyle(
+                    fontFamily: "JV1",
+                    fontWeight: FontWeight.bold,
+                    fontSize: Get.height * 0.038),
+              ),
+              SizedBox(height: Get.height * 0.015),
+              Text(
+                "We need to register your E-mail before getting started!",
+                style: TextStyle(
+                  fontSize: Get.height * 0.022,
+                  fontFamily: "JV1",
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: Get.height * 0.02),
+              Comman_Container(
+                child: Column(
+                  children: [
+                    Container(
+                      child: TabBar(
+                        labelPadding: EdgeInsets.symmetric(
+                            horizontal: 20.sp, vertical: 10.sp),
+                        controller: tabController,
+                        indicatorColor: Color(0xff2D6A4F),
+                        indicatorPadding:
+                            EdgeInsets.symmetric(horizontal: 25.sp),
+                        tabs: List.generate(
+                          2,
+                          (index) => Center(
+                            child: Comman_Text(
+                              text: name[index],
+                              fontSize: 16.sp,
+                              fontFamily: "JM1",
+                              color: selected == index
+                                  ? Color(0xff2D6A4F)
+                                  : Colors.grey,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Comman_Container(
-                    borderRadius: BorderRadius.circular(40),
-                    color: Colors.white,
-                    height: 270.sp,
-                    width: 500.sp,
-                    child: TabBarView(
-                      controller: tabController,
-                      children: [
-                        Sign_Up(),
-                        Sign_In(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey,
-                  spreadRadius: 1,
-                  offset: Offset(2, 2),
-                  blurRadius: 7,
-                )
-              ],
-              height: 320.sp,
-              width: 260.sp,
-            ),
-            SizedBox(height: 20.sp),
-            Center(
-              child: Comman_Text(
-                text: "Or Sign In With",
-                color: Colors.grey,
-                fontWeight: FontWeight.w400,
-                fontSize: 16.sp,
-              ),
-            ),
-            SizedBox(
-              height: 15.sp,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // GestureDetector(
-                //   onTap: () {
-                //     Navigator.push(
-                //         context,
-                //         MaterialPageRoute(
-                //           builder: (context) => Enter_mobile(),
-                //         ));
-                //   },
-                //   child: Container(
-                //     height: 38.sp,
-                //     width: 38.sp,
-                //     decoration: BoxDecoration(
-                //       shape: BoxShape.circle,
-                //       color: Colors.white,
-                //       boxShadow: [
-                //         BoxShadow(
-                //           color: Colors.grey,
-                //           blurRadius: 1,
-                //           offset: Offset(2, 3),
-                //           spreadRadius: 1,
-                //         )
-                //       ],
-                //     ),
-                //     child: Lottie.asset(
-                //       "asserts/lottie/calling.json",
-                //       width: 27.sp,
-                //       height: 27.sp,
-                //     ),
-                //   ),
-                // ),
-                GestureDetector(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return LodingDiloge(
-                          message: "",
-                        );
-                      },
-                    );
-
-                    GoogleAuthService.signInWithGoogle().then((value) async {
-                      if (value != null) {
-                        Get.back();
-                        Get.off(Bottom_navigation());
-                        FirebaseFirestore.instance
-                            .collection("user")
-                            .doc(FirebaseAuth.instance.currentUser!.uid)
-                            .set({
-                          "profile_image": profile_image,
-                          "profile_name": profile_name,
-                          "profile_email": profile_email,
-                          "favourite": [],
-                          "buyNow": [],
-                          "add to cart": [],
-                          "User_id": FirebaseAuth.instance.currentUser!.uid,
-                        });
-                        SharedPreferences sharedPreferences =
-                            await SharedPreferences.getInstance();
-                        await sharedPreferences.setBool(
-                            Splash_ScreenState.KeyValue, true);
-                        await sharedPreferences!
-                            .setString("profile_image", profile_image!);
-                        await sharedPreferences!
-                            .setString("profile_name", profile_name!);
-                        await sharedPreferences!
-                            .setString("profile_email", profile_email!);
-                      } else {
-                        Get.back();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                                "Email is already in use by another accoount"),
-                          ),
-                        );
-                      }
-                    });
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+                    Comman_Container(
+                      borderRadius: BorderRadius.circular(40),
                       color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 1,
-                          offset: Offset(2, 3),
-                          spreadRadius: 1,
-                        )
-                      ],
+                      height: 270.sp,
+                      width: 500.sp,
+                      child: TabBarView(
+                        controller: tabController,
+                        children: [
+                          Sign_Up(),
+                          Sign_In(),
+                        ],
+                      ),
                     ),
-                    height: 38.sp,
-                    width: 38.sp,
-                    child: Center(
-                      child: Lottie.asset(
-                        'asserts/lottie/google.json',
-                        height: 27.sp,
-                        width: 27.sp,
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey,
+                    spreadRadius: 1,
+                    offset: Offset(2, 2),
+                    blurRadius: 7,
+                  )
+                ],
+                height: 320.sp,
+                width: 260.sp,
+              ),
+              SizedBox(height: 20.sp),
+              Center(
+                child: Comman_Text(
+                  text: "Or Sign In With",
+                  fontFamily: "JV1",
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16.sp,
+                ),
+              ),
+              SizedBox(
+                height: 15.sp,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //           builder: (context) => Enter_mobile(),
+                  //         ));
+                  //   },
+                  //   child: Container(
+                  //     height: 38.sp,
+                  //     width: 38.sp,
+                  //     decoration: BoxDecoration(
+                  //       shape: BoxShape.circle,
+                  //       color: Colors.white,
+                  //       boxShadow: [
+                  //         BoxShadow(
+                  //           color: Colors.grey,
+                  //           blurRadius: 1,
+                  //           offset: Offset(2, 3),
+                  //           spreadRadius: 1,
+                  //         )
+                  //       ],
+                  //     ),
+                  //     child: Lottie.asset(
+                  //       "asserts/lottie/calling.json",
+                  //       width: 27.sp,
+                  //       height: 27.sp,
+                  //     ),
+                  //   ),
+                  // ),
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return LodingDiloge(
+                            message: "",
+                          );
+                        },
+                      );
+
+                      GoogleAuthService.signInWithGoogle().then((value) async {
+                        if (value != null) {
+                          Get.back();
+                          Get.off(Bottom_navigation());
+                          FirebaseFirestore.instance
+                              .collection("user")
+                              .doc(FirebaseAuth.instance.currentUser!.uid)
+                              .set({
+                            "profile_image": profile_image,
+                            "profile_name": profile_name,
+                            "profile_email": profile_email,
+                            "favourite": [],
+                            "buyNow": [],
+                            "add to cart": [],
+                            "User_id": FirebaseAuth.instance.currentUser!.uid,
+                          });
+                          SharedPreferences sharedPreferences =
+                              await SharedPreferences.getInstance();
+                          await sharedPreferences.setBool(
+                              Splash_ScreenState.KeyValue, true);
+                          await sharedPreferences!
+                              .setString("profile_image", profile_image!);
+                          await sharedPreferences!
+                              .setString("profile_name", profile_name!);
+                          await sharedPreferences!
+                              .setString("profile_email", profile_email!);
+                        } else {
+                          Get.back();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                  "Email is already in use by another accoount"),
+                            ),
+                          );
+                        }
+                      });
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 1,
+                            offset: Offset(2, 3),
+                            spreadRadius: 1,
+                          )
+                        ],
+                      ),
+                      height: 38.sp,
+                      width: 38.sp,
+                      child: Center(
+                        child: Lottie.asset(
+                          'asserts/lottie/google.json',
+                          height: 27.sp,
+                          width: 27.sp,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                // GestureDetector(
-                //   onTap: () {
-                //     ScaffoldMessenger.of(context).showSnackBar(
-                //         SnackBar(content: Text("Invalid User!")));
-                //   },
-                //   child: Container(
-                //     decoration: BoxDecoration(
-                //       shape: BoxShape.circle,
-                //       color: Colors.white,
-                //       boxShadow: [
-                //         BoxShadow(
-                //           color: Colors.grey,
-                //           blurRadius: 1,
-                //           offset: Offset(2, 3),
-                //           spreadRadius: 1,
-                //         )
-                //       ],
-                //     ),
-                //     height: 38.sp,
-                //     width: 38.sp,
-                //     child: Center(
-                //       child: Lottie.asset(
-                //         'asserts/lottie/apple.json',
-                //         height: 27.sp,
-                //         width: 27.sp,
-                //       ),
-                //     ),
-                //   ),
-                // ),
-              ],
-            ),
-          ],
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     ScaffoldMessenger.of(context).showSnackBar(
+                  //         SnackBar(content: Text("Invalid User!")));
+                  //   },
+                  //   child: Container(
+                  //     decoration: BoxDecoration(
+                  //       shape: BoxShape.circle,
+                  //       color: Colors.white,
+                  //       boxShadow: [
+                  //         BoxShadow(
+                  //           color: Colors.grey,
+                  //           blurRadius: 1,
+                  //           offset: Offset(2, 3),
+                  //           spreadRadius: 1,
+                  //         )
+                  //       ],
+                  //     ),
+                  //     height: 38.sp,
+                  //     width: 38.sp,
+                  //     child: Center(
+                  //       child: Lottie.asset(
+                  //         'asserts/lottie/apple.json',
+                  //         height: 27.sp,
+                  //         width: 27.sp,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

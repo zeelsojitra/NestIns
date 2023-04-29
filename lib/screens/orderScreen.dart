@@ -25,7 +25,7 @@ class _OderScreenState extends State<OderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: coomanAppBar(
-        name: "Your Oder",
+        name: "Your Order",
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance

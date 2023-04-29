@@ -3,6 +3,8 @@ import 'package:e_com/common_screen/Comman_Container.dart';
 import 'package:e_com/globle/media_query.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:sizer/sizer.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -116,7 +118,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.only(
-                                left: 10, right: 10, top: 10, bottom: 5),
+                                left: 10, right: 10, top: 2, bottom: 5),
                             child: SingleChildScrollView(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,18 +162,18 @@ class DetilsScreenState extends State<DetilsScreen> {
                                             Comman_Text(
                                               text: "Product Name :",
                                               color: black,
-                                              fontSize: height(context) / 35,
+                                              fontSize: height(context) / 40,
                                               fontWeight: FontWeight.w400,
                                               fontFamily: 'JM1',
                                             ),
                                             SizedBox(
-                                              width: 10,
+                                              width: 8.sp,
                                             ),
                                             Flexible(
                                               child: Comman_Text(
                                                 text: "${widget.name}",
                                                 color: grey,
-                                                fontSize: height(context) / 35,
+                                                fontSize: height(context) / 40,
                                                 fontFamily: 'JM1',
                                               ),
                                             ),
@@ -185,7 +187,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                                             Comman_Text(
                                               text: "Rs :",
                                               color: black,
-                                              fontSize: height(context) / 35,
+                                              fontSize: height(context) / 40,
                                               fontWeight: FontWeight.w400,
                                               fontFamily: 'JM1',
                                             ),
@@ -195,7 +197,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                                             Comman_Text(
                                               text: "${widget.price}₹",
                                               color: red,
-                                              fontSize: height(context) / 35,
+                                              fontSize: height(context) / 40,
                                               fontWeight: FontWeight.w400,
                                               fontFamily: 'JM1',
                                             ),
@@ -209,19 +211,21 @@ class DetilsScreenState extends State<DetilsScreen> {
                                             Comman_Text(
                                               text: "Category:",
                                               color: black,
-                                              fontSize: height(context) / 35,
+                                              fontSize: height(context) / 40,
                                               fontWeight: FontWeight.w400,
                                               fontFamily: 'JM1',
                                             ),
                                             SizedBox(
                                               width: 5.sp,
                                             ),
-                                            Comman_Text(
-                                              text: "${widget.category}",
-                                              color: grey,
-                                              fontSize: height(context) / 35,
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: 'JM1',
+                                            Flexible(
+                                              child: Comman_Text(
+                                                text: "${widget.category}",
+                                                color: grey,
+                                                fontSize: height(context) / 40,
+                                                fontWeight: FontWeight.w400,
+                                                fontFamily: 'JM1',
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -235,7 +239,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                                             Comman_Text(
                                               text: "Product Descripation :",
                                               color: black,
-                                              fontSize: height(context) / 35,
+                                              fontSize: height(context) / 40,
                                               fontWeight: FontWeight.w400,
                                               fontFamily: 'JM1',
                                             ),
@@ -245,7 +249,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                                             Comman_Text(
                                               text: "${widget.details}",
                                               color: grey,
-                                              fontSize: height(context) / 35,
+                                              fontSize: height(context) / 40,
                                               fontWeight: FontWeight.w400,
                                               fontFamily: "JM1",
                                             ),
@@ -259,7 +263,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                                             Comman_Text(
                                               text: "Product Rating:",
                                               color: black,
-                                              fontSize: height(context) / 35,
+                                              fontSize: height(context) / 40,
                                               fontWeight: FontWeight.w400,
                                               fontFamily: 'JM1',
                                             ),
@@ -302,9 +306,9 @@ class DetilsScreenState extends State<DetilsScreen> {
                                                     color: white,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize:
-                                                        height(context) / 45,
+                                                        height(context) / 40,
                                                     text: "Add to card",
-                                                    fontFamily: "JB1",
+                                                    fontFamily: "JM1",
                                                   ),
                                                 ),
                                                 color: red,
@@ -350,9 +354,9 @@ class DetilsScreenState extends State<DetilsScreen> {
                                                     color: black,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize:
-                                                        height(context) / 45,
+                                                        height(context) / 40,
                                                     text: "Buy Now",
-                                                    fontFamily: "JB1",
+                                                    fontFamily: "JM1",
                                                   ),
                                                 ),
                                                 color: amber,
@@ -389,6 +393,9 @@ class DetilsScreenState extends State<DetilsScreen> {
                                                   // }
                                                 },
                                               ),
+                                              SizedBox(
+                                                height: 10.sp,
+                                              )
                                             ],
                                           ),
                                         )
