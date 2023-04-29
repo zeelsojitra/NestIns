@@ -91,11 +91,13 @@ class _HomeScreen1State extends State<HomeScreen1>
                         borderRadius: BorderRadius.circular(17)),
                     accountName: Comman_Text(
                       text: sharedPreferences!.getString("profile_name"),
+                      fontFamily: "JV1",
                       color: white,
                       fontSize: 16.sp,
                     ),
                     accountEmail: Comman_Text(
                       text: sharedPreferences!.getString("profile_email"),
+                      fontFamily: "JV1",
                       color: white,
                       fontSize: 16.sp,
                     ),
@@ -103,7 +105,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                       backgroundColor: Colors.white,
                       child: Comman_Text(
                           color: DarkGreen2,
-                          fontFamily: "JS1",
+                          fontFamily: "JB1",
                           fontWeight: FontWeight.bold,
                           fontSize: Get.height * 0.03,
                           text:
@@ -165,9 +167,13 @@ class _HomeScreen1State extends State<HomeScreen1>
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                            title: const Text("Logout"),
-                            content:
-                                const Text("Are you sure you want to logout?"),
+                            title: const Text("Logout",
+                                style: TextStyle(
+                                    fontFamily: "JV1",
+                                    fontWeight: FontWeight.bold)),
+                            content: const Text(
+                                "Are you sure you want to logout?",
+                                style: TextStyle(fontFamily: "JV1")),
                             actions: [
                               IconButton(
                                 onPressed: () {
@@ -231,6 +237,8 @@ class _HomeScreen1State extends State<HomeScreen1>
                         ),
                         Comman_Text(
                           text: drawer[index]['name'],
+                          fontFamily: "JV1",
+                          fontWeight: FontWeight.w600,
                           fontSize: 16.sp,
                           color: Colors.white,
                         )

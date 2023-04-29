@@ -125,6 +125,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                               Comman_Text(
                                 text: drawer[index]['name'],
                                 fontSize: 16.sp,
+                                fontFamily: "JV1",
                                 color: DarkGreen2,
                               )
                             ],

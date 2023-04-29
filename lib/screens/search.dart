@@ -44,6 +44,7 @@ class _SearchState extends State<Search> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Comman_Text(
+                      fontFamily: "JV1",
                       text: searchresult[index]["product_name"],
                     ),
                     subtitle: Comman_Text(
