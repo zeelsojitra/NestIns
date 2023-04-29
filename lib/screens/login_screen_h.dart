@@ -191,7 +191,7 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
                             .collection("user")
                             .doc(FirebaseAuth.instance.currentUser!.uid)
                             .set({
-                          "profile_image": profile_image,
+                          "profile_image": "",
                           "profile_name": profile_name,
                           "profile_email": profile_email,
                           "favourite": [],
@@ -203,8 +203,6 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
                             await SharedPreferences.getInstance();
                         await sharedPreferences.setBool(
                             Splash_ScreenState.KeyValue, true);
-                        await sharedPreferences!
-                            .setString("profile_image", profile_image!);
                         await sharedPreferences!
                             .setString("profile_name", profile_name!);
                         await sharedPreferences!

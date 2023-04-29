@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-String? profile_name, profile_image, profile_email;
+String? profile_name, profile_email; //profile_image,
 
 class GoogleAuthService {
   static Future<UserCredential?> signInWithGoogle() async {
@@ -25,7 +25,7 @@ class GoogleAuthService {
       print("User photo ${_user?.photoURL}");
       print("User Email ${_user?.email}");
       profile_name = _user!.displayName;
-      profile_image = _user!.photoURL;
+      // profile_image = _user!.photoURL;
       profile_email = _user!.email;
       // Once signed in, return the UserCredential
       return await FirebaseAuth.instance.signInWithCredential(credential);
