@@ -101,17 +101,28 @@ class _HomeScreen1State extends State<HomeScreen1>
                       color: white,
                       fontSize: 16.sp,
                     ),
-                    currentAccountPicture: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child: Comman_Text(
-                          color: DarkGreen2,
-                          fontFamily: "JB1",
-                          fontWeight: FontWeight.bold,
-                          fontSize: Get.height * 0.03,
-                          text:
-                              "${sharedPreferences!.getString("profile_name")}"
-                                  .split("")
-                                  .first),
+
+                    //margin: EdgeInsets.symmetric(horizontal: 10),
+                    currentAccountPicture: Center(
+                      child: Container(
+                        height: 50.sp,
+                        width: 50.sp,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: Center(
+                          child: Comman_Text(
+                              color: DarkGreen2,
+                              fontFamily: "JB1",
+                              fontWeight: FontWeight.bold,
+                              fontSize: Get.height * 0.03,
+                              text:
+                                  "${sharedPreferences!.getString("profile_name")}"
+                                      .split("")
+                                      .first),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -402,7 +413,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                             Spacer(),
                                             TextButton(
                                               onPressed: () {
-                                                Get.to(CategoryScreen_2());
+                                                Get.to(CategoriesScreen());
                                               },
                                               child: Comman_Text(
                                                 text: "See All  >",
