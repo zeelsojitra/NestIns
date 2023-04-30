@@ -166,7 +166,7 @@ class _AddressDemoState extends State<AddressDemo> {
 
   void openCheckOut() {
     var options = {
-      'key': 'rzp_test_bbFQbI2z7DuPX2',
+      'key': 'rzp_test_nIrj2lNM55W2mt',
       'amount': int.parse(widget.pprice) * 100,
       'name': 'NestIn',
       'description': 'Fine T-Shirt',
