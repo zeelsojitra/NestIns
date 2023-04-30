@@ -25,7 +25,7 @@ class _OderScreenState extends State<OderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: coomanAppBar(
-        name: "Your Oder",
+        name: "Your Order",
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
@@ -89,22 +89,26 @@ class _OderScreenState extends State<OderScreen> {
                                 children: [
                                   Comman_Text(
                                       text:
-                                          "Product Name :- ${order[index].get("product_name")}",
-                                      fontSize: 15.sp),
+                                          "${order[index].get("product_name")}",
+                                      fontSize: 15.sp,
+                                      fontFamily: "JM1"),
                                   SizedBox(
-                                    height: 10.sp,
+                                    height: 5.sp,
                                   ),
                                   Comman_Text(
                                       text:
                                           order[index].get("product_catagory"),
-                                      fontSize: 15.sp),
+                                      fontSize: 15.sp,
+                                      fontFamily: "JV1"),
                                   SizedBox(
                                     height: 10.sp,
                                   ),
                                   Comman_Text(
-                                    text: "OrderId",
-                                    fontSize: 15.sp,
-                                  ),
+                                      text: order[index].get("product_price") +
+                                          "₹",
+                                      fontSize: 15.sp,
+                                      color: red,
+                                      fontFamily: "JV1"),
                                 ],
                               ),
                             )

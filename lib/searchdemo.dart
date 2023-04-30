@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_com/common_screen/Comman_Container.dart';
+import 'package:e_com/globle/variable.dart';
 import 'package:e_com/screens/Details_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:sizer/sizer.dart';
 
 class searchpage extends StatefulWidget {
   const searchpage({Key? key}) : super(key: key);
@@ -47,10 +50,12 @@ class _searchpageState extends State<searchpage> {
                       query = value;
                     });
                   },
+                  style: TextStyle(fontFamily: "JV1"),
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search),
                     fillColor: Colors.grey,
-                    hintText: "Search Student By Registration Id",
+                    hintText: "Search Product Name",
+                    hintStyle: TextStyle(fontFamily: "JV1"),
                     filled: false,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -85,9 +90,10 @@ class _searchpageState extends State<searchpage> {
                               return varData.isEmpty
                                   ? Center(
                                       child: Text(
-                                        "No Student Found!",
+                                        "No Product Found!",
                                         style: TextStyle(
                                           fontSize: 25,
+                                          fontFamily: "JB1",
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -119,43 +125,131 @@ class _searchpageState extends State<searchpage> {
                                                 ),
                                               );
                                             },
-                                            child: Container(
-                                              margin: EdgeInsets.all(10),
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
+                                            child: Card(
+                                              shape: RoundedRectangleBorder(
                                                   borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(10)),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      color: Colors.grey
-                                                          .withOpacity(1),
-                                                      blurRadius: 7,
-                                                    )
-                                                  ]),
-                                              // height: Dimensions.h150 ,
-                                              width: double.infinity,
-                                              child: Column(
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              elevation: 5,
+                                              child: Row(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   SizedBox(height: 10),
-                                                  Center(
-                                                    child: Image.network(
-                                                      product["image"],
-                                                      height: 140,
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 10,
+                                                            vertical: 10),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      child: Comman_Container(
+                                                        height: 120.sp,
+                                                        width: 80.sp,
+                                                        image: DecorationImage(
+                                                            image: NetworkImage(
+                                                              product["image"],
+                                                            ),
+                                                            fit: BoxFit.cover),
+                                                      ),
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
-                                                  Center(
-                                                    child: Text(
-                                                      "  Registration Id :  " +
-                                                          product[
-                                                              "product_name"],
-                                                      style: TextStyle(
-                                                          fontSize: 20),
+                                                  // Center(
+                                                  //   child: Image.network(
+                                                  //     product["image"],
+                                                  //     height: 140,
+                                                  //   ),
+                                                  // ),
+                                                  SizedBox(height: 25),
+
+                                                  Expanded(
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Row(
+                                                          children: [
+                                                            Text(
+                                                              "Name : ",
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      15.sp,
+                                                                  fontFamily:
+                                                                      "JM1"),
+                                                            ),
+                                                            Text(
+                                                              product[
+                                                                  "product_name"],
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      15.sp,
+                                                                  color: grey,
+                                                                  fontFamily:
+                                                                      "JV1"),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            Text(
+                                                              "Catagory : ",
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      15.sp,
+                                                                  fontFamily:
+                                                                      "JM1"),
+                                                            ),
+                                                            Expanded(
+                                                              child: Text(
+                                                                product[
+                                                                    "product_catagory"],
+                                                                maxLines: 1,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        15.sp,
+                                                                    color: grey,
+                                                                    fontFamily:
+                                                                        "JV1"),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            Text(
+                                                              "Price : ",
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      15.sp,
+                                                                  fontFamily:
+                                                                      "JM1"),
+                                                            ),
+                                                            Text(
+                                                              product["product_price"] +
+                                                                  "₹",
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      15.sp,
+                                                                  color: Colors
+                                                                      .red,
+                                                                  fontFamily:
+                                                                      "JV1"),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
+
                                                   SizedBox(height: 10),
                                                   // Text(
                                                   //   "  Name :  " +

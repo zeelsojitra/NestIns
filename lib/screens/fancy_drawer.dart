@@ -91,25 +91,38 @@ class _HomeScreen1State extends State<HomeScreen1>
                         borderRadius: BorderRadius.circular(17)),
                     accountName: Comman_Text(
                       text: sharedPreferences!.getString("profile_name"),
+                      fontFamily: "JV1",
                       color: white,
                       fontSize: 16.sp,
                     ),
                     accountEmail: Comman_Text(
                       text: sharedPreferences!.getString("profile_email"),
+                      fontFamily: "JV1",
                       color: white,
                       fontSize: 16.sp,
                     ),
-                    currentAccountPicture: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child: Comman_Text(
-                          color: DarkGreen2,
-                          fontFamily: "JS1",
-                          fontWeight: FontWeight.bold,
-                          fontSize: Get.height * 0.03,
-                          text:
-                              "${sharedPreferences!.getString("profile_name")}"
-                                  .split("")
-                                  .first),
+
+                    //margin: EdgeInsets.symmetric(horizontal: 10),
+                    currentAccountPicture: Center(
+                      child: Container(
+                        height: 50.sp,
+                        width: 50.sp,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: Center(
+                          child: Comman_Text(
+                              color: DarkGreen2,
+                              fontFamily: "JB1",
+                              fontWeight: FontWeight.bold,
+                              fontSize: Get.height * 0.03,
+                              text:
+                                  "${sharedPreferences!.getString("profile_name")}"
+                                      .split("")
+                                      .first),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -165,9 +178,13 @@ class _HomeScreen1State extends State<HomeScreen1>
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                            title: const Text("Logout"),
-                            content:
-                                const Text("Are you sure you want to logout?"),
+                            title: const Text("Logout",
+                                style: TextStyle(
+                                    fontFamily: "JV1",
+                                    fontWeight: FontWeight.bold)),
+                            content: const Text(
+                                "Are you sure you want to logout?",
+                                style: TextStyle(fontFamily: "JV1")),
                             actions: [
                               IconButton(
                                 onPressed: () {
@@ -231,6 +248,8 @@ class _HomeScreen1State extends State<HomeScreen1>
                         ),
                         Comman_Text(
                           text: drawer[index]['name'],
+                          fontFamily: "JV1",
+                          fontWeight: FontWeight.w600,
                           fontSize: 16.sp,
                           color: Colors.white,
                         )
@@ -258,6 +277,7 @@ class _HomeScreen1State extends State<HomeScreen1>
             elevation: 4.0,
             title: const Text(
               "Home",
+              style: TextStyle(fontFamily: "JS1"),
             ),
             actions: [
               IconButton(
@@ -387,15 +407,17 @@ class _HomeScreen1State extends State<HomeScreen1>
                                             Comman_Text(
                                               text: "Catalogue",
                                               fontSize: 17.sp,
-                                              fontWeight: FontWeight.bold,
+                                              fontFamily: "JM1",
+                                              fontWeight: FontWeight.w700,
                                             ),
                                             Spacer(),
                                             TextButton(
                                               onPressed: () {
-                                                Get.to(CategoryScreen_2());
+                                                Get.to(CategoriesScreen());
                                               },
                                               child: Comman_Text(
                                                 text: "See All  >",
+                                                fontFamily: "JM1",
                                                 fontSize: 13.sp,
                                               ),
                                             ),
@@ -438,8 +460,9 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                   text: Catalogue[index]
                                                       ['name'],
                                                   color: white,
+                                                  fontFamily: "JV1",
                                                   fontSize: 13.sp,
-                                                  fontWeight: FontWeight.w500,
+                                                  fontWeight: FontWeight.w600,
                                                 ),
                                               ),
                                             );
@@ -455,7 +478,8 @@ class _HomeScreen1State extends State<HomeScreen1>
                                         child: Comman_Text(
                                           text: "Products",
                                           fontSize: 18.sp,
-                                          fontWeight: FontWeight.w600,
+                                          fontFamily: "JM1",
+                                          fontWeight: FontWeight.w700,
                                         ),
                                       ),
                                       SizedBox(
@@ -577,15 +601,15 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                       ),
                                                                       Positioned(
                                                                         bottom:
-                                                                            -18,
-                                                                        right:
                                                                             -15,
+                                                                        right:
+                                                                            -10,
                                                                         child:
                                                                             Container(
                                                                           height:
-                                                                              27.sp,
+                                                                              30.sp,
                                                                           width:
-                                                                              27.sp,
+                                                                              30.sp,
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             boxShadow: [
@@ -639,12 +663,14 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
+                                                                    fontFamily:
+                                                                        "JM1",
                                                                     fontSize:
                                                                         15.sp,
                                                                   ),
                                                                   SizedBox(
                                                                     height:
-                                                                        6.sp,
+                                                                        2.sp,
                                                                   ),
                                                                   Row(
                                                                     children: [
@@ -667,8 +693,10 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                             17.sp,
                                                                         color:
                                                                             red,
+                                                                        fontFamily:
+                                                                            "JV1",
                                                                         fontWeight:
-                                                                            FontWeight.w500,
+                                                                            FontWeight.w700,
                                                                       ),
                                                                     ],
                                                                   ),

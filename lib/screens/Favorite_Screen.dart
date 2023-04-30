@@ -149,15 +149,28 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               10),
-                                                      child: Comman_Container(
-                                                        height:
-                                                            Get.height * 0.18,
-                                                        width: Get.width * 0.40,
-                                                        image: DecorationImage(
-                                                            image: NetworkImage(
-                                                              '${data[index]['image']}',
-                                                            ),
-                                                            fit: BoxFit.cover),
+                                                      child: Padding(
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                                vertical: 10,
+                                                                horizontal: 10),
+                                                        child: Comman_Container(
+                                                          height:
+                                                              Get.height * 0.18,
+                                                          width:
+                                                              Get.width * 0.40,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          image:
+                                                              DecorationImage(
+                                                                  image:
+                                                                      NetworkImage(
+                                                                    '${data[index]['image']}',
+                                                                  ),
+                                                                  fit: BoxFit
+                                                                      .cover),
+                                                        ),
                                                       ),
                                                     ),
                                                     SizedBox(
@@ -185,17 +198,9 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                                           ),
                                                           Comman_Text(
                                                             text:
-                                                                '${data[index]['product_details']}',
-                                                            fontSize: 11.sp,
-                                                            color: grey,
-                                                          ),
-                                                          SizedBox(
-                                                            height: 2.sp,
-                                                          ),
-                                                          Comman_Text(
-                                                            text:
                                                                 '${data[index]['product_catagory']}',
                                                             fontSize: 15.sp,
+                                                            fontFamily: "JV1",
                                                             color: grey,
                                                           ),
                                                           SizedBox(
@@ -205,6 +210,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                                             text:
                                                                 '₹ ${data[index]['product_price']}',
                                                             fontSize: 15.sp,
+                                                            fontFamily: "JM1",
                                                             color: red,
                                                           ),
                                                         ],
@@ -293,14 +299,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                   },
                                 ),
                               )
-                            : Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image(image: AssetImage(Empty_fav)),
-                                  ],
-                                ),
-                              );
+                            : Text("Gello");
                       } else {
                         return Center(
                           child: CircularProgressIndicator(),

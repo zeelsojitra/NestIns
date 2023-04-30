@@ -35,6 +35,7 @@ class Comman_Text extends StatelessWidget {
         fontFamily: fontFamily,
         decoration: decoration,
         color: color,
+        overflow: TextOverflow.ellipsis,
         fontSize: fontSize,
         fontWeight: fontWeight,
       ),

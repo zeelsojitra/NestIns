@@ -19,6 +19,8 @@ class Comman_TexxtFiled extends StatelessWidget {
     this.filled,
     this.validator,
     this.labelStyle,
+    this.fontFamily,
+    this.HintfontFamily,
   }) : super(key: key);
   final void Function()? ontap;
   final void Function(String)? onChanged;
@@ -30,6 +32,8 @@ class Comman_TexxtFiled extends StatelessWidget {
   final TextEditingController? controller;
   final hinttext;
   final labletext;
+  final fontFamily;
+  final HintfontFamily;
   final counter;
   final fillcolor;
   final prefixicon;
@@ -40,6 +44,7 @@ class Comman_TexxtFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: TextStyle(fontFamily: fontFamily),
       validator: validator,
       onTap: ontap,
       keyboardType: keyboardType,
@@ -65,6 +70,7 @@ class Comman_TexxtFiled extends StatelessWidget {
         ),
         border: border,
         hintText: hinttext,
+        hintStyle: TextStyle(fontFamily: HintfontFamily),
         labelText: labletext,
         labelStyle: labelStyle,
         counter: counter,

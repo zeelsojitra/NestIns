@@ -69,7 +69,8 @@ class _chhattisgarh_dhoti_kurtaState extends State<chhattisgarh_dhoti_kurta> {
                             ),
                             Comman_Text(
                               text: product["product_name"],
-                              fontWeight: FontWeight.w500,
+                              fontFamily: "JV1",
+                              fontWeight: FontWeight.w600,
                               fontSize: 15.sp,
                             ),
                             SizedBox(
@@ -80,6 +81,7 @@ class _chhattisgarh_dhoti_kurtaState extends State<chhattisgarh_dhoti_kurta> {
                                 Comman_Text(
                                   text: "₹",
                                   fontSize: 14.sp,
+                                  fontFamily: "JV1",
                                   color: black54,
                                 ),
                                 SizedBox(
@@ -89,7 +91,8 @@ class _chhattisgarh_dhoti_kurtaState extends State<chhattisgarh_dhoti_kurta> {
                                   text: product['product_price'],
                                   fontSize: 17.sp,
                                   color: red,
-                                  fontWeight: FontWeight.w500,
+                                  fontFamily: "JV1",
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ],
                             ),

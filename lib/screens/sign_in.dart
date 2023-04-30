@@ -54,6 +54,8 @@ class _Sign_InState extends State<Sign_In> {
                 fillcolor: Colors.grey.shade200,
                 controller: usernamecontroler,
                 hinttext: "Enter Name",
+                HintfontFamily: "JM1",
+                fontFamily: "JV1",
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Enter Name";
@@ -84,6 +86,8 @@ class _Sign_InState extends State<Sign_In> {
                 fillcolor: Colors.grey.shade200,
                 controller: Email_controler,
                 hinttext: "Enter Email",
+                HintfontFamily: "JM1",
+                fontFamily: "JV1",
                 validator: (value) {
                   final bool emailValid = email.hasMatch(value!);
                   if (emailValid) {
@@ -120,6 +124,8 @@ class _Sign_InState extends State<Sign_In> {
                       : Icon(Icons.visibility),
                 ),
                 hinttext: "Enter password",
+                HintfontFamily: "JM1",
+                fontFamily: "JV1",
                 validator: (value) {
                   final bool passwordValid = password.hasMatch(value!);
 
@@ -188,6 +194,7 @@ class _Sign_InState extends State<Sign_In> {
                   child: Center(
                     child: Comman_Text(
                       text: "Sign In",
+                      fontFamily: "JM1",
                       color: Colors.white,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w400,
