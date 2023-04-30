@@ -199,6 +199,7 @@ class _AddressDemoState extends State<AddressDemo> {
             child: Comman_Text(
               text: "Reset",
               color: white,
+              fontFamily: "JM1",
               fontSize: 15.sp,
             ),
           ),
@@ -217,7 +218,11 @@ class _AddressDemoState extends State<AddressDemo> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(left: 10.sp, top: 10.sp),
-                    child: Comman_Text(text: "Contact Info", fontSize: 18.sp),
+                    child: Comman_Text(
+                      text: "Contact Info",
+                      fontFamily: "JM1",
+                      fontSize: 18.sp,
+                    ),
                   ),
                   Padding(
                     padding:
@@ -225,6 +230,7 @@ class _AddressDemoState extends State<AddressDemo> {
                     child: Comman_TexxtFiled(
                       keyboardType: TextInputType.number,
                       maxLength: 10,
+                      fontFamily: "JM1",
                       controller: Phone,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -243,7 +249,10 @@ class _AddressDemoState extends State<AddressDemo> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 10.sp),
-                    child: Comman_Text(text: "Address Info", fontSize: 18.sp),
+                    child: Comman_Text(
+                        text: "Address Info",
+                        fontSize: 18.sp,
+                        fontFamily: "JM1"),
                   ),
                   Row(
                     children: [
@@ -255,6 +264,7 @@ class _AddressDemoState extends State<AddressDemo> {
                           child: Comman_TexxtFiled(
                             keyboardType: TextInputType.number,
                             maxLength: 6,
+                            fontFamily: "JM1",
                             onChanged: (value) {
                               if (value.length == 6) {
                                 getData();
@@ -279,6 +289,7 @@ class _AddressDemoState extends State<AddressDemo> {
                           child: Comman_TexxtFiled(
                             hinttext: "City",
                             controller: City,
+                            fontFamily: "JM1",
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'City can not be empty';
@@ -295,6 +306,7 @@ class _AddressDemoState extends State<AddressDemo> {
                     child: Comman_TexxtFiled(
                       hinttext: "State",
                       controller: STATE,
+                      fontFamily: "JM1",
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'State can not be empty';
@@ -309,6 +321,7 @@ class _AddressDemoState extends State<AddressDemo> {
                       maxLength: 4,
                       keyboardType: TextInputType.number,
                       hinttext: "House No., Building Name",
+                      fontFamily: "JM1",
                       controller: House,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -323,6 +336,7 @@ class _AddressDemoState extends State<AddressDemo> {
                     child: Comman_TexxtFiled(
                       hinttext: "Road name, Area, Colony",
                       controller: Road,
+                      fontFamily: "JM1",
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Road can not be empty';
@@ -337,7 +351,10 @@ class _AddressDemoState extends State<AddressDemo> {
                   Padding(
                     padding: EdgeInsets.only(left: 10.sp, top: 10.sp),
                     child: Comman_Text(
-                        text: "Type of address", fontSize: 12.sp, color: black),
+                        text: "Type of address",
+                        fontSize: 18.sp,
+                        color: black,
+                        fontFamily: "JM1"),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 10.sp, left: 10.sp),
@@ -372,6 +389,7 @@ class _AddressDemoState extends State<AddressDemo> {
                               Center(
                                   child: Comman_Text(
                                 text: addinfo_add[index]['Name'],
+                                fontFamily: "JM1",
                                 fontSize: 15.sp,
                                 fontWeight: FontWeight.w500,
                                 color: controller.Addinfo_Selected == index
@@ -414,8 +432,14 @@ class _AddressDemoState extends State<AddressDemo> {
                         }
                       },
                       child: Comman_Text(
-                          text: "Submit", color: Colors.white, fontSize: 20),
+                          text: "Submit",
+                          color: Colors.white,
+                          fontSize: 20.sp,
+                          fontFamily: "JM1"),
                     ),
+                  ),
+                  SizedBox(
+                    height: 17.sp,
                   ),
                 ],
               ),
