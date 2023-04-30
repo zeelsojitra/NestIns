@@ -140,6 +140,7 @@ class OderDetailsState extends State<OderDetails> {
                                         Comman_Text(
                                           text: "${widget.name}",
                                           color: black,
+                                          fontFamily: "JV1",
                                           fontSize: height(context) / 35,
                                           fontWeight: FontWeight.w400,
                                         ),
