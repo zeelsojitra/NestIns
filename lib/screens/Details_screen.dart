@@ -351,7 +351,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                                                 width: double.maxFinite,
                                                 child: Center(
                                                   child: Comman_Text(
-                                                    color: black,
+                                                    color: white,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize:
                                                         height(context) / 40,
@@ -359,7 +359,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                                                     //fontFamily: "JV1",
                                                   ),
                                                 ),
-                                                color: amber,
+                                                color: DarkGreen,
                                                 ontap: () {
                                                   print("Address Screen");
                                                   Navigator.push(
