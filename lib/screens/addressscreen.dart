@@ -199,7 +199,7 @@ class _AddressDemoState extends State<AddressDemo> {
             child: Comman_Text(
               text: "Reset",
               color: white,
-              fontFamily: "JM1",
+              //fontFamily: "JM1",
               fontSize: 15.sp,
             ),
           ),
@@ -220,7 +220,7 @@ class _AddressDemoState extends State<AddressDemo> {
                     padding: EdgeInsets.only(left: 10.sp, top: 10.sp),
                     child: Comman_Text(
                       text: "Contact Info",
-                      fontFamily: "JM1",
+                      //fontFamily: "JM1",
                       fontSize: 18.sp,
                     ),
                   ),
@@ -250,9 +250,10 @@ class _AddressDemoState extends State<AddressDemo> {
                   Padding(
                     padding: EdgeInsets.only(left: 10.sp),
                     child: Comman_Text(
-                        text: "Address Info",
-                        fontSize: 18.sp,
-                        fontFamily: "JM1"),
+                      text: "Address Info",
+                      fontSize: 18.sp,
+                      //fontFamily: "JM1",
+                    ),
                   ),
                   Row(
                     children: [
@@ -351,10 +352,11 @@ class _AddressDemoState extends State<AddressDemo> {
                   Padding(
                     padding: EdgeInsets.only(left: 10.sp, top: 10.sp),
                     child: Comman_Text(
-                        text: "Type of address",
-                        fontSize: 18.sp,
-                        color: black,
-                        fontFamily: "JM1"),
+                      text: "Type of address",
+                      fontSize: 18.sp,
+                      color: black,
+                      //fontFamily: "JM1",
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 10.sp, left: 10.sp),
@@ -389,7 +391,7 @@ class _AddressDemoState extends State<AddressDemo> {
                               Center(
                                   child: Comman_Text(
                                 text: addinfo_add[index]['Name'],
-                                fontFamily: "JM1",
+                                //fontFamily: "JM1",
                                 fontSize: 15.sp,
                                 fontWeight: FontWeight.w500,
                                 color: controller.Addinfo_Selected == index
@@ -432,10 +434,11 @@ class _AddressDemoState extends State<AddressDemo> {
                         }
                       },
                       child: Comman_Text(
-                          text: "Submit",
-                          color: Colors.white,
-                          fontSize: 20.sp,
-                          fontFamily: "JM1"),
+                        text: "Submit",
+                        color: Colors.white,
+                        fontSize: 20.sp,
+                        //fontFamily: "JM1"
+                      ),
                     ),
                   ),
                   SizedBox(

@@ -212,10 +212,10 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
                             await SharedPreferences.getInstance();
                         await sharedPreferences.setBool(
                             Splash_ScreenState.KeyValue, true);
-                        await sharedPreferences
-                            .setString("profile_name", profile_name!);
-                        await sharedPreferences
-                            .setString("profile_email", profile_email!);
+                        await sharedPreferences.setString(
+                            "profile_name", profile_name!);
+                        await sharedPreferences.setString(
+                            "profile_email", profile_email!);
                       } else {
                         Get.back();
                         ScaffoldMessenger.of(context).showSnackBar(

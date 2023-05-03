@@ -150,75 +150,72 @@ class _Sign_InState extends State<Sign_In> {
               SizedBox(
                 height: 15.sp,
               ),
-              contoller.signinploder == false
-                  ? Center(
-                      child: Comman_Container(
-                        borderRadius: BorderRadius.circular(40),
-                        ontap: () {
-                          print("hello");
-                          if (gloablekey.currentState!.validate()) {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return LodingDiloge(
-                                  message: "",
-                                );
-                              },
-                            );
-                            EmailAuthService.LoginUser(
-                                    password: Password_controler.text,
-                                    email: Email_controler.text)
-                                .then((value) async {
-                              if (value != null) {
-                                Get.back();
-                                Get.off(Bottom_navigation());
-                                FirebaseFirestore.instance
-                                    .collection("user")
-                                    .doc(FirebaseAuth.instance.currentUser!.uid)
-                                    .set({
-                                  "profile_image": "",
-                                  "profile_name": profile_name,
-                                  "profile_email": profile_email,
-                                  "favourite": [],
-                                  "buyNow": [],
-                                  "add to cart": [],
-                                  "User_id":
-                                      FirebaseAuth.instance.currentUser!.uid,
-                                });
-                                SharedPreferences sharedPreferences =
-                                    await SharedPreferences.getInstance();
-                                await sharedPreferences.setBool(
-                                    Splash_ScreenState.KeyValue, true);
-                                await sharedPreferences!.setString(
-                                    "profile_name", usernamecontroler.text!);
-                                await sharedPreferences!.setString(
-                                    "profile_email", Email_controler.text!);
-                              } else {
-                                Get.back();
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text("Invalid Email or Password!"),
-                                  ),
-                                );
-                              }
-                            });
-                          }
+              Center(
+                child: Comman_Container(
+                  borderRadius: BorderRadius.circular(40),
+                  ontap: () {
+                    print("hello");
+                    if (gloablekey.currentState!.validate()) {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return LodingDiloge(
+                            message: "",
+                          );
                         },
-                        height: 35.sp,
-                        width: 140.sp,
-                        color: LightGreen,
-                        child: Center(
-                          child: Comman_Text(
-                            text: "Sign In",
-                            //fontFamily: "JV1",
-                            color: Colors.white,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                    )
-                  : Center(child: CircularProgressIndicator()),
+                      );
+                      EmailAuthService.LoginUser(
+                              password: Password_controler.text,
+                              email: Email_controler.text)
+                          .then((value) async {
+                        if (value != null) {
+                          Get.back();
+                          Get.off(Bottom_navigation());
+                          FirebaseFirestore.instance
+                              .collection("user")
+                              .doc(FirebaseAuth.instance.currentUser!.uid)
+                              .set({
+                            "profile_image": "",
+                            "profile_name": profile_name,
+                            "profile_email": profile_email,
+                            "favourite": [],
+                            "buyNow": [],
+                            "add to cart": [],
+                            "User_id": FirebaseAuth.instance.currentUser!.uid,
+                          });
+                          SharedPreferences sharedPreferences =
+                              await SharedPreferences.getInstance();
+                          await sharedPreferences.setBool(
+                              Splash_ScreenState.KeyValue, true);
+                          await sharedPreferences!.setString(
+                              "profile_name", usernamecontroler.text!);
+                          await sharedPreferences!.setString(
+                              "profile_email", Email_controler.text!);
+                        } else {
+                          Get.back();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Invalid Email or Password!"),
+                            ),
+                          );
+                        }
+                      });
+                    }
+                  },
+                  height: 35.sp,
+                  width: 140.sp,
+                  color: LightGreen,
+                  child: Center(
+                    child: Comman_Text(
+                      text: "Sign In",
+                      //fontFamily: "JV1",
+                      color: Colors.white,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
