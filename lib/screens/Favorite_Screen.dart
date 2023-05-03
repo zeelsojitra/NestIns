@@ -189,7 +189,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                                             text:
                                                                 '${data[index]['product_name']}',
                                                             fontSize: 15.sp,
-                                                            fontFamily: "JB1",
+                                                            ////fontFamily: "JV1",
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                           ),
@@ -200,7 +200,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                                             text:
                                                                 '${data[index]['product_catagory']}',
                                                             fontSize: 15.sp,
-                                                            fontFamily: "JV1",
+                                                            //fontFamily: "JV1",
                                                             color: grey,
                                                           ),
                                                           SizedBox(
@@ -210,7 +210,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                                             text:
                                                                 '₹ ${data[index]['product_price']}',
                                                             fontSize: 15.sp,
-                                                            fontFamily: "JM1",
+                                                            //fontFamily: "JV1",
                                                             color: red,
                                                           ),
                                                         ],

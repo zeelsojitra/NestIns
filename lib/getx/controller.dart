@@ -15,6 +15,7 @@ class Controller extends GetxController {
   RxInt On_Bording_onchange = 0.obs;
   // List likeList = [];
   RxBool signuploder = false.obs;
+  RxBool signinploder = false.obs;
   RxInt logincheck = 0.obs;
   RxBool likeSelected = false.obs;
 

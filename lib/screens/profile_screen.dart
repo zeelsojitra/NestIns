@@ -108,7 +108,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     radius: 23.sp,
                                     backgroundColor: white,
                                     child: Comman_Text(
-                                        fontFamily: "JM1",
+                                        //fontFamily: "JM1",
                                         fontSize: 20.sp,
                                         fontWeight: FontWeight.bold,
                                         color: DarkGreen2,
@@ -121,7 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     height: Get.height * 0.01,
                                   ),
                                   Comman_Text(
-                                    fontFamily: "JM1",
+                                    //fontFamily: "JM1",
 
                                     text: sharedPreferences!
                                         .getString("profile_name")!,
@@ -133,7 +133,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     height: Get.height * 0.0001,
                                   ),
                                   Comman_Text(
-                                    fontFamily: "JM1",
+                                    //fontFamily: "JM1",
                                     text: sharedPreferences!
                                         .getString("profile_email")!,
                                     //text: "profile email",
@@ -334,7 +334,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
                                     Comman_Text(
                                       text: profile[index]['name'],
-                                      fontFamily: "JV1",
+                                      //fontFamily: "JV1",
                                       fontWeight: FontWeight.w500,
                                       fontSize: 16.sp,
                                       color: DarkGreen2,

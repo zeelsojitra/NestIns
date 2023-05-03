@@ -2,11 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_com/common_screen/Comman_Container.dart';
 import 'package:e_com/common_screen/Comman_TeextFiled.dart';
 import 'package:e_com/common_screen/Comman_text.dart';
+import 'package:e_com/screens/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import '../authantication/email authantication/EmailAuthService.dart';
+import '../authantication/google auth service/google_auth_service.dart';
+import '../bottom_Navigation/bottom_navi_demo.dart';
+import '../common_screen/loding.dart';
 import '../globle/variable.dart';
 
 class Sign_Up extends StatefulWidget {
@@ -146,7 +151,9 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                     return "please enter valid password";
                   }
                 },
-                onChanged: (value) {},
+                onChanged: (value) {
+                  gloablekey.currentState!.validate();
+                },
                 prefixicon: Icon(
                   Icons.lock,
                   size: 20.sp,
@@ -163,6 +170,14 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                         ontap: () {
                           print("signuploder frist ${contoller.signuploder}");
                           if (gloablekey.currentState!.validate()) {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return LodingDiloge(
+                                  message: "",
+                                );
+                              },
+                            );
                             // controller.signuploder = true.obs;
                             print("Signuploder true ${contoller.signuploder}");
                             EmailAuthService.SignupUser(
@@ -170,37 +185,35 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                                     password: Password_controler.text)
                                 .then((value) async {
                               if (value != null) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                        "Successfully SignUp Plz Login App"),
-                                  ),
-                                );
-
+                                Get.back();
+                                Get.off(Bottom_navigation());
                                 FirebaseFirestore.instance
                                     .collection("user")
                                     .doc(FirebaseAuth.instance.currentUser!.uid)
                                     .set({
                                   "profile_image": "",
-                                  "profile_name": usernamecontroler.text,
-                                  "profile_email": Email_controler.text,
+                                  "profile_name": profile_name,
+                                  "profile_email": profile_email,
                                   "favourite": [],
                                   "buyNow": [],
+                                  "add to cart": [],
+                                  "User_id":
+                                      FirebaseAuth.instance.currentUser!.uid,
                                 });
-                                contoller.signuploder = false.obs;
-                                print(
-                                    "Signuploder false after create databace ${contoller.signuploder}");
-                                usernamecontroler.clear();
-                                Email_controler.clear();
-                                Password_controler.clear();
+                                SharedPreferences sharedPreferences =
+                                    await SharedPreferences.getInstance();
+                                await sharedPreferences.setBool(
+                                    Splash_ScreenState.KeyValue, true);
+                                await sharedPreferences!.setString(
+                                    "profile_name", usernamecontroler.text!);
+                                await sharedPreferences!.setString(
+                                    "profile_email", Email_controler.text!);
                               } else {
-                                contoller.signuploder = false.obs;
-                                print(
-                                    "singuploder last ${contoller.signuploder}");
+                                Get.back();
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                        "Email is Alerdy Use by Anthor Account"),
+                                        "Email is already in use by another accoount"),
                                   ),
                                 );
                               }
@@ -214,7 +227,7 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                           child: Comman_Text(
                             text: "Sign Up",
                             color: white,
-                            fontFamily: "JM1",
+                            //fontFamily: "JM1",
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w400,
                           ),

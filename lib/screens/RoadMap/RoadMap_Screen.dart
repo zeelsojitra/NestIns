@@ -57,7 +57,7 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
             onPressed: details.onStepCancel,
             child: Comman_Text(
               text: 'Back',
-              fontFamily: "JB1",
+              //fontFamily: "JB1",
               color: black,
             ),
           ),
@@ -69,7 +69,7 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
             onPressed: details.onStepContinue,
             child: Comman_Text(
               text: 'Next',
-              fontFamily: "JB1",
+              //fontFamily: "JB1",
             ),
           ),
         ],
@@ -110,7 +110,7 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
                 children: [
                   Comman_Text(
                     text: "Result:",
-                    fontFamily: "JB1",
+                    //fontFamily: "JB1",
                     fontSize: 15.sp,
                   ),
                 ],
@@ -126,39 +126,50 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
                 steps: [
                   Step(
                       title: Comman_Text(
-                          text: 'Ordered And Approved', fontFamily: "JB1"),
+                        text: 'Ordered And Approved', //fontFamily: "JB1"
+                      ),
                       subtitle: Comman_Text(
                         text:
                             "${DateFormat("dd-MMM-yyyy").format(currentDate)}",
-                        fontFamily: "JM1",
+                        //fontFamily: "JM1",
                       ),
                       content: Comman_Text(
-                          text: 'This is the First step.', fontFamily: "JV1"),
+                        text: 'This is the First step.', //fontFamily: "JV1"
+                      ),
                       isActive: currentStep >= 0,
                       state: currentStep >= 0
                           ? StepState.complete
                           : StepState.complete),
                   Step(
-                    title: Comman_Text(text: 'Packed', fontFamily: "JB1"),
+                    title: Comman_Text(
+                      text: 'Packed',
+                      // fontFamily: "JB1",
+                    ),
                     subtitle: Comman_Text(
                       text: "${DateFormat("dd-MMM-yyyy").format(currentDate)}",
-                      fontFamily: "JM1",
+                      //fontFamily: "JM1",
                     ),
                     content: Comman_Text(
-                        text: 'This is the Second step.', fontFamily: "JV1"),
+                      text: 'This is the Second step.', //fontFamily: "JV1",
+                    ),
                     isActive: currentStep >= 0,
                     state: currentStep >= 1
                         ? StepState.complete
                         : StepState.disabled,
                   ),
                   Step(
-                    title: Comman_Text(text: 'Shipped', fontFamily: "JB1"),
+                    title: Comman_Text(
+                      text: 'Shipped',
+                      //fontFamily: "JB1",
+                    ),
                     subtitle: Comman_Text(
                       text: "${DateFormat("dd-MMM-yyyy").format(currentDate)}",
-                      fontFamily: "JM1",
+                      //fontFamily: "JM1",
                     ),
                     content: Comman_Text(
-                        text: 'This is the Second step.', fontFamily: "JV1"),
+                      text: 'This is the Second step.',
+                      //fontFamily: "JV1",
+                    ),
                     isActive: currentStep >= 0,
                     state: currentStep >= 2
                         ? StepState.complete
@@ -167,11 +178,11 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
                   Step(
                     title: Comman_Text(
                       text: "Delivery",
-                      fontFamily: "JB1",
+                      //fontFamily: "JB1",
                     ),
                     subtitle: Comman_Text(
                       text: "${DateFormat("dd-MMM-yyyy").format(currentDate)}",
-                      fontFamily: "JM1",
+                      //fontFamily: "JM1",
                     ),
                     content: Comman_Text(
                       text: "${DateFormat("dd-MM-yyyy").format(currentDate)}",

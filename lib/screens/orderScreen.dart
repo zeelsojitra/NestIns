@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
 import '../common_screen/Comman_Container.dart';
-import '../globle/media_query.dart';
 import '../globle/variable.dart';
 import 'OderDetails.dart';
 
@@ -56,15 +55,15 @@ class _OderScreenState extends State<OderScreen> {
                           children: [
                             Comman_Container(
                               ontap: () {
-                                Get.to(OderDetails(
-                                  date: order[index].get("createdDate"),
-                                  image: order[index].get("image"),
-                                  name: order[index].get("product_name"),
-                                  price: order[index].get("product_price"),
-                                  details: order[index].get("product_details"),
-                                  category:
-                                      order[index].get("product_catagory"),
-                                ));
+                                // Get.to(OderDetails(
+                                //   date: order[index].get("createdDate"),
+                                //   image: order[index].get("image"),
+                                //   name: order[index].get("product_name"),
+                                //   price: order[index].get("product_price"),
+                                //   details: order[index].get("product_details"),
+                                //   category:
+                                //       order[index].get("product_catagory"),
+                                // ));
                               },
                               child: Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 8.sp),
@@ -88,27 +87,28 @@ class _OderScreenState extends State<OderScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Comman_Text(
-                                      text:
-                                          "${order[index].get("product_name")}",
-                                      fontSize: 15.sp,
-                                      fontFamily: "JM1"),
+                                    text: "${order[index].get("product_name")}",
+                                    fontSize: 15.sp,
+                                    //fontFamily: "JM1",
+                                  ),
                                   SizedBox(
                                     height: 5.sp,
                                   ),
                                   Comman_Text(
-                                      text:
-                                          order[index].get("product_catagory"),
-                                      fontSize: 15.sp,
-                                      fontFamily: "JV1"),
+                                    text: order[index].get("product_catagory"),
+                                    fontSize: 15.sp,
+                                    // fontFamily: "JV1",
+                                  ),
                                   SizedBox(
                                     height: 10.sp,
                                   ),
                                   Comman_Text(
-                                      text: order[index].get("product_price") +
-                                          "₹",
-                                      fontSize: 15.sp,
-                                      color: red,
-                                      fontFamily: "JV1"),
+                                    text:
+                                        order[index].get("product_price") + "₹",
+                                    fontSize: 15.sp,
+                                    color: red,
+                                    //fontFamily: "JV1"
+                                  ),
                                 ],
                               ),
                             )

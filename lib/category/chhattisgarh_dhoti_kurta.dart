@@ -69,7 +69,7 @@ class _chhattisgarh_dhoti_kurtaState extends State<chhattisgarh_dhoti_kurta> {
                             ),
                             Comman_Text(
                               text: product["product_name"],
-                              fontFamily: "JV1",
+                              //fontFamily: "JV1",
                               fontWeight: FontWeight.w600,
                               fontSize: 15.sp,
                             ),
@@ -81,7 +81,7 @@ class _chhattisgarh_dhoti_kurtaState extends State<chhattisgarh_dhoti_kurta> {
                                 Comman_Text(
                                   text: "₹",
                                   fontSize: 14.sp,
-                                  fontFamily: "JV1",
+                                  //fontFamily: "JV1",
                                   color: black54,
                                 ),
                                 SizedBox(
@@ -91,7 +91,7 @@ class _chhattisgarh_dhoti_kurtaState extends State<chhattisgarh_dhoti_kurta> {
                                   text: product['product_price'],
                                   fontSize: 17.sp,
                                   color: red,
-                                  fontFamily: "JV1",
+                                  //fontFamily: "JV1",
                                   fontWeight: FontWeight.w600,
                                 ),
                               ],
@@ -109,13 +109,13 @@ class _chhattisgarh_dhoti_kurtaState extends State<chhattisgarh_dhoti_kurta> {
                           text: "No Image Added!",
                           fontSize: 27,
                           fontWeight: FontWeight.bold,
-                          fontFamily: "JB1",
+                          //fontFamily: "JB1",
                         ),
                         Comman_Text(
                           text: "Once you have added, come back:)",
                           fontSize: 19,
                           color: black54,
-                          fontFamily: "JB1",
+                          //fontFamily: "JB1",
                         ),
                       ],
                     ),

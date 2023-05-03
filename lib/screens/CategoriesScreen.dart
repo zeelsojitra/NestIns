@@ -251,7 +251,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                           color: white,
                         ),
                         leading: Comman_Text(
-                          fontFamily: "JV1",
+                          //fontFamily: "JV1",
                           text: categoriesDemo[index]['name'],
                           fontSize: 15.sp,
                           color: white,

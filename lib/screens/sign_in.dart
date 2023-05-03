@@ -1,14 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_com/common_screen/Comman_Container.dart';
 import 'package:e_com/common_screen/Comman_TeextFiled.dart';
 import 'package:e_com/common_screen/Comman_text.dart';
 import 'package:e_com/globle/shardpefrence.dart';
 import 'package:e_com/screens/splash_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import '../authantication/email authantication/EmailAuthService.dart';
+import '../authantication/google auth service/google_auth_service.dart';
 import '../bottom_Navigation/bottom_NAV.dart';
 import '../bottom_Navigation/bottom_navi_demo.dart';
 import '../common_screen/loding.dart';
@@ -54,7 +57,7 @@ class _Sign_InState extends State<Sign_In> {
                 fillcolor: Colors.grey.shade200,
                 controller: usernamecontroler,
                 hinttext: "Enter Name",
-                HintfontFamily: "JM1",
+                HintfontFamily: "JV1",
                 fontFamily: "JV1",
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -86,7 +89,7 @@ class _Sign_InState extends State<Sign_In> {
                 fillcolor: Colors.grey.shade200,
                 controller: Email_controler,
                 hinttext: "Enter Email",
-                HintfontFamily: "JM1",
+                HintfontFamily: "JV1",
                 fontFamily: "JV1",
                 validator: (value) {
                   final bool emailValid = email.hasMatch(value!);
@@ -124,7 +127,7 @@ class _Sign_InState extends State<Sign_In> {
                       : Icon(Icons.visibility),
                 ),
                 hinttext: "Enter password",
-                HintfontFamily: "JM1",
+                HintfontFamily: "JV1",
                 fontFamily: "JV1",
                 validator: (value) {
                   final bool passwordValid = password.hasMatch(value!);
@@ -147,61 +150,75 @@ class _Sign_InState extends State<Sign_In> {
               SizedBox(
                 height: 15.sp,
               ),
-              Center(
-                child: Comman_Container(
-                  borderRadius: BorderRadius.circular(40),
-                  ontap: () {
-                    print("hello");
-                    setState(() {
-                      if (gloablekey.currentState!.validate()) {
-                        String? name, email;
-                        name = usernamecontroler.text;
-                        email = Email_controler.text;
-                        EmailAuthService.LoginUser(
-                                password: Password_controler.text,
-                                email: Email_controler.text)
-                            .then((value) async {
-                          if (value != null) {
-                            SharedPreferences sh =
-                                await SharedPreferences.getInstance();
-                            Email_controler.clear();
-                            Password_controler.clear();
-                            sh
-                                .setBool(Splash_ScreenState.KeyValue, true)
-                                .whenComplete(
-                                  () => Get.off(Bottom_navigation()),
+              contoller.signinploder == false
+                  ? Center(
+                      child: Comman_Container(
+                        borderRadius: BorderRadius.circular(40),
+                        ontap: () {
+                          print("hello");
+                          if (gloablekey.currentState!.validate()) {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return LodingDiloge(
+                                  message: "",
                                 );
-                            await sharedPreferences!
-                                .setString("profile_email", email!);
-                            await sharedPreferences!
-                                .setString("profile_name", name!);
-                          } else {
-                            setState(() {
-                              isLoding = false;
+                              },
+                            );
+                            EmailAuthService.LoginUser(
+                                    password: Password_controler.text,
+                                    email: Email_controler.text)
+                                .then((value) async {
+                              if (value != null) {
+                                Get.back();
+                                Get.off(Bottom_navigation());
+                                FirebaseFirestore.instance
+                                    .collection("user")
+                                    .doc(FirebaseAuth.instance.currentUser!.uid)
+                                    .set({
+                                  "profile_image": "",
+                                  "profile_name": profile_name,
+                                  "profile_email": profile_email,
+                                  "favourite": [],
+                                  "buyNow": [],
+                                  "add to cart": [],
+                                  "User_id":
+                                      FirebaseAuth.instance.currentUser!.uid,
+                                });
+                                SharedPreferences sharedPreferences =
+                                    await SharedPreferences.getInstance();
+                                await sharedPreferences.setBool(
+                                    Splash_ScreenState.KeyValue, true);
+                                await sharedPreferences!.setString(
+                                    "profile_name", usernamecontroler.text!);
+                                await sharedPreferences!.setString(
+                                    "profile_email", Email_controler.text!);
+                              } else {
+                                Get.back();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text("Invalid Email or Password!"),
+                                  ),
+                                );
+                              }
                             });
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Comman_Text(
-                              text: "Invalid Email or Password",
-                            )));
                           }
-                        });
-                      }
-                    });
-                  },
-                  height: 35.sp,
-                  width: 140.sp,
-                  color: LightGreen,
-                  child: Center(
-                    child: Comman_Text(
-                      text: "Sign In",
-                      fontFamily: "JM1",
-                      color: Colors.white,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-              ),
+                        },
+                        height: 35.sp,
+                        width: 140.sp,
+                        color: LightGreen,
+                        child: Center(
+                          child: Comman_Text(
+                            text: "Sign In",
+                            //fontFamily: "JV1",
+                            color: Colors.white,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    )
+                  : Center(child: CircularProgressIndicator()),
             ],
           ),
         ),
