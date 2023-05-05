@@ -251,7 +251,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                           text: drawer[index]['name'],
                           //fontFamily: "JV1",
                           fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
+                          fontSize: 14.sp,
                           color: Colors.white,
                         )
                       ],

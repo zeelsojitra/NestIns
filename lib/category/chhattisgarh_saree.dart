@@ -38,7 +38,7 @@ class _chhattisgarh_sareeState extends State<chhattisgarh_saree> {
                         mainAxisSpacing: 1,
                         crossAxisSpacing: 1,
                         crossAxisCount: 2,
-                        mainAxisExtent: 300),
+                        mainAxisExtent: 320),
                     itemBuilder: (context, index) {
                       final product = snapshot.data!.docs[index];
                       return Padding(
@@ -46,7 +46,7 @@ class _chhattisgarh_sareeState extends State<chhattisgarh_saree> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Card(
+                            Card( margin: EdgeInsets.only(top: 10.sp),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ),
@@ -69,6 +69,7 @@ class _chhattisgarh_sareeState extends State<chhattisgarh_saree> {
                             ),
                             Comman_Text(
                               text: product["product_name"],
+                              maxLines: 1,
                               fontWeight: FontWeight.w500,
                               fontSize: 15.sp,
                             ),

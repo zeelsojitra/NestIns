@@ -38,7 +38,7 @@ class _Goa_pano_bhajuState extends State<Goa_pano_bhaju> {
                         mainAxisSpacing: 1,
                         crossAxisSpacing: 1,
                         crossAxisCount: 2,
-                        mainAxisExtent: 300),
+                        mainAxisExtent: 320),
                     itemBuilder: (context, index) {
                       final product = snapshot.data!.docs[index];
                       return Padding(
@@ -46,7 +46,7 @@ class _Goa_pano_bhajuState extends State<Goa_pano_bhaju> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Card(
+                            Card( margin: EdgeInsets.only(top: 10.sp),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ),
@@ -68,6 +68,7 @@ class _Goa_pano_bhajuState extends State<Goa_pano_bhaju> {
                               height: 8.sp,
                             ),
                             Comman_Text(
+                              maxLines: 1,
                               text: product["product_name"],
                               fontWeight: FontWeight.w500,
                               fontSize: 15.sp,

@@ -38,7 +38,7 @@ class _Gujrat_ghaghraState extends State<Gujrat_ghaghra> {
                         mainAxisSpacing: 1,
                         crossAxisSpacing: 1,
                         crossAxisCount: 2,
-                        mainAxisExtent: 300),
+                        mainAxisExtent: 320),
                     itemBuilder: (context, index) {
                       final product = snapshot.data!.docs[index];
                       return Padding(
@@ -47,6 +47,7 @@ class _Gujrat_ghaghraState extends State<Gujrat_ghaghra> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Card(
+                              margin: EdgeInsets.only(top: 10.sp),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ),
@@ -68,6 +69,7 @@ class _Gujrat_ghaghraState extends State<Gujrat_ghaghra> {
                               height: 8.sp,
                             ),
                             Comman_Text(
+                              maxLines: 1,
                               text: product["product_name"],
                               fontWeight: FontWeight.w500,
                               fontSize: 15.sp,

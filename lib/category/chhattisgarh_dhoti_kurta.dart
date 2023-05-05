@@ -38,7 +38,7 @@ class _chhattisgarh_dhoti_kurtaState extends State<chhattisgarh_dhoti_kurta> {
                         mainAxisSpacing: 1,
                         crossAxisSpacing: 1,
                         crossAxisCount: 2,
-                        mainAxisExtent: 300),
+                        mainAxisExtent: 320),
                     itemBuilder: (context, index) {
                       final product = snapshot.data!.docs[index];
                       return Padding(
@@ -47,6 +47,7 @@ class _chhattisgarh_dhoti_kurtaState extends State<chhattisgarh_dhoti_kurta> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Card(
+                              margin: EdgeInsets.only(top: 10.sp),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ),
@@ -68,6 +69,7 @@ class _chhattisgarh_dhoti_kurtaState extends State<chhattisgarh_dhoti_kurta> {
                               height: 8.sp,
                             ),
                             Comman_Text(
+                              maxLines: 1,
                               text: product["product_name"],
                               //fontFamily: "JV1",
                               fontWeight: FontWeight.w600,
@@ -93,6 +95,9 @@ class _chhattisgarh_dhoti_kurtaState extends State<chhattisgarh_dhoti_kurta> {
                                   color: red,
                                   //fontFamily: "JV1",
                                   fontWeight: FontWeight.w600,
+                                ),
+                                SizedBox(
+                                  width: 2.sp,
                                 ),
                               ],
                             ),
