@@ -14,6 +14,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
+import 'package:velocity_x/velocity_x.dart';
 import '../authantication/email authantication/EmailAuthService.dart';
 import '../common_screen/Comman_Container.dart';
 import '../getx/controller.dart';
@@ -114,6 +115,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         color: DarkGreen2,
                                         text:
                                             "${sharedPreferences!.getString("profile_name")!}"
+                                                .capitalized
                                                 .split("")
                                                 .first),
                                   ),
