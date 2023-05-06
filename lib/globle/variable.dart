@@ -518,25 +518,25 @@ List categoriesDemo = [
     "name": "Goa_dangar_topi",
   },
   {
-    "name": "Goa_kunbi_saree",
+    "name": "Goa_kunbi-saree",
   },
   {
     "name": "Goa_pano_bhaju",
   },
   {
-    "name": "Gujrat_bandhani",
+    "name": "Gujarat_bandhani",
   },
   {
-    "name": "Gujrat_chaniyacoli",
+    "name": "Gujarat_chaniya-choli",
   },
   {
-    "name": "Gujrat_ghaghra",
+    "name": "Gujarat_ghaghra",
   },
   {
-    "name": "Gujrat_kediyu",
+    "name": "Gujarat_kediyu",
   },
   {
-    "name": "Gujrat_patola",
+    "name": "Gujarat_patola",
   },
   {
     "name": "haryana_dhoti",

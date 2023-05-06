@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context, orientation, deviceType) => GetMaterialApp(
-        title: 'E-Com',
+        title: 'NestIn',
         // theme: MyThemes.lightTheme,
         // darkTheme: MyThemes.darkTheme,
         themeMode: ThemeMode.system,
