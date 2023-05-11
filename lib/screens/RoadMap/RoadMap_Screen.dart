@@ -25,6 +25,11 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
         currentStep = currentStep + 1; //currentStep+=1;
       });
     }
+
+    if (currentStep == 3) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Product Added!")));
+    }
   }
 
   cancelStep() {
