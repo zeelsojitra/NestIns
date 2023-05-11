@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
 import '../common_screen/Comman_Container.dart';
+import '../common_screen/loding.dart';
 import '../globle/variable.dart';
 import 'OderDetails.dart';
 
@@ -47,7 +48,7 @@ class _OderScreenState extends State<OderScreen> {
                     ),
                   )
                 : SizedBox(
-                    height: 565.sp,
+                    height: 597.sp,
                     child: ListView.separated(
                       itemCount: order.length,
                       itemBuilder: (context, index) {
@@ -109,6 +110,67 @@ class _OderScreenState extends State<OderScreen> {
                                     color: red,
                                     //fontFamily: "JV1"
                                   ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 15.sp),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        MaterialButton(
+                                          child: Comman_Text(
+                                            text: "Cancel Order",
+                                          ),
+                                          onPressed: () {
+                                            showDialog(
+                                                barrierDismissible: false,
+                                                context: context,
+                                                builder: (context) {
+                                                  return AlertDialog(
+                                                    title: const Text(
+                                                        "Cancel Order",
+                                                        style: TextStyle(
+                                                            fontFamily: "JV1",
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold)),
+                                                    content: const Text(
+                                                        "Are you sure you want to Cancel Order?",
+                                                        style: TextStyle(
+                                                            fontFamily: "JV1")),
+                                                    actions: [
+                                                      IconButton(
+                                                        onPressed: () {
+                                                          Get.back();
+                                                        },
+                                                        icon: const Icon(
+                                                          Icons.cancel,
+                                                          color: Colors.red,
+                                                        ),
+                                                      ),
+                                                      IconButton(
+                                                        icon: const Icon(
+                                                          Icons.done,
+                                                          color: Colors.green,
+                                                        ),
+                                                        onPressed: () async {
+                                                          FirebaseFirestore
+                                                              .instance
+                                                              .collection(
+                                                                  "Order")
+                                                              .doc(order[index]
+                                                                  .id)
+                                                              .delete();
+                                                          Get.back();
+                                                        },
+                                                      ),
+                                                    ],
+                                                  );
+                                                });
+                                          },
+                                          color: red,
+                                        ),
+                                      ],
+                                    ),
+                                  )
                                 ],
                               ),
                             )

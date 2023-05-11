@@ -389,15 +389,16 @@ class _AddressDemoState extends State<AddressDemo> {
                                 width: 10.sp,
                               ),
                               Center(
-                                  child: Comman_Text(
-                                text: addinfo_add[index]['Name'],
-                                //fontFamily: "JM1",
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w500,
-                                color: controller.Addinfo_Selected == index
-                                    ? white
-                                    : black,
-                              )),
+                                child: Comman_Text(
+                                  text: addinfo_add[index]['Name'],
+                                  //fontFamily: "JM1",
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: controller.Addinfo_Selected == index
+                                      ? white
+                                      : black,
+                                ),
+                              ),
                             ],
                           ),
                         );
