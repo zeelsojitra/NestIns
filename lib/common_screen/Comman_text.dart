@@ -28,7 +28,7 @@ class CommanText extends StatelessWidget {
     return Text(
       text,
       maxLines: maxLines,
-      textScaler: TextScaler.linear(textScaleFactor!),
+      textScaler: TextScaler.linear(textScaleFactor ?? 1),
       textAlign: textAlign,
       style: TextStyle(
         fontFamily: "JV1",

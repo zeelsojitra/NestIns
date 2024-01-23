@@ -75,7 +75,7 @@ const shoppingCartOutlined =
 
 const logoGreen = "asserts/logo/splash_main.png";
 const mainLogo = "asserts/logo/mainLogo.png";
-const textLogo = "asserts/logo/textLogo.png";
+const textLogo = "asserts/logo/text_logo.png";
 const emptyOrder = "asserts/image/emptyorder.png";
 const emptyFav = "asserts/image/wishlist.png";
 

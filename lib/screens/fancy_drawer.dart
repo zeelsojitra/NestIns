@@ -80,7 +80,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                 width: Get.width * 0.6,
                 child: DrawerHeader(
                   padding: EdgeInsets.zero,
-                  margin: EdgeInsets.zero,
+                  margin: const EdgeInsets.symmetric(vertical: 20),
                   child: UserAccountsDrawerHeader(
                     decoration: BoxDecoration(
                         gradient: const LinearGradient(
@@ -262,7 +262,7 @@ class _HomeScreen1State extends State<HomeScreen1>
             child: Row(
               children: [
                 Image.asset(
-                  "asserts/logo/textLogo.png",
+                  "asserts/logo/text_logo.png",
                   width: 150.sp,
                 ),
               ],
@@ -274,14 +274,14 @@ class _HomeScreen1State extends State<HomeScreen1>
             elevation: 4.0,
             title: const Text(
               "Home",
-              style: TextStyle(fontFamily: "JV1"),
+              style: TextStyle(fontFamily: "JV1", color: Colors.white),
             ),
             actions: [
               IconButton(
                 onPressed: () {
                   Get.to(const SearchPage());
                 },
-                icon: const Icon(Icons.search),
+                icon: const Icon(Icons.search, color: Colors.white),
               ),
             ],
             backgroundColor: darkGreen2,
@@ -304,7 +304,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                 children: [
                   Expanded(
                     child: SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
+                      physics: const ClampingScrollPhysics(),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

@@ -98,7 +98,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 lightGreen,
                               ],
                             ),
-                            height: Get.height * 0.17,
                             width: Get.width,
                             child: Padding(
                               padding: EdgeInsets.symmetric(
