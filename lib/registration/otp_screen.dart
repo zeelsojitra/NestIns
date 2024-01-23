@@ -1,18 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
-
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_com/authantication/phone_authentication/enter_mobile.dart';
 import 'package:e_com/globle/variable.dart';
-import 'package:e_com/registration/regisration_screen.dart';
 import 'package:e_com/screens/fancy_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/get.dart';
-import 'package:pinput/pinput.dart';
-
-import '../authantication/Phone Authentication/enter_mobile.dart';
-import '../bottom_Navigation/bottom_navi_demo.dart';
+import '../bottom_navigation/bottom_navi_demo.dart';
 // import 'package:kudrati_kahumbo/model/user_model.dart';
 // import 'package:kudrati_kahumbo/screen/auth/regisration_screen.dart';
 // import 'package:kudrati_kahumbo/utils/dimensions.dart';
@@ -30,23 +23,23 @@ class _OTPScreenState extends State<OTPScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
   var pinCode = "";
-  String? OTP;
+  String? otp;
   Future verifyotp() async {
     try {
       PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
-          verificationId: verificationCode!, smsCode: OTP.toString());
+          verificationId: verificationCode!, smsCode: otp.toString());
 
       await FirebaseAuth.instance.signInWithCredential(phoneAuthCredential);
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => Bottom_navigation(),
+          builder: (context) => const BottomNavigation(),
         ),
       );
       //Get.toEnd(() => Bottom_navigation());
-    } on FirebaseException catch (e) {
+    } on FirebaseException {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text("INVALID OTP"),
         ),
       );
@@ -55,29 +48,29 @@ class _OTPScreenState extends State<OTPScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: const TextStyle(
-          fontSize: 20,
-          color: Color.fromARGB(255, 255, 255, 255),
-          fontWeight: FontWeight.w600),
-      decoration: BoxDecoration(
-        border: Border.all(color: const Color.fromARGB(255, 178, 176, 178)),
-        borderRadius: BorderRadius.circular(12),
-      ),
-    );
+    // final defaultPinTheme = PinTheme(
+    //   width: 56,
+    //   height: 56,
+    //   textStyle: const TextStyle(
+    //       fontSize: 20,
+    //       color: Color.fromARGB(255, 255, 255, 255),
+    //       fontWeight: FontWeight.w600),
+    //   decoration: BoxDecoration(
+    //     border: Border.all(color: const Color.fromARGB(255, 178, 176, 178)),
+    //     borderRadius: BorderRadius.circular(12),
+    //   ),
+    // );
 
-    final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: purple),
-      borderRadius: BorderRadius.circular(8),
-    );
+    // final focusedPinTheme = defaultPinTheme.copyDecorationWith(
+    //   border: Border.all(color: purple),
+    //   borderRadius: BorderRadius.circular(8),
+    // );
 
-    final submittedPinTheme = defaultPinTheme.copyWith(
-      decoration: defaultPinTheme.decoration?.copyWith(
-        color: purple,
-      ),
-    );
+    // final submittedPinTheme = defaultPinTheme.copyWith(
+    //   decoration: defaultPinTheme.decoration?.copyWith(
+    //     color: purple,
+    //   ),
+    // );
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -97,33 +90,33 @@ class _OTPScreenState extends State<OTPScreen> {
       body: Form(
         key: _formKey,
         child: Container(
-          margin: EdgeInsets.only(left: 25, right: 25, bottom: 25),
+          margin: const EdgeInsets.only(left: 25, right: 25, bottom: 25),
           alignment: Alignment.center,
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  "asserts/logo/text_logo.png",
+                  "asserts/logo/textLogo.png",
                 ),
-                SizedBox(height: 15),
-                Text(
-                  "Phone Verification",
+                const SizedBox(height: 15),
+                const Text(
+                  "phone Verification",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   "We need to register your phone before getting started !",
                   style: TextStyle(fontSize: 15),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 // Text(
                 //   "Your No is ${RegistrationScreen.mobile.substring(0, 3)}*****${RegistrationScreen.mobile.substring(8)} ?",
                 //   style: TextStyle(fontSize: 18, color: purple),
                 //   textAlign: TextAlign.center,
                 // ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 // Pinput(
                 //   length: 6,
                 //   defaultPinTheme: defaultPinTheme,
@@ -145,7 +138,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 // ),
                 OtpTextField(
                   numberOfFields: 6,
-                  borderColor: Color(0xFF512DA8),
+                  borderColor: const Color(0xFF512DA8),
                   //set to true to show as box or false to show as dash
                   showFieldAsBox: true,
                   //runs when a code is typed in
@@ -155,11 +148,11 @@ class _OTPScreenState extends State<OTPScreen> {
                   //runs when every textfield is filled
                   onSubmit: (String verificationCode) {
                     setState(() {
-                      OTP = verificationCode;
+                      otp = verificationCode;
                     });
                   }, // end onSubmit
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 SizedBox(
                   height: 45,
                   width: double.infinity,
@@ -169,7 +162,7 @@ class _OTPScreenState extends State<OTPScreen> {
                         (value) => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomeScreen1(),
+                            builder: (context) => const HomeScreen1(),
                           ),
                         ),
                       );
@@ -194,17 +187,17 @@ class _OTPScreenState extends State<OTPScreen> {
                       // }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: DarkGreen2,
+                      backgroundColor: darkGreen2,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
                     ),
-                    child: Text(
-                      "Verify Phone Number",
+                    child: const Text(
+                      "Verify phone Number",
                       style: TextStyle(fontSize: 15),
                     ),
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Container(
                   alignment: Alignment.topLeft,
                   child: TextButton(
@@ -213,8 +206,8 @@ class _OTPScreenState extends State<OTPScreen> {
                           context, "registration", (route) => false);
                     },
                     child: const Text(
-                      "Edit Phone Number ?",
-                      style: TextStyle(color: DarkGreen2),
+                      "Edit phone Number ?",
+                      style: TextStyle(color: darkGreen2),
                     ),
                   ),
                 ),

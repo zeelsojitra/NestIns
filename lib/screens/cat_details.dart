@@ -1,10 +1,7 @@
-import 'package:e_com/globle/variable.dart';
 import 'package:flutter/material.dart';
 
-import '../common_screen/Comman_text.dart';
-
 class CatDemo extends StatefulWidget {
-  final name, image, cat, details, price;
+  final String? name, image, cat, details, price;
 
   const CatDemo(
       {super.key,
@@ -21,7 +18,7 @@ class CatDemo extends StatefulWidget {
 class _CatDemoState extends State<CatDemo> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Column(
         children: [],
       ),

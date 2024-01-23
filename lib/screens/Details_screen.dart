@@ -1,14 +1,14 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_com/common_screen/Comman_Container.dart';
 import 'package:e_com/globle/media_query.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:sizer/sizer.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../common_screen/Comman_text.dart';
+import '../common_screen/comman_container.dart';
 import '../globle/variable.dart';
 import 'addressscreen.dart';
 
@@ -17,7 +17,7 @@ class DetilsScreen extends StatefulWidget {
   final List buynow;
 
   const DetilsScreen({
-    Key? key,
+    super.key,
     required this.image,
     required this.name,
     required this.price,
@@ -27,7 +27,7 @@ class DetilsScreen extends StatefulWidget {
     required this.buynow,
     required this.pid,
     required this.sid,
-  }) : super(key: key);
+  });
 
   @override
   State<DetilsScreen> createState() => DetilsScreenState();
@@ -48,7 +48,7 @@ class DetilsScreenState extends State<DetilsScreen> {
   // void onpaymentSuccess(PaymentSuccessResponse response) {
   //   ScaffoldMessenger.of(context).showSnackBar(
   //     SnackBar(
-  //       content: Comman_Text(text: "Payment Done..!${response.signature}"),
+  //       content: CommanText(text: "Payment Done..!${response.signature}"),
   //     ),
   //   );
   // }
@@ -57,7 +57,7 @@ class DetilsScreenState extends State<DetilsScreen> {
   // void onpaymentFailed(PaymentFailureResponse response) {
   //   ScaffoldMessenger.of(context).showSnackBar(
   //     SnackBar(
-  //       content: Comman_Text(text: response.message.toString()),
+  //       content: CommanText(text: response.message.toString()),
   //     ),
   //   );
   // }
@@ -66,7 +66,7 @@ class DetilsScreenState extends State<DetilsScreen> {
   // void onExternalWallet(ExternalWalletResponse response) {
   //   ScaffoldMessenger.of(context).showSnackBar(
   //     SnackBar(
-  //       content: Comman_Text(text: response.walletName.toString()),
+  //       content: CommanText(text: response.walletName.toString()),
   //     ),
   //   );
   // }
@@ -111,7 +111,6 @@ class DetilsScreenState extends State<DetilsScreen> {
                     AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
                         snapshot) {
                   if (snapshot.hasData) {
-                    var data = snapshot.data!.docs;
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -159,7 +158,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                                       children: [
                                         Row(
                                           children: [
-                                            Comman_Text(
+                                            CommanText(
                                               text: "Product Name :",
                                               color: black,
                                               fontSize: height(context) / 40,
@@ -170,8 +169,8 @@ class DetilsScreenState extends State<DetilsScreen> {
                                               width: 8.sp,
                                             ),
                                             Flexible(
-                                              child: Comman_Text(
-                                                text: "${widget.name}",
+                                              child: CommanText(
+                                                text: widget.name,
                                                 color: grey,
                                                 fontSize: height(context) / 40,
                                                 //fontFamily: 'JV1',
@@ -184,17 +183,17 @@ class DetilsScreenState extends State<DetilsScreen> {
                                         ),
                                         Row(
                                           children: [
-                                            Comman_Text(
+                                            CommanText(
                                               text: "Rs :",
                                               color: black,
                                               fontSize: height(context) / 40,
                                               fontWeight: FontWeight.w400,
                                               //fontFamily: 'JV1',
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 10,
                                             ),
-                                            Comman_Text(
+                                            CommanText(
                                               text: "${widget.price}₹",
                                               color: red,
                                               fontSize: height(context) / 40,
@@ -208,7 +207,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                                         ),
                                         Row(
                                           children: [
-                                            Comman_Text(
+                                            CommanText(
                                               text: "Category:",
                                               color: black,
                                               fontSize: height(context) / 40,
@@ -219,8 +218,8 @@ class DetilsScreenState extends State<DetilsScreen> {
                                               width: 5.sp,
                                             ),
                                             Flexible(
-                                              child: Comman_Text(
-                                                text: "${widget.category}",
+                                              child: CommanText(
+                                                text: widget.category,
                                                 color: grey,
                                                 fontSize: height(context) / 40,
                                                 fontWeight: FontWeight.w400,
@@ -236,7 +235,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Comman_Text(
+                                            CommanText(
                                               text: "Product Descripation :",
                                               color: black,
                                               fontSize: height(context) / 40,
@@ -246,8 +245,8 @@ class DetilsScreenState extends State<DetilsScreen> {
                                             SizedBox(
                                               width: 5.sp,
                                             ),
-                                            Comman_Text(
-                                              text: "${widget.details}",
+                                            CommanText(
+                                              text: widget.details,
                                               color: grey,
                                               fontSize: height(context) / 40,
                                               fontWeight: FontWeight.w400,
@@ -260,7 +259,7 @@ class DetilsScreenState extends State<DetilsScreen> {
                                         ),
                                         Row(
                                           children: [
-                                            Comman_Text(
+                                            CommanText(
                                               text: "Product Rating:",
                                               color: black,
                                               fontSize: height(context) / 40,
@@ -288,10 +287,10 @@ class DetilsScreenState extends State<DetilsScreen> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Comman_Container(
+                                              CommanContainer(
                                                 borderRadius:
                                                     BorderRadius.circular(5.sp),
-                                                boxShadow: [
+                                                boxShadow: const [
                                                   BoxShadow(
                                                     color: grey,
                                                     blurRadius: 5,
@@ -301,16 +300,6 @@ class DetilsScreenState extends State<DetilsScreen> {
                                                 ],
                                                 height: 40.sp,
                                                 width: double.infinity,
-                                                child: Center(
-                                                  child: Comman_Text(
-                                                    color: white,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize:
-                                                        height(context) / 40,
-                                                    text: "Add to card",
-                                                    //fontFamily: "JV1",
-                                                  ),
-                                                ),
                                                 color: red,
                                                 ontap: () {
                                                   // List a = widget.AddToCart;
@@ -326,20 +315,30 @@ class DetilsScreenState extends State<DetilsScreen> {
 
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(
-                                                    SnackBar(
+                                                    const SnackBar(
                                                       content:
                                                           Text("Add To Cart"),
                                                     ),
                                                   );
                                                 },
+                                                child: Center(
+                                                  child: CommanText(
+                                                    color: white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize:
+                                                        height(context) / 40,
+                                                    text: "Add to card",
+                                                    //fontFamily: "JV1",
+                                                  ),
+                                                ),
                                               ),
                                               SizedBox(
                                                 height: 10.sp,
                                               ),
-                                              Comman_Container(
+                                              CommanContainer(
                                                 borderRadius:
                                                     BorderRadius.circular(5.sp),
-                                                boxShadow: [
+                                                boxShadow: const [
                                                   BoxShadow(
                                                     color: grey,
                                                     blurRadius: 5,
@@ -349,19 +348,9 @@ class DetilsScreenState extends State<DetilsScreen> {
                                                 ],
                                                 height: 40.sp,
                                                 width: double.maxFinite,
-                                                child: Center(
-                                                  child: Comman_Text(
-                                                    color: white,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize:
-                                                        height(context) / 40,
-                                                    text: "Buy Now",
-                                                    //fontFamily: "JV1",
-                                                  ),
-                                                ),
-                                                color: DarkGreen,
+                                                color: darkGreen,
                                                 ontap: () {
-                                                  print("Address Screen");
+                                                  log("Address Screen");
                                                   Navigator.push(
                                                     context,
                                                     MaterialPageRoute(
@@ -392,6 +381,16 @@ class DetilsScreenState extends State<DetilsScreen> {
                                                   //       .update({'buyNow': x});
                                                   // }
                                                 },
+                                                child: Center(
+                                                  child: CommanText(
+                                                    color: white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize:
+                                                        height(context) / 40,
+                                                    text: "Buy Now",
+                                                    //fontFamily: "JV1",
+                                                  ),
+                                                ),
                                               ),
                                               SizedBox(
                                                 height: 10.sp,
@@ -410,12 +409,12 @@ class DetilsScreenState extends State<DetilsScreen> {
                       ],
                     );
                   } else {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                 },
               );
             } else {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
           },
         ),

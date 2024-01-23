@@ -1,11 +1,10 @@
-// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unnecessary_string_interpolations, depend_on_referenced_packages
 
 import 'package:country_picker/country_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../common_screen/Comman_text.dart';
 import '../globle/variable.dart';
@@ -44,7 +43,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       verificationFailed: (error) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Comman_Text(
+            content: CommanText(
               text: error.message.toString(),
             ),
           ),
@@ -75,12 +74,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  main_logo,
+                  mainLogo,
                   height: Get.height * 0.2,
                 ),
                 SizedBox(height: Get.height * 0.03),
                 Text(
-                  "Phone Verification",
+                  "phone Verification",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: Get.height * 0.038),
@@ -115,10 +114,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Phone Number can't be Empty!";
+                      return "phone Number can't be Empty!";
                     } else if (value.length < 10) {
                       return "Enter must be 10 Digits";
                     }
+                    return null;
                   },
                   controller: phoneNo,
                   keyboardType: TextInputType.number,
@@ -144,16 +144,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(countryFlag.isEmpty ? "" : countryFlag),
-                              SizedBox(
+                              const SizedBox(
                                 width: 5,
                               ),
-                              Text("+${countryCodee}"),
-                              Text("  |", textScaleFactor: 2),
+                              Text("+$countryCodee"),
+                              const Text("  |",
+                                  textScaler: TextScaler.linear(2)),
                             ],
                           ),
                         ),
                       ),
-                      labelStyle: TextStyle(color: Colors.grey, fontSize: 18),
+                      labelStyle:
+                          const TextStyle(color: Colors.grey, fontSize: 18),
                       counterText: "",
                       hintText: "Enter your number",
                       border: OutlineInputBorder(
@@ -243,13 +245,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         (value) => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => OTPScreen(),
+                            builder: (context) => const OTPScreen(),
                           ),
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: DarkGreen2,
+                      backgroundColor: darkGreen2,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
                     ),

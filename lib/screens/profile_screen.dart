@@ -1,31 +1,29 @@
+import 'dart:developer';
 import 'dart:io';
+import 'package:e_com/authantication/email_authantication/email_auth_service.dart';
 import 'package:e_com/globle/shardpefrence.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_com/authantication/google%20auth%20service/google_auth_service.dart';
+import 'package:e_com/authantication/google_auth_service/google_auth_service.dart';
 import 'package:e_com/common_screen/Comman_text.dart';
-import 'package:e_com/screens/RoadMap/RoadMap_Screen.dart';
+import 'package:e_com/screens/Roadmap/roadmap_screen.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:e_com/screens/tab_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../authantication/email authantication/EmailAuthService.dart';
-import '../common_screen/Comman_Container.dart';
+import '../common_screen/comman_container.dart';
 import '../getx/controller.dart';
 import '../globle/profile_controller.dart';
 import '../globle/variable.dart';
-import 'Favorite_Screen.dart';
-import 'login_screen_h.dart';
-import 'orderScreen.dart';
+import 'favorite_screen.dart';
+import 'order_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({super.key});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -37,7 +35,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Profileimg pi = Get.put(Profileimg());
 
-  PickImage(ImageSource imageSource) async {
+  pickImage(ImageSource imageSource) async {
     final file = await picker.pickImage(source: imageSource);
 
     if (file != null) {
@@ -54,8 +52,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           await FirebaseStorage.instance.ref('profileImge').getDownloadURL();
       return url;
     } on FirebaseException catch (e) {
-      print("Firebase Storage ==>>${e.message}");
+      log("Firebase Storage ==>>${e.message}");
     }
+    return null;
   }
 
   // profiledata() async {
@@ -80,25 +79,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
             return GetBuilder<Controller>(
               builder: (controller) {
                 return SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
                         child: Card(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                           elevation: 15,
-                          child: Comman_Container(
+                          child: CommanContainer(
                             borderRadius: BorderRadius.circular(10),
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                               colors: [
-                                DarkGreen2,
-                                LightGreen,
+                                darkGreen2,
+                                lightGreen,
                               ],
                             ),
+                            height: Get.height * 0.17,
+                            width: Get.width,
                             child: Padding(
                               padding: EdgeInsets.symmetric(
                                   horizontal: 10.sp, vertical: 10.sp),
@@ -108,21 +109,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   CircleAvatar(
                                     radius: 23.sp,
                                     backgroundColor: white,
-                                    child: Comman_Text(
+                                    child: CommanText(
                                         //fontFamily: "JM1",
                                         fontSize: 20.sp,
                                         fontWeight: FontWeight.bold,
-                                        color: DarkGreen2,
-                                        text:
-                                            "${sharedPreferences!.getString("profile_name")!}"
-                                                .capitalized
-                                                .split("")
-                                                .first),
+                                        color: darkGreen2,
+                                        text: sharedPreferences!
+                                            .getString("profile_name")!
+                                            .capitalized
+                                            .split("")
+                                            .first),
                                   ),
                                   SizedBox(
                                     height: Get.height * 0.01,
                                   ),
-                                  Comman_Text(
+                                  CommanText(
                                     //fontFamily: "JM1",
 
                                     text: sharedPreferences!
@@ -134,7 +135,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   SizedBox(
                                     height: Get.height * 0.0001,
                                   ),
-                                  Comman_Text(
+                                  CommanText(
                                     //fontFamily: "JM1",
                                     text: sharedPreferences!
                                         .getString("profile_email")!,
@@ -145,23 +146,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ],
                               ),
                             ),
-                            height: Get.height * 0.17,
-                            width: Get.width,
                           ),
                         ),
                       ),
                       SizedBox(
                         height: Get.height * 0.01,
                       ),
-                      // Comman_Container(
+                      // CommanContainer(
                       //   height: 75.sp,
                       //   width: double.infinity,
                       //   borderRadius:
                       //       BorderRadius.only(bottomRight: Radius.circular(140)),
                       //   gradient: LinearGradient(
                       //     colors: [
-                      //       DarkGreen2,
-                      //       LightGreen,
+                      //       darkGreen2,
+                      //       lightGreen,
                       //     ],
                       //   ),
                       //   child: Padding(
@@ -216,7 +215,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       //           crossAxisAlignment: CrossAxisAlignment.start,
                       //           mainAxisAlignment: MainAxisAlignment.center,
                       //           children: [
-                      //             Comman_Text(
+                      //             CommanText(
                       //               text: "profile name",
                       //               color: white,
                       //               fontSize: 18.sp,
@@ -224,7 +223,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       //             SizedBox(
                       //               height: 3.sp,
                       //             ),
-                      //             Comman_Text(
+                      //             CommanText(
                       //               text: "profile email",
                       //               color: white,
                       //               fontSize: 12.sp,
@@ -247,11 +246,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: GestureDetector(
                               onTap: () {
                                 if (index == 0) {
-                                  Get.to(RoadMapScreen());
+                                  Get.to(const RoadMapScreen());
                                 } else if (index == 2) {
-                                  Get.to(OderScreen());
+                                  Get.to(const OderScreen());
                                 } else if (index == 3) {
-                                  Get.to(Favorite_Screen());
+                                  Get.to(const FavoriteScreen());
                                 } else if (index == 5) {
                                   showDialog(
                                       barrierDismissible: false,
@@ -282,20 +281,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               ),
                                               onPressed: () async {
                                                 FirebaseAuth.instance.signOut();
-                                                EmailAuthService.LogoutUser()
+                                                EmailAuthService.logoutUser()
                                                     .then((value) async {
                                                   SharedPreferences sh =
                                                       await SharedPreferences
                                                           .getInstance();
                                                   sh.setBool(
-                                                      Splash_ScreenState
-                                                          .KeyValue,
+                                                      SplashScreenState
+                                                          .keyValue,
                                                       false);
                                                   GoogleAuthService
                                                       .googleSignOut();
                                                   sh.remove("email").then(
-                                                      (value) =>
-                                                          Get.off(Tab_Bar()));
+                                                      (value) => Get.off(
+                                                          const TabBarScreen()));
                                                 });
                                                 sharedPreferences!
                                                     .remove("profile_email");
@@ -310,11 +309,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       });
                                 }
                               },
-                              child: Comman_Container(
+                              child: CommanContainer(
                                 height: 50.sp,
                                 width: double.infinity,
                                 color: white,
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     color: grey,
                                     blurRadius: 4,
@@ -334,12 +333,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     SizedBox(
                                       width: 15.sp,
                                     ),
-                                    Comman_Text(
+                                    CommanText(
                                       text: profile[index]['name'],
                                       //fontFamily: "JV1",
                                       fontWeight: FontWeight.w500,
                                       fontSize: 16.sp,
-                                      color: DarkGreen2,
+                                      color: darkGreen2,
                                     ),
                                   ],
                                 ),

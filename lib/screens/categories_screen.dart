@@ -1,21 +1,18 @@
-import 'package:e_com/common_screen/Comman_TeextFiled.dart';
-import 'package:e_com/screens/home_screen.dart';
+import 'package:e_com/common_screen/comman_textformfeild.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
-import '../common_screen/Comman_Container.dart';
 import '../common_screen/Comman_text.dart';
+import '../common_screen/comman_container.dart';
 import '../globle/variable.dart';
 
-class CategoryScreen_2 extends StatefulWidget {
-  const CategoryScreen_2({Key? key}) : super(key: key);
+class CategoryScreen2 extends StatefulWidget {
+  const CategoryScreen2({super.key});
 
   @override
-  State<CategoryScreen_2> createState() => _CategoryScreen_2State();
+  State<CategoryScreen2> createState() => _CategoryScreen2State();
 }
 
-class _CategoryScreen_2State extends State<CategoryScreen_2> {
+class _CategoryScreen2State extends State<CategoryScreen2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +26,7 @@ class _CategoryScreen_2State extends State<CategoryScreen_2> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Comman_Container(
+            // CommanContainer(
             //   height: 60.sp,
             //   width: double.infinity,
             //   borderRadius: BorderRadius.only(
@@ -37,8 +34,8 @@ class _CategoryScreen_2State extends State<CategoryScreen_2> {
             //       bottomLeft: Radius.circular(30)),
             //   gradient: LinearGradient(
             //     colors: [
-            //       DarkGreen2,
-            //       LightGreen,
+            //       darkGreen2,
+            //       lightGreen,
             //     ],
             //   ),
             //   child: Padding(
@@ -57,7 +54,7 @@ class _CategoryScreen_2State extends State<CategoryScreen_2> {
             //               size: 30,
             //             )),
             //         Spacer(),
-            //         Comman_Text(
+            //         CommanText(
             //           text: "Categories",
             //           color: white,
             //           fontSize: 20.sp,
@@ -75,7 +72,7 @@ class _CategoryScreen_2State extends State<CategoryScreen_2> {
             SizedBox(
               height: 10.sp,
             ),
-            Comman_TexxtFiled(
+            CommanTextFormFiled(
               hinttext: "Search",
               controller: search,
               ontap: () {},
@@ -83,7 +80,7 @@ class _CategoryScreen_2State extends State<CategoryScreen_2> {
                 searchText = p0;
                 setState(() {});
               },
-              prefixicon: Icon(
+              prefixicon: const Icon(
                 Icons.search_rounded,
               ),
             ),
@@ -92,31 +89,31 @@ class _CategoryScreen_2State extends State<CategoryScreen_2> {
             ),
             Expanded(
               child: ListView.builder(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(11.0),
-                        child: Comman_Container(
+                        child: CommanContainer(
                           color: lightGreen,
                           borderRadius: BorderRadius.circular(10),
                           child: ExpansionTile(
                             onExpansionChanged: (value) {},
                             title: Row(
                               children: [
-                                Comman_Text(
+                                CommanText(
                                   text: categories[index]['title'],
                                   color: black,
                                   fontSize: 14.sp,
                                 ),
-                                Icon(
+                                const Icon(
                                   Icons.keyboard_arrow_down,
                                 )
                               ],
                             ),
-                            subtitle: Comman_Text(
+                            subtitle: CommanText(
                               text: categories[index]['subtitle'],
                               color: black,
                               fontSize: 11.sp,
@@ -128,27 +125,27 @@ class _CategoryScreen_2State extends State<CategoryScreen_2> {
                               fit: BoxFit.fill,
                             ),
                             children: [
-                              Comman_Container(
+                              CommanContainer(
                                 color: white,
-                                borderRadius: BorderRadius.only(
+                                borderRadius: const BorderRadius.only(
                                   bottomRight: Radius.circular(10),
                                   bottomLeft: Radius.circular(10),
                                 ),
                                 child: Column(
                                   children: List.generate(
-                                    In_details[index]['cat'].length,
+                                    inDetails[index]['cat'].length,
                                     (index1) => Padding(
                                       padding: const EdgeInsets.all(6.0),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Comman_Text(
-                                            text: In_details[index]['cat']
+                                          CommanText(
+                                            text: inDetails[index]['cat']
                                                     [index1]
                                                 .toString(),
                                           ),
-                                          Icon(
+                                          const Icon(
                                             Icons.arrow_forward_ios,
                                             size: 15,
                                           ),

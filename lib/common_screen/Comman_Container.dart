@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Comman_Container extends StatelessWidget {
-  const Comman_Container({
-    Key? key,
+class CommanContainer extends StatelessWidget {
+  const CommanContainer({
+    super.key,
     this.width,
     this.child,
     this.height,
@@ -15,19 +15,19 @@ class Comman_Container extends StatelessWidget {
     this.ontap,
     this.margin,
     this.alignment,
-  }) : super(key: key);
+  });
 
   final double? width;
   final AlignmentGeometry? alignment;
-  final child;
+  final Widget? child;
   final double? height;
   final EdgeInsetsGeometry? margin;
   final Gradient? gradient;
-  final color;
+  final Color? color;
   final DecorationImage? image;
   final BoxBorder? border;
   final BorderRadiusGeometry? borderRadius;
-  final boxShadow;
+  final List<BoxShadow>? boxShadow;
   final void Function()? ontap;
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,6 @@ class Comman_Container extends StatelessWidget {
         width: width,
         margin: margin,
         height: height,
-        child: child,
         decoration: BoxDecoration(
           gradient: gradient,
           color: color,
@@ -47,6 +46,7 @@ class Comman_Container extends StatelessWidget {
           border: border,
           boxShadow: boxShadow,
         ),
+        child: child,
       ),
     );
   }

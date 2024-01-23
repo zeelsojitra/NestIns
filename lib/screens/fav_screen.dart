@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import '../globle/variable.dart';
 
 class FavScreen extends StatefulWidget {
-  const FavScreen({Key? key}) : super(key: key);
+  const FavScreen({super.key});
 
   @override
   State<FavScreen> createState() => _FavScreenState();
@@ -46,9 +46,6 @@ class _FavScreenState extends State<FavScreen> {
                             ? Column(
                                 children: [
                                   Container(
-                                    child: Comman_Text(
-                                      text: '${data[index]['product_name']}',
-                                    ),
                                     height: 200,
                                     width: Get.width,
                                     decoration: BoxDecoration(
@@ -56,6 +53,9 @@ class _FavScreenState extends State<FavScreen> {
                                         image: NetworkImage(
                                             '${data[index]['image']}'),
                                       ),
+                                    ),
+                                    child: CommanText(
+                                      text: '${data[index]['product_name']}',
                                     ),
                                   ),
                                   IconButton(
@@ -106,14 +106,14 @@ class _FavScreenState extends State<FavScreen> {
                     ),
                   );
                 } else {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
               },
             );
           } else {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }

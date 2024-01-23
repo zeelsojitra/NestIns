@@ -19,10 +19,10 @@
 //         children: [
 //           Center(
 //             child: Image(
-//               image: AssetImage("asserts/logo/text_logo.png"),
+//               image: AssetImage("asserts/logo/textLogo.png"),
 //             ),
 //           ),
-//           Text("Phone Verification",
+//           Text("phone Verification",
 //               textScaleFactor: 2,
 //               style: TextStyle(fontWeight: FontWeight.w500)),
 //           SizedBox(
@@ -31,7 +31,7 @@
 //           Padding(
 //             padding: EdgeInsets.only(
 //                 right: Get.height * 0.03, left: Get.width * 0.03),
-//             child: Comman_Text(
+//             child: CommanText(
 //               text: "We need to register your before getting started!",
 //               textScaleFactor: 1.2,
 //               textAlign: TextAlign.center,

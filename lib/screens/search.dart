@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_com/common_screen/Comman_TeextFiled.dart';
+import 'package:e_com/common_screen/comman_textformfeild.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../common_screen/Comman_text.dart';
 
 class Search extends StatefulWidget {
-  const Search({Key? key}) : super(key: key);
+  const Search({super.key});
 
   @override
   State<Search> createState() => _SearchState();
@@ -32,7 +32,7 @@ class _SearchState extends State<Search> {
         child: Column(
           children: [
             SizedBox(height: Get.height * 0.1),
-            Comman_TexxtFiled(
+            CommanTextFormFiled(
               onChanged: (query) {
                 search(query);
               },
@@ -43,11 +43,11 @@ class _SearchState extends State<Search> {
                 itemCount: searchresult.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Comman_Text(
+                    title: CommanText(
                       //fontFamily: "JV1",
                       text: searchresult[index]["product_name"],
                     ),
-                    subtitle: Comman_Text(
+                    subtitle: CommanText(
                         text: searchresult[index]["product_catagory"]),
                   );
                 },

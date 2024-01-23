@@ -69,7 +69,7 @@
 //             //   textFieldAlignment: MainAxisAlignment.spaceEvenly,
 //             //   fieldStyle: FieldStyle.underline,
 //             //   onCompleted: (pin) {
-//             //     print("Completed: " + pin);
+//             //     log("Completed: " + pin);
 //             //   },
 //             // ),
 //             OtpTextField(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Comman_TexxtFiled extends StatelessWidget {
-  const Comman_TexxtFiled({
-    Key? key,
+class CommanTextFormFiled extends StatelessWidget {
+  const CommanTextFormFiled({
+    super.key,
     this.ontap,
     this.onChanged,
     this.maxLength,
@@ -20,25 +20,25 @@ class Comman_TexxtFiled extends StatelessWidget {
     this.validator,
     this.labelStyle,
     this.fontFamily,
-    this.HintfontFamily,
-  }) : super(key: key);
+    this.hintfontFamily,
+  });
   final void Function()? ontap;
   final void Function(String)? onChanged;
-  final maxLength;
+  final int? maxLength;
   final InputBorder? border;
   final String? Function(String?)? validator;
   final bool obscureText;
   final TextInputType? keyboardType;
   final TextEditingController? controller;
-  final hinttext;
-  final labletext;
-  final fontFamily;
-  final HintfontFamily;
-  final counter;
-  final fillcolor;
-  final prefixicon;
-  final sufficicon;
-  final labelStyle;
+  final String? hinttext;
+  final String? labletext;
+  final String? fontFamily;
+  final String? hintfontFamily;
+  final Widget? counter;
+  final Color? fillcolor;
+  final Widget? prefixicon;
+  final Widget? sufficicon;
+  final TextStyle? labelStyle;
   final bool? filled;
 
   @override
@@ -70,7 +70,7 @@ class Comman_TexxtFiled extends StatelessWidget {
         ),
         border: border,
         hintText: hinttext,
-        hintStyle: TextStyle(fontFamily: HintfontFamily),
+        hintStyle: TextStyle(fontFamily: hintfontFamily),
         labelText: labletext,
         labelStyle: labelStyle,
         counter: counter,

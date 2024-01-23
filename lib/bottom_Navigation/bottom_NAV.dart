@@ -1,17 +1,17 @@
+// ignore_for_file: file_names
+
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
 
-class bottom_navigation_animated extends StatefulWidget {
-  const bottom_navigation_animated({Key? key}) : super(key: key);
+class BottomNavigationAnimated extends StatefulWidget {
+  const BottomNavigationAnimated({super.key});
 
   @override
-  State<bottom_navigation_animated> createState() =>
-      _bottom_navigation_animatedState();
+  State<BottomNavigationAnimated> createState() =>
+      _BottomNavigationAnimatedState();
 }
 
-class _bottom_navigation_animatedState
-    extends State<bottom_navigation_animated> {
+class _BottomNavigationAnimatedState extends State<BottomNavigationAnimated> {
   /// Controller to handle PageView and also handles initial page
   final _pageController = PageController(initialPage: 2);
 
@@ -19,11 +19,11 @@ class _bottom_navigation_animatedState
 
   /// widget list
   final List<Widget> bottomBarPages = [
-    Center(child: Text("Home")),
-    Center(child: Text("star")),
-    Center(child: Text("search")),
-    Center(child: Text("setting")),
-    Center(child: Text("profile")),
+    const Center(child: Text("Home")),
+    const Center(child: Text("star")),
+    const Center(child: Text("search")),
+    const Center(child: Text("setting")),
+    const Center(child: Text("profile")),
   ];
 
   @override
@@ -49,12 +49,12 @@ class _bottom_navigation_animatedState
       extendBody: true,
       bottomNavigationBar: (bottomBarPages.length <= maxCount)
           ? AnimatedNotchBottomBar(
-              pageController: _pageController,
+              notchBottomBarController: NotchBottomBarController(),
               color: Colors.white,
               showLabel: false,
-              notchColor: Color(0xff74c69d),
-              bottomBarItems: [
-                const BottomBarItem(
+              notchColor: const Color(0xff74c69d),
+              bottomBarItems: const [
+                BottomBarItem(
                   inActiveItem: Icon(
                     Icons.home_filled,
                     color: Colors.blueGrey,
@@ -65,7 +65,7 @@ class _bottom_navigation_animatedState
                   ),
                   itemLabel: 'HOME',
                 ),
-                const BottomBarItem(
+                BottomBarItem(
                   inActiveItem: Icon(
                     Icons.star,
                     color: Colors.blueGrey,
@@ -89,7 +89,7 @@ class _bottom_navigation_animatedState
                 //   ),
                 //   itemLabel: 'Page 3',
                 // ),
-                const BottomBarItem(
+                BottomBarItem(
                   inActiveItem: Icon(
                     Icons.settings,
                     color: Colors.blueGrey,
@@ -100,7 +100,7 @@ class _bottom_navigation_animatedState
                   ),
                   itemLabel: 'Page 4',
                 ),
-                const BottomBarItem(
+                BottomBarItem(
                   inActiveItem: Icon(
                     Icons.person,
                     color: Colors.blueGrey,
@@ -120,6 +120,8 @@ class _bottom_navigation_animatedState
                   curve: Curves.easeIn,
                 );
               },
+              kIconSize: 20,
+              kBottomRadius: 20,
             )
           : null,
     );

@@ -1,21 +1,17 @@
 import 'package:e_com/screens/splash_screen.dart';
-import 'package:e_com/screens/tab_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
-import '../authantication/email authantication/EmailAuthService.dart';
-import '../authantication/google auth service/google_auth_service.dart';
+import '../authantication/email_authantication/email_auth_service.dart';
 import '../common_screen/Comman_text.dart';
 import '../globle/shardpefrence.dart';
 import '../globle/variable.dart';
-import 'login_screen_h.dart';
-import 'orderScreen.dart';
+import 'order_screen.dart';
 
 class DrawerScreen extends StatefulWidget {
-  const DrawerScreen({Key? key}) : super(key: key);
+  const DrawerScreen({super.key});
 
   @override
   State<DrawerScreen> createState() => _DrawerScreenState();
@@ -33,26 +29,26 @@ class _DrawerScreenState extends State<DrawerScreen> {
               DrawerHeader(
                 padding: EdgeInsets.zero,
                 child: UserAccountsDrawerHeader(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       gradient:
-                          LinearGradient(colors: [DarkGreen2, LightGreen]),
+                          LinearGradient(colors: [darkGreen2, lightGreen]),
                       borderRadius:
                           BorderRadius.only(bottomRight: Radius.circular(140))),
                   accountName: Padding(
                     padding: EdgeInsets.only(top: 20.sp),
-                    child: Comman_Text(
+                    child: CommanText(
                       text: sharedPreferences!.getString("profile_name")!,
                       color: white,
                       fontSize: 16.sp,
                     ),
                   ),
-                  accountEmail: Comman_Text(
+                  accountEmail: CommanText(
                     text: sharedPreferences!.getString("profile_email")!,
                     color: white,
                     fontSize: 12.sp,
                   ),
                   currentAccountPicture: InkWell(
-                    child: Container(
+                    child: SizedBox(
                       height: 80.sp,
                       width: 80.sp,
                       child: CircleAvatar(
@@ -63,7 +59,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   ),
                 ),
               ),
-              Positioned(
+              const Positioned(
                 bottom: 25,
                 left: 225,
                 child: CircleAvatar(
@@ -80,18 +76,18 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 (index) => InkWell(
                       onTap: () {
                         if (index == 2) {
-                          Get.to(OderScreen());
+                          Get.to(const OderScreen());
                         }
                         if (index == 6) {
                           FirebaseAuth.instance.signOut();
-                          EmailAuthService.LogoutUser().then((value) async {
+                          EmailAuthService.logoutUser().then((value) async {
                             SharedPreferences sh =
                                 await SharedPreferences.getInstance();
-                            sh.setBool(Splash_ScreenState.KeyValue, false);
-                            GoogleAuthService.googleSignOut();
-                            sh
-                                .remove("email")
-                                .then((value) => Get.off(Tab_Bar()));
+                            sh.setBool(SplashScreenState.keyValue, false);
+                            // GoogleAuthService.googleSignOut();
+                            // sh
+                            //     .remove("email")
+                            //     .then((value) => Get.off(const Tab_Bar()));
                           });
                           sharedPreferences!.remove("profile_email");
                           sharedPreferences!.remove("profile_image");
@@ -106,7 +102,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                           width: double.infinity,
                           decoration: BoxDecoration(
                               color: white,
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                     color: grey,
                                     blurRadius: 4,
@@ -122,11 +118,11 @@ class _DrawerScreenState extends State<DrawerScreen> {
                               SizedBox(
                                 width: 15.sp,
                               ),
-                              Comman_Text(
+                              CommanText(
                                 text: drawer[index]['name'],
                                 fontSize: 16.sp,
                                 //fontFamily: "JV1",
-                                color: DarkGreen2,
+                                color: darkGreen2,
                               )
                             ],
                           ),

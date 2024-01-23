@@ -1,19 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_com/common_screen/Comman_Container.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-
-import '../common_screen/Comman_Container.dart';
 import '../common_screen/Comman_text.dart';
 import '../globle/variable.dart';
 
-class Goa_pano_bhaju extends StatefulWidget {
-  const Goa_pano_bhaju({Key? key}) : super(key: key);
+class GoaPanoBhaju extends StatefulWidget {
+  const GoaPanoBhaju({super.key});
 
   @override
-  State<Goa_pano_bhaju> createState() => _Goa_pano_bhajuState();
+  State<GoaPanoBhaju> createState() => _GoaPanoBhajuState();
 }
 
-class _Goa_pano_bhajuState extends State<Goa_pano_bhaju> {
+class _GoaPanoBhajuState extends State<GoaPanoBhaju> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,17 +27,18 @@ class _Goa_pano_bhajuState extends State<Goa_pano_bhaju> {
         builder: (BuildContext context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.hasData) {
-            var data = snapshot.data!.docs;
+            // var data = snapshot.data!.docs;
             return snapshot.data!.docs.isNotEmpty
                 ? GridView.builder(
                     shrinkWrap: true,
                     itemCount: snapshot.data!.docs.length,
-                    physics: NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisSpacing: 1,
-                        crossAxisSpacing: 1,
-                        crossAxisCount: 2,
-                        mainAxisExtent: 320),
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            mainAxisSpacing: 1,
+                            crossAxisSpacing: 1,
+                            crossAxisCount: 2,
+                            mainAxisExtent: 320),
                     itemBuilder: (context, index) {
                       final product = snapshot.data!.docs[index];
                       return Padding(
@@ -46,28 +46,29 @@ class _Goa_pano_bhajuState extends State<Goa_pano_bhaju> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Card( margin: EdgeInsets.only(top: 10.sp),
+                            Card(
+                              margin: EdgeInsets.only(top: 10.sp),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               elevation: 10,
                               color: grey,
-                              child: Comman_Container(
+                              child: CommanContainer(
                                 borderRadius: BorderRadius.circular(5),
                                 height: 155.sp,
                                 width: double.infinity,
                                 color: white,
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: NetworkImage(
-                                      product!['image'].toString()),
+                                  image:
+                                      NetworkImage(product['image'].toString()),
                                 ),
                               ),
                             ),
                             SizedBox(
                               height: 8.sp,
                             ),
-                            Comman_Text(
+                            CommanText(
                               maxLines: 1,
                               text: product["product_name"],
                               fontWeight: FontWeight.w500,
@@ -78,7 +79,7 @@ class _Goa_pano_bhajuState extends State<Goa_pano_bhaju> {
                             ),
                             Row(
                               children: [
-                                Comman_Text(
+                                CommanText(
                                   text: "₹",
                                   fontSize: 14.sp,
                                   color: black54,
@@ -86,7 +87,7 @@ class _Goa_pano_bhajuState extends State<Goa_pano_bhaju> {
                                 SizedBox(
                                   width: 2.sp,
                                 ),
-                                Comman_Text(
+                                CommanText(
                                   text: product['product_price'],
                                   fontSize: 17.sp,
                                   color: red,
@@ -99,17 +100,17 @@ class _Goa_pano_bhajuState extends State<Goa_pano_bhaju> {
                       );
                     },
                   )
-                : Center(
+                : const Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Comman_Text(
+                        CommanText(
                           text: "No Image Added!",
                           fontSize: 27,
                           fontWeight: FontWeight.bold,
                           //fontFamily: "JB1",
                         ),
-                        Comman_Text(
+                        CommanText(
                           text: "Once you have added, come back:)",
                           fontSize: 19,
                           color: black54,
@@ -119,7 +120,7 @@ class _Goa_pano_bhajuState extends State<Goa_pano_bhaju> {
                     ),
                   );
           } else {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }

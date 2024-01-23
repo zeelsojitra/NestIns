@@ -8,15 +8,15 @@ class Profileimg extends GetxController {
   File? image;
   ImagePicker picker = ImagePicker();
   String? imgshow;
-  PickImage(ImageSource imageSource) async {
+  pickImage(ImageSource imageSource) async {
     final file = await picker.pickImage(source: imageSource);
 
     if (file != null) {
       image = File(file.path);
-      SharedPreferences sh_img = await SharedPreferences.getInstance();
-      sh_img.setString("Profile_Img", image.toString());
-      if (sh_img.getString("Profile_Img") != null) {
-        imgshow = sh_img.getString("Profile_Img");
+      SharedPreferences shImg = await SharedPreferences.getInstance();
+      shImg.setString("Profile_Img", image.toString());
+      if (shImg.getString("Profile_Img") != null) {
+        imgshow = shImg.getString("Profile_Img");
       }
     }
 

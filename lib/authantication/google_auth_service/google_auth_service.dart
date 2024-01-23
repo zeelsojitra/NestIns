@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-String? profile_name, profile_email; //profile_image,
+String? profileName, profileEmail;
 
 class GoogleAuthService {
   static Future<UserCredential?> signInWithGoogle() async {
@@ -20,18 +22,19 @@ class GoogleAuthService {
       );
       var authResult =
           await FirebaseAuth.instance.signInWithCredential(credential);
-      var _user = authResult.user;
-      print("User Name: ${_user?.displayName}");
-      print("User photo ${_user?.photoURL}");
-      print("User Email ${_user?.email}");
-      profile_name = _user!.displayName;
+      var user = authResult.user;
+      log("User Name: ${user?.displayName}");
+      log("User photo ${user?.photoURL}");
+      log("User Email ${user?.email}");
+      profileName = user!.displayName;
       // profile_image = _user!.photoURL;
-      profile_email = _user!.email;
+      profileEmail = user.email;
       // Once signed in, return the UserCredential
       return await FirebaseAuth.instance.signInWithCredential(credential);
     } on FirebaseException catch (e) {
-      print("GOOGLE AUTH ERROR==>>${e.message}");
+      log("GOOGLE AUTH ERROR==>>${e.message}");
     }
+    return null;
   }
 
   static googleSignOut() async {

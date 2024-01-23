@@ -1,35 +1,32 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_com/bottom_Navigation/bottom_navi_demo.dart';
+import 'package:e_com/bottom_navigation/bottom_navi_demo.dart';
 import 'package:e_com/getx/controller.dart';
-import 'package:e_com/screens/Favorite_Screen.dart';
-import 'package:e_com/screens/search.dart';
+import 'package:e_com/screens/favorite_screen.dart';
+import 'package:e_com/screens/categories_screens.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:e_com/screens/tab_bar.dart';
 import 'package:fancy_drawer/fancy_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../authantication/email authantication/EmailAuthService.dart';
-import '../authantication/google auth service/google_auth_service.dart';
-import '../common_screen/Comman_Container.dart';
+import '../authantication/email_authantication/email_auth_service.dart';
+import '../authantication/google_auth_service/google_auth_service.dart';
 import '../common_screen/Comman_text.dart';
+import '../common_screen/comman_container.dart';
 import '../globle/shardpefrence.dart';
 import '../globle/variable.dart';
 import '../searchdemo.dart';
-import 'CategoriesScreen.dart';
-import 'Details_screen.dart';
-import 'categories_screen.dart';
-import 'login_screen_h.dart';
-import 'orderScreen.dart';
+import 'details_screen.dart';
+import 'order_screen.dart';
 
 class HomeScreen1 extends StatefulWidget {
-  const HomeScreen1({Key? key}) : super(key: key);
+  const HomeScreen1({super.key});
 
   @override
   _HomeScreen1State createState() => _HomeScreen1State();
@@ -86,17 +83,17 @@ class _HomeScreen1State extends State<HomeScreen1>
                   margin: EdgeInsets.zero,
                   child: UserAccountsDrawerHeader(
                     decoration: BoxDecoration(
-                        gradient:
-                            LinearGradient(colors: [DarkGreen2, LightGreen]),
+                        gradient: const LinearGradient(
+                            colors: [darkGreen2, lightGreen]),
                         borderRadius: BorderRadius.circular(17)),
-                    accountName: Comman_Text(
-                      text: sharedPreferences!.getString("profile_name"),
+                    accountName: CommanText(
+                      text: sharedPreferences!.getString("profile_name")!,
                       //fontFamily: "JV1",
                       color: white,
                       fontSize: 16.sp,
                     ),
-                    accountEmail: Comman_Text(
-                      text: sharedPreferences!.getString("profile_email"),
+                    accountEmail: CommanText(
+                      text: sharedPreferences!.getString("profile_email")!,
                       //fontFamily: "JV1",
                       color: white,
                       fontSize: 16.sp,
@@ -107,13 +104,13 @@ class _HomeScreen1State extends State<HomeScreen1>
                       child: Container(
                         height: 50.sp,
                         width: 50.sp,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.white,
                         ),
                         child: Center(
-                          child: Comman_Text(
-                              color: DarkGreen2,
+                          child: CommanText(
+                              color: darkGreen2,
                               //fontFamily: "JV1",
                               fontWeight: FontWeight.bold,
                               fontSize: Get.height * 0.03,
@@ -133,13 +130,13 @@ class _HomeScreen1State extends State<HomeScreen1>
               //   child: Column(
               //     crossAxisAlignment: CrossAxisAlignment.start,
               //     children: [
-              //       Comman_Text(
+              //       CommanText(
               //         // text: sharedPreferences!.getString("profile_name")!,
               //         text: "profile email",
               //         color: black,
               //         fontSize: 16.sp,
               //       ),
-              //       Comman_Text(
+              //       CommanText(
               //         //text: sharedPreferences!.getString("profile_email")!,
               //         text: "profile email",
               //         color: black,
@@ -159,16 +156,16 @@ class _HomeScreen1State extends State<HomeScreen1>
               (index) => InkWell(
                 onTap: () {
                   if (index == 0) {
-                    Get.to(Bottom_navigation());
+                    Get.to(const BottomNavigation());
                   }
                   if (index == 1) {
-                    Get.to(CategoriesScreen());
+                    Get.to(const CategoriesScreen());
                   }
                   if (index == 2) {
-                    Get.to(OderScreen());
+                    Get.to(const OderScreen());
                   }
                   if (index == 3) {
-                    Get.to(Favorite_Screen());
+                    Get.to(const FavoriteScreen());
                   }
                   if (index == 4) {
                     Share.share("NestIn");
@@ -203,16 +200,15 @@ class _HomeScreen1State extends State<HomeScreen1>
                                 ),
                                 onPressed: () async {
                                   FirebaseAuth.instance.signOut();
-                                  EmailAuthService.LogoutUser()
+                                  EmailAuthService.loginUser()
                                       .then((value) async {
                                     SharedPreferences sh =
                                         await SharedPreferences.getInstance();
                                     sh.setBool(
-                                        Splash_ScreenState.KeyValue, false);
+                                        SplashScreenState.keyValue, false);
                                     GoogleAuthService.googleSignOut();
-                                    sh
-                                        .remove("email")
-                                        .then((value) => Get.off(Tab_Bar()));
+                                    sh.remove("email").then((value) =>
+                                        Get.off(const TabBarScreen()));
                                   });
                                   sharedPreferences!.remove("profile_email");
                                   sharedPreferences!.remove("profile_image");
@@ -231,9 +227,9 @@ class _HomeScreen1State extends State<HomeScreen1>
                     width: Get.width * 0.6,
                     decoration: BoxDecoration(
                         // color: white,
-                        gradient:
-                            LinearGradient(colors: [DarkGreen2, LightGreen]),
-                        boxShadow: [
+                        gradient: const LinearGradient(
+                            colors: [darkGreen2, lightGreen]),
+                        boxShadow: const [
                           BoxShadow(
                               color: grey, blurRadius: 4, offset: Offset(2, 2))
                         ],
@@ -247,7 +243,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                         SizedBox(
                           width: 15.sp,
                         ),
-                        Comman_Text(
+                        CommanText(
                           text: drawer[index]['name'],
                           //fontFamily: "JV1",
                           fontWeight: FontWeight.w600,
@@ -266,7 +262,7 @@ class _HomeScreen1State extends State<HomeScreen1>
             child: Row(
               children: [
                 Image.asset(
-                  "asserts/logo/text_logo.png",
+                  "asserts/logo/textLogo.png",
                   width: 150.sp,
                 ),
               ],
@@ -283,12 +279,12 @@ class _HomeScreen1State extends State<HomeScreen1>
             actions: [
               IconButton(
                 onPressed: () {
-                  Get.to(searchpage());
+                  Get.to(const SearchPage());
                 },
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
               ),
             ],
-            backgroundColor: DarkGreen2,
+            backgroundColor: darkGreen2,
             leading: IconButton(
               icon: const Icon(
                 Icons.menu,
@@ -298,14 +294,17 @@ class _HomeScreen1State extends State<HomeScreen1>
               },
             ),
           ),
-          body: WillPopScope(
-            onWillPop: onBackButtonPressed,
+          body: PopScope(
+            canPop: false,
+            onPopInvoked: (didPop) {
+              onBackButtonPressed;
+            },
             child: Center(
               child: Column(
                 children: [
                   Expanded(
                     child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -317,18 +316,18 @@ class _HomeScreen1State extends State<HomeScreen1>
                                     children: [
                                       VxSwiper.builder(
                                         onPageChanged: (index) {
-                                          controller.Pageview(index);
+                                          controller.pageview(index);
                                         },
                                         aspectRatio: 16 / 9,
                                         height: 130.sp,
                                         autoPlayAnimationDuration:
-                                            Duration(seconds: 2),
+                                            const Duration(seconds: 2),
                                         enlargeCenterPage: true,
-                                        itemCount: Pageview.length,
+                                        itemCount: pageview.length,
                                         itemBuilder: (context, index) {
                                           return Padding(
                                             padding: const EdgeInsets.all(8.0),
-                                            child: Comman_Container(
+                                            child: CommanContainer(
                                               // child: Padding(
                                               //   padding: EdgeInsets.symmetric(
                                               //       vertical: 15.sp,
@@ -337,7 +336,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                               //     crossAxisAlignment:
                                               //         CrossAxisAlignment.start,
                                               //     children: [
-                                              //       Comman_Text(
+                                              //       CommanText(
                                               //         text: Pageview[index]
                                               //             ['title'],
                                               //         color: white,
@@ -347,7 +346,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                               //       SizedBox(
                                               //         height: 5.sp,
                                               //       ),
-                                              //       Comman_Text(
+                                              //       CommanText(
                                               //         text: Pageview[index]
                                               //             ['subtitile'],
                                               //         color: white,
@@ -364,7 +363,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                               image: DecorationImage(
                                                 fit: BoxFit.cover,
                                                 image: AssetImage(
-                                                  Pageview[index],
+                                                  pageview[index],
                                                 ),
                                               ),
                                             ),
@@ -407,18 +406,19 @@ class _HomeScreen1State extends State<HomeScreen1>
                                               horizontal: 10.sp),
                                           child: Row(
                                             children: [
-                                              Comman_Text(
+                                              CommanText(
                                                 text: "Catalogue",
                                                 fontSize: 17.sp,
                                                 //fontFamily: "JV1",
                                                 fontWeight: FontWeight.w700,
                                               ),
-                                              Spacer(),
+                                              const Spacer(),
                                               TextButton(
                                                 onPressed: () {
-                                                  Get.to(CategoriesScreen());
+                                                  Get.to(
+                                                      const CategoriesScreen());
                                                 },
-                                                child: Comman_Text(
+                                                child: CommanText(
                                                   text: "See All  >",
                                                   //fontFamily: "JV1",
                                                   fontSize: 13.sp,
@@ -433,10 +433,11 @@ class _HomeScreen1State extends State<HomeScreen1>
                                         SizedBox(
                                           height: 73.sp,
                                           child: ListView.builder(
-                                            physics: BouncingScrollPhysics(),
+                                            physics:
+                                                const BouncingScrollPhysics(),
                                             padding:
                                                 EdgeInsets.only(right: 20.sp),
-                                            itemCount: Catalogue.length,
+                                            itemCount: catalogue.length,
                                             scrollDirection: Axis.horizontal,
                                             itemBuilder: (context, index) {
                                               return Container(
@@ -446,12 +447,13 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                 decoration: BoxDecoration(
                                                     image: DecorationImage(
                                                       colorFilter:
-                                                          ColorFilter.mode(
+                                                          const ColorFilter
+                                                              .mode(
                                                         black54,
                                                         BlendMode.darken,
                                                       ),
                                                       image: AssetImage(
-                                                          Catalogue[index]
+                                                          catalogue[index]
                                                               ['img']),
                                                       fit: BoxFit.cover,
                                                     ),
@@ -459,8 +461,8 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                         BorderRadius.circular(
                                                             12)),
                                                 child: Center(
-                                                  child: Comman_Text(
-                                                    text: Catalogue[index]
+                                                  child: CommanText(
+                                                    text: catalogue[index]
                                                         ['name'],
                                                     color: white,
                                                     //fontFamily: "JV1",
@@ -478,7 +480,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                         Padding(
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 10.sp),
-                                          child: Comman_Text(
+                                          child: CommanText(
                                             text: "Products",
                                             fontSize: 18.sp,
                                             //fontFamily: "JV1",
@@ -515,9 +517,6 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                           ConnectionState
                                                               .done ||
                                                       snapshot.hasData) {
-                                                    List<DocumentSnapshot>
-                                                        order =
-                                                        snapshot.data!.docs;
                                                     var data =
                                                         snapshot.data!.docs;
                                                     return snapshot.data!.docs
@@ -529,8 +528,8 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                 .docs
                                                                 .length,
                                                             physics:
-                                                                NeverScrollableScrollPhysics(),
-                                                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                                                const NeverScrollableScrollPhysics(),
+                                                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                                                 mainAxisSpacing:
                                                                     1,
                                                                 crossAxisSpacing:
@@ -571,7 +570,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                           color:
                                                                               grey,
                                                                           child:
-                                                                              Comman_Container(
+                                                                              CommanContainer(
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5),
                                                                             ontap:
@@ -599,7 +598,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                             image:
                                                                                 DecorationImage(
                                                                               fit: BoxFit.cover,
-                                                                              image: NetworkImage(product!['image'].toString()),
+                                                                              image: NetworkImage(product['image'].toString()),
                                                                             ),
                                                                           ),
                                                                         ),
@@ -643,8 +642,8 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                                   }
                                                                                 },
                                                                                 icon: (snap.data!['favourite'] as List).contains(data[index].id)
-                                                                                    ? Icon(Icons.favorite, color: red)
-                                                                                    : Icon(
+                                                                                    ? const Icon(Icons.favorite, color: red)
+                                                                                    : const Icon(
                                                                                         Icons.favorite_border,
                                                                                         color: grey,
                                                                                       ),
@@ -658,7 +657,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                       height:
                                                                           8.sp,
                                                                     ),
-                                                                    Comman_Text(
+                                                                    CommanText(
                                                                       text: product[
                                                                           "product_name"],
                                                                       fontWeight:
@@ -675,7 +674,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                     ),
                                                                     Row(
                                                                       children: [
-                                                                        Comman_Text(
+                                                                        CommanText(
                                                                           text:
                                                                               "₹",
                                                                           fontSize:
@@ -687,7 +686,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                                           width:
                                                                               2.sp,
                                                                         ),
-                                                                        Comman_Text(
+                                                                        CommanText(
                                                                           text:
                                                                               product['product_price'],
                                                                           fontSize:
@@ -709,7 +708,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                         : Column(
                                                             children: [
                                                               Image.asset(
-                                                                Empty_order,
+                                                                emptyOrder,
                                                                 height:
                                                                     Get.height *
                                                                         0.35,
@@ -719,7 +718,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                             ],
                                                           );
                                                   } else {
-                                                    return Center(
+                                                    return const Center(
                                                       child:
                                                           CircularProgressIndicator(),
                                                     );
@@ -727,7 +726,7 @@ class _HomeScreen1State extends State<HomeScreen1>
                                                 },
                                               );
                                             } else {
-                                              return Center(
+                                              return const Center(
                                                 child:
                                                     CircularProgressIndicator(),
                                               );
@@ -758,14 +757,14 @@ class _HomeScreen1State extends State<HomeScreen1>
     return await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Comman_Text(text: "Really?"),
-        content: Comman_Text(text: "Do you want to close app??"),
+        title: const CommanText(text: "Really?"),
+        content: const CommanText(text: "Do you want to close app??"),
         actions: [
           IconButton(
               onPressed: () {
                 Navigator.of(context).pop(false);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.close,
                 color: Colors.red,
               )),
@@ -773,7 +772,7 @@ class _HomeScreen1State extends State<HomeScreen1>
               onPressed: () {
                 Navigator.of(context).pop(true);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.done,
                 color: green,
               )),

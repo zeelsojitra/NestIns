@@ -1,14 +1,10 @@
-import 'package:e_com/screens/RoadMap/RoadMap_Screen.dart';
-import 'package:e_com/screens/CategoriesScreen.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
-import 'bottom_Navigation/bottom_NAV.dart';
 import 'globle/shardpefrence.dart';
 
 void main() async {
@@ -18,13 +14,13 @@ void main() async {
   sharedPreferences = await SharedPreferences.getInstance();
   await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   //horizontal oriantaion lock kerva mate.
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   //safearea color kerva mate.
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.black54,
   ));
   runApp(const MyApp());
@@ -37,12 +33,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Sizer(
-      builder: (context, orientation, deviceType) => GetMaterialApp(
+      builder: (context, orientation, deviceType) => const GetMaterialApp(
         title: 'NestIn',
         // theme: MyThemes.lightTheme,
         // darkTheme: MyThemes.darkTheme,
         themeMode: ThemeMode.system,
-        home: Splash_Screen(),
+        home: SplashScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );

@@ -1,21 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_com/common_screen/Comman_Container.dart';
+import 'package:e_com/common_screen/comman_container.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
 import '../common_screen/Comman_text.dart';
 import '../globle/variable.dart';
 
-class Favorite_Screen extends StatefulWidget {
-  const Favorite_Screen({Key? key}) : super(key: key);
+class FavoriteScreen extends StatefulWidget {
+  const FavoriteScreen({super.key});
 
   @override
-  State<Favorite_Screen> createState() => _Favorite_ScreenState();
+  State<FavoriteScreen> createState() => _FavoriteScreenState();
 }
 
-class _Favorite_ScreenState extends State<Favorite_Screen> {
+class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +26,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
       body: SafeArea(
         child: Column(
           children: [
-            // Comman_Container(
+            // CommanContainer(
             //   height: 60.sp,
             //   width: double.infinity,
             //   borderRadius: BorderRadius.only(
@@ -35,8 +34,8 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
             //       bottomLeft: Radius.circular(30)),
             //   gradient: LinearGradient(
             //     colors: [
-            //       DarkGreen2,
-            //       LightGreen,
+            //       darkGreen2,
+            //       lightGreen,
             //     ],
             //   ),
             //   child: Padding(
@@ -58,7 +57,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
             //               ),
             //             )),
             //         Spacer(),
-            //         Comman_Text(
+            //         CommanText(
             //           text: "Favourite",
             //           color: white,
             //           fontSize: 20.sp,
@@ -78,20 +77,20 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
             //     children: [
             //       Row(
             //         children: [
-            //           Comman_Text(
+            //           CommanText(
             //             text: "5 Items",
             //             fontSize: 16.sp,
             //             fontWeight: FontWeight.w500,
             //           ),
             //           Spacer(),
-            //           Comman_Text(
+            //           CommanText(
             //             text: "Sort By : ",
             //           ),
-            //           Comman_Text(
+            //           CommanText(
             //             text: "Price : ",
             //             fontWeight: FontWeight.w500,
             //           ),
-            //           Comman_Text(
+            //           CommanText(
             //             text: "Lowest to high ",
             //             fontWeight: FontWeight.w500,
             //           ),
@@ -120,7 +119,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                         return snapshot.data!.docs.isNotEmpty
                             ? Expanded(
                                 child: ListView.builder(
-                                  physics: BouncingScrollPhysics(),
+                                  physics: const BouncingScrollPhysics(),
                                   padding: EdgeInsets.symmetric(
                                       vertical: 15.sp, horizontal: 10.sp),
                                   itemCount: snapshot.data!.docs.length,
@@ -150,11 +149,12 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                                           BorderRadius.circular(
                                                               10),
                                                       child: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .symmetric(
                                                                 vertical: 10,
                                                                 horizontal: 10),
-                                                        child: Comman_Container(
+                                                        child: CommanContainer(
                                                           height:
                                                               Get.height * 0.18,
                                                           width:
@@ -185,7 +185,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          Comman_Text(
+                                                          CommanText(
                                                             text:
                                                                 '${data[index]['product_name']}',
                                                             fontSize: 15.sp,
@@ -196,7 +196,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                                           SizedBox(
                                                             height: 2.sp,
                                                           ),
-                                                          Comman_Text(
+                                                          CommanText(
                                                             text:
                                                                 '${data[index]['product_catagory']}',
                                                             fontSize: 15.sp,
@@ -206,7 +206,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                                           SizedBox(
                                                             height: 2.sp,
                                                           ),
-                                                          Comman_Text(
+                                                          CommanText(
                                                             text:
                                                                 '₹ ${data[index]['product_price']}',
                                                             fontSize: 15.sp,
@@ -299,16 +299,16 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
                                   },
                                 ),
                               )
-                            : Text("Gello");
+                            : const Text("Gello");
                       } else {
-                        return Center(
+                        return const Center(
                           child: CircularProgressIndicator(),
                         );
                       }
                     },
                   );
                 } else {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }

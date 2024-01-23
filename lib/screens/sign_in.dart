@@ -1,36 +1,34 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_com/common_screen/Comman_Container.dart';
-import 'package:e_com/common_screen/Comman_TeextFiled.dart';
-import 'package:e_com/common_screen/Comman_text.dart';
-import 'package:e_com/globle/shardpefrence.dart';
+import 'package:e_com/authantication/email_authantication/email_auth_service.dart';
+import 'package:e_com/common_screen/comman_textformfeild.dart';
+import 'package:e_com/common_screen/comman_text.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
-import '../authantication/email authantication/EmailAuthService.dart';
-import '../authantication/google auth service/google_auth_service.dart';
-import '../bottom_Navigation/bottom_NAV.dart';
-import '../bottom_Navigation/bottom_navi_demo.dart';
+import '../authantication/google_auth_service/google_auth_service.dart';
+import '../bottom_navigation/bottom_navi_demo.dart';
+import '../common_screen/comman_container.dart';
 import '../common_screen/loding.dart';
 import '../globle/variable.dart';
-import 'bottom_navigation_screen.dart';
 
-class Sign_In extends StatefulWidget {
-  const Sign_In({Key? key}) : super(key: key);
+class SignIn extends StatefulWidget {
+  const SignIn({super.key});
 
   @override
-  State<Sign_In> createState() => _Sign_InState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _Sign_InState extends State<Sign_In> {
+class _SignInState extends State<SignIn> {
   String countryCode = "91";
   String countryFlage = "";
   final usernamecontroler = TextEditingController();
-  final Email_controler = TextEditingController();
-  final Password_controler = TextEditingController();
+  final emailControler = TextEditingController();
+  final passwordControler = TextEditingController();
   bool passwordcheck = true;
   int selected = 0;
   bool isLoding = false;
@@ -52,17 +50,18 @@ class _Sign_InState extends State<Sign_In> {
               SizedBox(
                 height: 17.sp,
               ),
-              Comman_TexxtFiled(
+              CommanTextFormFiled(
                 filled: true,
                 fillcolor: Colors.grey.shade200,
                 controller: usernamecontroler,
                 hinttext: "Enter Name",
-                HintfontFamily: "JV1",
+                hintfontFamily: "JV1",
                 fontFamily: "JV1",
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Enter Name";
                   }
+                  return null;
                 },
                 onChanged: (value) {
                   setState(() {
@@ -70,11 +69,11 @@ class _Sign_InState extends State<Sign_In> {
                   });
                 },
                 sufficicon: usernamecontroler.text.length > 2
-                    ? Icon(
+                    ? const Icon(
                         Icons.check_circle,
                         color: Colors.black,
                       )
-                    : SizedBox(),
+                    : const SizedBox(),
                 prefixicon: Icon(
                   Icons.person_outlined,
                   size: 20.sp,
@@ -84,12 +83,12 @@ class _Sign_InState extends State<Sign_In> {
               SizedBox(
                 height: 15.sp,
               ),
-              Comman_TexxtFiled(
+              CommanTextFormFiled(
                 filled: true,
                 fillcolor: Colors.grey.shade200,
-                controller: Email_controler,
+                controller: emailControler,
                 hinttext: "Enter Email",
-                HintfontFamily: "JV1",
+                hintfontFamily: "JV1",
                 fontFamily: "JV1",
                 validator: (value) {
                   final bool emailValid = email.hasMatch(value!);
@@ -102,7 +101,7 @@ class _Sign_InState extends State<Sign_In> {
                 onChanged: (value) {
                   gloablekey.currentState!.validate();
                 },
-                prefixicon: Icon(
+                prefixicon: const Icon(
                   Icons.email,
                   size: 20,
                   color: Colors.grey,
@@ -111,10 +110,10 @@ class _Sign_InState extends State<Sign_In> {
               SizedBox(
                 height: 15.sp,
               ),
-              Comman_TexxtFiled(
+              CommanTextFormFiled(
                 filled: true,
                 fillcolor: Colors.grey.shade200,
-                controller: Password_controler,
+                controller: passwordControler,
                 obscureText: passwordcheck,
                 sufficicon: IconButton(
                   onPressed: () {
@@ -123,11 +122,11 @@ class _Sign_InState extends State<Sign_In> {
                     });
                   },
                   icon: passwordcheck
-                      ? Icon(Icons.visibility_off)
-                      : Icon(Icons.visibility),
+                      ? const Icon(Icons.visibility_off)
+                      : const Icon(Icons.visibility),
                 ),
                 hinttext: "Enter password",
-                HintfontFamily: "JV1",
+                hintfontFamily: "JV1",
                 fontFamily: "JV1",
                 validator: (value) {
                   final bool passwordValid = password.hasMatch(value!);
@@ -137,6 +136,7 @@ class _Sign_InState extends State<Sign_In> {
                   } else if (passwordValid != true) {
                     return "please enter valid password";
                   }
+                  return null;
                 },
                 onChanged: (value) {
                   gloablekey.currentState!.validate();
@@ -151,33 +151,33 @@ class _Sign_InState extends State<Sign_In> {
                 height: 15.sp,
               ),
               Center(
-                child: Comman_Container(
+                child: CommanContainer(
                   borderRadius: BorderRadius.circular(40),
                   ontap: () {
-                    print("hello");
+                    log("hello");
                     if (gloablekey.currentState!.validate()) {
                       showDialog(
                         context: context,
                         builder: (context) {
-                          return LodingDiloge(
+                          return const LodingDiloge(
                             message: "",
                           );
                         },
                       );
-                      EmailAuthService.LoginUser(
-                              password: Password_controler.text,
-                              email: Email_controler.text)
+                      EmailAuthService.loginUser(
+                              password: passwordControler.text,
+                              email: emailControler.text)
                           .then((value) async {
                         if (value != null) {
                           Get.back();
-                          Get.off(Bottom_navigation());
+                          Get.off(const BottomNavigation());
                           FirebaseFirestore.instance
                               .collection("user")
                               .doc(FirebaseAuth.instance.currentUser!.uid)
                               .set({
                             "profile_image": "",
-                            "profile_name": profile_name,
-                            "profile_email": profile_email,
+                            "profile_name": profileName,
+                            "profile_email": profileEmail,
                             "favourite": [],
                             "buyNow": [],
                             "add to cart": [],
@@ -186,15 +186,15 @@ class _Sign_InState extends State<Sign_In> {
                           SharedPreferences sharedPreferences =
                               await SharedPreferences.getInstance();
                           await sharedPreferences.setBool(
-                              Splash_ScreenState.KeyValue, true);
-                          await sharedPreferences!.setString(
-                              "profile_name", usernamecontroler.text!);
-                          await sharedPreferences!.setString(
-                              "profile_email", Email_controler.text!);
+                              SplashScreenState.keyValue, true);
+                          await sharedPreferences.setString(
+                              "profile_name", usernamecontroler.text);
+                          await sharedPreferences.setString(
+                              "profile_email", emailControler.text);
                         } else {
                           Get.back();
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               content: Text("Invalid Email or Password!"),
                             ),
                           );
@@ -204,9 +204,9 @@ class _Sign_InState extends State<Sign_In> {
                   },
                   height: 35.sp,
                   width: 140.sp,
-                  color: LightGreen,
+                  color: lightGreen,
                   child: Center(
-                    child: Comman_Text(
+                    child: CommanText(
                       text: "Sign In",
                       //fontFamily: "JV1",
                       color: Colors.white,

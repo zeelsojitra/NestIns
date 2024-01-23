@@ -1,26 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_com/common_screen/Comman_Container.dart';
 import 'package:e_com/globle/variable.dart';
-import 'package:e_com/screens/Details_screen.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:e_com/screens/details_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
 
-class searchpage extends StatefulWidget {
-  const searchpage({Key? key}) : super(key: key);
+import 'common_screen/comman_container.dart';
+
+class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
 
   @override
-  State<searchpage> createState() => _searchpageState();
+  State<SearchPage> createState() => _SearchPageState();
 }
 
-class _searchpageState extends State<searchpage> {
+class _SearchPageState extends State<SearchPage> {
   String query = "";
 
-  var result;
+  dynamic result;
 
   searchFunction(query, searchList) {
     result = searchList.where((element) {
@@ -39,7 +36,7 @@ class _searchpageState extends State<searchpage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
@@ -50,12 +47,12 @@ class _searchpageState extends State<searchpage> {
                       query = value;
                     });
                   },
-                  style: TextStyle(fontFamily: "JV1"),
+                  style: const TextStyle(fontFamily: "JV1"),
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                     fillColor: Colors.grey,
                     hintText: "Search Product Name",
-                    hintStyle: TextStyle(fontFamily: "JV1"),
+                    hintStyle: const TextStyle(fontFamily: "JV1"),
                     filled: false,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -63,7 +60,7 @@ class _searchpageState extends State<searchpage> {
                   ),
                 ),
                 query == ""
-                    ? Center(
+                    ? const Center(
                         child: Text(
                           '',
                           style: TextStyle(
@@ -88,7 +85,7 @@ class _searchpageState extends State<searchpage> {
                                   searchFunction(query, snapshot.data!.docs);
 
                               return varData.isEmpty
-                                  ? Center(
+                                  ? const Center(
                                       child: Text(
                                         "No Product Found!",
                                         style: TextStyle(
@@ -100,7 +97,8 @@ class _searchpageState extends State<searchpage> {
                                     )
                                   : ListView.builder(
                                       shrinkWrap: true,
-                                      physics: NeverScrollableScrollPhysics(),
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
                                       itemCount: varData.length,
                                       itemBuilder: (context, index) {
                                         final product =
@@ -114,7 +112,7 @@ class _searchpageState extends State<searchpage> {
                                                   image: product['image'],
                                                   category: product[
                                                       "product_catagory"],
-                                                  buynow: [],
+                                                  buynow: const [],
                                                   details: product[
                                                       "product_details"],
                                                   name: product["product_name"],
@@ -135,17 +133,17 @@ class _searchpageState extends State<searchpage> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  SizedBox(height: 10),
+                                                  const SizedBox(height: 10),
                                                   Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            horizontal: 10,
-                                                            vertical: 10),
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 10,
+                                                        vertical: 10),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               10),
-                                                      child: Comman_Container(
+                                                      child: CommanContainer(
                                                         height: 120.sp,
                                                         width: 80.sp,
                                                         image: DecorationImage(
@@ -162,7 +160,7 @@ class _searchpageState extends State<searchpage> {
                                                   //     height: 140,
                                                   //   ),
                                                   // ),
-                                                  SizedBox(height: 25),
+                                                  const SizedBox(height: 25),
 
                                                   Expanded(
                                                     child: Column(
@@ -250,7 +248,7 @@ class _searchpageState extends State<searchpage> {
                                                     ),
                                                   ),
 
-                                                  SizedBox(height: 10),
+                                                  const SizedBox(height: 10),
                                                   // Text(
                                                   //   "  Name :  " +
                                                   //       data["first name"] +
@@ -278,7 +276,7 @@ class _searchpageState extends State<searchpage> {
                                                   //                     : Colors
                                                   //                         .orange),
                                                   //       ),
-                                                  SizedBox(height: 10),
+                                                  const SizedBox(height: 10),
                                                 ],
                                               ),
                                             ));

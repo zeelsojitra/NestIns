@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DetailsScreendemo extends StatefulWidget {
-  const DetailsScreendemo({Key? key}) : super(key: key);
+  const DetailsScreendemo({super.key});
 
   @override
   State<DetailsScreendemo> createState() => _DetailsScreendemoState();
@@ -14,15 +14,15 @@ class _DetailsScreendemoState extends State<DetailsScreendemo> {
       body: SafeArea(
         child: Expanded(
           child: GridView.builder(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             itemCount: 10,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, childAspectRatio: 0.71),
             itemBuilder: (context, index) {
               return Card(
-                margin: EdgeInsets.all(5),
-                color: Color(0xfff5f5f5),
+                margin: const EdgeInsets.all(5),
+                color: const Color(0xfff5f5f5),
                 elevation: 10,
                 child: InkWell(
                   child: Column(
@@ -30,10 +30,10 @@ class _DetailsScreendemoState extends State<DetailsScreendemo> {
                       Container(
                         height: 125,
                         width: 125,
-                        margin: EdgeInsets.only(top: 10, bottom: 3),
+                        margin: const EdgeInsets.only(top: 10, bottom: 3),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 image: NetworkImage(""), fit: BoxFit.fill)),
                       ),
                     ],

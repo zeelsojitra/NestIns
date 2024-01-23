@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_com/globle/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../getx/controller.dart';
-import '../screens/Favorite_Screen.dart';
+import '../screens/favorite_screen.dart';
 import '../screens/categories_screen.dart';
 import '../screens/fancy_drawer.dart';
 import '../screens/profile_screen.dart';
@@ -17,14 +15,14 @@ import '../screens/profile_screen.dart';
 final Controller contoller = Get.put(Controller());
 
 //color
-const Color DarkGreen2 = Color(0xff2D6A4F);
-const Color LightGreen1 = Color(0xff95d5d2);
-const Color DarkGreen = Color(0xff40916C);
-const Color LightGreen = Color(0xff52B788);
-const Color lightGreen = Color(0xffB7E4C7);
-const Color iconColor_Drawer = Color(0xffFFFFFF);
+const Color darkGreen2 = Color(0xff2D6A4F);
+const Color lightGreen1 = Color(0xff95d5d2);
+const Color darkGreen = Color(0xff40916C);
+const Color lightGreen = Color(0xff52B788);
+// const Color lightGreen = Color(0xffB7E4C7);
+const Color iconColorDrawer = Color(0xffFFFFFF);
 const Color iconColor = Color(0xff74C69D);
-const Color orange_logo = Color(0xffF58634);
+const Color orangeLogo = Color(0xffF58634);
 const Color green = Colors.green;
 const Color purple = Colors.purple;
 const Color pink = Colors.pink;
@@ -43,82 +41,82 @@ const Color black87 = Colors.black87;
 const Color black26 = Colors.black26;
 const Color transparent = Colors.transparent;
 // Color(0xff2D6A4F),//dark
-// Color(0xff95D5B2),//light LightGreen1
+// Color(0xff95D5B2),//light lightGreen1
 
 //controller
-final Phone = TextEditingController();
-final Pincode = TextEditingController();
-final City = TextEditingController();
-final STATE = TextEditingController();
-final House = TextEditingController();
-final Road = TextEditingController();
+final phone = TextEditingController();
+final pincode = TextEditingController();
+final city = TextEditingController();
+final state = TextEditingController();
+final house = TextEditingController();
+final road = TextEditingController();
 
 //icon
-const home_outlined = Icon(Icons.home_outlined, color: iconColor_Drawer);
-const maps_home_work_sharp =
-    Icon(Icons.maps_home_work_sharp, color: iconColor_Drawer);
-const maps_home_work_sharp_Add =
-    Icon(Icons.maps_home_work_sharp, color: LightGreen1);
-const home = Icon(Icons.home, color: iconColor_Drawer);
-const HomeAdd = Icon(
+const homeOutlined = Icon(Icons.home_outlined, color: iconColorDrawer);
+const mapsHomeWorkSharp =
+    Icon(Icons.maps_home_work_sharp, color: iconColorDrawer);
+const mapsHomeWorkSharpAdd =
+    Icon(Icons.maps_home_work_sharp, color: lightGreen1);
+const home = Icon(Icons.home, color: iconColorDrawer);
+const homeAdd = Icon(
   Icons.home,
-  color: LightGreen1,
+  color: lightGreen1,
 );
-const gridview = Icon(Icons.grid_view, color: iconColor_Drawer);
-const logout = Icon(Icons.logout, color: iconColor_Drawer);
-const privacy_tip_outlined =
-    Icon(Icons.privacy_tip_outlined, color: iconColor_Drawer);
-const share = Icon(Icons.share, color: iconColor_Drawer);
-const favorite_outline = Icon(Icons.favorite_outline, color: iconColor_Drawer);
-const shopping_cart_outlined =
-    Icon(Icons.shopping_cart_outlined, color: iconColor_Drawer);
+const gridview = Icon(Icons.grid_view, color: iconColorDrawer);
+const logout = Icon(Icons.logout, color: iconColorDrawer);
+const privacyTipOutlined =
+    Icon(Icons.privacy_tip_outlined, color: iconColorDrawer);
+const share = Icon(Icons.share, color: iconColorDrawer);
+const favoriteOutline = Icon(Icons.favorite_outline, color: iconColorDrawer);
+const shoppingCartOutlined =
+    Icon(Icons.shopping_cart_outlined, color: iconColorDrawer);
 
 // image app logo
 
-const logo_green = "asserts/logo/splash_main.png";
-const main_logo = "asserts/logo/main_logo.png";
-const text_logo = "asserts/logo/text_logo.png";
-const Empty_order = "asserts/image/emptyorder.png";
-const Empty_fav = "asserts/image/wishlist.png";
+const logoGreen = "asserts/logo/splash_main.png";
+const mainLogo = "asserts/logo/mainLogo.png";
+const textLogo = "asserts/logo/textLogo.png";
+const emptyOrder = "asserts/image/emptyorder.png";
+const emptyFav = "asserts/image/wishlist.png";
 
 //categories image
-const beauty_categories = "asserts/Categories/beauty.png";
-const gadegts_categories = "asserts/Categories/gadegts.png";
-const homekitchen_categories = "asserts/Categories/home & kitchen.png";
-const kids_categories = "asserts/Categories/kids.png";
-const men_categories = "asserts/Categories/men.png";
-const men_shopping_categories = "asserts/Categories/men_shopping.png";
-const wommen_categories = "asserts/Categories/wommen.png";
+const beautyCategories = "asserts/Categories/beauty.png";
+const gadegtsCategories = "asserts/Categories/gadegts.png";
+const homekitchenCategories = "asserts/Categories/home & kitchen.png";
+const kidsCategories = "asserts/Categories/kids.png";
+const menCategories = "asserts/Categories/men.png";
+const menShoppingCategories = "asserts/Categories/men_shopping.png";
+const wommenCategories = "asserts/Categories/wommen.png";
 
 //categoriesdemo
 //catlogue image
-const computer_catlogue = "asserts/catlogue/computer.png";
-const laptop_catlogue = "asserts/catlogue/laptop.png";
-const men_catlogue = "asserts/catlogue/men.png";
-const womens_catlogue = "asserts/catlogue/womens.png";
-const kid_catlogue = "asserts/Categories/kids.png";
+const computerCatlogue = "asserts/catlogue/computer.png";
+const laptopCatlogue = "asserts/catlogue/laptop.png";
+const menCatlogue = "asserts/catlogue/men.png";
+const womensCatlogue = "asserts/catlogue/womens.png";
+const kidCatlogue = "asserts/Categories/kids.png";
 
 //login image
-const apple_logo = "asserts/image/apple.png";
-const apple_black_logo = "asserts/image/apple.png";
-const app_bg = "asserts/image/bg.png";
-const google_bg = "asserts/image/google.png";
-const google_bg1 = "asserts/image/google_1.png";
+const appleLogo = "asserts/image/apple.png";
+const appleBlackLogo = "asserts/image/apple.png";
+const appBg = "asserts/image/bg.png";
+const googleBg = "asserts/image/google.png";
+const googleBg1 = "asserts/image/google_1.png";
 
 //image shopping
 
-const men_shopping = "asserts/image/men_shopping1.png";
-const wommen_shopping = "asserts/Categories/wommen.png";
+const menShopping = "asserts/image/men_shopping1.png";
+const wommenShopping = "asserts/Categories/wommen.png";
 
 //pageview image
-const page_view1 = "asserts/pageview/pageview1.jpg";
-const page_view2 = "asserts/pageview/pageview2.jpg";
-const page_view3 = "asserts/pageview/pageview3.jpg";
-const page_view4 = "asserts/pageview/pageview4.jpg";
-const page_view5 = "asserts/pageview/pageview5.jpg";
-const page_view6 = "asserts/pageview/pageview6.jpg";
-const page_view7 = "asserts/pageview/pageview7.jpg";
-const page_view8 = "asserts/pageview/pageview8.jpg";
+const pageView1 = "asserts/pageview/pageview1.jpg";
+const pageView2 = "asserts/pageview/pageview2.jpg";
+const pageView3 = "asserts/pageview/pageview3.jpg";
+const pageView4 = "asserts/pageview/pageview4.jpg";
+const pageView5 = "asserts/pageview/pageview5.jpg";
+const pageView6 = "asserts/pageview/pageview6.jpg";
+const pageView7 = "asserts/pageview/pageview7.jpg";
+const pageView8 = "asserts/pageview/pageview8.jpg";
 
 //onbording image
 const onbording1 = "asserts/onbording/onbording1.png";
@@ -126,15 +124,15 @@ const onbording2 = "asserts/onbording/onbording2.png";
 const onbording3 = "asserts/onbording/onbording3.png";
 
 //lottie image
-const apple_lottie = "asserts/lottie/apple.json";
-const calling_lottie = "asserts/lottie/calling.json";
-const google_lottie = "asserts/lottie/google.json";
+const appleLottie = "asserts/lottie/apple.json";
+const callingLottie = "asserts/lottie/calling.json";
+const googleLottie = "asserts/lottie/google.json";
 
 //image checkout
 const g = "asserts/checkout/masterCard.png";
 
 //fav screen
-const favorite_outline1 = Icon(Icons.favorite_outline, color: green);
+const favoriteOutline1 = Icon(Icons.favorite_outline, color: green);
 const favorite = Icon(Icons.favorite_outline, color: red);
 //drawer Screen
 List drawer = [
@@ -147,11 +145,11 @@ List drawer = [
     "name": "Shop by category",
   },
   {
-    "icon": shopping_cart_outlined,
+    "icon": shoppingCartOutlined,
     "name": "Your Orders",
   },
   {
-    "icon": favorite_outline,
+    "icon": favoriteOutline,
     "name": "Your Wish List",
   },
   {
@@ -159,7 +157,7 @@ List drawer = [
     "name": "Share",
   },
   // {
-  //   "icon": privacy_tip_outlined,
+  //   "icon": privacyTipOutlined,
   //   "name": "Privacy Policy",
   // },
   {
@@ -172,13 +170,13 @@ List drawer = [
 final formKey = GlobalKey<FormState>();
 
 //List
-List addinfo_add = [
+List addinfoAdd = [
   {
-    "Icon": HomeAdd,
+    "Icon": homeAdd,
     "Name": "Home",
   },
   {
-    "Icon": maps_home_work_sharp_Add,
+    "Icon": mapsHomeWorkSharpAdd,
     "Name": "Work",
   },
 ];
@@ -188,28 +186,28 @@ List addinfo_add = [
 bool selected = false;
 Razorpay? razorpay;
 //categories screen data
-List women_details = [
+List womenDetails = [
   "WesternWear",
   "IndianWear",
   "Jewellary",
   "FootWear",
   "Accessories",
 ];
-List men_details = [
+List menDetails = [
   "Clothing",
   "FootWear",
   "Watches",
   "Laggage",
   "Sports",
 ];
-List kids_details = [
+List kidsdetails = [
   "Boys",
   "Girls",
   "Babies",
   "FootWear",
   "Accessories",
 ];
-List homeAndKitchen_details = [
+List homeAndKitchenDetails = [
   "Sofa",
   "BedSheets & more",
   "Lighting",
@@ -217,7 +215,7 @@ List homeAndKitchen_details = [
   "Home Furnishing",
   "Home Tools",
 ];
-List beauty_details = [
+List beautyDetails = [
   "SkinCare",
   "HairCare",
   "MackUp",
@@ -225,7 +223,7 @@ List beauty_details = [
   "Men's Grooming",
   "Women's Hygiene",
 ];
-List gadgets_details = [
+List gadgetsDetails = [
   "HeadPhones",
   "Cameras",
   "PowerBank",
@@ -236,17 +234,17 @@ List categories = [
   {
     "title": "WOMEN",
     "subtitle": "Top & Tees, Kurtas & Suits... ",
-    "imagess": wommen_categories,
+    "imagess": wommenCategories,
   },
   {
     "title": "MEN",
     "subtitle": "T-Shirts, Shirts, Jeans, Shoes...",
-    "imagess": men_categories,
+    "imagess": menCategories,
   },
   {
     "title": "KIDS",
     "subtitle": "Clothing, Footwear, Brands...",
-    "imagess": kids_categories,
+    "imagess": kidsCategories,
   },
   // {
   //   "title": "HOME &\nKITCHEN",
@@ -264,7 +262,7 @@ List categories = [
   //   "imagess": "asserts/Categories/gadegts.png",
   // },
 ];
-List In_details = [
+List inDetails = [
   {
     'cat': [
       "WesternWear",
@@ -330,35 +328,35 @@ String searchText = "";
 
 //home screen data
 
-const String Fashionsale = "Fashion sale";
+const String fashionsale = "Fashion sale";
 const String subtitile = "Seel More >";
 Profileimg pi = Get.put(Profileimg());
 //home screen
-List Pageview = [
-  page_view1,
-  page_view2,
-  page_view3,
-  page_view4,
-  page_view5,
-  page_view6,
-  page_view8,
-  page_view7,
+List pageview = [
+  pageView1,
+  pageView2,
+  pageView3,
+  pageView4,
+  pageView5,
+  pageView6,
+  pageView8,
+  pageView7,
 ];
-List Catalogue = [
+List catalogue = [
   {
-    'img': womens_catlogue,
+    'img': womensCatlogue,
     "name": "Women's\nFashion",
   },
   {
-    'img': men_catlogue,
+    'img': menCatlogue,
     "name": "Men's\nFashion",
   },
   {
-    'img': kid_catlogue,
+    'img': kidCatlogue,
     "name": "Kids",
   },
   {
-    'img': wommen_shopping,
+    'img': wommenShopping,
     "name": "Girls",
   },
 ];
@@ -394,7 +392,7 @@ List Catalogue = [
 //   },
 // ];;;;;;;;
 
-int dot_selected = 0;
+int dotSelected = 0;
 //bool selected = true;
 File? image;
 ImagePicker picker = ImagePicker();
@@ -427,7 +425,7 @@ List onbording = [
   },
 ];
 PageController pageController = PageController(initialPage: 0);
-bool Selected = false;
+// bool Selected = false;
 
 //profile screen
 // List profile = [
@@ -455,7 +453,7 @@ bool Selected = false;
 //   {
 //     "name": "Favorite",
 //     "Icon": Icon(
-//       Icons.favorite_outline,
+//       Icons.favoriteOutline,
 //       //color: iconColor,
 //     ),
 //   },
@@ -553,11 +551,11 @@ List categoriesDemo = [
 
 AppBar coomanAppBar({String? name, List<Widget>? action, bool? centerTitle}) {
   return AppBar(
-    title: Text("${name}"),
+    title: Text("$name"),
     centerTitle: centerTitle,
     titleTextStyle: TextStyle(fontFamily: "JS1", fontSize: Get.height * 0.022),
     actions: action,
-    backgroundColor: DarkGreen2,
+    backgroundColor: darkGreen2,
   );
 }
 
@@ -575,11 +573,11 @@ List<String> listOfStrings = [
   'Favorite',
   'Profile',
 ];
-List Screens = [
-  HomeScreen1(),
-  CategoryScreen_2(),
-  Favorite_Screen(),
-  ProfileScreen(),
+List screens = [
+  const HomeScreen1(),
+  const CategoryScreen2(),
+  const FavoriteScreen(),
+  const ProfileScreen(),
 ];
 
 String? demo;

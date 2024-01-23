@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class Comman_Text extends StatelessWidget {
-  const Comman_Text(
-      {Key? key,
-      this.text,
+class CommanText extends StatelessWidget {
+  const CommanText(
+      {super.key,
+      required this.text,
       this.color,
       this.fontSize,
       this.fontWeight,
@@ -11,15 +11,14 @@ class Comman_Text extends StatelessWidget {
       this.maxLines,
       this.textScaleFactor,
       //this.fontFamily,
-      this.textAlign})
-      : super(key: key);
+      this.textAlign});
 
-  final text;
+  final String text;
   //final fontFamily;
   final double? textScaleFactor;
   final int? maxLines;
   final Color? color;
-  final decoration;
+  final TextDecoration? decoration;
   final TextAlign? textAlign;
   final double? fontSize;
   final FontWeight? fontWeight;
@@ -29,7 +28,7 @@ class Comman_Text extends StatelessWidget {
     return Text(
       text,
       maxLines: maxLines,
-      textScaleFactor: textScaleFactor,
+      textScaler: TextScaler.linear(textScaleFactor!),
       textAlign: textAlign,
       style: TextStyle(
         fontFamily: "JV1",

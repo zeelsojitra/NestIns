@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,22 +8,19 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:http/http.dart' as http;
-import '../bottom_Navigation/bottom_NAV.dart';
-import '../bottom_Navigation/bottom_navi_demo.dart';
-import '../common_screen/Comman_Container.dart';
-import '../common_screen/Comman_TeextFiled.dart';
+import '../bottom_navigation/bottom_navi_demo.dart';
+import '../common_screen/comman_container.dart';
+import '../common_screen/comman_textformfeild.dart';
 import '../common_screen/Comman_text.dart';
 import '../getx/controller.dart';
 import '../globle/variable.dart';
-import '../helper/pincodeJson.dart';
-import 'bottom_navigation_screen.dart';
-import 'home_screen.dart';
+import '../helper/pincode_json.dart';
 
 class AddressDemo extends StatefulWidget {
   final String pprice, pid, sid;
   final String image, name, price, category, details;
   const AddressDemo({
-    Key? key,
+    super.key,
     required this.pprice,
     required this.pid,
     required this.image,
@@ -31,7 +29,7 @@ class AddressDemo extends StatefulWidget {
     required this.category,
     required this.details,
     required this.sid,
-  }) : super(key: key);
+  });
 
   @override
   State<AddressDemo> createState() => _AddressDemoState();
@@ -39,19 +37,18 @@ class AddressDemo extends StatefulWidget {
 
 class _AddressDemoState extends State<AddressDemo> {
   DateTime date = DateTime.now();
-  pincodeJson? pinJson;
-  String pincode = "",
-      state = "",
-      city = "",
-      area = "",
-      phone = "",
-      no = "",
-      error = "";
+  PincodeJson? pinJson;
+  // String pincode = "",
+  TextEditingController pincode = TextEditingController();
+  final TextEditingController phone = TextEditingController();
+  final TextEditingController city = TextEditingController();
+  final TextEditingController state = TextEditingController();
   bool isPincode = false;
   DocumentReference buynowref =
       FirebaseFirestore.instance.collection("Order").doc();
   Razorpay? razorpay;
 
+  @override
   void initState() {
     razorpay = Razorpay();
     razorpay!.on(Razorpay.EVENT_PAYMENT_SUCCESS, onpaymentSuccess);
@@ -68,7 +65,7 @@ class _AddressDemoState extends State<AddressDemo> {
         content: Text("Payment Done..!${response.signature}"),
       ),
     );
-    print("date check${date}");
+    log("date check$date");
     // FirebaseFirestore.instance
     //     .collection("user")
     //     .doc(FirebaseAuth.instance.currentUser!.uid)
@@ -81,22 +78,22 @@ class _AddressDemoState extends State<AddressDemo> {
     //   "product_name": widget.name,
     //   "product_price": widget.price,
     //   "UserId": FirebaseAuth.instance.currentUser!.uid,
-    //   "PhoneNo": Phone.text.toString(),
-    //   "pincode": Pincode.text.toString(),
-    //   "city": City.text.toString(),
-    //   "state": STATE.text.toString(),
-    //   "house": House.text.toString(),
+    //   "PhoneNo": phone.text.toString(),
+    //   "pincode": pincode.text.toString(),
+    //   "city": city.text.toString(),
+    //   "state": state.text.toString(),
+    //   "house": house.text.toString(),
     //   "createdDate": "${date.day}-${date.month}-${date.year}",
-    //   "road": Road.text.toString(),
+    //   "road": road.text.toString(),
     //   "types add": contoller.add_selected.toString(),
     // }).then((value) {
     //   Get.to(Bottom_navigation());
-    //   Pincode.clear();
-    //   City.clear();
-    //   STATE.clear();
-    //   Phone.clear();
-    //   House.clear();
-    //   Road.clear();
+    //   pincode.clear();
+    //   city.clear();
+    //   state.clear();
+    //   phone.clear();
+    //   house.clear();
+    //   road.clear();
     // });
     DocumentReference docRef =
         FirebaseFirestore.instance.collection("Order").doc();
@@ -109,27 +106,27 @@ class _AddressDemoState extends State<AddressDemo> {
       "product_price": widget.price,
       "UserId": FirebaseAuth.instance.currentUser!.uid,
       "order id": docRef.id,
-      "PhoneNo": Phone.text.toString(),
-      "pincode": Pincode.text.toString(),
-      "city": City.text.toString(),
-      "state": STATE.text.toString(),
-      "house": House.text.toString(),
-      "road": Road.text.toString(),
-      "types add": contoller.add_selected.toString(),
+      "PhoneNo": phone,
+      "pincode": pincode,
+      "city": city,
+      "state": state,
+      "house": house.text.toString(),
+      "road": road.text.toString(),
+      "types add": contoller.addSelected.toString(),
       "createdDate": "${date.day}-${date.month}-${date.year}",
     }).then((value) {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => Bottom_navigation(),
+          builder: (context) => const BottomNavigation(),
         ),
       );
-      Pincode.clear();
-      City.clear();
-      STATE.clear();
-      Phone.clear();
-      House.clear();
-      Road.clear();
+      pincode.clear();
+      city.clear();
+      state.clear();
+      phone.clear();
+      house.clear();
+      road.clear();
     });
 
     // DocumentReference docref =
@@ -189,14 +186,14 @@ class _AddressDemoState extends State<AddressDemo> {
         action: [
           TextButton(
             onPressed: () {
-              Phone.clear();
-              Pincode.clear();
-              City.clear();
-              STATE.clear();
-              House.clear();
-              Road.clear();
+              phone.clear();
+              pincode.clear();
+              city.clear();
+              state.clear();
+              house.clear();
+              road.clear();
             },
-            child: Comman_Text(
+            child: CommanText(
               text: "Reset",
               color: white,
               //fontFamily: "JM1",
@@ -218,7 +215,7 @@ class _AddressDemoState extends State<AddressDemo> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(left: 10.sp, top: 10.sp),
-                    child: Comman_Text(
+                    child: CommanText(
                       text: "Contact Info",
                       //fontFamily: "JM1",
                       fontSize: 18.sp,
@@ -227,29 +224,30 @@ class _AddressDemoState extends State<AddressDemo> {
                   Padding(
                     padding:
                         EdgeInsets.only(left: 10.sp, top: 10.sp, right: 10.sp),
-                    child: Comman_TexxtFiled(
+                    child: CommanTextFormFiled(
                       keyboardType: TextInputType.number,
                       maxLength: 10,
                       fontFamily: "JM1",
-                      controller: Phone,
+                      controller: phone,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'PhoneNo can not be empty';
                         }
+                        return null;
                       },
-                      hinttext: "Phone Number (+91)",
+                      hinttext: "phone Number (+91)",
                     ),
                   ),
                   SizedBox(
                     height: 10.sp,
                   ),
-                  Divider(thickness: 2, color: Colors.black54),
+                  const Divider(thickness: 2, color: Colors.black54),
                   SizedBox(
                     height: 10.sp,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 10.sp),
-                    child: Comman_Text(
+                    child: CommanText(
                       text: "Address Info",
                       fontSize: 18.sp,
                       //fontFamily: "JM1",
@@ -259,10 +257,10 @@ class _AddressDemoState extends State<AddressDemo> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(left: 10.sp, top: 10.sp),
-                        child: Container(
+                        child: SizedBox(
                           height: 55.sp,
                           width: 134.sp,
-                          child: Comman_TexxtFiled(
+                          child: CommanTextFormFiled(
                             keyboardType: TextInputType.number,
                             maxLength: 6,
                             fontFamily: "JM1",
@@ -273,28 +271,30 @@ class _AddressDemoState extends State<AddressDemo> {
                               }
                             },
                             hinttext: "PinCode",
-                            controller: Pincode,
+                            controller: pincode,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'PinCode can not be empty';
                               }
+                              return null;
                             },
                           ),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 10.sp, top: 10.sp),
-                        child: Container(
+                        child: SizedBox(
                           height: 55.sp,
                           width: 134.sp,
-                          child: Comman_TexxtFiled(
-                            hinttext: "City",
-                            controller: City,
+                          child: CommanTextFormFiled(
+                            hinttext: "city",
+                            controller: city,
                             fontFamily: "JM1",
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'City can not be empty';
+                                return 'city can not be empty';
                               }
+                              return null;
                             },
                           ),
                         ),
@@ -304,54 +304,57 @@ class _AddressDemoState extends State<AddressDemo> {
                   Padding(
                     padding:
                         EdgeInsets.only(left: 10.sp, top: 10.sp, right: 10.sp),
-                    child: Comman_TexxtFiled(
+                    child: CommanTextFormFiled(
                       hinttext: "State",
-                      controller: STATE,
+                      controller: state,
                       fontFamily: "JM1",
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'State can not be empty';
                         }
+                        return null;
                       },
                     ),
                   ),
                   Padding(
                     padding:
                         EdgeInsets.only(left: 10.sp, top: 15.sp, right: 10.sp),
-                    child: Comman_TexxtFiled(
+                    child: CommanTextFormFiled(
                       maxLength: 4,
                       keyboardType: TextInputType.number,
-                      hinttext: "House No., Building Name",
+                      hinttext: "house No., Building Name",
                       fontFamily: "JM1",
-                      controller: House,
+                      controller: house,
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'House can not be empty';
+                          return 'house can not be empty';
                         }
+                        return null;
                       },
                     ),
                   ),
                   Padding(
                     padding:
                         EdgeInsets.only(left: 10.sp, top: 15.sp, right: 10.sp),
-                    child: Comman_TexxtFiled(
-                      hinttext: "Road name, Area, Colony",
-                      controller: Road,
+                    child: CommanTextFormFiled(
+                      hinttext: "road name, Area, Colony",
+                      controller: road,
                       fontFamily: "JM1",
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Road can not be empty';
+                          return 'road can not be empty';
                         }
+                        return null;
                       },
                     ),
                   ),
                   SizedBox(
                     height: 10.sp,
                   ),
-                  Divider(thickness: 2, color: Colors.black54),
+                  const Divider(thickness: 2, color: Colors.black54),
                   Padding(
                     padding: EdgeInsets.only(left: 10.sp, top: 10.sp),
-                    child: Comman_Text(
+                    child: CommanText(
                       text: "Type of address",
                       fontSize: 18.sp,
                       color: black,
@@ -361,20 +364,20 @@ class _AddressDemoState extends State<AddressDemo> {
                   Padding(
                     padding: EdgeInsets.only(top: 10.sp, left: 10.sp),
                     child: Row(
-                      children: List.generate(addinfo_add.length, (index) {
-                        return Comman_Container(
+                      children: List.generate(addinfoAdd.length, (index) {
+                        return CommanContainer(
                           ontap: () {
-                            controller.AddInfo(index);
+                            controller.addInfo(index);
                             if (index == 0) {
-                              controller.add_selected = "Home";
-                              print("Home");
+                              controller.addSelected = "Home";
+                              log("Home");
                             } else {
-                              controller.add_selected = "Work";
-                              print("Work");
+                              controller.addSelected = "Work";
+                              log("Work");
                             }
                           },
-                          color: controller.Addinfo_Selected == index
-                              ? DarkGreen
+                          color: controller.addinfoSelected == index
+                              ? darkGreen
                               : transparent,
                           margin: EdgeInsets.only(left: 10.sp),
                           height: 35.sp,
@@ -384,17 +387,17 @@ class _AddressDemoState extends State<AddressDemo> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              addinfo_add[index]['Icon'],
+                              addinfoAdd[index]['Icon'],
                               SizedBox(
                                 width: 10.sp,
                               ),
                               Center(
-                                child: Comman_Text(
-                                  text: addinfo_add[index]['Name'],
+                                child: CommanText(
+                                  text: addinfoAdd[index]['Name'],
                                   //fontFamily: "JM1",
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.w500,
-                                  color: controller.Addinfo_Selected == index
+                                  color: controller.addinfoSelected == index
                                       ? white
                                       : black,
                                 ),
@@ -413,13 +416,13 @@ class _AddressDemoState extends State<AddressDemo> {
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 55,
-                      color: DarkGreen,
+                      color: darkGreen,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40),
                           side: BorderSide.none),
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          print("validate");
+                          log("validate");
 
                           openCheckOut();
 
@@ -434,7 +437,7 @@ class _AddressDemoState extends State<AddressDemo> {
                           // }
                         }
                       },
-                      child: Comman_Text(
+                      child: CommanText(
                         text: "Submit",
                         color: Colors.white,
                         fontSize: 20.sp,
@@ -455,20 +458,20 @@ class _AddressDemoState extends State<AddressDemo> {
   }
 
   Future<void> getData() async {
-    pincode = Pincode.text;
+    pincode = pincode;
     var url = Uri.parse('http://www.postalpincode.in/api/pincode/$pincode');
     var response = await http.get(url);
 
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
+    log('Response status: ${response.statusCode}');
+    log('Response body: ${response.body}');
 
     Map<String, dynamic> map = jsonDecode(response.body);
-    print(map['PostOffice']);
+    log(map['PostOffice']);
 
-    pinJson = pincodeJson.fromJson(map);
+    pinJson = PincodeJson.fromJson(map);
     if (pinJson!.status == "Success") {
-      City.text = pinJson!.postOffice![0].district!;
-      STATE.text = pinJson!.postOffice![0].state!;
+      city.text = pinJson!.postOffice![0].district!;
+      state.text = pinJson!.postOffice![0].state!;
       isPincode = true;
     }
 

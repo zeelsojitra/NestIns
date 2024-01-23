@@ -1,31 +1,25 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:e_com/category/Gujrat_kediyu.dart';
+import 'package:e_com/category/goa_pano_bhaju.dart';
+import 'package:e_com/category/gujrat_bandhani.dart';
+import 'package:e_com/category/gujrat_chaniyacoli.dart';
+import 'package:e_com/category/gujrat_ghaghra.dart';
+import 'package:e_com/category/gujrat_patola.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
 import 'package:e_com/globle/variable.dart';
-import '../catdata.dart';
-import '../category/Goa_dangar_topi.dart';
-import '../category/Goa_kunbi_saree.dart';
-import '../category/Goa_pano_bhaju.dart';
-import '../category/Gujrat_bandhani.dart';
-import '../category/Gujrat_chaniyacoli.dart';
-import '../category/Gujrat_ghaghra.dart';
-import '../category/Gujrat_kediyu.dart';
-import '../category/Gujrat_patola.dart';
+import '../category/goa_dangar_topi.dart';
+import '../category/goa_kunbi_saree.dart';
 import '../category/chhattisgarh_dhoti_kurta.dart';
 import '../category/chhattisgarh_paghadi.dart';
 import '../category/chhattisgarh_saree.dart';
 import '../category/haryana_dhoti.dart';
 import '../category/haryana_ghaghra_choli.dart';
 import '../category/haryana_kurta_payjama.dart';
-import '../common_screen/Comman_Container.dart';
 import '../common_screen/Comman_text.dart';
-import '../globle/variable.dart';
 
 class CategoriesScreen extends StatefulWidget {
-  const CategoriesScreen({Key? key}) : super(key: key);
+  const CategoriesScreen({super.key});
 
   @override
   State<CategoriesScreen> createState() => _CategoriesScreenState();
@@ -71,7 +65,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             //                   ),
             //                   elevation: 10,
             //                   color: grey,
-            //                   child: Comman_Container(
+            //                   child: CommanContainer(
             //                     borderRadius: BorderRadius.circular(5),
             //                     height: 155.sp,
             //                     width: double.infinity,
@@ -86,7 +80,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             //                 SizedBox(
             //                   height: 8.sp,
             //                 ),
-            //                 Comman_Text(
+            //                 CommanText(
             //                   text: product["product_name"],
             //                   fontWeight: FontWeight.w500,
             //                   fontSize: 15.sp,
@@ -96,7 +90,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             //                 ),
             //                 Row(
             //                   children: [
-            //                     Comman_Text(
+            //                     CommanText(
             //                       text: "₹",
             //                       fontSize: 14.sp,
             //                       color: black54,
@@ -104,7 +98,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             //                     SizedBox(
             //                       width: 2.sp,
             //                     ),
-            //                     Comman_Text(
+            //                     CommanText(
             //                       text: product['product_price'],
             //                       fontSize: 17.sp,
             //                       color: red,
@@ -157,9 +151,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             //                         horizontal: 10.sp, vertical: 10.sp),
             //                     child: Card(
             //                       elevation: 10,
-            //                       child: Comman_Container(
+            //                       child: CommanContainer(
             //                         ontap: () {
-            //                           print("tap");
+            //                           log("tap");
             //                           Get.to(CatData(
             //                             image: data[index]['image'],
             //                             name: data[index]['product_name'],
@@ -173,7 +167,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             //                           ));
             //                         },
             //                         child: Center(
-            //                           child: Comman_Text(
+            //                           child: CommanText(
             //                             text: categoriesDemo[index]['name'],
             //                           ),
             //                         ),
@@ -195,7 +189,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             // ),
             Expanded(
               child: ListView.builder(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: categoriesDemo.length,
                 itemBuilder: (context, index) {
                   return Padding(
@@ -205,9 +199,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       width: Get.width * 0.6,
                       decoration: BoxDecoration(
                           // color: white,
-                          gradient:
-                              LinearGradient(colors: [DarkGreen2, LightGreen]),
-                          boxShadow: [
+                          gradient: const LinearGradient(
+                              colors: [darkGreen2, lightGreen]),
+                          boxShadow: const [
                             BoxShadow(
                                 color: grey,
                                 blurRadius: 4,
@@ -217,40 +211,40 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       child: ListTile(
                         onTap: () {
                           if (index == 0) {
-                            Get.to(chhattisgarh_dhoti_kurta());
+                            Get.to(const ChhattisgarhDhotiKurta());
                           } else if (index == 1) {
-                            Get.to(chhattisgarh_paghadi());
+                            Get.to(const ChhattisgarhPaghadi());
                           } else if (index == 2) {
-                            Get.to(chhattisgarh_saree());
+                            Get.to(const ChhattisgarhSaree());
                           } else if (index == 3) {
-                            Get.to(Goa_dangar_topi());
+                            Get.to(const GoaDangarTopi());
                           } else if (index == 4) {
-                            Get.to(Goa_kunbi_saree());
+                            Get.to(const GoaKunbiSaree());
                           } else if (index == 5) {
-                            Get.to(Goa_pano_bhaju());
+                            Get.to(const GoaPanoBhaju());
                           } else if (index == 6) {
-                            Get.to(Gujrat_bandhani());
+                            Get.to(const GujratBandhani());
                           } else if (index == 7) {
-                            Get.to(Gujrat_chaniyacoli());
+                            Get.to(const GujratChaniyacoli());
                           } else if (index == 8) {
-                            Get.to(Gujrat_ghaghra());
+                            Get.to(const GujratGhaghra());
                           } else if (index == 9) {
-                            Get.to(Gujrat_kediyu());
+                            Get.to(const GujratKediyu());
                           } else if (index == 10) {
-                            Get.to(Gujrat_patola());
+                            Get.to(const GujratPatola());
                           } else if (index == 11) {
-                            Get.to(haryana_dhoti());
+                            Get.to(const HaryanaDhoti());
                           } else if (index == 12) {
-                            Get.to(haryana_ghaghra_choli());
+                            Get.to(const HaryanaGhaghraCholi());
                           } else if (index == 13) {
-                            Get.to(haryana_kurta_payjama());
+                            Get.to(const HaryanaKurtaPayjama());
                           }
                         },
-                        trailing: Icon(
+                        trailing: const Icon(
                           Icons.arrow_forward_ios,
                           color: white,
                         ),
-                        leading: Comman_Text(
+                        leading: CommanText(
                           //fontFamily: "JV1",
                           text: categoriesDemo[index]['name'],
                           fontSize: 15.sp,

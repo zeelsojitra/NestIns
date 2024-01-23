@@ -1,30 +1,32 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_com/common_screen/Comman_Container.dart';
-import 'package:e_com/common_screen/Comman_TeextFiled.dart';
-import 'package:e_com/common_screen/Comman_text.dart';
+import 'package:e_com/authantication/email_authantication/email_auth_service.dart';
+import 'package:e_com/common_screen/comman_textformfeild.dart';
+import 'package:e_com/common_screen/comman_text.dart';
 import 'package:e_com/screens/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
-import '../authantication/email authantication/EmailAuthService.dart';
-import '../authantication/google auth service/google_auth_service.dart';
-import '../bottom_Navigation/bottom_navi_demo.dart';
+import '../authantication/google_auth_service/google_auth_service.dart';
+import '../bottom_navigation/bottom_navi_demo.dart';
+import '../common_screen/comman_container.dart';
 import '../common_screen/loding.dart';
 import '../globle/variable.dart';
 
-class Sign_Up extends StatefulWidget {
-  const Sign_Up({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<Sign_Up> createState() => _Sign_UpState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
-  final Email_controler = TextEditingController();
-  final usernamecontroler = TextEditingController();
-  final Password_controler = TextEditingController();
+class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
+  final emailControler = TextEditingController();
+  final userNameControler = TextEditingController();
+  final passwordControler = TextEditingController();
   bool passwordcheck = true;
   int selected = 0;
   //bool signuploder = false;
@@ -58,29 +60,30 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
               SizedBox(
                 height: 17.sp,
               ),
-              Comman_TexxtFiled(
+              CommanTextFormFiled(
                 filled: true,
                 fillcolor: Colors.grey.shade200,
-                controller: usernamecontroler,
+                controller: userNameControler,
                 hinttext: "Enter Name",
-                HintfontFamily: "JM1",
+                hintfontFamily: "JM1",
                 fontFamily: "JV1",
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Enter Name";
                   }
+                  return null;
                 },
                 onChanged: (value) {
                   setState(() {
                     gloablekey.currentState!.validate();
                   });
                 },
-                sufficicon: usernamecontroler.text.length > 2
-                    ? Icon(
+                sufficicon: userNameControler.text.length > 2
+                    ? const Icon(
                         Icons.check_circle,
                         color: black,
                       )
-                    : SizedBox(),
+                    : const SizedBox(),
                 prefixicon: Icon(
                   Icons.person_outlined,
                   size: 20.sp,
@@ -90,13 +93,13 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
               SizedBox(
                 height: 15.sp,
               ),
-              Comman_TexxtFiled(
+              CommanTextFormFiled(
                 fontFamily: "JV1",
                 filled: true,
                 fillcolor: Colors.grey.shade200,
-                controller: Email_controler,
+                controller: emailControler,
                 hinttext: "Enter Email",
-                HintfontFamily: "JM1",
+                hintfontFamily: "JM1",
                 validator: (value) {
                   final bool emailValid = email.hasMatch(value!);
 
@@ -109,12 +112,12 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                 onChanged: (value) {
                   gloablekey.currentState!.validate();
                 },
-                sufficicon: Email_controler.text.length == 10
-                    ? Icon(
+                sufficicon: emailControler.text.length == 10
+                    ? const Icon(
                         Icons.check_circle,
                         color: black,
                       )
-                    : SizedBox(),
+                    : const SizedBox(),
                 prefixicon: Icon(
                   Icons.email,
                   size: 20.sp,
@@ -124,10 +127,10 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
               SizedBox(
                 height: 15.sp,
               ),
-              Comman_TexxtFiled(
+              CommanTextFormFiled(
                 filled: true,
                 fillcolor: Colors.grey.shade200,
-                controller: Password_controler,
+                controller: passwordControler,
                 obscureText: passwordcheck,
                 sufficicon: IconButton(
                   onPressed: () {
@@ -136,11 +139,11 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                     });
                   },
                   icon: passwordcheck
-                      ? Icon(Icons.visibility_off)
-                      : Icon(Icons.visibility),
+                      ? const Icon(Icons.visibility_off)
+                      : const Icon(Icons.visibility),
                 ),
                 hinttext: "Enter password",
-                HintfontFamily: "JM1",
+                hintfontFamily: "JM1",
                 fontFamily: "JV1",
                 validator: (value) {
                   final bool passwordValid = password.hasMatch(value!);
@@ -150,6 +153,7 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                   } else if (passwordValid != true) {
                     return "please enter valid password";
                   }
+                  return null;
                 },
                 onChanged: (value) {
                   gloablekey.currentState!.validate();
@@ -163,37 +167,37 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
               SizedBox(
                 height: 15.sp,
               ),
-              contoller.signuploder == false
+              contoller.signuploder.value == false
                   ? Center(
-                      child: Comman_Container(
+                      child: CommanContainer(
                         borderRadius: BorderRadius.circular(40),
                         ontap: () {
-                          print("signuploder frist ${contoller.signuploder}");
+                          log("signuploder frist ${contoller.signuploder}");
                           if (gloablekey.currentState!.validate()) {
                             showDialog(
                               context: context,
                               builder: (context) {
-                                return LodingDiloge(
+                                return const LodingDiloge(
                                   message: "",
                                 );
                               },
                             );
                             // controller.signuploder = true.obs;
-                            print("Signuploder true ${contoller.signuploder}");
-                            EmailAuthService.SignupUser(
-                                    email: Email_controler.text,
-                                    password: Password_controler.text)
+                            log("Signuploder true ${contoller.signuploder}");
+                            EmailAuthService.signupUser(
+                                    email: emailControler.text,
+                                    password: passwordControler.text)
                                 .then((value) async {
                               if (value != null) {
                                 Get.back();
-                                Get.off(Bottom_navigation());
+                                Get.off(const BottomNavigation());
                                 FirebaseFirestore.instance
                                     .collection("user")
                                     .doc(FirebaseAuth.instance.currentUser!.uid)
                                     .set({
                                   "profile_image": "",
-                                  "profile_name": profile_name,
-                                  "profile_email": profile_email,
+                                  "profile_name": profileName,
+                                  "profile_email": profileEmail,
                                   "favourite": [],
                                   "buyNow": [],
                                   "add to cart": [],
@@ -203,15 +207,15 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                                 SharedPreferences sharedPreferences =
                                     await SharedPreferences.getInstance();
                                 await sharedPreferences.setBool(
-                                    Splash_ScreenState.KeyValue, true);
-                                await sharedPreferences!.setString(
-                                    "profile_name", usernamecontroler.text!);
-                                await sharedPreferences!.setString(
-                                    "profile_email", Email_controler.text!);
+                                    SplashScreenState.keyValue, true);
+                                await sharedPreferences.setString(
+                                    "profile_name", userNameControler.text);
+                                await sharedPreferences.setString(
+                                    "profile_email", emailControler.text);
                               } else {
                                 Get.back();
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text(
                                         "Email is already in use by another accoount"),
                                   ),
@@ -222,9 +226,9 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                         },
                         height: 35.sp,
                         width: 140.sp,
-                        color: LightGreen,
+                        color: lightGreen,
                         child: Center(
-                          child: Comman_Text(
+                          child: CommanText(
                             text: "Sign Up",
                             color: white,
                             //fontFamily: "JM1",
@@ -234,7 +238,7 @@ class _Sign_UpState extends State<Sign_Up> with SingleTickerProviderStateMixin {
                         ),
                       ),
                     )
-                  : Center(child: CircularProgressIndicator()),
+                  : const Center(child: CircularProgressIndicator()),
             ],
           ),
         ),

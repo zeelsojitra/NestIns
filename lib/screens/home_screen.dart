@@ -7,7 +7,7 @@
 // import 'package:sizer/sizer.dart';
 // import 'package:velocity_x/velocity_x.dart';
 //
-// import '../common_screen/Comman_Container.dart';
+// 
 // import '../common_screen/Comman_text.dart';
 // import '../globle/variable.dart';
 // import 'Details_screen.dart';
@@ -52,8 +52,8 @@
 //                         bottomRight: Radius.circular(30),
 //                         bottomLeft: Radius.circular(30)),
 //                     gradient: LinearGradient(colors: [
-//                       DarkGreen2,
-//                       LightGreen,
+//                       darkGreen2,
+//                       lightGreen,
 //                     ])),
 //                 child: Padding(
 //                   padding:
@@ -71,7 +71,7 @@
 //                             size: 30,
 //                           )),
 //                       Spacer(),
-//                       Comman_Text(
+//                       CommanText(
 //                         text: "Nest In",
 //                         color: white,
 //                         fontSize: 18.sp,
@@ -135,7 +135,7 @@
 //                                 itemBuilder: (context, index) {
 //                                   return Padding(
 //                                     padding: const EdgeInsets.all(8.0),
-//                                     child: Comman_Container(
+//                                     child: CommanContainer(
 //                                       child: Padding(
 //                                         padding: EdgeInsets.symmetric(
 //                                             vertical: 15.sp, horizontal: 15.sp),
@@ -143,7 +143,7 @@
 //                                           crossAxisAlignment:
 //                                               CrossAxisAlignment.start,
 //                                           children: [
-//                                             Comman_Text(
+//                                             CommanText(
 //                                               text: Pageview[index]['title'],
 //                                               color: white,
 //                                               fontWeight: FontWeight.w400,
@@ -152,7 +152,7 @@
 //                                             SizedBox(
 //                                               height: 5.sp,
 //                                             ),
-//                                             Comman_Text(
+//                                             CommanText(
 //                                               text: Pageview[index]
 //                                                   ['subtitile'],
 //                                               color: white,
@@ -208,7 +208,7 @@
 //                                       EdgeInsets.symmetric(horizontal: 10.sp),
 //                                   child: Row(
 //                                     children: [
-//                                       Comman_Text(
+//                                       CommanText(
 //                                         text: "Catalogue",
 //                                         fontSize: 17.sp,
 //                                         fontWeight: FontWeight.bold,
@@ -218,7 +218,7 @@
 //                                         onPressed: () {
 //                                           Get.to(CategoryScreen_2());
 //                                         },
-//                                         child: Comman_Text(
+//                                         child: CommanText(
 //                                           text: "See All  >",
 //                                           fontSize: 13.sp,
 //                                         ),
@@ -253,7 +253,7 @@
 //                                             borderRadius:
 //                                                 BorderRadius.circular(12)),
 //                                         child: Center(
-//                                           child: Comman_Text(
+//                                           child: CommanText(
 //                                             text: Catalogue[index]['name'],
 //                                             color: white,
 //                                             fontSize: 13.sp,
@@ -270,7 +270,7 @@
 //                                 Padding(
 //                                   padding:
 //                                       EdgeInsets.symmetric(horizontal: 10.sp),
-//                                   child: Comman_Text(
+//                                   child: CommanText(
 //                                     text: "Products",
 //                                     fontSize: 18.sp,
 //                                     fontWeight: FontWeight.w600,
@@ -339,7 +339,7 @@
 //                                                             elevation: 5,
 //                                                             color: grey,
 //                                                             child:
-//                                                                 Comman_Container(
+//                                                                 CommanContainer(
 //                                                               borderRadius:
 //                                                                   BorderRadius
 //                                                                       .circular(
@@ -481,7 +481,7 @@
 //                                                       SizedBox(
 //                                                         height: 8.sp,
 //                                                       ),
-//                                                       Comman_Text(
+//                                                       CommanText(
 //                                                         text: product[
 //                                                             "product_name"],
 //                                                         fontWeight:
@@ -493,7 +493,7 @@
 //                                                       ),
 //                                                       Row(
 //                                                         children: [
-//                                                           Comman_Text(
+//                                                           CommanText(
 //                                                             text: "₹",
 //                                                             fontSize: 14.sp,
 //                                                             color: black54,
@@ -501,7 +501,7 @@
 //                                                           SizedBox(
 //                                                             width: 2.sp,
 //                                                           ),
-//                                                           Comman_Text(
+//                                                           CommanText(
 //                                                             text: product[
 //                                                                 'product_price'],
 //                                                             fontSize: 17.sp,

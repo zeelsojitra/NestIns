@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'globle/media_query.dart';
-
 class Card extends StatefulWidget {
-  const Card({Key? key}) : super(key: key);
+  const Card({super.key});
 
   @override
   State<Card> createState() => _CardState();
@@ -12,7 +10,7 @@ class Card extends StatefulWidget {
 class _CardState extends State<Card> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Column(
         children: [
           // Expanded(

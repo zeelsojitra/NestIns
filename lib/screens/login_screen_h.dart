@@ -5,31 +5,32 @@ import 'package:e_com/screens/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 
-import '../authantication/google auth service/google_auth_service.dart';
-import '../bottom_Navigation/bottom_navi_demo.dart';
-import '../common_screen/Comman_Container.dart';
+import '../authantication/google_auth_service/google_auth_service.dart';
+import '../bottom_navigation/bottom_navi_demo.dart';
+
 import '../common_screen/Comman_text.dart';
+import '../common_screen/comman_container.dart';
 import '../common_screen/loding.dart';
 import '../globle/variable.dart';
 
-class Tab_Bar extends StatefulWidget {
-  const Tab_Bar({Key? key}) : super(key: key);
+class TabBarScreenH extends StatefulWidget {
+  const TabBarScreenH({super.key});
 
   @override
-  State<Tab_Bar> createState() => _Tab_BarState();
+  State<TabBarScreenH> createState() => _TabBarScreenHState();
 }
 
-class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
+class _TabBarScreenHState extends State<TabBarScreenH>
+    with SingleTickerProviderStateMixin {
   TabController? tabController;
 
   final gloablekey = GlobalKey<FormState>();
-  final Email_controler = TextEditingController();
-  final Password_controler = TextEditingController();
+  final emailControler = TextEditingController();
+  final passwordControler = TextEditingController();
   List name = [
     'Sign Up',
     'Sign In',
@@ -56,12 +57,12 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(height: Get.height * 0.055),
             Image.asset(
-              main_logo,
+              mainLogo,
               height: Get.height * 0.15,
             ),
             Text(
@@ -82,49 +83,10 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
               ),
             ),
             SizedBox(height: Get.height * 0.02),
-            Comman_Container(
-              child: Column(
-                children: [
-                  Container(
-                    child: TabBar(
-                      labelPadding: EdgeInsets.symmetric(
-                          horizontal: 20.sp, vertical: 10.sp),
-                      controller: tabController,
-                      indicatorColor: Color(0xff2D6A4F),
-                      indicatorPadding: EdgeInsets.symmetric(horizontal: 25.sp),
-                      tabs: List.generate(
-                        2,
-                        (index) => Center(
-                          child: Comman_Text(
-                            text: name[index],
-                            //fontFamily: "JM1",
-                            fontSize: 16.sp,
-                            color: selected == index
-                                ? Color(0xff2D6A4F)
-                                : Colors.grey,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Comman_Container(
-                    borderRadius: BorderRadius.circular(40),
-                    color: Colors.white,
-                    height: 273.sp,
-                    width: 500.sp,
-                    child: TabBarView(
-                      controller: tabController,
-                      children: [
-                        Sign_Up(),
-                        Sign_In(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+            CommanContainer(
               borderRadius: BorderRadius.circular(20),
               color: Colors.white,
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.grey,
                   spreadRadius: 1,
@@ -134,10 +96,47 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
               ],
               height: 322.sp,
               width: 270.sp,
+              child: Column(
+                children: [
+                  TabBar(
+                    labelPadding: EdgeInsets.symmetric(
+                        horizontal: 20.sp, vertical: 10.sp),
+                    controller: tabController,
+                    indicatorColor: const Color(0xff2D6A4F),
+                    indicatorPadding: EdgeInsets.symmetric(horizontal: 25.sp),
+                    tabs: List.generate(
+                      2,
+                      (index) => Center(
+                        child: CommanText(
+                          text: name[index],
+                          //fontFamily: "JM1",
+                          fontSize: 16.sp,
+                          color: selected == index
+                              ? const Color(0xff2D6A4F)
+                              : Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ),
+                  CommanContainer(
+                    borderRadius: BorderRadius.circular(40),
+                    color: Colors.white,
+                    height: 273.sp,
+                    width: 500.sp,
+                    child: TabBarView(
+                      controller: tabController,
+                      children: const [
+                        SignUp(),
+                        SignIn(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 20.sp),
             Center(
-              child: Comman_Text(
+              child: CommanText(
                 text: "Or Sign In With",
                 color: Colors.grey,
                 //////fontFamily: "JV1",
@@ -186,7 +185,7 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return LodingDiloge(
+                        return const LodingDiloge(
                           message: "",
                         );
                       },
@@ -195,14 +194,14 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
                     GoogleAuthService.signInWithGoogle().then((value) async {
                       if (value != null) {
                         Get.back();
-                        Get.off(Bottom_navigation());
+                        Get.off(const BottomNavigation());
                         FirebaseFirestore.instance
                             .collection("user")
                             .doc(FirebaseAuth.instance.currentUser!.uid)
                             .set({
                           "profile_image": "",
-                          "profile_name": profile_name,
-                          "profile_email": profile_email,
+                          "profile_name": profileName,
+                          "profile_email": profileEmail,
                           "favourite": [],
                           "buyNow": [],
                           "add to cart": [],
@@ -211,15 +210,15 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
                         SharedPreferences sharedPreferences =
                             await SharedPreferences.getInstance();
                         await sharedPreferences.setBool(
-                            Splash_ScreenState.KeyValue, true);
+                            SplashScreenState.keyValue, true);
                         await sharedPreferences.setString(
-                            "profile_name", profile_name!);
+                            "profile_name", profileName!);
                         await sharedPreferences.setString(
-                            "profile_email", profile_email!);
+                            "profile_email", profileEmail!);
                       } else {
                         Get.back();
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
+                          const SnackBar(
                             content: Text(
                                 "Email is already in use by another accoount"),
                           ),
@@ -228,7 +227,7 @@ class _Tab_BarState extends State<Tab_Bar> with SingleTickerProviderStateMixin {
                     });
                   },
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
                       boxShadow: [

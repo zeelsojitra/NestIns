@@ -1,23 +1,20 @@
 import 'package:e_com/screens/tab_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
-import '../common_screen/Comman_Container.dart';
 import '../common_screen/Comman_text.dart';
+import '../common_screen/comman_container.dart';
 import '../getx/controller.dart';
 import '../globle/variable.dart';
-import 'login_screen_h.dart';
 
-class On_Boarding extends StatefulWidget {
-  const On_Boarding({Key? key}) : super(key: key);
+class OnBoarding extends StatefulWidget {
+  const OnBoarding({super.key});
 
   @override
-  State<On_Boarding> createState() => _On_BoardingState();
+  State<OnBoarding> createState() => _OnBoardingState();
 }
 
-class _On_BoardingState extends State<On_Boarding> {
+class _OnBoardingState extends State<OnBoarding> {
   final Controller controller = Get.put(Controller());
 
   @override
@@ -38,9 +35,9 @@ class _On_BoardingState extends State<On_Boarding> {
                       children: [
                         TextButton(
                             onPressed: () {
-                              Get.off(Tab_Bar());
+                              Get.off(const TabBarScreen());
                             },
-                            child: Comman_Text(
+                            child: CommanText(
                               text: "Skip",
                               //fontFamily: "JB1",
                               fontWeight: FontWeight.bold,
@@ -50,13 +47,13 @@ class _On_BoardingState extends State<On_Boarding> {
                       ],
                     ),
                   ),
-                  Comman_Container(
+                  CommanContainer(
                     height: 400.sp,
                     width: width,
                     child: PageView(
                       controller: pageController,
                       onPageChanged: (value) {
-                        controller.On_Bording_onchange.value = value;
+                        controller.onBordingOnchange.value = value;
                       },
                       children: List.generate(
                         3,
@@ -69,7 +66,7 @@ class _On_BoardingState extends State<On_Boarding> {
                             SizedBox(
                               height: 45.sp,
                             ),
-                            Comman_Text(
+                            CommanText(
                               color: black,
                               text: onbording[index]['name'],
                               fontWeight: FontWeight.bold,
@@ -80,8 +77,9 @@ class _On_BoardingState extends State<On_Boarding> {
                               height: 20.sp,
                             ),
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              child: Comman_Text(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: CommanText(
                                 color: grey,
                                 text: onbording[index]['subtitle'],
                                 fontWeight: FontWeight.bold,
@@ -89,7 +87,7 @@ class _On_BoardingState extends State<On_Boarding> {
                                 fontSize: 15.sp,
                               ),
                             ),
-                            Comman_Text(
+                            CommanText(
                               color: grey,
                               text: onbording[index]['subtitle2'],
                               fontWeight: FontWeight.bold,
@@ -108,13 +106,13 @@ class _On_BoardingState extends State<On_Boarding> {
                     children: List.generate(
                         3,
                         (index) => Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 2),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 2),
                               child: CircleAvatar(
                                 radius: 5,
                                 backgroundColor:
-                                    controller.On_Bording_onchange.value ==
-                                            index
-                                        ? LightGreen
+                                    controller.onBordingOnchange.value == index
+                                        ? lightGreen
                                         : black,
                               ),
                             )),
@@ -127,45 +125,46 @@ class _On_BoardingState extends State<On_Boarding> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        controller.On_Bording_onchange.value == 1 ||
-                                controller.On_Bording_onchange.value == 2
+                        controller.onBordingOnchange.value == 1 ||
+                                controller.onBordingOnchange.value == 2
                             ? Container(
+                                height: 45.sp,
+                                width: 45.sp,
+                                decoration: const BoxDecoration(
+                                  color: darkGreen2,
+                                  shape: BoxShape.circle,
+                                ),
                                 child: InkWell(
                                   onTap: () {
                                     pageController.previousPage(
-                                        duration: Duration(milliseconds: 300),
+                                        duration:
+                                            const Duration(milliseconds: 300),
                                         curve: Curves.easeIn);
                                   },
-                                  child: Icon(Icons.arrow_back,
+                                  child: const Icon(Icons.arrow_back,
                                       color: white, size: 27),
                                 ),
-                                height: 45.sp,
-                                width: 45.sp,
-                                decoration: BoxDecoration(
-                                  color: DarkGreen2,
-                                  shape: BoxShape.circle,
-                                ),
                               )
-                            : SizedBox(),
+                            : const SizedBox(),
                         Container(
+                          height: 45.sp,
+                          width: 45.sp,
+                          decoration: const BoxDecoration(
+                            color: darkGreen2,
+                            shape: BoxShape.circle,
+                          ),
                           child: InkWell(
                             onTap: () {
-                              if (controller.On_Bording_onchange.value == 2) {
-                                Get.off(Tab_Bar());
+                              if (controller.onBordingOnchange.value == 2) {
+                                Get.off(const TabBarScreen());
                               } else {
                                 pageController.nextPage(
-                                    duration: Duration(milliseconds: 600),
+                                    duration: const Duration(milliseconds: 600),
                                     curve: Curves.easeIn);
                               }
                             },
-                            child: Icon(Icons.arrow_forward,
+                            child: const Icon(Icons.arrow_forward,
                                 color: white, size: 27),
-                          ),
-                          height: 45.sp,
-                          width: 45.sp,
-                          decoration: BoxDecoration(
-                            color: DarkGreen2,
-                            shape: BoxShape.circle,
                           ),
                         ),
                       ],

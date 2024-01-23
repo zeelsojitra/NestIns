@@ -1,9 +1,8 @@
-import 'package:e_com/common_screen/Comman_TeextFiled.dart';
+import 'package:e_com/common_screen/comman_textformfeild.dart';
 import 'package:e_com/common_screen/Comman_text.dart';
 import 'package:e_com/globle/variable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/get_core.dart';
 import 'package:sizer/sizer.dart';
 import 'package:intl/intl.dart';
 
@@ -14,7 +13,7 @@ class RoadMapScreen extends StatefulWidget {
 }
 
 class _RoadMapScreenState extends State<RoadMapScreen> {
-  var currentDate;
+  DateTime? currentDate;
   DateTime date = DateTime.now();
   int currentStep = 0;
   //sahil
@@ -28,7 +27,7 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
 
     if (currentStep == 3) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Product Added!")));
+          .showSnackBar(const SnackBar(content: Text("Product Added!")));
     }
   }
 
@@ -48,7 +47,6 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     currentDate = DateTime.now();
     super.initState();
   }
@@ -60,7 +58,7 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
         children: [
           OutlinedButton(
             onPressed: details.onStepCancel,
-            child: Comman_Text(
+            child: const CommanText(
               text: 'Back',
               //fontFamily: "JB1",
               color: black,
@@ -69,10 +67,10 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
           SizedBox(width: Get.width * 0.05),
           ElevatedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(DarkGreen),
+              backgroundColor: MaterialStateProperty.all(darkGreen),
             ),
             onPressed: details.onStepContinue,
-            child: Comman_Text(
+            child: const CommanText(
               text: 'Next',
               //fontFamily: "JB1",
             ),
@@ -94,7 +92,7 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Center(
+              const Center(
                 child: Image(
                   image: AssetImage("asserts/image/DelivryPic.png"),
                 ),
@@ -102,9 +100,9 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
               SizedBox(
                 height: 10.sp,
               ),
-              Comman_TexxtFiled(
+              const CommanTextFormFiled(
                 labletext: "Tracking Number",
-                labelStyle: TextStyle(color: DarkGreen, fontFamily: "JB1"),
+                labelStyle: TextStyle(color: darkGreen, fontFamily: "JB1"),
                 hinttext: "E.g #120210120210",
               ),
               SizedBox(
@@ -113,7 +111,7 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Comman_Text(
+                  CommanText(
                     text: "Result:",
                     //fontFamily: "JB1",
                     fontSize: 15.sp,
@@ -130,15 +128,14 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
                 currentStep: currentStep, //0, 1, 2
                 steps: [
                   Step(
-                      title: Comman_Text(
+                      title: const CommanText(
                         text: 'Ordered And Approved', //fontFamily: "JB1"
                       ),
-                      subtitle: Comman_Text(
-                        text:
-                            "${DateFormat("dd-MMM-yyyy").format(currentDate)}",
+                      subtitle: CommanText(
+                        text: DateFormat("dd-MMM-yyyy").format(currentDate!),
                         //fontFamily: "JM1",
                       ),
-                      content: Comman_Text(
+                      content: const CommanText(
                         text: 'This is the First step.', //fontFamily: "JV1"
                       ),
                       isActive: currentStep >= 0,
@@ -146,15 +143,15 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
                           ? StepState.complete
                           : StepState.complete),
                   Step(
-                    title: Comman_Text(
+                    title: const CommanText(
                       text: 'Packed',
                       // fontFamily: "JB1",
                     ),
-                    subtitle: Comman_Text(
-                      text: "${DateFormat("dd-MMM-yyyy").format(currentDate)}",
+                    subtitle: CommanText(
+                      text: DateFormat("dd-MMM-yyyy").format(currentDate!),
                       //fontFamily: "JM1",
                     ),
-                    content: Comman_Text(
+                    content: const CommanText(
                       text: 'This is the Second step.', //fontFamily: "JV1",
                     ),
                     isActive: currentStep >= 0,
@@ -163,15 +160,15 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
                         : StepState.disabled,
                   ),
                   Step(
-                    title: Comman_Text(
+                    title: const CommanText(
                       text: 'Shipped',
                       //fontFamily: "JB1",
                     ),
-                    subtitle: Comman_Text(
-                      text: "${DateFormat("dd-MMM-yyyy").format(currentDate)}",
+                    subtitle: CommanText(
+                      text: DateFormat("dd-MMM-yyyy").format(currentDate!),
                       //fontFamily: "JM1",
                     ),
-                    content: Comman_Text(
+                    content: const CommanText(
                       text: 'This is the Second step.',
                       //fontFamily: "JV1",
                     ),
@@ -181,16 +178,16 @@ class _RoadMapScreenState extends State<RoadMapScreen> {
                         : StepState.disabled,
                   ),
                   Step(
-                    title: Comman_Text(
+                    title: const CommanText(
                       text: "Delivery",
                       //fontFamily: "JB1",
                     ),
-                    subtitle: Comman_Text(
-                      text: "${DateFormat("dd-MMM-yyyy").format(currentDate)}",
+                    subtitle: CommanText(
+                      text: DateFormat("dd-MMM-yyyy").format(currentDate!),
                       //fontFamily: "JM1",
                     ),
-                    content: Comman_Text(
-                      text: "${DateFormat("dd-MM-yyyy").format(currentDate)}",
+                    content: CommanText(
+                      text: DateFormat("dd-MM-yyyy").format(currentDate!),
                     ),
                     isActive: currentStep >= 0,
                     state: currentStep >= 3

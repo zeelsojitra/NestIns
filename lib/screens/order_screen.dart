@@ -1,17 +1,16 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_com/common_screen/Comman_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:sizer/sizer.dart';
-import '../common_screen/Comman_Container.dart';
-import '../common_screen/loding.dart';
+import '../common_screen/comman_container.dart';
 import '../globle/variable.dart';
-import 'OderDetails.dart';
 
 class OderScreen extends StatefulWidget {
-  const OderScreen({Key? key}) : super(key: key);
+  const OderScreen({super.key});
 
   @override
   State<OderScreen> createState() => _OderScreenState();
@@ -37,12 +36,12 @@ class _OderScreenState extends State<OderScreen> {
           if (snapshot.connectionState == ConnectionState.done ||
               snapshot.hasData) {
             List<DocumentSnapshot> order = snapshot.data!.docs;
-            print("${order.length}");
-            print("${FirebaseAuth.instance.currentUser!.uid}");
+            log("${order.length}");
+            log(FirebaseAuth.instance.currentUser!.uid);
             return snapshot.data!.docs.isEmpty
                 ? Center(
                     child: Image.asset(
-                      Empty_order,
+                      emptyOrder,
                       height: Get.height * 0.35,
                       width: Get.width,
                     ),
@@ -54,7 +53,7 @@ class _OderScreenState extends State<OderScreen> {
                       itemBuilder: (context, index) {
                         return Row(
                           children: [
-                            Comman_Container(
+                            CommanContainer(
                               ontap: () {
                                 // Get.to(OderDetails(
                                 //   date: order[index].get("createdDate"),
@@ -68,7 +67,7 @@ class _OderScreenState extends State<OderScreen> {
                               },
                               child: Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 8.sp),
-                                child: Comman_Container(
+                                child: CommanContainer(
                                   margin: EdgeInsets.symmetric(vertical: 8.sp),
                                   height: 120.sp,
                                   width: 120.sp,
@@ -87,7 +86,7 @@ class _OderScreenState extends State<OderScreen> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Comman_Text(
+                                  CommanText(
                                     text: "${order[index].get("product_name")}",
                                     fontSize: 15.sp,
                                     //fontFamily: "JM1",
@@ -95,7 +94,7 @@ class _OderScreenState extends State<OderScreen> {
                                   SizedBox(
                                     height: 5.sp,
                                   ),
-                                  Comman_Text(
+                                  CommanText(
                                     text: order[index].get("product_catagory"),
                                     fontSize: 15.sp,
                                     // fontFamily: "JV1",
@@ -103,7 +102,7 @@ class _OderScreenState extends State<OderScreen> {
                                   SizedBox(
                                     height: 10.sp,
                                   ),
-                                  Comman_Text(
+                                  CommanText(
                                     text:
                                         order[index].get("product_price") + "₹",
                                     fontSize: 15.sp,
@@ -116,9 +115,6 @@ class _OderScreenState extends State<OderScreen> {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         MaterialButton(
-                                          child: Comman_Text(
-                                            text: "Cancel Order",
-                                          ),
                                           onPressed: () {
                                             showDialog(
                                                 barrierDismissible: false,
@@ -167,6 +163,9 @@ class _OderScreenState extends State<OderScreen> {
                                                 });
                                           },
                                           color: red,
+                                          child: const CommanText(
+                                            text: "Cancel Order",
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -187,7 +186,7 @@ class _OderScreenState extends State<OderScreen> {
                     ),
                   );
           } else {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),

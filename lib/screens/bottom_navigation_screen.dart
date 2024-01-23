@@ -5,7 +5,7 @@
 // import 'package:get/get.dart';
 // import 'package:get/get_core/src/get_main.dart';
 // import 'package:sizer/sizer.dart';
-// import '../common_screen/Comman_Container.dart';
+// 
 // import '../common_screen/Comman_text.dart';
 // import '../getx/controller.dart';
 // import 'Favorite_Screen.dart';
@@ -34,7 +34,7 @@
 //       "name": "Categories",
 //     },
 //     {
-//       "icon": Icon(Icons.favorite_outline, color: Colors.black87),
+//       "icon": Icon(Icons.favoriteOutline, color: Colors.black87),
 //       "tap_icon": Icon(Icons.favorite, color: Color(0xff74C69D)),
 //       "name": "Favourite",
 //     },
@@ -59,7 +59,7 @@
 //           clipBehavior: Clip.none,
 //           children: [
 //             Obx(
-//               () => Comman_Container(
+//               () => CommanContainer(
 //                 child: Row(
 //                   children: List.generate(
 //                     items.length,
@@ -75,7 +75,7 @@
 //                             controller.selectedScreen.value == index
 //                                 ? items[index]['tap_icon']
 //                                 : items[index]['icon'],
-//                             Comman_Text(
+//                             CommanText(
 //                               text: items[index]['name'],
 //                             )
 //                           ],
@@ -110,14 +110,14 @@
 //             //             builder: (context) => OderScreen(),
 //             //           ));
 //             //     },
-//             //     child: Comman_Container(
+//             //     child: CommanContainer(
 //             //       child: Padding(
 //             //         padding: EdgeInsets.only(left: 6.sp),
 //             //         child: Row(
 //             //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 //             //           children: [
 //             //             Icon(
-//             //               Icons.shopping_cart_outlined,
+//             //               Icons.shoppingCartOutlined,
 //             //               color: Colors.white,
 //             //               size: 30,
 //             //             ),
@@ -125,11 +125,11 @@
 //             //               mainAxisAlignment: MainAxisAlignment.center,
 //             //               crossAxisAlignment: CrossAxisAlignment.start,
 //             //               children: [
-//             //                 Comman_Text(
+//             //                 CommanText(
 //             //                   text: "\$199.89",
 //             //                   color: Colors.white,
 //             //                 ),
-//             //                 Comman_Text(
+//             //                 CommanText(
 //             //                   text: "Oder Screen",
 //             //                   color: Colors.white,
 //             //                   fontSize: 8.sp,

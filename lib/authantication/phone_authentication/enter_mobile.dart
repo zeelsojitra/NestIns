@@ -1,23 +1,25 @@
+import 'dart:developer';
+
 import 'package:country_picker/country_picker.dart';
-import 'package:e_com/authantication/Phone%20Authentication/verfiy_otp.dart';
-import 'package:e_com/screens/home_screen.dart';
+import 'package:e_com/authantication/phone_authentication/verfiy_otp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-
-import '../../common_screen/Comman_Container.dart';
-import '../../common_screen/Comman_TeextFiled.dart';
+import '../../common_screen/comman_container.dart';
+import '../../common_screen/comman_textformfeild.dart';
 import '../../common_screen/Comman_text.dart';
 
 String? phone;
 String? verificationCode;
 
-class Enter_mobile extends StatefulWidget {
+class EnterMobile extends StatefulWidget {
+  const EnterMobile({super.key});
+
   @override
-  State<Enter_mobile> createState() => _Enter_mobileState();
+  State<EnterMobile> createState() => _EnterMobileState();
 }
 
-class _Enter_mobileState extends State<Enter_mobile> {
+class _EnterMobileState extends State<EnterMobile> {
   String countryCode = "91";
   String countryFlage = "";
   final phoneno = TextEditingController();
@@ -29,7 +31,7 @@ class _Enter_mobileState extends State<Enter_mobile> {
       verificationFailed: (error) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Comman_Text(
+            content: CommanText(
               text: error.message.toString(),
             ),
           ),
@@ -47,7 +49,7 @@ class _Enter_mobileState extends State<Enter_mobile> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    // final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
@@ -60,9 +62,9 @@ class _Enter_mobileState extends State<Enter_mobile> {
                 fit: BoxFit.cover,
                 height: height * 0.3,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Comman_Text(
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: CommanText(
                   color: Colors.grey,
                   text:
                       "Please enter your phone number to\nverify your account",
@@ -70,13 +72,13 @@ class _Enter_mobileState extends State<Enter_mobile> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: Comman_TexxtFiled(
+                child: CommanTextFormFiled(
                   keyboardType: TextInputType.phone,
                   labletext: "Enter Number",
                   hinttext: "Enter number",
@@ -86,6 +88,7 @@ class _Enter_mobileState extends State<Enter_mobile> {
                     if (value!.isEmpty) {
                       return "Plz Enter Number";
                     }
+                    return null;
                   },
                   onChanged: (value) {
                     setState(() {
@@ -93,8 +96,8 @@ class _Enter_mobileState extends State<Enter_mobile> {
                     });
                   },
                   sufficicon: phoneno.text.length == 10
-                      ? Icon(Icons.check_circle, color: Colors.green)
-                      : SizedBox(),
+                      ? const Icon(Icons.check_circle, color: Colors.green)
+                      : const SizedBox(),
                   prefixicon: Padding(
                     padding: const EdgeInsets.only(left: 15, top: 0, right: 10),
                     child: InkWell(
@@ -104,12 +107,12 @@ class _Enter_mobileState extends State<Enter_mobile> {
                           countryListTheme: CountryListThemeData(
                             flagSize: 25,
                             backgroundColor: Colors.white,
-                            textStyle:
-                                TextStyle(fontSize: 16, color: Colors.blueGrey),
+                            textStyle: const TextStyle(
+                                fontSize: 16, color: Colors.blueGrey),
                             bottomSheetHeight:
                                 500, // Optional. Country list modal height
                             //Optional. Sets the border radius for the bottomsheet.
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(20.0),
                               topRight: Radius.circular(20.0),
                             ),
@@ -138,7 +141,7 @@ class _Enter_mobileState extends State<Enter_mobile> {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text("+${countryCode}"),
+                          Text("+$countryCode"),
                           Text(countryFlage.isEmpty ? "" : countryFlage),
                         ],
                       ),
@@ -151,31 +154,31 @@ class _Enter_mobileState extends State<Enter_mobile> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Comman_Container(
+                child: CommanContainer(
                   ontap: () {
                     if (gloablekey.currentState!.validate()) {
-                      print("validation");
+                      log("validation");
                       sendOtpService().then(
                         (value) => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => VerifyOtp(),
+                            builder: (context) => const VerifyOtp(),
                           ),
                         ),
                       );
                     }
                   },
-                  child: Center(
-                    child: Comman_Text(
+                  height: 45.sp,
+                  width: double.infinity,
+                  borderRadius: BorderRadius.circular(10),
+                  color: const Color(0xffB7E4C7),
+                  child: const Center(
+                    child: CommanText(
                       text: "Send Verification Code",
                       fontSize: 18,
                       color: Colors.white,
                     ),
                   ),
-                  height: 45.sp,
-                  width: double.infinity,
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color(0xffB7E4C7),
                 ),
               ),
             ],

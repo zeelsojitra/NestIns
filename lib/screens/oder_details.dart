@@ -7,21 +7,19 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 import '../common_screen/Comman_text.dart';
-import '../getx/controller.dart';
 import '../globle/variable.dart';
-import 'addressscreen.dart';
 
 class OderDetails extends StatefulWidget {
   final String image, name, price, category, details, date;
   const OderDetails({
-    Key? key,
+    super.key,
     required this.image,
     required this.name,
     required this.price,
     required this.category,
     required this.details,
     required this.date,
-  }) : super(key: key);
+  });
 
   @override
   State<OderDetails> createState() => OderDetailsState();
@@ -37,12 +35,12 @@ class OderDetailsState extends State<OderDetails> {
           onTap: () {
             Get.back();
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back,
             color: white,
           ),
         ),
-        title: Comman_Text(
+        title: const CommanText(
           text: "Order Details",
           fontSize: 19,
           fontWeight: FontWeight.bold,
@@ -76,7 +74,7 @@ class OderDetailsState extends State<OderDetails> {
           //               }
           //             },
           //             icon: Icon(
-          //               Icons.favorite_outline,
+          //               Icons.favoriteOutline,
           //               color: Colors.white,
           //             ),
           //           ),
@@ -104,7 +102,7 @@ class OderDetailsState extends State<OderDetails> {
                     AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
                         snapshot) {
                   if (!snapshot.hasData) {
-                    return Text("Hello");
+                    return const Text("Hello");
                   }
                   return snapshot.data!.docs.isNotEmpty
                       ? Expanded(
@@ -137,8 +135,8 @@ class OderDetailsState extends State<OderDetails> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Comman_Text(
-                                          text: "${widget.name}",
+                                        CommanText(
+                                          text: widget.name,
                                           color: black,
                                           //fontFamily: "JV1",
                                           fontSize: height(context) / 35,
@@ -147,7 +145,7 @@ class OderDetailsState extends State<OderDetails> {
                                         SizedBox(
                                           height: height(context) * 0.02,
                                         ),
-                                        Comman_Text(
+                                        CommanText(
                                           text: "₨ :- ${widget.price}",
                                           color: grey,
                                           fontSize: height(context) / 35,
@@ -156,8 +154,8 @@ class OderDetailsState extends State<OderDetails> {
                                         SizedBox(
                                           height: height(context) * 0.02,
                                         ),
-                                        Comman_Text(
-                                          text: "${widget.category}",
+                                        CommanText(
+                                          text: widget.category,
                                           color: grey,
                                           fontSize: height(context) / 35,
                                           fontWeight: FontWeight.w400,
@@ -165,8 +163,8 @@ class OderDetailsState extends State<OderDetails> {
                                         SizedBox(
                                           height: height(context) * 0.02,
                                         ),
-                                        Comman_Text(
-                                          text: "${widget.details}",
+                                        CommanText(
+                                          text: widget.details,
                                           color: grey,
                                           fontSize: height(context) / 35,
                                           fontWeight: FontWeight.w400,
@@ -174,8 +172,8 @@ class OderDetailsState extends State<OderDetails> {
                                         SizedBox(
                                           height: height(context) * 0.02,
                                         ),
-                                        Comman_Text(
-                                          text: "${widget.date}",
+                                        CommanText(
+                                          text: widget.date,
                                           color: grey,
                                           fontSize: height(context) / 35,
                                           fontWeight: FontWeight.w400,
@@ -188,11 +186,11 @@ class OderDetailsState extends State<OderDetails> {
                             ),
                           ),
                         )
-                      : Text("Hello");
+                      : const Text("Hello");
                 },
               );
             } else {
-              return SizedBox();
+              return const SizedBox();
             }
           },
         ),

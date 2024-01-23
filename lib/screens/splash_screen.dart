@@ -2,45 +2,40 @@ import 'dart:async';
 import 'package:e_com/screens/on_boarding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sizer/sizer.dart';
-import '../bottom_Navigation/bottom_navi_demo.dart';
-import '../bottom_Navigation/bottom_NAV.dart';
-import '../common_screen/Comman_Container.dart';
-import '../common_screen/Comman_text.dart';
+import '../bottom_navigation/bottom_navi_demo.dart';
+import '../common_screen/comman_container.dart';
 import '../globle/variable.dart';
-import 'bottom_navigation_screen.dart';
 
-class Splash_Screen extends StatefulWidget {
-  const Splash_Screen({Key? key}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<Splash_Screen> createState() => Splash_ScreenState();
+  State<SplashScreen> createState() => SplashScreenState();
 }
 
-class Splash_ScreenState extends State<Splash_Screen> {
-  Future Getusername() async {
+class SplashScreenState extends State<SplashScreen> {
+  Future getusername() async {
     var sh = await SharedPreferences.getInstance();
-    var IsLoggedIn = sh.getBool(KeyValue);
+    var isLoggedIn = sh.getBool(keyValue);
 
-    Timer(Duration(seconds: 2), () {
-      if (IsLoggedIn != null) {
-        if (IsLoggedIn) {
-          Get.off(Bottom_navigation());
+    Timer(const Duration(seconds: 2), () {
+      if (isLoggedIn != null) {
+        if (isLoggedIn) {
+          Get.off(const BottomNavigation());
         } else {
-          Get.off(On_Boarding());
+          Get.off(const OnBoarding());
         }
       } else {
-        Get.off(On_Boarding());
+        Get.off(const OnBoarding());
       }
     });
   }
 
-  static const String KeyValue = "Login";
+  static const String keyValue = "Login";
   @override
   void initState() {
-    Getusername();
+    getusername();
     super.initState();
   }
 
@@ -50,13 +45,13 @@ class Splash_ScreenState extends State<Splash_Screen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Comman_Container(
+          CommanContainer(
             height: Get.height,
             width: Get.width,
             color: black,
             // gradient: LinearGradient(colors: [
-            //   LightGreen,
-            //   DarkGreen2,
+            //   lightGreen,
+            //   darkGreen2,
             // ]),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +59,7 @@ class Splash_ScreenState extends State<Splash_Screen> {
                 Image(
                   height: Get.height * 0.55,
                   width: Get.width * 0.55,
-                  image: AssetImage(logo_green),
+                  image: const AssetImage(logoGreen),
                 ),
                 // SizedBox(
                 //   height: 7.sp,
@@ -72,7 +67,7 @@ class Splash_ScreenState extends State<Splash_Screen> {
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.center,
                 //   children: [
-                //     Comman_Text(
+                //     CommanText(
                 //       text: "Nest",
                 //       color: white,
                 //       fontSize: 30.sp,
@@ -81,7 +76,7 @@ class Splash_ScreenState extends State<Splash_Screen> {
                 //     // SizedBox(
                 //     //   width: 5.sp,
                 //     // ),
-                //     Comman_Text(
+                //     CommanText(
                 //       text: "In",
                 //       color: white,
                 //       fontSize: 30.sp,
