@@ -1,11 +1,9 @@
-import 'package:e_com/screens/splash_screen.dart';
+import 'package:e_com/src/app.dart';
+import 'package:e_com/src/constant/shardpefrence.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sizer/sizer.dart';
-import 'globle/shardpefrence.dart';
 
 void main() async {
   ///milan
@@ -26,24 +24,6 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return Sizer(
-      builder: (context, orientation, deviceType) => const GetMaterialApp(
-        title: 'NestIn',
-        // theme: MyThemes.lightTheme,
-        // darkTheme: MyThemes.darkTheme,
-        themeMode: ThemeMode.system,
-        home: SplashScreen(),
-        debugShowCheckedModeBanner: false,
-      ),
-    );
-  }
-}
 // class MyThemes {
 //   static final darkTheme = ThemeData(
 //     scaffoldBackgroundColor: Colors.grey.shade900,
